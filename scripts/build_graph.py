@@ -135,3 +135,24 @@ if __name__ == "__main__":
         json.dump({"nodes": df.to_dict(orient='records'), "links": links}, f)
         
     print(f"✅ Success! Saved {len(df)} nodes to data/graph_data.json")
+
+if __name__ == "__main__":
+    print("Fetching data...")
+    data = [get_data(t) for t in tqdm(TICKERS) if get_data(t)]
+    
+    if not data:
+        print("❌ No data found.")
+        exit(1)
+        
+    df = pd.DataFrame(data)
+    links = build_graph(df)
+    
+    # --- THE FIX: REMOVE THE ".." ---
+    # 1. Create the 'data' folder if it doesn't exist
+    os.makedirs('data', exist_ok=True)
+    
+    # 2. Save inside the 'data' folder (NO DOTS)
+    with open('data/graph_data.json', 'w') as f:
+        json.dump({"nodes": df.to_dict(orient='records'), "links": links}, f)
+        
+    print(f"✅ Success! Saved {len(df)} nodes to data/graph_data.json")
