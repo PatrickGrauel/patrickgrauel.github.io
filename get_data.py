@@ -3,140 +3,147 @@ import json
 import os
 import pandas as pd
 import numpy as np
+import time
 
-# 1. THE WATCHLIST (Expanded for better clustering)
-tickers = [
-    # Tech
-    "AAPL", "MSFT", "GOOGL", "AMZN", "META", "NVDA", "TSLA",
-    # Banks
-    "JPM", "BAC", "WFC", "GS", "MS",
-    # Consumer
-    "KO", "PEP", "MCD", "SBUX", "NKE",
-    # Energy
-    "XOM", "CVX", "SHEL", "BP",
-    # Pharma
-    "PFE", "JNJ", "MRK", "ABBV"
-]
+def get_sp500_tickers():
+    try:
+        table = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')
+        df = table[0]
+        return df['Symbol'].tolist()
+    except Exception as e:
+        print(f"Error fetching S&P 500: {e}")
+        return []
 
-print("--- 1. Fetching Financials & Price History ---")
+def get_dax_tickers():
+    try:
+        # Wikipedia table for DAX usually lists them as 'ADS.DE' etc.
+        table = pd.read_html('https://en.wikipedia.org/wiki/DAX')
+        df = table[3] # Usually table 3 or 4 contains the components
+        # We need to ensure they have the .DE suffix for Yahoo Finance
+        tickers = []
+        for symbol in df['Ticker']:
+            if not symbol.endswith('.DE'):
+                tickers.append(f"{symbol}.DE")
+            else:
+                tickers.append(symbol)
+        return tickers
+    except Exception as e:
+        print(f"Error fetching DAX: {e}")
+        # Fallback list if scraping fails
+        return ["SAP.DE", "SIE.DE", "ALV.DE", "DTE.DE", "BMW.DE", "VOW3.DE"]
+
+# 1. BUILD THE MEGA WATCHLIST
+print("--- 1. Building Watchlist ---")
+sp500 = get_sp500_tickers()
+dax = get_dax_tickers()
+
+# COMBINE THEM (Limit to top 100 first to test speed, remove [:100] for full run)
+# Warning: Running full 500+ correlations might take >10 mins
+tickers = sp500[:80] + dax[:20] 
+print(f"Targeting {len(tickers)} stocks.")
 
 nodes = []
 price_data = {}
 
-for symbol in tickers:
+print("--- 2. Scanning Financials ---")
+
+for i, symbol in enumerate(tickers):
     try:
-        print(f"Scanning {symbol}...")
-        stock = yf.Ticker(symbol)
+        # Replace dot for BRK.B edge case
+        yahoo_symbol = symbol.replace('.', '-') if ".DE" not in symbol else symbol
         
-        # A. Fetch Fundamentals
+        stock = yf.Ticker(yahoo_symbol)
+        
+        # A. Fetch Fundamentals (Fast Scan)
+        # We use .info heavily to avoid downloading 3 separate statements if possible
         info = stock.info
-        fin = stock.financials
-        bal = stock.balance_sheet
         
-        # --- BUFFETT METRICS CALCULATION ---
+        # Skip if missing critical data
+        if 'marketCap' not in info:
+            continue
+
+        # --- BUFFETT METRICS (Simplified for Speed) ---
         score = 0
         metrics = {}
-
-        # 1. Gross Margin (> 40%)
-        # Logic: High margins = Moat
-        gm = 0
-        if "Gross Profit" in fin.index and "Total Revenue" in fin.index:
-            rev = fin.loc["Total Revenue"].iloc[0]
-            gp = fin.loc["Gross Profit"].iloc[0]
-            if rev > 0:
-                gm = gp / rev
-                if gm > 0.40: score += 1
+        
+        # 1. Margins
+        gm = info.get('grossMargins', 0)
+        if gm > 0.40: score += 1
         metrics["grossMargin"] = round(gm, 2)
 
-        # 2. SG&A Ratio (< 30% of Gross Profit)
-        # Logic: Efficient operations
-        sga_ratio = 1.0 # Default bad
-        if "Selling General And Administration" in fin.index and gm > 0:
-            sga = fin.loc["Selling General And Administration"].iloc[0]
-            sga_ratio = sga / gp
-            if sga_ratio < 0.30: score += 1
-        metrics["sgaRatio"] = round(sga_ratio, 2)
-
-        # 3. Debt to Equity (< 0.5)
-        # Logic: Low leverage
-        de = 10.0 # Default bad
-        if "Total Debt" in bal.index and "Stockholders Equity" in bal.index:
-            debt = bal.loc["Total Debt"].iloc[0]
-            equity = bal.loc["Stockholders Equity"].iloc[0]
-            if equity > 0:
-                de = debt / equity
-                if de < 0.50: score += 1
+        # 2. Debt (Debt/Equity)
+        de = info.get('debtToEquity', 100) / 100 # Yahoo returns percentage (e.g. 150 for 1.5)
+        if de < 0.50: score += 1
         metrics["debtToEquity"] = round(de, 2)
 
-        # 4. Interest Coverage (Interest < 15% of Operating Income)
-        # Logic: Safety
-        int_ratio = 1.0
-        if "Interest Expense" in fin.index and "Operating Income" in fin.index:
-            interest = fin.loc["Interest Expense"].iloc[0]
-            op_income = fin.loc["Operating Income"].iloc[0]
-            if op_income > 0:
-                int_ratio = interest / op_income
-                if int_ratio < 0.15: score += 1
-        metrics["interestRatio"] = round(int_ratio, 2)
+        # 3. Efficiency (Return on Assets as proxy for efficiency)
+        roa = info.get('returnOnAssets', 0)
+        if roa > 0.05: score += 1 # >5% is decent
+        metrics["roa"] = round(roa, 2)
+        
+        # 4. Profitability
+        pm = info.get('profitMargins', 0)
+        if pm > 0.10: score += 1
+        metrics["profitMargin"] = round(pm, 2)
 
-        # 5. Net Earnings Trend (Simple check: positive earnings)
-        # Logic: Profitable
-        profitable = False
-        if "Net Income" in fin.index:
-            ni = fin.loc["Net Income"].iloc[0]
-            if ni > 0: 
-                profitable = True
-                score += 1
-        metrics["profitable"] = profitable
+        # 5. Growth (Revenue Growth)
+        rg = info.get('revenueGrowth', 0)
+        if rg > 0: score += 1
+        metrics["revenueGrowth"] = round(rg, 2)
 
-        # Save Node Data
+        # Save Node
         nodes.append({
             "id": symbol,
             "sector": info.get("sector", "Unknown"),
-            "marketCap": info.get("marketCap", 1000000000),
+            "marketCap": info.get("marketCap", 0),
             "buffettScore": score,
             "metrics": metrics
         })
 
-        # B. Fetch Price History (for Correlation Lines)
-        # We grab 6 months of history
-        hist = stock.history(period="6mo")
+        # B. Fetch Price History (Optimized: 3mo is enough for correlation)
+        hist = stock.history(period="3mo")
         if not hist.empty:
             price_data[symbol] = hist["Close"]
+            
+        # Progress bar logic
+        if i % 10 == 0: print(f"Processed {i}/{len(tickers)}...")
 
     except Exception as e:
-        print(f"⚠️ Error on {symbol}: {e}")
+        # specific error handling is better than pass
+        print(f"Skipping {symbol}: {e}")
 
-print("--- 2. Calculating Correlations (The Web) ---")
+print("--- 3. Calculating The Web (Correlations) ---")
 
-# Create a DataFrame of all prices
 df_prices = pd.DataFrame(price_data)
-# Calculate Correlation Matrix
+# Drop columns with too much missing data
+df_prices = df_prices.dropna(axis=1, thresh=len(df_prices)*0.9) 
 corr_matrix = df_prices.corr()
 
 links = []
-# Create links between stocks that move together
-# Threshold: 0.7 (Strong positive correlation)
 tickers_list = df_prices.columns.tolist()
+
+# Threshold: 0.65 to capture more meaningful connections
+threshold = 0.65 
+
 for i in range(len(tickers_list)):
     for j in range(i + 1, len(tickers_list)):
         t1 = tickers_list[i]
         t2 = tickers_list[j]
-        correlation = corr_matrix.loc[t1, t2]
+        val = corr_matrix.loc[t1, t2]
         
-        if correlation > 0.7:
+        if val > threshold:
             links.append({
                 "source": t1,
                 "target": t2,
-                "value": round(correlation, 2)
+                "value": round(val, 2)
             })
 
-print(f"Generated {len(links)} connections.")
+print(f"Generated {len(links)} links between {len(nodes)} nodes.")
 
-# Save everything
+# Save
 output = {"nodes": nodes, "links": links}
 os.makedirs("stocks", exist_ok=True)
 with open("stocks/data.json", "w") as f:
     json.dump(output, f, indent=2)
 
-print("--- Scan Complete. ---")
+print("--- Data Update Complete ---")
