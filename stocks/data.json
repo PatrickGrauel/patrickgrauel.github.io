@@ -1,182 +1,54 @@
-[
-  {
-    "ticker": "AAPL",
-    "sector": "Technology",
-    "marketCap": 4075319197696,
-    "grossMargin": 0.47,
-    "debtToEquity": 1.34,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "MSFT",
-    "sector": "Technology",
-    "marketCap": 3541086240768,
-    "grossMargin": 0.69,
-    "debtToEquity": 0.18,
-    "score": 2,
-    "color": "#00ff41"
-  },
-  {
-    "ticker": "GOOGL",
-    "sector": "Communication Services",
-    "marketCap": 3713213399040,
-    "grossMargin": 0.58,
-    "debtToEquity": 0.08,
-    "score": 2,
-    "color": "#00ff41"
-  },
-  {
-    "ticker": "AMZN",
-    "sector": "Consumer Cyclical",
-    "marketCap": 2379214487552,
-    "grossMargin": 0.49,
-    "debtToEquity": 0.46,
-    "score": 2,
-    "color": "#00ff41"
-  },
-  {
-    "ticker": "TSLA",
-    "sector": "Consumer Cyclical",
-    "marketCap": 1629252354048,
-    "grossMargin": 0.18,
-    "debtToEquity": 0.19,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "XOM",
-    "sector": "Energy",
-    "marketCap": 488909176832,
-    "grossMargin": 0.23,
-    "debtToEquity": 0.16,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "CVX",
-    "sector": "Energy",
-    "marketCap": 295675199488,
-    "grossMargin": 0.29,
-    "debtToEquity": 0.16,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "SHEL",
-    "sector": "Energy",
-    "marketCap": 200924446720,
-    "grossMargin": 0.16,
-    "debtToEquity": 0.43,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "JPM",
-    "sector": "Financial Services",
-    "marketCap": 867684777984,
-    "grossMargin": 0,
-    "debtToEquity": 1.32,
-    "score": 0,
-    "color": "#ff3333"
-  },
-  {
-    "ticker": "BAC",
-    "sector": "Financial Services",
-    "marketCap": 405974777856,
-    "grossMargin": 0,
-    "debtToEquity": 1.11,
-    "score": 0,
-    "color": "#ff3333"
-  },
-  {
-    "ticker": "WFC",
-    "sector": "Financial Services",
-    "marketCap": 295325237248,
-    "grossMargin": 0,
-    "debtToEquity": 1.04,
-    "score": 0,
-    "color": "#ff3333"
-  },
-  {
-    "ticker": "KO",
-    "sector": "Consumer Defensive",
-    "marketCap": 302849064960,
-    "grossMargin": 0.61,
-    "debtToEquity": 1.79,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "PEP",
-    "sector": "Consumer Defensive",
-    "marketCap": 205868138496,
-    "grossMargin": 0.55,
-    "debtToEquity": 2.49,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "MCD",
-    "sector": "Consumer Cyclical",
-    "marketCap": 224428589056,
-    "grossMargin": 0.57,
-    "debtToEquity": -13.68,
-    "score": 2,
-    "color": "#00ff41"
-  },
-  {
-    "ticker": "PFE",
-    "sector": "Healthcare",
-    "marketCap": 145156128768,
-    "grossMargin": 0.72,
-    "debtToEquity": 0.72,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "JNJ",
-    "sector": "Healthcare",
-    "marketCap": 504265474048,
-    "grossMargin": 0.69,
-    "debtToEquity": 0.51,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "MRK",
-    "sector": "Healthcare",
-    "marketCap": 245457158144,
-    "grossMargin": 0.76,
-    "debtToEquity": 0.8,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "BA",
-    "sector": "Industrials",
-    "marketCap": 161868660736,
-    "grossMargin": -0.03,
-    "debtToEquity": -13.87,
-    "score": 1,
-    "color": "#ffcc00"
-  },
-  {
-    "ticker": "LMT",
-    "sector": "Industrials",
-    "marketCap": 111376842752,
-    "grossMargin": 0.1,
-    "debtToEquity": 3.2,
-    "score": 0,
-    "color": "#ff3333"
-  },
-  {
-    "ticker": "GE",
-    "sector": "Industrials",
-    "marketCap": 316785065984,
-    "grossMargin": 0.37,
-    "debtToEquity": 1.0,
-    "score": 0,
-    "color": "#ff3333"
-  }
-]
+{
+  "nodes": [
+    {"id": "GOOGL", "name": "Alphabet Inc.", "sector": "Communication Services", "industry": "Internet Content & Information", "marketCap": 2000000000000, "buffettScore": 4, "metrics": {"grossMargin": 0.582, "profitMargin": 0.286, "debtToEquity": 0.08, "roa": 0.321, "revenueGrowth": 0.12}},
+    {"id": "META", "name": "Meta Platforms", "sector": "Communication Services", "industry": "Internet Content & Information", "marketCap": 1200000000000, "buffettScore": 4, "metrics": {"grossMargin": 0.81, "profitMargin": 0.29, "debtToEquity": 0.12, "roa": 0.18, "revenueGrowth": 0.15}},
+    {"id": "NFLX", "name": "Netflix Inc.", "sector": "Communication Services", "industry": "Entertainment", "marketCap": 250000000000, "buffettScore": 3, "metrics": {"grossMargin": 0.42, "profitMargin": 0.18, "debtToEquity": 0.65, "roa": 0.12, "revenueGrowth": 0.08}},
+    {"id": "AAPL", "name": "Apple Inc.", "sector": "Technology", "industry": "Consumer Electronics", "marketCap": 3000000000000, "buffettScore": 5, "metrics": {"grossMargin": 0.45, "profitMargin": 0.25, "debtToEquity": 1.5, "roa": 0.28, "revenueGrowth": 0.05}},
+    {"id": "MSFT", "name": "Microsoft Corp.", "sector": "Technology", "industry": "Software", "marketCap": 2800000000000, "buffettScore": 5, "metrics": {"grossMargin": 0.69, "profitMargin": 0.35, "debtToEquity": 0.35, "roa": 0.19, "revenueGrowth": 0.12}},
+    {"id": "NVDA", "name": "NVIDIA Corp.", "sector": "Technology", "industry": "Semiconductors", "marketCap": 1100000000000, "buffettScore": 4, "metrics": {"grossMargin": 0.72, "profitMargin": 0.55, "debtToEquity": 0.41, "roa": 0.45, "revenueGrowth": 0.85}},
+    {"id": "AMD", "name": "AMD Inc.", "sector": "Technology", "industry": "Semiconductors", "marketCap": 200000000000, "buffettScore": 3, "metrics": {"grossMargin": 0.48, "profitMargin": 0.05, "debtToEquity": 0.05, "roa": 0.03, "revenueGrowth": 0.04}},
+    {"id": "INTC", "name": "Intel Corp.", "sector": "Technology", "industry": "Semiconductors", "marketCap": 150000000000, "buffettScore": 2, "metrics": {"grossMargin": 0.38, "profitMargin": -0.02, "debtToEquity": 0.47, "roa": -0.01, "revenueGrowth": -0.15}},
+    {"id": "AMZN", "name": "Amazon.com", "sector": "Consumer Discretionary", "industry": "Internet Retail", "marketCap": 1500000000000, "buffettScore": 3, "metrics": {"grossMargin": 0.44, "profitMargin": 0.06, "debtToEquity": 0.8, "roa": 0.07, "revenueGrowth": 0.11}},
+    {"id": "TSLA", "name": "Tesla Inc.", "sector": "Consumer Discretionary", "industry": "Auto Manufacturers", "marketCap": 800000000000, "buffettScore": 3, "metrics": {"grossMargin": 0.18, "profitMargin": 0.12, "debtToEquity": 0.11, "roa": 0.14, "revenueGrowth": 0.19}},
+    {"id": "HD", "name": "Home Depot", "sector": "Consumer Discretionary", "industry": "Home Improvement", "marketCap": 350000000000, "buffettScore": 4, "metrics": {"grossMargin": 0.33, "profitMargin": 0.10, "debtToEquity": 42.0, "roa": 0.22, "revenueGrowth": 0.03}},
+    {"id": "JPM", "name": "JPMorgan Chase", "sector": "Financials", "industry": "Banks", "marketCap": 500000000000, "buffettScore": 3, "metrics": {"grossMargin": 0.58, "profitMargin": 0.33, "debtToEquity": 1.2, "roa": 0.01, "revenueGrowth": 0.08}},
+    {"id": "V", "name": "Visa Inc.", "sector": "Financials", "industry": "Credit Services", "marketCap": 550000000000, "buffettScore": 5, "metrics": {"grossMargin": 0.80, "profitMargin": 0.52, "debtToEquity": 0.52, "roa": 0.15, "revenueGrowth": 0.11}},
+    {"id": "MA", "name": "Mastercard", "sector": "Financials", "industry": "Credit Services", "marketCap": 420000000000, "buffettScore": 5, "metrics": {"grossMargin": 0.78, "profitMargin": 0.45, "debtToEquity": 1.89, "roa": 0.22, "revenueGrowth": 0.13}},
+    {"id": "BRK-B", "name": "Berkshire Hathaway", "sector": "Financials", "industry": "Insurance", "marketCap": 780000000000, "buffettScore": 4, "metrics": {"grossMargin": 0.35, "profitMargin": 0.12, "debtToEquity": 0.22, "roa": 0.04, "revenueGrowth": 0.09}},
+    {"id": "JNJ", "name": "Johnson & Johnson", "sector": "Healthcare", "industry": "Pharmaceuticals", "marketCap": 400000000000, "buffettScore": 4, "metrics": {"grossMargin": 0.68, "profitMargin": 0.20, "debtToEquity": 0.44, "roa": 0.10, "revenueGrowth": 0.05}},
+    {"id": "UNH", "name": "UnitedHealth", "sector": "Healthcare", "industry": "Health Insurance", "marketCap": 480000000000, "buffettScore": 4, "metrics": {"grossMargin": 0.25, "profitMargin": 0.06, "debtToEquity": 0.70, "roa": 0.08, "revenueGrowth": 0.14}},
+    {"id": "PFE", "name": "Pfizer Inc.", "sector": "Healthcare", "industry": "Pharmaceuticals", "marketCap": 160000000000, "buffettScore": 2, "metrics": {"grossMargin": 0.58, "profitMargin": -0.05, "debtToEquity": 0.81, "roa": -0.02, "revenueGrowth": -0.42}},
+    {"id": "WMT", "name": "Walmart Inc.", "sector": "Consumer Staples", "industry": "Retail", "marketCap": 450000000000, "buffettScore": 3, "metrics": {"grossMargin": 0.25, "profitMargin": 0.02, "debtToEquity": 0.72, "roa": 0.06, "revenueGrowth": 0.06}},
+    {"id": "KO", "name": "Coca-Cola Co.", "sector": "Consumer Staples", "industry": "Beverages", "marketCap": 260000000000, "buffettScore": 4, "metrics": {"grossMargin": 0.60, "profitMargin": 0.23, "debtToEquity": 1.62, "roa": 0.10, "revenueGrowth": 0.06}},
+    {"id": "PG", "name": "Procter & Gamble", "sector": "Consumer Staples", "industry": "Household Products", "marketCap": 380000000000, "buffettScore": 4, "metrics": {"grossMargin": 0.52, "profitMargin": 0.18, "debtToEquity": 0.67, "roa": 0.12, "revenueGrowth": 0.03}},
+    {"id": "XOM", "name": "Exxon Mobil", "sector": "Energy", "industry": "Oil & Gas", "marketCap": 420000000000, "buffettScore": 3, "metrics": {"grossMargin": 0.32, "profitMargin": 0.10, "debtToEquity": 0.21, "roa": 0.10, "revenueGrowth": -0.05}},
+    {"id": "CVX", "name": "Chevron Corp.", "sector": "Energy", "industry": "Oil & Gas", "marketCap": 280000000000, "buffettScore": 3, "metrics": {"grossMargin": 0.40, "profitMargin": 0.11, "debtToEquity": 0.14, "roa": 0.09, "revenueGrowth": -0.03}}
+  ],
+  "links": [
+    {"source": "GOOGL", "target": "META", "value": 0.85},
+    {"source": "GOOGL", "target": "NFLX", "value": 0.68},
+    {"source": "META", "target": "NFLX", "value": 0.72},
+    {"source": "AAPL", "target": "MSFT", "value": 0.78},
+    {"source": "MSFT", "target": "NVDA", "value": 0.72},
+    {"source": "AAPL", "target": "NVDA", "value": 0.68},
+    {"source": "NVDA", "target": "AMD", "value": 0.82},
+    {"source": "AMD", "target": "INTC", "value": 0.75},
+    {"source": "NVDA", "target": "INTC", "value": 0.65},
+    {"source": "JPM", "target": "V", "value": 0.65},
+    {"source": "V", "target": "MA", "value": 0.88},
+    {"source": "JPM", "target": "MA", "value": 0.67},
+    {"source": "JPM", "target": "BRK-B", "value": 0.70},
+    {"source": "GOOGL", "target": "MSFT", "value": 0.70},
+    {"source": "GOOGL", "target": "AMZN", "value": 0.72},
+    {"source": "AMZN", "target": "AAPL", "value": 0.66},
+    {"source": "AMZN", "target": "MSFT", "value": 0.74},
+    {"source": "TSLA", "target": "NVDA", "value": 0.68},
+    {"source": "JNJ", "target": "PFE", "value": 0.72},
+    {"source": "JNJ", "target": "UNH", "value": 0.65},
+    {"source": "WMT", "target": "KO", "value": 0.68},
+    {"source": "WMT", "target": "PG", "value": 0.75},
+    {"source": "KO", "target": "PG", "value": 0.78},
+    {"source": "XOM", "target": "CVX", "value": 0.92},
+    {"source": "HD", "target": "WMT", "value": 0.66}
+  ]
+}
