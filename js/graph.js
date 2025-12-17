@@ -450,85 +450,129 @@ const app = {
         const metricExplanations = {
             'gross_margin': 'Buffett looks for consistently high gross margins (>40%) as a sign of durable competitive advantage. Companies with pricing power maintain strong margins.',
             'net_margin': 'High net margins (>15%) indicate efficient operations and pricing power. Buffett seeks companies that consistently convert revenue to profit.',
+            'operating_margin': 'Operating margin shows profitability before interest and taxes. Higher margins indicate competitive advantages and pricing power.',
+            'sga_ratio': 'SG&A as % of Gross Profit. Buffett prefers <30%. Lower ratios indicate operational efficiency and strong cost control.',
+            'capex_ratio': 'Capital Expenditure as % of Revenue. Buffett favors <5% - indicates asset-light business model with low reinvestment needs.',
+            'debt_to_equity': 'Buffett prefers low debt (<0.5). Companies with little debt have financial flexibility and lower risk during downturns.',
+            'current_ratio': 'Current Ratio >1.5 indicates strong short-term liquidity. The company can easily pay its bills and has financial cushion.',
+            'roa': 'Return on Assets >7% shows efficient use of assets to generate profits. Higher ROA indicates better asset productivity.',
+            'retained_earnings': 'Positive and growing retained earnings demonstrate consistent profitability and reinvestment capacity over time.',
             'roe': 'Return on Equity >15% consistently shows management efficiently uses shareholder capital. Buffett\'s favorite metric for measuring profitability.',
             'roic': 'Return on Invested Capital >12% indicates the company generates strong returns on all capital deployed. Shows quality of business economics.',
-            'debt_to_equity': 'Buffett prefers low debt (<0.5). Companies with little debt have financial flexibility and lower risk during downturns.',
             'fcf_margin': 'Free Cash Flow margin >15% shows the company generates real cash, not just accounting profits. Buffett values cash generation highly.',
-            'operating_margin': 'Operating margin shows profitability before interest and taxes. Higher margins indicate competitive advantages and pricing power.',
-            'current_ratio': 'Current Ratio >1.5 indicates strong short-term liquidity. The company can easily pay its bills and has financial cushion.',
+            'interest_coverage': 'Ability to pay interest expenses. Higher ratios (>5) indicate strong debt servicing capacity and financial health.',
             'pe_ratio': 'Price-to-Earnings ratio. Buffett looks for reasonable valuations relative to earnings power and growth prospects.',
             'pb_ratio': 'Price-to-Book ratio. Buffett uses this to assess if you\'re paying a fair price for the company\'s net assets.'
         };
         
-        const metricsToShow = [
-            { key: 'gross_margin', label: 'Gross Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.gross_margin, hist: 'gross_margin', tooltip: metricExplanations.gross_margin },
-            { key: 'net_margin', label: 'Net Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.net_margin, hist: 'net_margin', tooltip: metricExplanations.net_margin },
-            { key: 'roe', label: 'ROE', format: d => d.toFixed(1) + '%', avg: industryAvg.roe, hist: 'roe', tooltip: metricExplanations.roe },
-            { key: 'roic', label: 'ROIC', format: d => d.toFixed(1) + '%', avg: industryAvg.roic, tooltip: metricExplanations.roic },
-            { key: 'debt_to_equity', label: 'Debt/Equity', format: d => d.toFixed(2), avg: industryAvg.debt_to_equity, inverse: true, hist: 'debt_to_equity', tooltip: metricExplanations.debt_to_equity },
-            { key: 'fcf_margin', label: 'FCF Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.fcf_margin, tooltip: metricExplanations.fcf_margin },
-            { key: 'operating_margin', label: 'Op. Margin', format: d => d.toFixed(1) + '%', tooltip: metricExplanations.operating_margin },
-            { key: 'current_ratio', label: 'Current Ratio', format: d => d.toFixed(2), tooltip: metricExplanations.current_ratio },
-            { key: 'pe_ratio', label: 'P/E Ratio', format: d => d.toFixed(1), tooltip: metricExplanations.pe_ratio },
-            { key: 'pb_ratio', label: 'P/B Ratio', format: d => d.toFixed(1), tooltip: metricExplanations.pb_ratio }
+        // Organize metrics by financial statement source
+        const metricCategories = [
+            {
+                title: 'Income Statement',
+                metrics: [
+                    { key: 'gross_margin', label: 'Gross Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.gross_margin, hist: 'gross_margin' },
+                    { key: 'net_margin', label: 'Net Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.net_margin, hist: 'net_margin' },
+                    { key: 'operating_margin', label: 'Operating Margin', format: d => d.toFixed(1) + '%' },
+                    { key: 'sga_ratio', label: 'SG&A % of GP', format: d => d.toFixed(1) + '%', inverse: true },
+                    { key: 'capex_ratio', label: 'Capex % of Rev', format: d => d.toFixed(1) + '%', inverse: true }
+                ]
+            },
+            {
+                title: 'Balance Sheet',
+                metrics: [
+                    { key: 'debt_to_equity', label: 'Debt/Equity', format: d => d.toFixed(2), avg: industryAvg.debt_to_equity, inverse: true, hist: 'debt_to_equity' },
+                    { key: 'current_ratio', label: 'Current Ratio', format: d => d.toFixed(2) },
+                    { key: 'roa', label: 'ROA', format: d => d.toFixed(1) + '%' },
+                    { key: 'retained_earnings', label: 'Retained Earnings', format: d => '$' + (d / 1e9).toFixed(1) + 'B' }
+                ]
+            },
+            {
+                title: 'Profitability & Returns',
+                metrics: [
+                    { key: 'roe', label: 'ROE', format: d => d.toFixed(1) + '%', avg: industryAvg.roe, hist: 'roe' },
+                    { key: 'roic', label: 'ROIC', format: d => d.toFixed(1) + '%' },
+                    { key: 'fcf_margin', label: 'FCF Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.fcf_margin },
+                    { key: 'interest_coverage', label: 'Interest Coverage', format: d => d.toFixed(1) + 'x' }
+                ]
+            },
+            {
+                title: 'Valuation',
+                metrics: [
+                    { key: 'pe_ratio', label: 'P/E Ratio', format: d => d.toFixed(1) },
+                    { key: 'pb_ratio', label: 'P/B Ratio', format: d => d.toFixed(1) }
+                ]
+            }
         ];
         
-        metricsToShow.forEach(metric => {
-            const value = metrics[metric.key];
-            if (value === undefined || value === null || isNaN(value)) return;
+        // Render metrics by category
+        metricCategories.forEach(category => {
+            // Add category header
+            container.append('div')
+                .attr('class', 'section-header')
+                .style('margin-top', '20px')
+                .style('margin-bottom', '12px')
+                .text(category.title);
             
-            const card = container.append('div')
-                .attr('class', 'metric-card')
-                .attr('title', metric.tooltip)
-                .style('cursor', 'help');
-            
-            const header = card.append('div').attr('class', 'm-header');
-            header.append('div').attr('class', 'm-title').text(metric.label);
-            
-            // Add trend indicator if historical data exists
-            if (metric.hist && historical[metric.hist] && historical[metric.hist].length > 1) {
-                const histData = historical[metric.hist];
-                const trend = histData[0] > histData[histData.length - 1] ? '↑' : '↓';
-                const trendColor = (metric.inverse ? histData[0] < histData[histData.length - 1] : histData[0] > histData[histData.length - 1]) ? '#00c853' : '#ff3d00';
-                header.append('span')
-                    .style('color', trendColor)
-                    .style('font-size', '14px')
-                    .text(trend);
-            }
-            
-            card.append('div')
-                .attr('class', 'm-value')
-                .text(metric.format(value));
-            
-            // Comparison bar if industry average exists
-            if (metric.avg !== null && metric.avg !== undefined && !isNaN(metric.avg)) {
-                const barContainer = card.append('div').attr('class', 'comp-bar-container');
+            // Render metrics in this category
+            category.metrics.forEach(metric => {
+                const value = metrics[metric.key];
+                if (value === undefined || value === null || isNaN(value)) return;
                 
-                const maxVal = Math.max(value, metric.avg) * 1.2;
-                const stockPct = (value / maxVal) * 100;
-                const avgPct = (metric.avg / maxVal) * 100;
+                const tooltip = metricExplanations[metric.key] || '';
                 
-                // Determine color based on comparison
-                let barColor = '#0079fd';
-                if (metric.inverse) {
-                    barColor = value < metric.avg ? '#00c853' : '#ff3d00';
-                } else {
-                    barColor = value > metric.avg ? '#00c853' : '#ff3d00';
+                const card = container.append('div')
+                    .attr('class', 'metric-card')
+                    .attr('title', tooltip)
+                    .style('cursor', 'help');
+                
+                const header = card.append('div').attr('class', 'm-header');
+                header.append('div').attr('class', 'm-title').text(metric.label);
+                
+                // Add trend indicator if historical data exists
+                if (metric.hist && historical[metric.hist] && historical[metric.hist].length > 1) {
+                    const histData = historical[metric.hist];
+                    const trend = histData[0] > histData[histData.length - 1] ? '↑' : '↓';
+                    const trendColor = (metric.inverse ? histData[0] < histData[histData.length - 1] : histData[0] > histData[histData.length - 1]) ? '#00c853' : '#ff3d00';
+                    header.append('span')
+                        .style('color', trendColor)
+                        .style('font-size', '14px')
+                        .text(trend);
                 }
                 
-                barContainer.append('div')
-                    .attr('class', 'comp-bar')
-                    .style('width', stockPct + '%')
-                    .style('background', barColor);
+                card.append('div')
+                    .attr('class', 'm-value')
+                    .text(metric.format(value));
                 
-                barContainer.append('div')
-                    .attr('class', 'comp-marker')
-                    .style('left', avgPct + '%');
-                
-                const labels = card.append('div').attr('class', 'comp-label');
-                labels.append('span').text('Stock');
-                labels.append('span').text('Ind. Avg');
-            }
+                // Comparison bar if industry average exists
+                if (metric.avg !== null && metric.avg !== undefined && !isNaN(metric.avg)) {
+                    const barContainer = card.append('div').attr('class', 'comp-bar-container');
+                    
+                    const maxVal = Math.max(value, metric.avg) * 1.2;
+                    const stockPct = (value / maxVal) * 100;
+                    const avgPct = (metric.avg / maxVal) * 100;
+                    
+                    // Determine color based on comparison
+                    let barColor = '#0079fd';
+                    if (metric.inverse) {
+                        barColor = value < metric.avg ? '#00c853' : '#ff3d00';
+                    } else {
+                        barColor = value > metric.avg ? '#00c853' : '#ff3d00';
+                    }
+                    
+                    barContainer.append('div')
+                        .attr('class', 'comp-bar')
+                        .style('width', stockPct + '%')
+                        .style('background', barColor);
+                    
+                    barContainer.append('div')
+                        .attr('class', 'comp-marker')
+                        .style('left', avgPct + '%');
+                    
+                    const labels = card.append('div').attr('class', 'comp-label');
+                    labels.append('span').text('Stock');
+                    labels.append('span').text('Ind. Avg');
+                }
+            });
         });
     },
     
