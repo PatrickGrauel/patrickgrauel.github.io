@@ -3,158 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buffett Indicator: Moat Network</title>
+    <title>Buffett Moat Engine</title>
     <style>
-        :root { 
-            --bg: #0f111a; 
-            --panel: #1a1d29; 
-            --text: #e2e8f0; 
-            --accent: #3b82f6; 
-            --border: #334155;
-            --success: #00cc66;
-            --warning: #ffd700;
-            --danger: #ff4d4d;
-        }
+        :root { --bg: #0f111a; --panel: #1a1d29; --text: #e2e8f0; --accent: #3b82f6; --border: #334155; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; overflow: hidden; }
         
-        body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; overflow: hidden; }
-        
-        /* --- LAYOUT --- */
-        #graph-container { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
+        #graph-container { position: absolute; width: 100vw; height: 100vh; z-index: 1; }
         canvas, svg { position: absolute; width: 100%; height: 100%; }
 
-        /* --- SIDEBAR --- */
+        /* SIDEBAR */
         #sidebar {
-            position: absolute; top: 0; left: 0; width: 340px; height: 100vh;
-            background: var(--panel); border-right: 1px solid var(--border);
-            z-index: 10; padding: 20px; box-sizing: border-box;
-            display: flex; flex-direction: column; gap: 15px;
-            box-shadow: 4px 0 20px rgba(0,0,0,0.4);
-            transform: translateX(0); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute; width: 380px; height: 100vh; background: var(--panel); 
+            border-right: 1px solid var(--border); z-index: 10; display: flex; flex-direction: column;
+            transform: translateX(0); transition: transform 0.3s ease; box-shadow: 5px 0 20px rgba(0,0,0,0.5);
         }
-        
         #sidebar.collapsed { transform: translateX(-100%); }
-        
-        /* Typography */
-        h1 { margin: 0; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-        h2 { margin: 0; font-size: 24px; font-weight: 700; color: #fff; line-height: 1.2; }
-        .subtitle { font-size: 13px; color: #94a3b8; margin-bottom: 5px; }
-        .sector-tag { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 10px; display: block;}
-        
-        /* Controls */
-        label { font-size: 11px; color: #94a3b8; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; display: block; }
-        
-        select, input {
-            width: 100%; padding: 10px; background: var(--bg); border: 1px solid var(--border);
-            color: white; border-radius: 6px; outline: none; cursor: pointer; font-size: 13px;
-            margin-bottom: 10px; transition: border-color 0.2s;
-        }
-        select:hover, input:focus { border-color: var(--accent); }
 
-        /* --- METRICS & RADAR --- */
-        #details-panel { flex-grow: 1; display: flex; flex-direction: column; }
-        
-        .score-badge {
-            display: inline-block; padding: 4px 10px; border-radius: 4px;
-            font-weight: 700; font-size: 14px; margin-bottom: 15px;
-            background: #333; color: white;
+        /* HEADER & SEARCH */
+        .header { padding: 20px; border-bottom: 1px solid var(--border); }
+        .search-wrapper { position: relative; margin-top: 10px; }
+        #search-input {
+            width: 100%; padding: 10px 35px 10px 12px; background: var(--bg); border: 1px solid var(--border);
+            color: white; border-radius: 6px; outline: none; box-sizing: border-box;
         }
-
-        #radar-container {
-            width: 100%; height: 220px; position: relative;
-            background: rgba(0,0,0,0.2); border-radius: 8px; margin: 10px 0 20px 0;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .metric-card { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; border: 1px solid transparent; }
-        .metric-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px; }
-        .metric-val { font-size: 14px; font-weight: 600; color: #fff; }
+        #search-input:focus { border-color: var(--accent); }
         
-        /* Toggle Button */
+        /* TABS */
+        .tabs { display: flex; border-bottom: 1px solid var(--border); }
+        .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; color: #64748b; font-size: 13px; font-weight: 600; }
+        .tab.active { color: var(--accent); border-bottom: 2px solid var(--accent); background: rgba(59,130,246,0.05); }
+
+        /* CONTENT AREA */
+        .content { flex: 1; overflow-y: auto; padding: 20px; position: relative; }
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+
+        /* METRIC CARDS */
+        .metric-card {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+            padding: 12px; border-radius: 6px; margin-bottom: 10px;
+        }
+        .metric-card h4 { margin: 0 0 5px 0; font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+        .metric-card .val { font-size: 18px; font-weight: 700; color: #fff; }
+
+        /* CHARTS */
+        .chart-container { height: 150px; margin-bottom: 20px; position: relative; }
+        .chart-title { font-size: 12px; color: #94a3b8; margin-bottom: 5px; display: flex; justify-content: space-between; }
+        path.line { fill: none; stroke: var(--accent); stroke-width: 2; }
+        .chart-dot { fill: var(--bg); stroke: var(--accent); stroke-width: 2; }
+        .grid-line { stroke: #334155; stroke-dasharray: 2; opacity: 0.3; }
+
+        /* SECTOR CHIPS */
+        #sector-legend {
+            position: absolute; bottom: 20px; right: 20px; z-index: 5;
+            display: flex; flex-direction: column; align-items: flex-end; gap: 5px; pointer-events: none;
+        }
+        .sector-chip {
+            background: var(--panel); padding: 5px 10px; border-radius: 12px; border: 1px solid var(--border);
+            font-size: 11px; color: #ccc; cursor: pointer; pointer-events: auto; transition: 0.2s;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .sector-chip:hover, .sector-chip.active { background: var(--accent); color: white; border-color: var(--accent); }
+        .dot { width: 8px; height: 8px; border-radius: 50%; }
+
         #toggle-btn {
-            position: absolute; top: 20px; left: 360px; z-index: 10;
-            background: var(--panel); border: 1px solid var(--border); color: white;
-            width: 40px; height: 40px; border-radius: 8px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute; top: 20px; left: 400px; z-index: 20;
+            background: var(--panel); border: 1px solid var(--border); color: #fff;
+            padding: 8px; border-radius: 6px; cursor: pointer; transition: left 0.3s ease;
         }
-        #toggle-btn:hover { background: var(--accent); }
         #sidebar.collapsed + #toggle-btn { left: 20px; }
-
-        /* Tooltip */
-        #tooltip {
-            position: absolute; opacity: 0; pointer-events: none;
-            background: rgba(15, 17, 26, 0.95); backdrop-filter: blur(4px);
-            padding: 12px; border-radius: 6px; border: 1px solid var(--border);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 100;
-            transition: opacity 0.1s ease;
-            min-width: 200px;
-        }
+        
+        #tooltip { position: absolute; opacity: 0; pointer-events: none; background: rgba(0,0,0,0.9); padding: 8px; border-radius: 4px; border: 1px solid #444; z-index: 100; font-size: 12px; }
     </style>
 </head>
 <body>
 
     <div id="sidebar">
-        <div>
-            <h1>Buffett Indicator</h1>
-            <p class="subtitle">Moat Analysis Engine</p>
+        <div class="header">
+            <h1 style="color:var(--accent); font-size:14px; margin:0;">BUFFETT ENGINE</h1>
+            <div class="search-wrapper">
+                <input type="text" id="search-input" placeholder="Search Ticker..." list="tickers">
+                <datalist id="tickers"></datalist>
+            </div>
         </div>
 
-        <div>
-            <input type="text" id="search-box" placeholder="Search Ticker (e.g. AAPL)...">
-            
-            <label>Filter by Sector</label>
-            <select id="sector-select" onchange="window.filterBySector(this.value)">
-                <option value="all">🌍 All Sectors</option>
-                </select>
-
-            <label>Visualize Metric</label>
-            <select id="view-select" onchange="window.updateLayout(this.value)">
-                <option value="network">🕸️ Fundamental Network</option>
-                <option value="gross_margin">📊 Gross Margins (Moat)</option>
-                <option value="roic">💎 ROIC (Quality)</option>
-                <option value="fcf_yield">💰 FCF Yield (Value)</option>
-                <option value="debt_to_equity">⚖️ Debt Load (Risk)</option>
-            </select>
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('snapshot')">SNAPSHOT</div>
+            <div class="tab" onclick="switchTab('history')">HISTORY</div>
         </div>
 
-        <hr style="border: 0; border-top: 1px solid var(--border); width: 100%; margin: 10px 0;">
-
-        <div id="details-panel">
-            <h2 id="detail-ticker">S&P 500</h2>
-            <span id="detail-sector" class="sector-tag">Market Overview</span>
-            <div id="detail-score" class="score-badge" style="background:#444; color:#ccc;">Select a Stock</div>
-
-            <div id="radar-container">
-                <svg id="radar-viz" width="220" height="220"></svg>
+        <div class="content">
+            <div id="view-snapshot" class="view-section active">
+                <h2 id="detail-ticker" style="margin:0 0 5px 0;">Select Ticker</h2>
+                <div id="detail-industry" style="font-size:12px; color:#64748b; margin-bottom:15px;">--</div>
+                
+                <div id="radar-viz"></div> <div style="margin-top:20px;">
+                    <div class="metric-card">
+                        <h4>Buffett Score</h4>
+                        <div class="val" id="val-score" style="color:var(--accent)">--</div>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Owner Earnings (FCF)</h4>
+                        <div class="val" id="val-fcf">--</div>
+                    </div>
+                    <div class="metric-card">
+                        <h4>ROIC (Avg)</h4>
+                        <div class="val" id="val-roic">--</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="metric-grid">
-                <div class="metric-card">
-                    <span class="metric-label">Gross Margin</span>
-                    <span class="metric-val" id="detail-margin">--</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-label">Debt / Equity</span>
-                    <span class="metric-val" id="detail-debt">--</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-label">ROIC</span>
-                    <span class="metric-val" id="detail-roic">--</span>
-                </div>
-                <div class="metric-card">
-                    <span class="metric-label">FCF Yield</span>
-                    <span class="metric-val" id="detail-yield">--</span>
-                </div>
+            <div id="view-history" class="view-section">
+                <div class="chart-container" id="chart-gm"></div>
+                <div class="chart-container" id="chart-roic"></div>
+                <div class="chart-container" id="chart-debt"></div>
             </div>
         </div>
     </div>
 
-    <button id="toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('collapsed')">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12h18M3 6h18M3 18h18"/>
-        </svg>
-    </button>
+    <button id="toggle-btn" onclick="document.querySelector('#sidebar').classList.toggle('collapsed')">☰</button>
+
+    <div id="sector-legend">
+        </div>
 
     <div id="graph-container">
         <canvas id="edges-canvas"></canvas>
@@ -164,5 +134,13 @@
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="js/graph.js"></script>
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('view-' + tab).classList.add('active');
+        }
+    </script>
 </body>
 </html>
