@@ -90,7 +90,6 @@ def get_data(ticker):
 
 def build_graph(df):
     # 1. CALCULATE INDUSTRY AVERAGES
-    # Handle cases where sector might be missing or single items
     if 'sector' in df.columns:
         sector_avgs = df.groupby('sector')['metrics'].apply(lambda x: pd.DataFrame(x.tolist()).mean()).to_dict('index')
     else:
@@ -102,13 +101,12 @@ def build_graph(df):
         if sec and sec in sector_avgs:
             row['sector_avg'] = sector_avgs[sec]
         else:
-            row['sector_avg'] = row['metrics'] # Fallback to self if no peer group
+            row['sector_avg'] = row['metrics']
         return row
     
     df = df.apply(inject_avg, axis=1)
 
     # 3. BUILD LINKS
-    # Normalize features for similarity
     features = pd.DataFrame(df['metrics'].tolist()).fillna(0)
     scaler = MinMaxScaler()
     features_norm = scaler.fit_transform(features)
@@ -116,10 +114,7 @@ def build_graph(df):
     
     links = []
     for i in range(len(df)):
-        # Get top 3 similar nodes (excluding self at index -1)
-        # argsort returns indices of sorted elements. [-4:-1] takes the last 3 before the self-match.
         similar_indices = sim_matrix[i].argsort()[-4:-1]
-        
         for idx in similar_indices:
             sim_score = sim_matrix[i][idx]
             if sim_score > 0.8:
@@ -142,9 +137,7 @@ if __name__ == "__main__":
     links = build_graph(df)
     
     # --- ABSOLUTE PATH FIX ---
-    # This determines the root directory based on where the script is located
-    # script_dir = /home/.../repo/scripts
-    # root_dir = /home/.../repo
+    # This finds the 'data' folder relative to this script, no matter where it runs
     script_dir = os.path.dirname(os.path.abspath(__file__))
     root_dir = os.path.dirname(script_dir)
     data_dir = os.path.join(root_dir, 'data')
