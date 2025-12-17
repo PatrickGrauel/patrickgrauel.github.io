@@ -5,50 +5,81 @@
       "name": "Apple Inc.",
       "sector": "Technology",
       "industry": "Consumer Electronics",
-      "marketCap": 4085336768512,
+      "marketCap": 4055581589504,
       "buffettScore": 70,
       "metrics": {
-        "gross_margin": 46.9,
-        "net_margin": 26.9,
-        "operating_margin": 32.0,
-        "sga_ratio": 0.0,
-        "roe": 151.9,
-        "roa": 31.2,
-        "roic": 77.2,
+        "gross_margin": 46.91,
+        "net_margin": 26.92,
+        "roe": 151.91,
+        "roic": 77.18,
         "debt_to_equity": 1.34,
-        "interest_coverage": 0,
-        "current_ratio": 0.89,
-        "fcf_margin": 23.7,
-        "capex_ratio": 3.1,
-        "retained_earnings": -14264000000.0,
-        "pe_ratio": 36.852077,
-        "pb_ratio": 55.15628,
+        "fcf_margin": 23.73,
+        "sga_ratio": 0.0,
+        "pe_ratio": 36.58,
         "buffett_score": 70
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          46.9,
-          46.2,
-          44.1,
-          43.3
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 43.30963056136009
+          },
+          {
+            "date": "2023",
+            "value": 44.13112957720756
+          },
+          {
+            "date": "2024",
+            "value": 46.206349815233935
+          },
+          {
+            "date": "2025",
+            "value": 46.90516410716045
+          }
         ],
         "net_margin": [
-          26.9,
-          24.0,
-          25.3,
-          25.3
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 25.309640705199733
+          },
+          {
+            "date": "2023",
+            "value": 25.30623426432028
+          },
+          {
+            "date": "2024",
+            "value": 23.971255769943866
+          },
+          {
+            "date": "2025",
+            "value": 26.91506412181824
+          }
         ],
         "roe": [
-          151.9,
-          164.6,
-          156.1,
-          197.0
-        ],
-        "debt_to_equity": [
-          1.34,
-          1.87,
-          1.79,
-          2.61
+          {
+            "date": "2022",
+            "value": 196.95887275023682
+          },
+          {
+            "date": "2023",
+            "value": 156.07601454639075
+          },
+          {
+            "date": "2024",
+            "value": 164.59350307287096
+          },
+          {
+            "date": "2025",
+            "value": 151.91298333175104
+          }
         ]
       }
     },
@@ -57,50 +88,73 @@
       "name": "Microsoft Corporation",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "marketCap": 3551603982336,
-      "buffettScore": 80,
+      "marketCap": 3547925315584,
+      "buffettScore": 100,
       "metrics": {
-        "gross_margin": 68.8,
-        "net_margin": 36.1,
-        "operating_margin": 45.6,
-        "sga_ratio": 0.0,
-        "roe": 29.6,
-        "roa": 16.5,
-        "roic": 31.8,
+        "gross_margin": 68.82,
+        "net_margin": 36.15,
+        "roe": 29.65,
+        "roic": 31.81,
         "debt_to_equity": 0.18,
-        "interest_coverage": 0,
-        "current_ratio": 1.35,
-        "fcf_margin": 25.4,
-        "capex_ratio": 22.9,
-        "retained_earnings": 237731000000.0,
-        "pe_ratio": 34.007473,
-        "pb_ratio": 9.783067,
-        "buffett_score": 80
+        "fcf_margin": 25.42,
+        "sga_ratio": 0.0,
+        "pe_ratio": 33.97,
+        "buffett_score": 100
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          68.8,
-          69.8,
-          68.9,
-          68.4
+          {
+            "date": "2022",
+            "value": 68.4016744842891
+          },
+          {
+            "date": "2023",
+            "value": 68.92008588349103
+          },
+          {
+            "date": "2024",
+            "value": 69.76444382797138
+          },
+          {
+            "date": "2025",
+            "value": 68.8237423861652
+          }
         ],
         "net_margin": [
-          36.1,
-          36.0,
-          34.1,
-          36.7
+          {
+            "date": "2022",
+            "value": 36.68633681343622
+          },
+          {
+            "date": "2023",
+            "value": 34.14623787839464
+          },
+          {
+            "date": "2024",
+            "value": 35.955972944084984
+          },
+          {
+            "date": "2025",
+            "value": 36.146015248967075
+          }
         ],
         "roe": [
-          29.6,
-          32.8,
-          35.1,
-          43.7
-        ],
-        "debt_to_equity": [
-          0.18,
-          0.25,
-          0.29,
-          0.37
+          {
+            "date": "2022",
+            "value": 43.67546925099975
+          },
+          {
+            "date": "2023",
+            "value": 35.088714643856406
+          },
+          {
+            "date": "2024",
+            "value": 32.828137978299814
+          },
+          {
+            "date": "2025",
+            "value": 29.647227341409522
+          }
         ]
       }
     },
@@ -109,50 +163,73 @@
       "name": "Alphabet Inc.",
       "sector": "Communication Services",
       "industry": "Internet Content & Information",
-      "marketCap": 3642599407616,
-      "buffettScore": 85,
+      "marketCap": 3631213969408,
+      "buffettScore": 100,
       "metrics": {
         "gross_margin": 58.2,
         "net_margin": 28.6,
-        "operating_margin": 32.1,
-        "sga_ratio": 0.0,
         "roe": 30.8,
-        "roa": 22.2,
-        "roic": 32.1,
+        "roic": 32.06,
         "debt_to_equity": 0.08,
-        "interest_coverage": 0,
-        "current_ratio": 1.84,
-        "fcf_margin": 20.8,
-        "capex_ratio": 15.0,
-        "retained_earnings": 245084000000.0,
-        "pe_ratio": 29.71739,
-        "pb_ratio": 9.388443,
-        "buffett_score": 85
+        "fcf_margin": 20.79,
+        "sga_ratio": 0.0,
+        "pe_ratio": 29.62,
+        "buffett_score": 100
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          58.2,
-          56.6,
-          55.4,
-          56.9
+          {
+            "date": "2021",
+            "value": 56.93980290098084
+          },
+          {
+            "date": "2022",
+            "value": 55.37944250378312
+          },
+          {
+            "date": "2023",
+            "value": 56.625047984020505
+          },
+          {
+            "date": "2024",
+            "value": 58.20043540617911
+          }
         ],
         "net_margin": [
-          28.6,
-          24.0,
-          21.2,
-          29.5
+          {
+            "date": "2021",
+            "value": 29.511677282377917
+          },
+          {
+            "date": "2022",
+            "value": 21.203807153261963
+          },
+          {
+            "date": "2023",
+            "value": 24.006649446638516
+          },
+          {
+            "date": "2024",
+            "value": 28.603671811164
+          }
         ],
         "roe": [
-          30.8,
-          26.0,
-          23.4,
-          30.2
-        ],
-        "debt_to_equity": [
-          0.08,
-          0.1,
-          0.12,
-          0.11
+          {
+            "date": "2021",
+            "value": 30.215590041131
+          },
+          {
+            "date": "2022",
+            "value": 23.41339246673746
+          },
+          {
+            "date": "2023",
+            "value": 26.041096905557577
+          },
+          {
+            "date": "2024",
+            "value": 30.797578472025695
+          }
         ]
       }
     },
@@ -161,50 +238,81 @@
       "name": "Amazon.com, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Internet Retail",
-      "marketCap": 2397672308736,
-      "buffettScore": 55,
+      "marketCap": 2391828856832,
+      "buffettScore": 65,
       "metrics": {
-        "gross_margin": 48.9,
-        "net_margin": 9.3,
-        "operating_margin": 10.8,
-        "sga_ratio": 0.0,
-        "roe": 20.7,
-        "roa": 9.5,
-        "roic": 16.5,
+        "gross_margin": 48.85,
+        "net_margin": 9.29,
+        "roe": 20.72,
+        "roic": 16.45,
         "debt_to_equity": 0.46,
-        "interest_coverage": 0,
-        "current_ratio": 1.06,
-        "fcf_margin": 5.2,
-        "capex_ratio": 13.0,
-        "retained_earnings": 172866000000.0,
-        "pe_ratio": 31.6789,
-        "pb_ratio": 6.484708,
-        "buffett_score": 55
+        "fcf_margin": 5.15,
+        "sga_ratio": 0.0,
+        "pe_ratio": 31.6,
+        "buffett_score": 65
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          48.9,
-          47.0,
-          43.8,
-          42.0
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 42.0325144416396
+          },
+          {
+            "date": "2022",
+            "value": 43.80533986532629
+          },
+          {
+            "date": "2023",
+            "value": 46.98208895500057
+          },
+          {
+            "date": "2024",
+            "value": 48.854393464156786
+          }
         ],
         "net_margin": [
-          9.3,
-          5.3,
-          -0.5,
-          7.1
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 7.101412875514557
+          },
+          {
+            "date": "2022",
+            "value": -0.5295895000418301
+          },
+          {
+            "date": "2023",
+            "value": 5.293283575597832
+          },
+          {
+            "date": "2024",
+            "value": 9.287117197186653
+          }
         ],
         "roe": [
-          20.7,
-          15.1,
-          -1.9,
-          24.1
-        ],
-        "debt_to_equity": [
-          0.46,
-          0.67,
-          0.96,
-          0.84
+          {
+            "date": "2021",
+            "value": 24.13396506202756
+          },
+          {
+            "date": "2022",
+            "value": -1.8638346240490815
+          },
+          {
+            "date": "2023",
+            "value": 15.071207430340557
+          },
+          {
+            "date": "2024",
+            "value": 20.71825715984194
+          }
         ]
       }
     },
@@ -213,50 +321,73 @@
       "name": "NVIDIA Corporation",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 4246362652672,
+      "marketCap": 4185797165056,
       "buffettScore": 85,
       "metrics": {
-        "gross_margin": 75.0,
-        "net_margin": 55.8,
-        "operating_margin": 62.4,
-        "sga_ratio": 0.0,
-        "roe": 91.9,
-        "roa": 65.3,
-        "roic": 90.9,
+        "gross_margin": 74.99,
+        "net_margin": 55.85,
+        "roe": 91.87,
+        "roic": 90.91,
         "debt_to_equity": 0.13,
-        "interest_coverage": 0,
-        "current_ratio": 4.44,
-        "fcf_margin": 46.6,
-        "capex_ratio": 2.5,
-        "retained_earnings": 68038000000.0,
-        "pe_ratio": 43.27794,
-        "pb_ratio": 35.652103,
+        "fcf_margin": 46.63,
+        "sga_ratio": 0.0,
+        "pe_ratio": 42.66,
         "buffett_score": 85
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          75.0,
-          72.7,
-          56.9,
-          64.9
+          {
+            "date": "2022",
+            "value": 64.92903321691314
+          },
+          {
+            "date": "2023",
+            "value": 56.928894490991325
+          },
+          {
+            "date": "2024",
+            "value": 72.71757329043696
+          },
+          {
+            "date": "2025",
+            "value": 74.98869705816992
+          }
         ],
         "net_margin": [
-          55.8,
-          48.8,
-          16.2,
-          36.2
+          {
+            "date": "2022",
+            "value": 36.23393029649996
+          },
+          {
+            "date": "2023",
+            "value": 16.193371394676355
+          },
+          {
+            "date": "2024",
+            "value": 48.84934834706674
+          },
+          {
+            "date": "2025",
+            "value": 55.848027157712444
+          }
         ],
         "roe": [
-          91.9,
-          69.2,
-          19.8,
-          36.6
-        ],
-        "debt_to_equity": [
-          0.13,
-          0.26,
-          0.54,
-          0.44
+          {
+            "date": "2022",
+            "value": 36.64512250112731
+          },
+          {
+            "date": "2023",
+            "value": 19.763811592235644
+          },
+          {
+            "date": "2024",
+            "value": 69.24472986178975
+          },
+          {
+            "date": "2025",
+            "value": 91.87288060811576
+          }
         ]
       }
     },
@@ -265,206 +396,81 @@
       "name": "Meta Platforms, Inc.",
       "sector": "Communication Services",
       "industry": "Internet Content & Information",
-      "marketCap": 1659994374144,
+      "marketCap": 1665639251968,
       "buffettScore": 85,
       "metrics": {
-        "gross_margin": 81.7,
-        "net_margin": 37.9,
-        "operating_margin": 42.2,
-        "sga_ratio": 0.0,
-        "roe": 34.1,
-        "roa": 22.6,
-        "roic": 29.9,
+        "gross_margin": 81.67,
+        "net_margin": 37.91,
+        "roe": 34.14,
+        "roic": 29.94,
         "debt_to_equity": 0.27,
-        "interest_coverage": 0,
-        "current_ratio": 2.98,
-        "fcf_margin": 32.9,
-        "capex_ratio": 22.6,
-        "retained_earnings": 102506000000.0,
-        "pe_ratio": 29.128262,
-        "pb_ratio": 8.555339,
+        "fcf_margin": 32.87,
+        "sga_ratio": 0.0,
+        "pe_ratio": 29.23,
         "buffett_score": 85
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          81.7,
-          80.8,
-          78.3,
-          80.8
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 80.79437627725157
+          },
+          {
+            "date": "2022",
+            "value": 78.34729737841847
+          },
+          {
+            "date": "2023",
+            "value": 80.75714222176099
+          },
+          {
+            "date": "2024",
+            "value": 81.66515705071701
+          }
         ],
         "net_margin": [
-          37.9,
-          29.0,
-          19.9,
-          33.4
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 33.38449405998525
+          },
+          {
+            "date": "2022",
+            "value": 19.895548371051976
+          },
+          {
+            "date": "2023",
+            "value": 28.982520644616095
+          },
+          {
+            "date": "2024",
+            "value": 37.90858414234564
+          }
         ],
         "roe": [
-          34.1,
-          25.5,
-          18.5,
-          31.5
-        ],
-        "debt_to_equity": [
-          0.27,
-          0.24,
-          0.21,
-          0.11
-        ]
-      }
-    },
-    {
-      "id": "BRK-B",
-      "name": "Berkshire Hathaway Inc. New",
-      "sector": "Financial Services",
-      "industry": "Insurance - Diversified",
-      "marketCap": 1079972593664,
-      "buffettScore": 40,
-      "metrics": {
-        "gross_margin": 0.0,
-        "net_margin": 21.0,
-        "operating_margin": 0.0,
-        "sga_ratio": 0,
-        "roe": 13.7,
-        "roa": 7.7,
-        "roic": 0.0,
-        "debt_to_equity": 0.19,
-        "interest_coverage": 0,
-        "current_ratio": 0.0,
-        "fcf_margin": 2.7,
-        "capex_ratio": 4.5,
-        "retained_earnings": 696218000000.0,
-        "pe_ratio": 15.998881,
-        "pb_ratio": 0.0010315918,
-        "buffett_score": 40
-      },
-      "historical": {
-        "gross_margin": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "net_margin": [
-          21.0,
-          21.9,
-          -9.7,
-          25.4
-        ],
-        "roe": [
-          13.7,
-          17.1,
-          -4.8,
-          17.8
-        ],
-        "debt_to_equity": [
-          0.19,
-          0.23,
-          0.26,
-          0.23
-        ]
-      }
-    },
-    {
-      "id": "LLY",
-      "name": "Eli Lilly and Company",
-      "sector": "Healthcare",
-      "industry": "Drug Manufacturers - General",
-      "marketCap": 951082418176,
-      "buffettScore": 55,
-      "metrics": {
-        "gross_margin": 81.3,
-        "net_margin": 23.5,
-        "operating_margin": 38.9,
-        "sga_ratio": 0.0,
-        "roe": 74.6,
-        "roa": 13.5,
-        "roic": 36.6,
-        "debt_to_equity": 2.37,
-        "interest_coverage": 0,
-        "current_ratio": 1.15,
-        "fcf_margin": 0.9,
-        "capex_ratio": 18.7,
-        "retained_earnings": 13545000000.0,
-        "pe_ratio": 51.879463,
-        "pb_ratio": 39.944843,
-        "buffett_score": 55
-      },
-      "historical": {
-        "gross_margin": [
-          81.3,
-          79.2,
-          76.8,
-          74.2
-        ],
-        "net_margin": [
-          23.5,
-          15.4,
-          21.9,
-          19.7
-        ],
-        "roe": [
-          74.6,
-          48.6,
-          58.6,
-          62.2
-        ],
-        "debt_to_equity": [
-          2.37,
-          2.34,
-          1.52,
-          1.88
-        ]
-      }
-    },
-    {
-      "id": "AVGO",
-      "name": "Broadcom Inc.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "marketCap": 1578615832576,
-      "buffettScore": 35,
-      "metrics": {
-        "gross_margin": 63.0,
-        "net_margin": 11.4,
-        "operating_margin": 29.1,
-        "sga_ratio": 0.0,
-        "roe": 8.7,
-        "roa": 3.6,
-        "roic": 11.1,
-        "debt_to_equity": 1.0,
-        "interest_coverage": 0,
-        "current_ratio": 1.17,
-        "fcf_margin": 37.6,
-        "capex_ratio": 1.1,
-        "retained_earnings": 0.0,
-        "pe_ratio": 69.9341,
-        "pb_ratio": 5.644704,
-        "buffett_score": 35
-      },
-      "historical": {
-        "gross_margin": [
-          63.0,
-          68.9,
-          66.5,
-          61.4
-        ],
-        "net_margin": [
-          11.4,
-          39.3,
-          34.6,
-          24.5
-        ],
-        "roe": [
-          8.7,
-          58.7,
-          50.6,
-          27.0
-        ],
-        "debt_to_equity": [
-          1.0,
-          1.64,
-          1.74,
-          1.59
+          {
+            "date": "2021",
+            "value": 31.526517669103693
+          },
+          {
+            "date": "2022",
+            "value": 18.454734196145186
+          },
+          {
+            "date": "2023",
+            "value": 25.526219575890526
+          },
+          {
+            "date": "2024",
+            "value": 34.144231453648494
+          }
         ]
       }
     },
@@ -473,258 +479,638 @@
       "name": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Auto Manufacturers",
-      "marketCap": 1637201346560,
-      "buffettScore": 30,
+      "marketCap": 1588710604800,
+      "buffettScore": 25,
       "metrics": {
-        "gross_margin": 17.9,
+        "gross_margin": 17.86,
         "net_margin": 7.3,
-        "operating_margin": 7.9,
-        "sga_ratio": 0.0,
-        "roe": 9.8,
-        "roa": 5.8,
-        "roic": 9.0,
+        "roe": 9.78,
+        "roic": 8.97,
         "debt_to_equity": 0.19,
-        "interest_coverage": 0,
-        "current_ratio": 2.02,
-        "fcf_margin": 3.7,
-        "capex_ratio": 11.6,
-        "retained_earnings": 35209000000.0,
-        "pe_ratio": 334.87762,
-        "pb_ratio": 20.461805,
-        "buffett_score": 30
+        "fcf_margin": 3.67,
+        "sga_ratio": 0.0,
+        "pe_ratio": 324.96,
+        "buffett_score": 25
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          17.9,
-          18.2,
-          25.6,
-          25.3
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 25.279155751258752
+          },
+          {
+            "date": "2022",
+            "value": 25.598438535759005
+          },
+          {
+            "date": "2023",
+            "value": 18.248891736331416
+          },
+          {
+            "date": "2024",
+            "value": 17.862626676220696
+          }
         ],
         "net_margin": [
-          7.3,
-          15.5,
-          15.4,
-          10.3
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 10.263270349107259
+          },
+          {
+            "date": "2022",
+            "value": 15.446465836831896
+          },
+          {
+            "date": "2023",
+            "value": 15.499157822946483
+          },
+          {
+            "date": "2024",
+            "value": 7.298597604667827
+          }
         ],
         "roe": [
-          9.8,
-          23.9,
-          28.1,
-          18.3
-        ],
-        "debt_to_equity": [
-          0.19,
-          0.15,
-          0.13,
-          0.29
+          {
+            "date": "2021",
+            "value": 18.298055583159428
+          },
+          {
+            "date": "2022",
+            "value": 28.147369362920543
+          },
+          {
+            "date": "2023",
+            "value": 23.947057508701345
+          },
+          {
+            "date": "2024",
+            "value": 9.778777447094482
+          }
         ]
       }
     },
     {
-      "id": "JPM",
-      "name": "JP Morgan Chase & Co.",
-      "sector": "Financial Services",
-      "industry": "Banks - Diversified",
-      "marketCap": 872744419328,
+      "id": "AVGO",
+      "name": "Broadcom Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "marketCap": 1530685292544,
       "buffettScore": 30,
       "metrics": {
-        "gross_margin": 0.0,
-        "net_margin": 34.5,
-        "operating_margin": 0.0,
-        "sga_ratio": 0,
-        "roe": 17.0,
-        "roa": 1.5,
-        "roic": 0.0,
-        "debt_to_equity": 1.32,
-        "interest_coverage": 0,
-        "current_ratio": 0.0,
-        "fcf_margin": -24.8,
-        "capex_ratio": 0.0,
-        "retained_earnings": 376166000000.0,
-        "pe_ratio": 15.712377,
-        "pb_ratio": 2.5399938,
+        "gross_margin": 63.03,
+        "net_margin": 11.43,
+        "roe": 8.71,
+        "roic": 11.09,
+        "debt_to_equity": 1.0,
+        "fcf_margin": 37.64,
+        "sga_ratio": 0.0,
+        "pe_ratio": 67.81,
         "buffett_score": 30
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          {
+            "date": "2021",
+            "value": 61.36247723132969
+          },
+          {
+            "date": "2022",
+            "value": 66.54519169954523
+          },
+          {
+            "date": "2023",
+            "value": 68.92989754041152
+          },
+          {
+            "date": "2024",
+            "value": 63.03369915073487
+          }
         ],
         "net_margin": [
-          34.5,
-          32.0,
-          29.5,
-          39.7
+          {
+            "date": "2021",
+            "value": 24.539162112932605
+          },
+          {
+            "date": "2022",
+            "value": 34.62036562961178
+          },
+          {
+            "date": "2023",
+            "value": 39.31433038331612
+          },
+          {
+            "date": "2024",
+            "value": 11.430177996664986
+          }
         ],
         "roe": [
-          17.0,
-          15.1,
-          12.9,
-          16.4
-        ],
-        "debt_to_equity": [
-          1.32,
-          1.33,
-          1.16,
-          1.21
+          {
+            "date": "2021",
+            "value": 26.955860578654605
+          },
+          {
+            "date": "2022",
+            "value": 50.618697432735914
+          },
+          {
+            "date": "2023",
+            "value": 58.70435217608805
+          },
+          {
+            "date": "2024",
+            "value": 8.710363781435621
+          }
         ]
       }
     },
     {
-      "id": "V",
-      "name": "Visa Inc.",
-      "sector": "Financial Services",
-      "industry": "Credit Services",
-      "marketCap": 669297999872,
-      "buffettScore": 80,
+      "id": "ADBE",
+      "name": "Adobe Inc.",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "marketCap": 150486941696,
+      "buffettScore": 100,
       "metrics": {
-        "gross_margin": 80.4,
-        "net_margin": 50.1,
-        "operating_margin": 66.4,
+        "gross_margin": 89.04,
+        "net_margin": 25.85,
+        "roe": 39.42,
+        "roic": 38.4,
+        "debt_to_equity": 0.43,
+        "fcf_margin": 36.61,
         "sga_ratio": 0.0,
-        "roe": 52.9,
-        "roa": 20.1,
-        "roic": 42.1,
-        "debt_to_equity": 0.66,
-        "interest_coverage": 0,
-        "current_ratio": 1.08,
-        "fcf_margin": 53.9,
-        "capex_ratio": 3.7,
-        "retained_earnings": 15106000000.0,
-        "pe_ratio": 33.933952,
-        "pb_ratio": 17.893148,
-        "buffett_score": 80
+        "pe_ratio": 21.24,
+        "buffett_score": 100
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          80.4,
-          80.4,
-          79.9,
-          80.4
+          {
+            "date": "2021",
+            "value": 88.18498574596136
+          },
+          {
+            "date": "2022",
+            "value": 87.70305577643985
+          },
+          {
+            "date": "2023",
+            "value": 87.8716059559998
+          },
+          {
+            "date": "2024",
+            "value": 89.035108114392
+          }
         ],
         "net_margin": [
-          50.1,
-          55.0,
-          52.9,
-          51.0
+          {
+            "date": "2021",
+            "value": 30.54798859676908
+          },
+          {
+            "date": "2022",
+            "value": 27.013518118823125
+          },
+          {
+            "date": "2023",
+            "value": 27.96640733680251
+          },
+          {
+            "date": "2024",
+            "value": 25.854452452917926
+          }
         ],
         "roe": [
-          52.9,
-          50.4,
-          44.6,
-          42.0
-        ],
-        "debt_to_equity": [
-          0.66,
-          0.53,
-          0.53,
-          0.63
+          {
+            "date": "2021",
+            "value": 32.58768669324863
+          },
+          {
+            "date": "2022",
+            "value": 33.848124688634265
+          },
+          {
+            "date": "2023",
+            "value": 32.86112120111394
+          },
+          {
+            "date": "2024",
+            "value": 39.41864587025877
+          }
         ]
       }
     },
     {
-      "id": "UNH",
-      "name": "UnitedHealth Group Incorporated",
-      "sector": "Healthcare",
-      "industry": "Healthcare Plans",
-      "marketCap": 303075459072,
+      "id": "CRM",
+      "name": "Salesforce, Inc.",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "marketCap": 248738562048,
+      "buffettScore": 70,
+      "metrics": {
+        "gross_margin": 77.19,
+        "net_margin": 16.35,
+        "roe": 10.13,
+        "roic": 10.56,
+        "debt_to_equity": 0.19,
+        "fcf_margin": 32.81,
+        "sga_ratio": 0.0,
+        "pe_ratio": 34.88,
+        "buffett_score": 70
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2022",
+            "value": 73.47878604861845
+          },
+          {
+            "date": "2023",
+            "value": 73.33503444756315
+          },
+          {
+            "date": "2024",
+            "value": 75.49703072553577
+          },
+          {
+            "date": "2025",
+            "value": 77.1922417205436
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2022",
+            "value": 5.450702098746792
+          },
+          {
+            "date": "2023",
+            "value": 0.6634345496300076
+          },
+          {
+            "date": "2024",
+            "value": 11.865622400091803
+          },
+          {
+            "date": "2025",
+            "value": 16.353080881382766
+          }
+        ],
+        "roe": [
+          {
+            "date": "2022",
+            "value": 2.4840446577557582
+          },
+          {
+            "date": "2023",
+            "value": 0.3564146061447249
+          },
+          {
+            "date": "2024",
+            "value": 6.934245381081714
+          },
+          {
+            "date": "2025",
+            "value": 10.130286237392314
+          }
+        ]
+      }
+    },
+    {
+      "id": "AMD",
+      "name": "Advanced Micro Devices, Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "marketCap": 327236354048,
+      "buffettScore": 35,
+      "metrics": {
+        "gross_margin": 49.35,
+        "net_margin": 6.36,
+        "roe": 2.85,
+        "roic": 3.49,
+        "debt_to_equity": 0.04,
+        "fcf_margin": 9.33,
+        "sga_ratio": 0.0,
+        "pe_ratio": 105.79,
+        "buffett_score": 35
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 48.24753559693319
+          },
+          {
+            "date": "2022",
+            "value": 44.92606245498072
+          },
+          {
+            "date": "2023",
+            "value": 46.119929453262785
+          },
+          {
+            "date": "2024",
+            "value": 49.350397517936784
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 19.240598758671048
+          },
+          {
+            "date": "2022",
+            "value": 5.592983348163213
+          },
+          {
+            "date": "2023",
+            "value": 3.7654320987654324
+          },
+          {
+            "date": "2024",
+            "value": 6.364165212332752
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 42.17687074829932
+          },
+          {
+            "date": "2022",
+            "value": 2.410958904109589
+          },
+          {
+            "date": "2023",
+            "value": 1.5279467544550203
+          },
+          {
+            "date": "2024",
+            "value": 2.8505419677598667
+          }
+        ]
+      }
+    },
+    {
+      "id": "INTC",
+      "name": "Intel Corporation",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "marketCap": 174558150656,
+      "buffettScore": 10,
+      "metrics": {
+        "gross_margin": 32.66,
+        "net_margin": -35.32,
+        "roe": -18.89,
+        "roic": -3.15,
+        "debt_to_equity": 0.5,
+        "fcf_margin": -29.48,
+        "sga_ratio": 0.0,
+        "pe_ratio": 609.92,
+        "buffett_score": 10
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 55.44518121077141
+          },
+          {
+            "date": "2022",
+            "value": 42.6079233672725
+          },
+          {
+            "date": "2023",
+            "value": 40.0365125027661
+          },
+          {
+            "date": "2024",
+            "value": 32.664168283083185
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 25.141729094958492
+          },
+          {
+            "date": "2022",
+            "value": 12.709740857043169
+          },
+          {
+            "date": "2023",
+            "value": 3.114627129895995
+          },
+          {
+            "date": "2024",
+            "value": -35.321368712453626
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 20.82796070908157
+          },
+          {
+            "date": "2022",
+            "value": 7.901560789958885
+          },
+          {
+            "date": "2023",
+            "value": 1.5995832938725258
+          },
+          {
+            "date": "2024",
+            "value": -18.893925657298276
+          }
+        ]
+      }
+    },
+    {
+      "id": "IBM",
+      "name": "International Business Machines",
+      "sector": "Technology",
+      "industry": "Information Technology Services",
+      "marketCap": 285639868416,
       "buffettScore": 45,
       "metrics": {
-        "gross_margin": 22.3,
-        "net_margin": 3.6,
-        "operating_margin": 8.1,
+        "gross_margin": 56.65,
+        "net_margin": 9.6,
+        "roe": 22.06,
+        "roic": 11.75,
+        "debt_to_equity": 2.14,
+        "fcf_margin": 18.74,
         "sga_ratio": 0.0,
-        "roe": 15.5,
-        "roa": 4.8,
-        "roic": 19.0,
-        "debt_to_equity": 0.83,
-        "interest_coverage": 0,
-        "current_ratio": 0.83,
-        "fcf_margin": 5.2,
-        "capex_ratio": 0.9,
-        "retained_earnings": 96036000000.0,
-        "pe_ratio": 17.444212,
-        "pb_ratio": 3.1646252,
+        "pe_ratio": 36.38,
         "buffett_score": 45
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          22.3,
-          24.5,
-          24.6,
-          24.2
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 54.900524838276574
+          },
+          {
+            "date": "2022",
+            "value": 54.00132165868165
+          },
+          {
+            "date": "2023",
+            "value": 55.44778532169414
+          },
+          {
+            "date": "2024",
+            "value": 56.6522716045448
+          }
         ],
         "net_margin": [
-          3.6,
-          6.0,
-          6.2,
-          6.0
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 10.012031176439818
+          },
+          {
+            "date": "2022",
+            "value": 2.7094002973732034
+          },
+          {
+            "date": "2023",
+            "value": 12.127384416424183
+          },
+          {
+            "date": "2024",
+            "value": 9.597947508485651
+          }
         ],
         "roe": [
-          15.5,
-          25.2,
-          25.9,
-          24.1
-        ],
-        "debt_to_equity": [
-          0.83,
-          0.7,
-          0.74,
-          0.64
+          {
+            "date": "2021",
+            "value": 30.379345008200627
+          },
+          {
+            "date": "2022",
+            "value": 7.473569084943492
+          },
+          {
+            "date": "2023",
+            "value": 33.293391914081575
+          },
+          {
+            "date": "2024",
+            "value": 22.056615519830082
+          }
         ]
       }
     },
     {
-      "id": "XOM",
-      "name": "Exxon Mobil Corporation",
-      "sector": "Energy",
-      "industry": "Oil & Gas Integrated",
-      "marketCap": 494025048064,
-      "buffettScore": 40,
+      "id": "QCOM",
+      "name": "QUALCOMM Incorporated",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "marketCap": 188112863232,
+      "buffettScore": 60,
       "metrics": {
-        "gross_margin": 22.6,
-        "net_margin": 9.9,
-        "operating_margin": 11.7,
+        "gross_margin": 55.43,
+        "net_margin": 12.51,
+        "roe": 26.13,
+        "roic": 34.41,
+        "debt_to_equity": 0.7,
+        "fcf_margin": 28.95,
         "sga_ratio": 0.0,
-        "roe": 12.8,
-        "roa": 7.4,
-        "roic": 13.0,
-        "debt_to_equity": 0.16,
-        "interest_coverage": 0,
-        "current_ratio": 1.31,
-        "fcf_margin": 9.1,
-        "capex_ratio": 7.2,
-        "retained_earnings": 470903000000.0,
-        "pe_ratio": 16.843023,
-        "pb_ratio": 1.8755058,
-        "buffett_score": 40
+        "pe_ratio": 34.87,
+        "buffett_score": 60
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          22.6,
-          25.1,
-          25.9,
-          23.5
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 57.839366515837106
+          },
+          {
+            "date": "2023",
+            "value": 55.69793411501954
+          },
+          {
+            "date": "2024",
+            "value": 56.21374672758071
+          },
+          {
+            "date": "2025",
+            "value": 55.428597236022036
+          }
         ],
         "net_margin": [
-          9.9,
-          10.8,
-          14.0,
-          8.3
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 29.266968325791854
+          },
+          {
+            "date": "2023",
+            "value": 20.189838079285316
+          },
+          {
+            "date": "2024",
+            "value": 26.030491247882555
+          },
+          {
+            "date": "2025",
+            "value": 12.51241983560654
+          }
         ],
         "roe": [
-          12.8,
-          17.6,
-          28.6,
-          13.7
-        ],
-        "debt_to_equity": [
-          0.16,
-          0.2,
-          0.21,
-          0.28
+          {
+            "date": "2022",
+            "value": 71.8148004219175
+          },
+          {
+            "date": "2023",
+            "value": 33.51095871368333
+          },
+          {
+            "date": "2024",
+            "value": 38.60089822638349
+          },
+          {
+            "date": "2025",
+            "value": 26.129397340375366
+          }
         ]
       }
     },
@@ -733,50 +1119,1006 @@
       "name": "Walmart Inc.",
       "sector": "Consumer Defensive",
       "industry": "Discount Stores",
-      "marketCap": 920585240576,
-      "buffettScore": 50,
+      "marketCap": 927441879040,
+      "buffettScore": 40,
       "metrics": {
-        "gross_margin": 24.9,
-        "net_margin": 2.9,
-        "operating_margin": 4.3,
-        "sga_ratio": 0.0,
-        "roe": 21.4,
-        "roa": 7.5,
-        "roic": 19.4,
+        "gross_margin": 24.85,
+        "net_margin": 2.85,
+        "roe": 21.36,
+        "roic": 19.42,
         "debt_to_equity": 0.66,
-        "interest_coverage": 0,
-        "current_ratio": 0.82,
-        "fcf_margin": 1.9,
-        "capex_ratio": 3.5,
-        "retained_earnings": 98313000000.0,
-        "pe_ratio": 40.37238,
-        "pb_ratio": 9.578978,
-        "buffett_score": 50
+        "fcf_margin": 1.86,
+        "sga_ratio": 0.0,
+        "pe_ratio": 40.67,
+        "buffett_score": 40
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          24.9,
-          24.4,
-          24.1,
-          25.1
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 25.098733487675336
+          },
+          {
+            "date": "2023",
+            "value": 24.140463839525985
+          },
+          {
+            "date": "2024",
+            "value": 24.375390549662487
+          },
+          {
+            "date": "2025",
+            "value": 24.851061330278934
+          }
         ],
         "net_margin": [
-          2.9,
-          2.4,
-          1.9,
-          2.4
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 2.38723780191845
+          },
+          {
+            "date": "2023",
+            "value": 1.9107165350595219
+          },
+          {
+            "date": "2024",
+            "value": 2.3932111861137897
+          },
+          {
+            "date": "2025",
+            "value": 2.854101044810091
+          }
         ],
         "roe": [
-          21.4,
-          18.5,
-          15.2,
-          16.4
+          {
+            "date": "2022",
+            "value": 16.42343218862984
+          },
+          {
+            "date": "2023",
+            "value": 15.229551588802106
+          },
+          {
+            "date": "2024",
+            "value": 18.496082803687052
+          },
+          {
+            "date": "2025",
+            "value": 21.35519101666795
+          }
+        ]
+      }
+    },
+    {
+      "id": "PG",
+      "name": "Procter & Gamble Company (The)",
+      "sector": "Consumer Defensive",
+      "industry": "Household & Personal Products",
+      "marketCap": 345947144192,
+      "buffettScore": 85,
+      "metrics": {
+        "gross_margin": 51.16,
+        "net_margin": 18.95,
+        "roe": 30.71,
+        "roic": 23.38,
+        "debt_to_equity": 0.68,
+        "fcf_margin": 16.66,
+        "sga_ratio": 0.0,
+        "pe_ratio": 21.58,
+        "buffett_score": 85
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2022",
+            "value": 47.42664022846596
+          },
+          {
+            "date": "2023",
+            "value": 47.85747384337731
+          },
+          {
+            "date": "2024",
+            "value": 51.39399564487916
+          },
+          {
+            "date": "2025",
+            "value": 51.16036258364577
+          }
         ],
-        "debt_to_equity": [
-          0.66,
-          0.73,
-          0.77,
-          0.69
+        "net_margin": [
+          {
+            "date": "2022",
+            "value": 18.384526170077446
+          },
+          {
+            "date": "2023",
+            "value": 17.868204765504963
+          },
+          {
+            "date": "2024",
+            "value": 17.70487511750497
+          },
+          {
+            "date": "2025",
+            "value": 18.952588866214228
+          }
+        ],
+        "roe": [
+          {
+            "date": "2022",
+            "value": 31.642662431045952
+          },
+          {
+            "date": "2023",
+            "value": 31.325223934839773
+          },
+          {
+            "date": "2024",
+            "value": 29.58875233663445
+          },
+          {
+            "date": "2025",
+            "value": 30.71214335153426
+          }
+        ]
+      }
+    },
+    {
+      "id": "KO",
+      "name": "Coca-Cola Company (The)",
+      "sector": "Consumer Defensive",
+      "industry": "Beverages - Non-Alcoholic",
+      "marketCap": 302784512000,
+      "buffettScore": 60,
+      "metrics": {
+        "gross_margin": 61.06,
+        "net_margin": 22.59,
+        "roe": 42.77,
+        "roic": 20.21,
+        "debt_to_equity": 1.79,
+        "fcf_margin": 10.07,
+        "sga_ratio": 0.0,
+        "pe_ratio": 23.3,
+        "buffett_score": 60
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 60.27163368257664
+          },
+          {
+            "date": "2022",
+            "value": 58.143428518277375
+          },
+          {
+            "date": "2023",
+            "value": 59.52266468505486
+          },
+          {
+            "date": "2024",
+            "value": 61.06330082233696
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 25.277454404346138
+          },
+          {
+            "date": "2022",
+            "value": 22.18863361547763
+          },
+          {
+            "date": "2023",
+            "value": 23.416531887922368
+          },
+          {
+            "date": "2024",
+            "value": 22.589830220352308
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 42.484455845906346
+          },
+          {
+            "date": "2022",
+            "value": 39.585148309479365
+          },
+          {
+            "date": "2023",
+            "value": 41.30141474885317
+          },
+          {
+            "date": "2024",
+            "value": 42.77035725780496
+          }
+        ]
+      }
+    },
+    {
+      "id": "PEP",
+      "name": "Pepsico, Inc.",
+      "sector": "Consumer Defensive",
+      "industry": "Beverages - Non-Alcoholic",
+      "marketCap": 205142523904,
+      "buffettScore": 50,
+      "metrics": {
+        "gross_margin": 54.55,
+        "net_margin": 10.43,
+        "roe": 53.09,
+        "roic": 20.51,
+        "debt_to_equity": 2.49,
+        "fcf_margin": 7.83,
+        "sga_ratio": 0.0,
+        "pe_ratio": 28.49,
+        "buffett_score": 50
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 53.34952311447769
+          },
+          {
+            "date": "2022",
+            "value": 53.03268821187147
+          },
+          {
+            "date": "2023",
+            "value": 54.21390386023985
+          },
+          {
+            "date": "2024",
+            "value": 54.55396607659983
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 9.58552482572917
+          },
+          {
+            "date": "2022",
+            "value": 10.313454949532364
+          },
+          {
+            "date": "2023",
+            "value": 9.92008396103683
+          },
+          {
+            "date": "2024",
+            "value": 10.427417423302197
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 47.4848843732469
+          },
+          {
+            "date": "2022",
+            "value": 51.956382296343804
+          },
+          {
+            "date": "2023",
+            "value": 49.0406961033346
+          },
+          {
+            "date": "2024",
+            "value": 53.090183470982765
+          }
+        ]
+      }
+    },
+    {
+      "id": "COST",
+      "name": "Costco Wholesale Corporation",
+      "sector": "Consumer Defensive",
+      "industry": "Discount Stores",
+      "marketCap": 382827233280,
+      "buffettScore": 55,
+      "metrics": {
+        "gross_margin": 12.84,
+        "net_margin": 2.94,
+        "roe": 27.77,
+        "roic": 27.81,
+        "debt_to_equity": 0.28,
+        "fcf_margin": 2.85,
+        "sga_ratio": 0.0,
+        "pe_ratio": 46.19,
+        "buffett_score": 55
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 12.148717361227385
+          },
+          {
+            "date": "2023",
+            "value": 12.259688802674482
+          },
+          {
+            "date": "2024",
+            "value": 12.61333134213391
+          },
+          {
+            "date": "2025",
+            "value": 12.843206714262356
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 2.5749711395260713
+          },
+          {
+            "date": "2023",
+            "value": 2.59688802674481
+          },
+          {
+            "date": "2024",
+            "value": 2.8952301603832535
+          },
+          {
+            "date": "2025",
+            "value": 2.9425763438516177
+          }
+        ],
+        "roe": [
+          {
+            "date": "2022",
+            "value": 28.311210154054837
+          },
+          {
+            "date": "2023",
+            "value": 25.10974539069359
+          },
+          {
+            "date": "2024",
+            "value": 31.187029040724752
+          },
+          {
+            "date": "2025",
+            "value": 27.770539020710466
+          }
+        ]
+      }
+    },
+    {
+      "id": "MCD",
+      "name": "McDonald's Corporation",
+      "sector": "Consumer Cyclical",
+      "industry": "Restaurants",
+      "marketCap": 225784430592,
+      "buffettScore": 70,
+      "metrics": {
+        "gross_margin": 56.75,
+        "net_margin": 31.72,
+        "roe": -216.62,
+        "roic": 24.61,
+        "debt_to_equity": 0,
+        "fcf_margin": 25.74,
+        "sga_ratio": 0.0,
+        "pe_ratio": 26.97,
+        "buffett_score": 70
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 54.17152896494408
+          },
+          {
+            "date": "2022",
+            "value": 56.97092571822966
+          },
+          {
+            "date": "2023",
+            "value": 57.12492645616788
+          },
+          {
+            "date": "2024",
+            "value": 56.751543209876544
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 32.49034358327341
+          },
+          {
+            "date": "2022",
+            "value": 26.645673367267708
+          },
+          {
+            "date": "2023",
+            "value": 33.21827809374387
+          },
+          {
+            "date": "2024",
+            "value": 31.724537037037038
+          }
+        ],
+        "roe": []
+      }
+    },
+    {
+      "id": "NKE",
+      "name": "Nike, Inc.",
+      "sector": "Consumer Cyclical",
+      "industry": "Footwear & Accessories",
+      "marketCap": 97827364864,
+      "buffettScore": 50,
+      "metrics": {
+        "gross_margin": 42.73,
+        "net_margin": 6.95,
+        "roe": 24.36,
+        "roic": 15.28,
+        "debt_to_equity": 0.83,
+        "fcf_margin": 7.06,
+        "sga_ratio": 0.0,
+        "pe_ratio": 33.94,
+        "buffett_score": 50
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 45.98372939413402
+          },
+          {
+            "date": "2023",
+            "value": 43.52461096901419
+          },
+          {
+            "date": "2024",
+            "value": 44.560180678322496
+          },
+          {
+            "date": "2025",
+            "value": 42.734673605562634
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 12.943695140226932
+          },
+          {
+            "date": "2023",
+            "value": 9.899056953745825
+          },
+          {
+            "date": "2024",
+            "value": 11.097698687745803
+          },
+          {
+            "date": "2025",
+            "value": 6.951132609212032
+          }
+        ],
+        "roe": [
+          {
+            "date": "2022",
+            "value": 39.56547346377855
+          },
+          {
+            "date": "2023",
+            "value": 36.20394173093402
+          },
+          {
+            "date": "2024",
+            "value": 39.5010395010395
+          },
+          {
+            "date": "2025",
+            "value": 24.362370392794976
+          }
+        ]
+      }
+    },
+    {
+      "id": "SBUX",
+      "name": "Starbucks Corporation",
+      "sector": "Consumer Cyclical",
+      "industry": "Restaurants",
+      "marketCap": 96835444736,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 22.77,
+        "net_margin": 4.99,
+        "roe": -22.93,
+        "roic": 19.34,
+        "debt_to_equity": 0,
+        "fcf_margin": 6.57,
+        "sga_ratio": 0.0,
+        "pe_ratio": 52.25,
+        "buffett_score": 40
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 25.956657767524643
+          },
+          {
+            "date": "2023",
+            "value": 27.369105727215114
+          },
+          {
+            "date": "2024",
+            "value": 26.838363343855903
+          },
+          {
+            "date": "2025",
+            "value": 22.771108314239306
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 10.175409220999494
+          },
+          {
+            "date": "2023",
+            "value": 11.464714973482026
+          },
+          {
+            "date": "2024",
+            "value": 10.396061498996579
+          },
+          {
+            "date": "2025",
+            "value": 4.9924161745248
+          }
+        ],
+        "roe": []
+      }
+    },
+    {
+      "id": "HD",
+      "name": "Home Depot, Inc. (The)",
+      "sector": "Consumer Cyclical",
+      "industry": "Home Improvement Retail",
+      "marketCap": 354621095936,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 33.42,
+        "net_margin": 9.28,
+        "roe": 222.98,
+        "roic": 31.23,
+        "debt_to_equity": 9.38,
+        "fcf_margin": 10.23,
+        "sga_ratio": 0.0,
+        "pe_ratio": 24.28,
+        "buffett_score": 40
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 33.62861131141793
+          },
+          {
+            "date": "2023",
+            "value": 33.530491794946734
+          },
+          {
+            "date": "2024",
+            "value": 33.37940249821509
+          },
+          {
+            "date": "2025",
+            "value": 33.419010243614984
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 10.871477999695681
+          },
+          {
+            "date": "2023",
+            "value": 10.867010158637383
+          },
+          {
+            "date": "2024",
+            "value": 9.918844035134834
+          },
+          {
+            "date": "2025",
+            "value": 9.281943904610253
+          }
+        ],
+        "roe": [
+          {
+            "date": "2023",
+            "value": 1095.0704225352113
+          },
+          {
+            "date": "2024",
+            "value": 1450.478927203065
+          },
+          {
+            "date": "2025",
+            "value": 222.98192771084337
+          }
+        ]
+      }
+    },
+    {
+      "id": "LOW",
+      "name": "Lowe's Companies, Inc.",
+      "sector": "Consumer Cyclical",
+      "industry": "Home Improvement Retail",
+      "marketCap": 139303895040,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 33.32,
+        "net_margin": 8.31,
+        "roe": -48.89,
+        "roic": 41.13,
+        "debt_to_equity": 0,
+        "fcf_margin": 9.2,
+        "sga_ratio": 0.0,
+        "pe_ratio": 20.56,
+        "buffett_score": 40
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 33.304935064935066
+          },
+          {
+            "date": "2023",
+            "value": 33.23442442225863
+          },
+          {
+            "date": "2024",
+            "value": 33.39314863910532
+          },
+          {
+            "date": "2025",
+            "value": 33.31620336066162
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 8.77090909090909
+          },
+          {
+            "date": "2023",
+            "value": 6.632048547790519
+          },
+          {
+            "date": "2024",
+            "value": 8.944510691503526
+          },
+          {
+            "date": "2025",
+            "value": 8.314410689102946
+          }
+        ],
+        "roe": []
+      }
+    },
+    {
+      "id": "DIS",
+      "name": "Walt Disney Company (The)",
+      "sector": "Communication Services",
+      "industry": "Entertainment",
+      "marketCap": 200020131840,
+      "buffettScore": 25,
+      "metrics": {
+        "gross_margin": 37.76,
+        "net_margin": 13.14,
+        "roe": 11.29,
+        "roic": 8.94,
+        "debt_to_equity": 0.41,
+        "fcf_margin": 10.67,
+        "sga_ratio": 0.0,
+        "pe_ratio": 16.24,
+        "buffett_score": 25
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 34.23635792171369
+          },
+          {
+            "date": "2023",
+            "value": 33.40570091565615
+          },
+          {
+            "date": "2024",
+            "value": 35.751578901281725
+          },
+          {
+            "date": "2025",
+            "value": 37.76436325125761
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 3.8018906699547883
+          },
+          {
+            "date": "2023",
+            "value": 2.647978582195325
+          },
+          {
+            "date": "2024",
+            "value": 5.442147086831362
+          },
+          {
+            "date": "2025",
+            "value": 13.136351601800369
+          }
+        ],
+        "roe": [
+          {
+            "date": "2022",
+            "value": 3.3102475581003703
+          },
+          {
+            "date": "2023",
+            "value": 2.371143366540085
+          },
+          {
+            "date": "2024",
+            "value": 4.9376340668944145
+          },
+          {
+            "date": "2025",
+            "value": 11.289808772265152
+          }
+        ]
+      }
+    },
+    {
+      "id": "JPM",
+      "name": "JP Morgan Chase & Co.",
+      "sector": "Financial Services",
+      "industry": "Banks - Diversified",
+      "marketCap": 871658225664,
+      "buffettScore": 35,
+      "metrics": {
+        "gross_margin": 0.0,
+        "net_margin": 34.51,
+        "roe": 16.96,
+        "roic": 0.0,
+        "debt_to_equity": 1.32,
+        "fcf_margin": -24.79,
+        "sga_ratio": 0,
+        "pe_ratio": 15.69,
+        "buffett_score": 35
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 0.0
+          },
+          {
+            "date": "2022",
+            "value": 0.0
+          },
+          {
+            "date": "2023",
+            "value": 0.0
+          },
+          {
+            "date": "2024",
+            "value": 0.0
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 39.720590048074946
+          },
+          {
+            "date": "2022",
+            "value": 29.49728718281961
+          },
+          {
+            "date": "2023",
+            "value": 31.9789354122567
+          },
+          {
+            "date": "2024",
+            "value": 34.50858421024676
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 16.433037429409744
+          },
+          {
+            "date": "2022",
+            "value": 12.888086148625536
+          },
+          {
+            "date": "2023",
+            "value": 15.112938349020064
+          },
+          {
+            "date": "2024",
+            "value": 16.96001253052866
+          }
+        ]
+      }
+    },
+    {
+      "id": "V",
+      "name": "Visa Inc.",
+      "sector": "Financial Services",
+      "industry": "Credit Services",
+      "marketCap": 665997869056,
+      "buffettScore": 85,
+      "metrics": {
+        "gross_margin": 80.36,
+        "net_margin": 50.14,
+        "roe": 52.91,
+        "roic": 42.1,
+        "debt_to_equity": 0.66,
+        "fcf_margin": 53.94,
+        "sga_ratio": 0.0,
+        "pe_ratio": 33.77,
+        "buffett_score": 85
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2022",
+            "value": 80.44012282497441
+          },
+          {
+            "date": "2023",
+            "value": 79.88852479098398
+          },
+          {
+            "date": "2024",
+            "value": 80.3985971162946
+          },
+          {
+            "date": "2025",
+            "value": 80.3625
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2022",
+            "value": 51.03036506311839
+          },
+          {
+            "date": "2023",
+            "value": 52.89866168499066
+          },
+          {
+            "date": "2024",
+            "value": 54.954628959527916
+          },
+          {
+            "date": "2025",
+            "value": 50.144999999999996
+          }
+        ],
+        "roe": [
+          {
+            "date": "2022",
+            "value": 42.03648014389702
+          },
+          {
+            "date": "2023",
+            "value": 44.595048150156195
+          },
+          {
+            "date": "2024",
+            "value": 50.4458696374275
+          },
+          {
+            "date": "2025",
+            "value": 52.910918251602524
+          }
         ]
       }
     },
@@ -788,348 +2130,161 @@
       "marketCap": 515313893376,
       "buffettScore": 70,
       "metrics": {
-        "gross_margin": 76.3,
-        "net_margin": 45.7,
-        "operating_margin": 58.0,
-        "sga_ratio": 0.0,
-        "roe": 198.5,
-        "roa": 26.8,
-        "roic": 66.1,
+        "gross_margin": 76.31,
+        "net_margin": 45.71,
+        "roe": 198.52,
+        "roic": 66.07,
         "debt_to_equity": 2.81,
-        "interest_coverage": 0,
-        "current_ratio": 1.03,
-        "fcf_margin": 48.2,
-        "capex_ratio": 4.2,
-        "retained_earnings": 72907000000.0,
-        "pe_ratio": 36.4936,
-        "pb_ratio": 64.9163,
+        "fcf_margin": 48.23,
+        "sga_ratio": 0.0,
+        "pe_ratio": 36.49,
         "buffett_score": 70
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          76.3,
-          76.0,
-          76.3,
-          76.2
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 76.22855327261173
+          },
+          {
+            "date": "2022",
+            "value": 76.33223906102442
+          },
+          {
+            "date": "2023",
+            "value": 76.00605625946291
+          },
+          {
+            "date": "2024",
+            "value": 76.30915610466148
+          }
         ],
         "net_margin": [
-          45.7,
-          44.6,
-          44.7,
-          46.0
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 46.001906375767845
+          },
+          {
+            "date": "2022",
+            "value": 44.65530422269191
+          },
+          {
+            "date": "2023",
+            "value": 44.605147820543465
+          },
+          {
+            "date": "2024",
+            "value": 45.70596797671033
+          }
         ],
         "roe": [
-          198.5,
-          161.6,
-          157.7,
-          118.8
-        ],
-        "debt_to_equity": [
-          2.81,
-          2.26,
-          2.23,
-          1.9
+          {
+            "date": "2021",
+            "value": 118.804704595186
+          },
+          {
+            "date": "2022",
+            "value": 157.66910130200063
+          },
+          {
+            "date": "2023",
+            "value": 161.5673257324289
+          },
+          {
+            "date": "2024",
+            "value": 198.51966075558983
+          }
         ]
       }
     },
     {
-      "id": "JNJ",
-      "name": "Johnson & Johnson",
-      "sector": "Healthcare",
-      "industry": "Drug Manufacturers - General",
-      "marketCap": 505132810240,
-      "buffettScore": 75,
-      "metrics": {
-        "gross_margin": 69.1,
-        "net_margin": 15.8,
-        "operating_margin": 24.9,
-        "sga_ratio": 0.0,
-        "roe": 19.7,
-        "roa": 7.8,
-        "roic": 20.5,
-        "debt_to_equity": 0.51,
-        "interest_coverage": 0,
-        "current_ratio": 1.11,
-        "fcf_margin": 20.3,
-        "capex_ratio": 7.0,
-        "retained_earnings": 0,
-        "pe_ratio": 20.237453,
-        "pb_ratio": 6.363554,
-        "buffett_score": 75
-      },
-      "historical": {
-        "gross_margin": [
-          69.1,
-          68.8,
-          69.3,
-          70.3
-        ],
-        "net_margin": [
-          15.8,
-          41.3,
-          22.4,
-          26.5
-        ],
-        "roe": [
-          19.7,
-          51.1,
-          23.4,
-          28.2
-        ],
-        "debt_to_equity": [
-          0.51,
-          0.43,
-          0.52,
-          0.46
-        ]
-      }
-    },
-    {
-      "id": "PG",
-      "name": "Procter & Gamble Company (The)",
-      "sector": "Consumer Defensive",
-      "industry": "Household & Personal Products",
-      "marketCap": 344355635200,
-      "buffettScore": 80,
-      "metrics": {
-        "gross_margin": 51.2,
-        "net_margin": 19.0,
-        "operating_margin": 24.3,
-        "sga_ratio": 0.0,
-        "roe": 30.7,
-        "roa": 12.8,
-        "roic": 23.4,
-        "debt_to_equity": 0.68,
-        "interest_coverage": 0,
-        "current_ratio": 0.7,
-        "fcf_margin": 16.7,
-        "capex_ratio": 4.5,
-        "retained_earnings": 129973000000.0,
-        "pe_ratio": 21.478832,
-        "pb_ratio": 6.5487165,
-        "buffett_score": 80
-      },
-      "historical": {
-        "gross_margin": [
-          51.2,
-          51.4,
-          47.9,
-          47.4
-        ],
-        "net_margin": [
-          19.0,
-          17.7,
-          17.9,
-          18.4
-        ],
-        "roe": [
-          30.7,
-          29.6,
-          31.3,
-          31.6
-        ],
-        "debt_to_equity": [
-          0.68,
-          0.66,
-          0.76,
-          0.69
-        ]
-      }
-    },
-    {
-      "id": "ORCL",
-      "name": "Oracle Corporation",
-      "sector": "Technology",
-      "industry": "Software - Infrastructure",
-      "marketCap": 519260766208,
-      "buffettScore": 50,
-      "metrics": {
-        "gross_margin": 70.5,
-        "net_margin": 21.7,
-        "operating_margin": 31.5,
-        "sga_ratio": 0.0,
-        "roe": 60.8,
-        "roa": 7.4,
-        "roic": 14.5,
-        "debt_to_equity": 5.09,
-        "interest_coverage": 0,
-        "current_ratio": 0.75,
-        "fcf_margin": -0.7,
-        "capex_ratio": 37.0,
-        "retained_earnings": -15481000000.0,
-        "pe_ratio": 33.9718,
-        "pb_ratio": 17.33621,
-        "buffett_score": 50
-      },
-      "historical": {
-        "gross_margin": [
-          70.5,
-          71.4,
-          72.8,
-          79.1
-        ],
-        "net_margin": [
-          21.7,
-          19.8,
-          17.0,
-          15.8
-        ],
-        "roe": [
-          60.8,
-          120.3
-        ],
-        "debt_to_equity": [
-          5.09
-        ]
-      }
-    },
-    {
-      "id": "HD",
-      "name": "Home Depot, Inc. (The)",
-      "sector": "Consumer Cyclical",
-      "industry": "Home Improvement Retail",
-      "marketCap": 354451849216,
+      "id": "BRK-B",
+      "name": "Berkshire Hathaway Inc. New",
+      "sector": "Financial Services",
+      "industry": "Insurance - Diversified",
+      "marketCap": 1084621651968,
       "buffettScore": 35,
       "metrics": {
-        "gross_margin": 33.4,
-        "net_margin": 9.3,
-        "operating_margin": 13.5,
-        "sga_ratio": 0.0,
-        "roe": 223.0,
-        "roa": 15.4,
-        "roic": 31.2,
-        "debt_to_equity": 9.38,
-        "interest_coverage": 0,
-        "current_ratio": 1.11,
-        "fcf_margin": 10.2,
-        "capex_ratio": 2.2,
-        "retained_earnings": 89533000000.0,
-        "pe_ratio": 24.270618,
-        "pb_ratio": 29.23955,
+        "gross_margin": 0.0,
+        "net_margin": 20.98,
+        "roe": 13.7,
+        "roic": 0.0,
+        "debt_to_equity": 0.19,
+        "fcf_margin": 2.74,
+        "sga_ratio": 0,
+        "pe_ratio": 16.07,
         "buffett_score": 35
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          33.4,
-          33.4,
-          33.5,
-          33.6
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 0.0
+          },
+          {
+            "date": "2022",
+            "value": 0.0
+          },
+          {
+            "date": "2023",
+            "value": 0.0
+          },
+          {
+            "date": "2024",
+            "value": 0.0
+          }
         ],
         "net_margin": [
-          9.3,
-          9.9,
-          10.9,
-          10.9
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 25.353863675446185
+          },
+          {
+            "date": "2022",
+            "value": -9.72104168357388
+          },
+          {
+            "date": "2023",
+            "value": 21.90186576591546
+          },
+          {
+            "date": "2024",
+            "value": 20.97790831431858
+          }
         ],
         "roe": [
-          223.0
-        ],
-        "debt_to_equity": [
-          9.38
-        ]
-      }
-    },
-    {
-      "id": "COST",
-      "name": "Costco Wholesale Corporation",
-      "sector": "Consumer Defensive",
-      "industry": "Discount Stores",
-      "marketCap": 383609077760,
-      "buffettScore": 55,
-      "metrics": {
-        "gross_margin": 12.8,
-        "net_margin": 2.9,
-        "operating_margin": 3.8,
-        "sga_ratio": 0.0,
-        "roe": 27.8,
-        "roa": 10.5,
-        "roic": 27.8,
-        "debt_to_equity": 0.28,
-        "interest_coverage": 0,
-        "current_ratio": 1.03,
-        "fcf_margin": 2.8,
-        "capex_ratio": 2.0,
-        "retained_earnings": 22650000000.0,
-        "pe_ratio": 46.285057,
-        "pb_ratio": 12.659196,
-        "buffett_score": 55
-      },
-      "historical": {
-        "gross_margin": [
-          12.8,
-          12.6,
-          12.3,
-          12.1
-        ],
-        "net_margin": [
-          2.9,
-          2.9,
-          2.6,
-          2.6
-        ],
-        "roe": [
-          27.8,
-          31.2,
-          25.1,
-          28.3
-        ],
-        "debt_to_equity": [
-          0.28,
-          0.35,
-          0.35,
-          0.44
-        ]
-      }
-    },
-    {
-      "id": "NFLX",
-      "name": "Netflix, Inc.",
-      "sector": "Communication Services",
-      "industry": "Entertainment",
-      "marketCap": 411295776768,
-      "buffettScore": 80,
-      "metrics": {
-        "gross_margin": 46.1,
-        "net_margin": 22.3,
-        "operating_margin": 26.7,
-        "sga_ratio": 0.0,
-        "roe": 35.2,
-        "roa": 16.2,
-        "roic": 25.8,
-        "debt_to_equity": 0.63,
-        "interest_coverage": 0,
-        "current_ratio": 1.22,
-        "fcf_margin": 17.7,
-        "capex_ratio": 1.1,
-        "retained_earnings": 31300917000.0,
-        "pe_ratio": 40.61297,
-        "pb_ratio": 15.847347,
-        "buffett_score": 80
-      },
-      "historical": {
-        "gross_margin": [
-          46.1,
-          41.5,
-          39.4,
-          41.6
-        ],
-        "net_margin": [
-          22.3,
-          16.0,
-          14.2,
-          17.2
-        ],
-        "roe": [
-          35.2,
-          26.3,
-          21.6,
-          32.3
-        ],
-        "debt_to_equity": [
-          0.63,
-          0.71,
-          0.69,
-          0.97
+          {
+            "date": "2021",
+            "value": 17.767123206485987
+          },
+          {
+            "date": "2022",
+            "value": -4.807318598127683
+          },
+          {
+            "date": "2023",
+            "value": 17.14370725119505
+          },
+          {
+            "date": "2024",
+            "value": 13.704863806039103
+          }
         ]
       }
     },
@@ -1138,767 +2293,81 @@
       "name": "Bank of America Corporation",
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
-      "marketCap": 410407108608,
+      "marketCap": 405752578048,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": 0.0,
-        "net_margin": 26.6,
-        "operating_margin": 0.0,
-        "sga_ratio": 0,
-        "roe": 9.2,
-        "roa": 0.8,
+        "net_margin": 26.63,
+        "roe": 9.18,
         "roic": 0.0,
         "debt_to_equity": 1.11,
-        "interest_coverage": 0,
-        "current_ratio": 0.0,
-        "fcf_margin": -8.6,
-        "capex_ratio": 0.0,
-        "retained_earnings": 242349000000.0,
-        "pe_ratio": 15.138907,
-        "pb_ratio": 1.4599985,
+        "fcf_margin": -8.64,
+        "sga_ratio": 0,
+        "pe_ratio": 14.97,
         "buffett_score": 20
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 0.0
+          },
+          {
+            "date": "2022",
+            "value": 0.0
+          },
+          {
+            "date": "2023",
+            "value": 0.0
+          },
+          {
+            "date": "2024",
+            "value": 0.0
+          }
         ],
         "net_margin": [
-          26.6,
-          26.9,
-          29.0,
-          35.9
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 35.884775509746056
+          },
+          {
+            "date": "2022",
+            "value": 28.99210110584518
+          },
+          {
+            "date": "2023",
+            "value": 26.896663657297044
+          },
+          {
+            "date": "2024",
+            "value": 26.62950131027511
+          }
         ],
         "roe": [
-          9.2,
-          9.1,
-          10.1,
-          11.8
-        ],
-        "debt_to_equity": [
-          1.11,
-          1.15,
-          1.11,
-          1.13
-        ]
-      }
-    },
-    {
-      "id": "ABBV",
-      "name": "AbbVie Inc.",
-      "sector": "Healthcare",
-      "industry": "Drug Manufacturers - General",
-      "marketCap": 397034127360,
-      "buffettScore": 55,
-      "metrics": {
-        "gross_margin": 70.0,
-        "net_margin": 7.6,
-        "operating_margin": 21.1,
-        "sga_ratio": 0.0,
-        "roe": 128.7,
-        "roa": 3.2,
-        "roic": 16.9,
-        "debt_to_equity": 20.19,
-        "interest_coverage": 0,
-        "current_ratio": 0.66,
-        "fcf_margin": 31.7,
-        "capex_ratio": 1.7,
-        "retained_earnings": -7900000000.0,
-        "pe_ratio": 170.18561,
-        "pb_ratio": -150.26422,
-        "buffett_score": 55
-      },
-      "historical": {
-        "gross_margin": [
-          70.0,
-          62.4,
-          70.0,
-          69.0
-        ],
-        "net_margin": [
-          7.6,
-          9.0,
-          20.4,
-          20.5
-        ],
-        "roe": [
-          128.7,
-          46.9,
-          68.6,
-          74.9
-        ],
-        "debt_to_equity": [
-          5.73,
-          3.67,
-          4.98
-        ]
-      }
-    },
-    {
-      "id": "CRM",
-      "name": "Salesforce, Inc.",
-      "sector": "Technology",
-      "industry": "Software - Application",
-      "marketCap": 247948410880,
-      "buffettScore": 60,
-      "metrics": {
-        "gross_margin": 77.2,
-        "net_margin": 16.4,
-        "operating_margin": 20.2,
-        "sga_ratio": 0.0,
-        "roe": 10.1,
-        "roa": 6.0,
-        "roic": 10.6,
-        "debt_to_equity": 0.19,
-        "interest_coverage": 0,
-        "current_ratio": 1.06,
-        "fcf_margin": 32.8,
-        "capex_ratio": 1.7,
-        "retained_earnings": 16369000000.0,
-        "pe_ratio": 34.773033,
-        "pb_ratio": 4.0876064,
-        "buffett_score": 60
-      },
-      "historical": {
-        "gross_margin": [
-          77.2,
-          75.5,
-          73.3,
-          73.5
-        ],
-        "net_margin": [
-          16.4,
-          11.9,
-          0.7,
-          5.5
-        ],
-        "roe": [
-          10.1,
-          6.9,
-          0.4,
-          2.5
-        ],
-        "debt_to_equity": [
-          0.19,
-          0.21,
-          0.24,
-          0.24
-        ]
-      }
-    },
-    {
-      "id": "CVX",
-      "name": "Chevron Corporation",
-      "sector": "Energy",
-      "industry": "Oil & Gas Integrated",
-      "marketCap": 299604082688,
-      "buffettScore": 25,
-      "metrics": {
-        "gross_margin": 29.4,
-        "net_margin": 9.1,
-        "operating_margin": 9.8,
-        "sga_ratio": 0.0,
-        "roe": 11.6,
-        "roa": 6.9,
-        "roic": 10.7,
-        "debt_to_equity": 0.16,
-        "interest_coverage": 0,
-        "current_ratio": 1.06,
-        "fcf_margin": 7.8,
-        "capex_ratio": 8.5,
-        "retained_earnings": 205852000000.0,
-        "pe_ratio": 20.943663,
-        "pb_ratio": 1.5771499,
-        "buffett_score": 25
-      },
-      "historical": {
-        "gross_margin": [
-          29.4,
-          30.7,
-          31.4,
-          29.2
-        ],
-        "net_margin": [
-          9.1,
-          10.9,
-          15.0,
-          10.0
-        ],
-        "roe": [
-          11.6,
-          13.3,
-          22.3,
-          11.2
-        ],
-        "debt_to_equity": [
-          0.16,
-          0.13,
-          0.15,
-          0.23
-        ]
-      }
-    },
-    {
-      "id": "MRK",
-      "name": "Merck & Company, Inc.",
-      "sector": "Healthcare",
-      "industry": "Drug Manufacturers - General",
-      "marketCap": 247492853760,
-      "buffettScore": 75,
-      "metrics": {
-        "gross_margin": 76.3,
-        "net_margin": 26.7,
-        "operating_margin": 31.5,
-        "sga_ratio": 0.0,
-        "roe": 37.0,
-        "roa": 14.6,
-        "roic": 24.2,
-        "debt_to_equity": 0.8,
-        "interest_coverage": 0,
-        "current_ratio": 1.36,
-        "fcf_margin": 28.2,
-        "capex_ratio": 5.3,
-        "retained_earnings": 63069000000.0,
-        "pe_ratio": 13.106482,
-        "pb_ratio": 4.753418,
-        "buffett_score": 75
-      },
-      "historical": {
-        "gross_margin": [
-          76.3,
-          73.2,
-          70.6,
-          72.0
-        ],
-        "net_margin": [
-          26.7,
-          0.6,
-          24.5,
-          26.8
-        ],
-        "roe": [
-          37.0,
-          1.0,
-          31.6,
-          34.2
-        ],
-        "debt_to_equity": [
-          0.8,
-          0.93,
-          0.67,
-          0.87
-        ]
-      }
-    },
-    {
-      "id": "KO",
-      "name": "Coca-Cola Company (The)",
-      "sector": "Consumer Defensive",
-      "industry": "Beverages - Non-Alcoholic",
-      "marketCap": 303795863552,
-      "buffettScore": 60,
-      "metrics": {
-        "gross_margin": 61.1,
-        "net_margin": 22.6,
-        "operating_margin": 29.8,
-        "sga_ratio": 0.0,
-        "roe": 42.8,
-        "roa": 10.6,
-        "roic": 20.2,
-        "debt_to_equity": 1.79,
-        "interest_coverage": 0,
-        "current_ratio": 1.03,
-        "fcf_margin": 10.1,
-        "capex_ratio": 4.4,
-        "retained_earnings": 76054000000.0,
-        "pe_ratio": 23.37417,
-        "pb_ratio": 9.719124,
-        "buffett_score": 60
-      },
-      "historical": {
-        "gross_margin": [
-          61.1,
-          59.5,
-          58.1,
-          60.3
-        ],
-        "net_margin": [
-          22.6,
-          23.4,
-          22.2,
-          25.3
-        ],
-        "roe": [
-          42.8,
-          41.3,
-          39.6,
-          42.5
-        ],
-        "debt_to_equity": [
-          1.79,
-          1.62,
-          1.62,
-          1.86
-        ]
-      }
-    },
-    {
-      "id": "PEP",
-      "name": "Pepsico, Inc.",
-      "sector": "Consumer Defensive",
-      "industry": "Beverages - Non-Alcoholic",
-      "marketCap": 205635403776,
-      "buffettScore": 45,
-      "metrics": {
-        "gross_margin": 54.6,
-        "net_margin": 10.4,
-        "operating_margin": 14.1,
-        "sga_ratio": 0.0,
-        "roe": 53.1,
-        "roa": 9.6,
-        "roic": 20.5,
-        "debt_to_equity": 2.49,
-        "interest_coverage": 0,
-        "current_ratio": 0.82,
-        "fcf_margin": 7.8,
-        "capex_ratio": 5.8,
-        "retained_earnings": 72266000000.0,
-        "pe_ratio": 28.555132,
-        "pb_ratio": 10.605846,
-        "buffett_score": 45
-      },
-      "historical": {
-        "gross_margin": [
-          54.6,
-          54.2,
-          53.0,
-          53.3
-        ],
-        "net_margin": [
-          10.4,
-          9.9,
-          10.3,
-          9.6
-        ],
-        "roe": [
-          53.1,
-          49.0,
-          52.0,
-          47.5
-        ],
-        "debt_to_equity": [
-          2.49,
-          2.41,
-          2.31,
-          2.54
-        ]
-      }
-    },
-    {
-      "id": "AMD",
-      "name": "Advanced Micro Devices, Inc.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "marketCap": 338339758080,
-      "buffettScore": 45,
-      "metrics": {
-        "gross_margin": 49.4,
-        "net_margin": 6.4,
-        "operating_margin": 8.1,
-        "sga_ratio": 0.0,
-        "roe": 2.9,
-        "roa": 2.4,
-        "roic": 3.5,
-        "debt_to_equity": 0.04,
-        "interest_coverage": 0,
-        "current_ratio": 2.62,
-        "fcf_margin": 9.3,
-        "capex_ratio": 2.5,
-        "retained_earnings": 2364000000.0,
-        "pe_ratio": 109.379,
-        "pb_ratio": 5.565616,
-        "buffett_score": 45
-      },
-      "historical": {
-        "gross_margin": [
-          49.4,
-          46.1,
-          44.9,
-          48.2
-        ],
-        "net_margin": [
-          6.4,
-          3.8,
-          5.6,
-          19.2
-        ],
-        "roe": [
-          2.9,
-          1.5,
-          2.4,
-          42.2
-        ],
-        "debt_to_equity": [
-          0.04,
-          0.05,
-          0.05,
-          0.09
-        ]
-      }
-    },
-    {
-      "id": "ADBE",
-      "name": "Adobe Inc.",
-      "sector": "Technology",
-      "industry": "Software - Application",
-      "marketCap": 150671605760,
-      "buffettScore": 85,
-      "metrics": {
-        "gross_margin": 89.0,
-        "net_margin": 25.9,
-        "operating_margin": 36.0,
-        "sga_ratio": 0.0,
-        "roe": 39.4,
-        "roa": 18.4,
-        "roic": 38.4,
-        "debt_to_equity": 0.43,
-        "interest_coverage": 0,
-        "current_ratio": 1.07,
-        "fcf_margin": 36.6,
-        "capex_ratio": 0.9,
-        "retained_earnings": 38470000000.0,
-        "pe_ratio": 21.268862,
-        "pb_ratio": 12.743157,
-        "buffett_score": 85
-      },
-      "historical": {
-        "gross_margin": [
-          89.0,
-          87.9,
-          87.7,
-          88.2
-        ],
-        "net_margin": [
-          25.9,
-          28.0,
-          27.0,
-          30.5
-        ],
-        "roe": [
-          39.4,
-          32.9,
-          33.8,
-          32.6
-        ],
-        "debt_to_equity": [
-          0.43,
-          0.25,
-          0.33,
-          0.32
-        ]
-      }
-    },
-    {
-      "id": "TMO",
-      "name": "Thermo Fisher Scientific Inc",
-      "sector": "Healthcare",
-      "industry": "Diagnostics & Research",
-      "marketCap": 214168616960,
-      "buffettScore": 45,
-      "metrics": {
-        "gross_margin": 41.3,
-        "net_margin": 14.8,
-        "operating_margin": 18.0,
-        "sga_ratio": 0.0,
-        "roe": 12.8,
-        "roa": 6.5,
-        "roic": 9.5,
-        "debt_to_equity": 0.63,
-        "interest_coverage": 0,
-        "current_ratio": 1.66,
-        "fcf_margin": 16.9,
-        "capex_ratio": 3.3,
-        "retained_earnings": 53102000000.0,
-        "pe_ratio": 32.893246,
-        "pb_ratio": 4.1978903,
-        "buffett_score": 45
-      },
-      "historical": {
-        "gross_margin": [
-          41.3,
-          39.9,
-          42.2,
-          50.1
-        ],
-        "net_margin": [
-          14.8,
-          14.0,
-          15.5,
-          19.7
-        ],
-        "roe": [
-          12.8,
-          12.8,
-          15.8,
-          18.9
-        ],
-        "debt_to_equity": [
-          0.63,
-          0.75,
-          0.78,
-          0.85
-        ]
-      }
-    },
-    {
-      "id": "ACN",
-      "name": "Accenture plc",
-      "sector": "Technology",
-      "industry": "Information Technology Services",
-      "marketCap": 183564910592,
-      "buffettScore": 65,
-      "metrics": {
-        "gross_margin": 31.9,
-        "net_margin": 11.0,
-        "operating_margin": 14.7,
-        "sga_ratio": 0.0,
-        "roe": 24.6,
-        "roa": 11.7,
-        "roic": 26.0,
-        "debt_to_equity": 0.26,
-        "interest_coverage": 0,
-        "current_ratio": 1.42,
-        "fcf_margin": 15.6,
-        "capex_ratio": 0.9,
-        "retained_earnings": 21018731000.0,
-        "pe_ratio": 22.860199,
-        "pb_ratio": 5.5413136,
-        "buffett_score": 65
-      },
-      "historical": {
-        "gross_margin": [
-          31.9,
-          32.6,
-          32.3,
-          32.0
-        ],
-        "net_margin": [
-          11.0,
-          11.2,
-          10.7,
-          11.2
-        ],
-        "roe": [
-          24.6,
-          25.7,
-          26.7,
-          31.1
-        ],
-        "debt_to_equity": [
-          0.26,
-          0.15,
-          0.12,
-          0.15
-        ]
-      }
-    },
-    {
-      "id": "MCD",
-      "name": "McDonald's Corporation",
-      "sector": "Consumer Cyclical",
-      "industry": "Restaurants",
-      "marketCap": 225409794048,
-      "buffettScore": 65,
-      "metrics": {
-        "gross_margin": 56.8,
-        "net_margin": 31.7,
-        "operating_margin": 45.7,
-        "sga_ratio": 0.0,
-        "roe": 0,
-        "roa": 14.9,
-        "roic": 24.6,
-        "debt_to_equity": 0,
-        "interest_coverage": 0,
-        "current_ratio": 1.19,
-        "fcf_margin": 25.7,
-        "capex_ratio": 10.7,
-        "retained_earnings": 66834000000.0,
-        "pe_ratio": 26.928816,
-        "pb_ratio": -104.008896,
-        "buffett_score": 65
-      },
-      "historical": {
-        "gross_margin": [
-          56.8,
-          57.1,
-          57.0,
-          54.2
-        ],
-        "net_margin": [
-          31.7,
-          33.2,
-          26.6,
-          32.5
-        ],
-        "roe": [],
-        "debt_to_equity": []
-      }
-    },
-    {
-      "id": "CSCO",
-      "name": "Cisco Systems, Inc.",
-      "sector": "Technology",
-      "industry": "Communication Equipment",
-      "marketCap": 305775214592,
-      "buffettScore": 80,
-      "metrics": {
-        "gross_margin": 64.9,
-        "net_margin": 18.0,
-        "operating_margin": 22.1,
-        "sga_ratio": 0.0,
-        "roe": 21.7,
-        "roa": 8.3,
-        "roic": 16.7,
-        "debt_to_equity": 0.6,
-        "interest_coverage": 0,
-        "current_ratio": 1.0,
-        "fcf_margin": 23.5,
-        "capex_ratio": 1.6,
-        "retained_earnings": 50000000.0,
-        "pe_ratio": 29.88031,
-        "pb_ratio": 6.5017223,
-        "buffett_score": 80
-      },
-      "historical": {
-        "gross_margin": [
-          64.9,
-          64.7,
-          62.7,
-          62.5
-        ],
-        "net_margin": [
-          18.0,
-          19.2,
-          22.1,
-          22.9
-        ],
-        "roe": [
-          21.7,
-          22.7,
-          28.4,
-          29.7
-        ],
-        "debt_to_equity": [
-          0.6,
-          0.68,
-          0.19,
-          0.24
-        ]
-      }
-    },
-    {
-      "id": "ABT",
-      "name": "Abbott Laboratories",
-      "sector": "Healthcare",
-      "industry": "Medical Devices",
-      "marketCap": 220829433856,
-      "buffettScore": 75,
-      "metrics": {
-        "gross_margin": 55.4,
-        "net_margin": 31.9,
-        "operating_margin": 16.3,
-        "sga_ratio": 0.0,
-        "roe": 28.1,
-        "roa": 16.5,
-        "roic": 10.9,
-        "debt_to_equity": 0.32,
-        "interest_coverage": 0,
-        "current_ratio": 1.67,
-        "fcf_margin": 15.1,
-        "capex_ratio": 5.3,
-        "retained_earnings": 47261000000.0,
-        "pe_ratio": 15.959748,
-        "pb_ratio": 4.329932,
-        "buffett_score": 75
-      },
-      "historical": {
-        "gross_margin": [
-          55.4,
-          55.2,
-          56.1,
-          57.0
-        ],
-        "net_margin": [
-          31.9,
-          14.3,
-          15.9,
-          16.4
-        ],
-        "roe": [
-          28.1,
-          14.8,
-          18.9,
-          19.8
-        ],
-        "debt_to_equity": [
-          0.32,
-          0.4,
-          0.48,
-          0.53
-        ]
-      }
-    },
-    {
-      "id": "DIS",
-      "name": "Walt Disney Company (The)",
-      "sector": "Communication Services",
-      "industry": "Entertainment",
-      "marketCap": 201260711936,
-      "buffettScore": 25,
-      "metrics": {
-        "gross_margin": 37.8,
-        "net_margin": 13.1,
-        "operating_margin": 14.6,
-        "sga_ratio": 0.0,
-        "roe": 11.3,
-        "roa": 6.3,
-        "roic": 8.9,
-        "debt_to_equity": 0.41,
-        "interest_coverage": 0,
-        "current_ratio": 0.71,
-        "fcf_margin": 10.7,
-        "capex_ratio": 8.5,
-        "retained_earnings": 60410000000.0,
-        "pe_ratio": 16.341606,
-        "pb_ratio": 1.8247616,
-        "buffett_score": 25
-      },
-      "historical": {
-        "gross_margin": [
-          37.8,
-          35.8,
-          33.4,
-          34.2
-        ],
-        "net_margin": [
-          13.1,
-          5.4,
-          2.6,
-          3.8
-        ],
-        "roe": [
-          11.3,
-          4.9,
-          2.4,
-          3.3
-        ],
-        "debt_to_equity": [
-          0.41,
-          0.48,
-          0.5,
-          0.54
+          {
+            "date": "2021",
+            "value": 11.840809283656588
+          },
+          {
+            "date": "2022",
+            "value": 10.076245346764424
+          },
+          {
+            "date": "2023",
+            "value": 9.091501340666424
+          },
+          {
+            "date": "2024",
+            "value": 9.179893016284396
+          }
         ]
       }
     },
@@ -1907,50 +2376,970 @@
       "name": "Wells Fargo & Company",
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
-      "marketCap": 298032168960,
+      "marketCap": 298149085184,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": 0.0,
-        "net_margin": 24.0,
-        "operating_margin": 0.0,
-        "sga_ratio": 0,
-        "roe": 11.0,
-        "roa": 1.0,
+        "net_margin": 23.96,
+        "roe": 11.01,
         "roic": 0.0,
         "debt_to_equity": 1.04,
-        "interest_coverage": 0,
-        "current_ratio": 0.0,
-        "fcf_margin": 3.7,
-        "capex_ratio": 0.0,
-        "retained_earnings": 214198000000.0,
-        "pe_ratio": 15.327019,
-        "pb_ratio": 1.7804378,
+        "fcf_margin": 3.69,
+        "sga_ratio": 0,
+        "pe_ratio": 15.33,
         "buffett_score": 20
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 0.0
+          },
+          {
+            "date": "2022",
+            "value": 0.0
+          },
+          {
+            "date": "2023",
+            "value": 0.0
+          },
+          {
+            "date": "2024",
+            "value": 0.0
+          }
         ],
         "net_margin": [
-          24.0,
-          23.2,
-          18.4,
-          27.9
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 27.92739307278377
+          },
+          {
+            "date": "2022",
+            "value": 18.39097461273666
+          },
+          {
+            "date": "2023",
+            "value": 23.17517585384457
+          },
+          {
+            "date": "2024",
+            "value": 23.964712744240305
+          }
         ],
         "roe": [
-          11.0,
-          10.3,
-          7.6,
-          11.8
+          {
+            "date": "2021",
+            "value": 11.784804323955523
+          },
+          {
+            "date": "2022",
+            "value": 7.588763059918881
+          },
+          {
+            "date": "2023",
+            "value": 10.306081244784236
+          },
+          {
+            "date": "2024",
+            "value": 11.01049575703439
+          }
+        ]
+      }
+    },
+    {
+      "id": "GS",
+      "name": "Goldman Sachs Group, Inc. (The)",
+      "sector": "Financial Services",
+      "industry": "Capital Markets",
+      "marketCap": 264902148096,
+      "buffettScore": 20,
+      "metrics": {
+        "gross_margin": 0.0,
+        "net_margin": 26.68,
+        "roe": 11.7,
+        "roic": 0.0,
+        "debt_to_equity": 2.81,
+        "fcf_margin": -28.6,
+        "sga_ratio": 0,
+        "pe_ratio": 17.78,
+        "buffett_score": 20
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 0.0
+          },
+          {
+            "date": "2022",
+            "value": 0.0
+          },
+          {
+            "date": "2023",
+            "value": 0.0
+          },
+          {
+            "date": "2024",
+            "value": 0.0
+          }
         ],
-        "debt_to_equity": [
-          1.04,
-          1.18,
-          1.08,
-          0.93
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 36.46000101113939
+          },
+          {
+            "date": "2022",
+            "value": 23.774939301171752
+          },
+          {
+            "date": "2023",
+            "value": 18.411380637350284
+          },
+          {
+            "date": "2024",
+            "value": 26.678128270294515
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 19.681422047559266
+          },
+          {
+            "date": "2022",
+            "value": 9.609263668091716
+          },
+          {
+            "date": "2023",
+            "value": 7.284547281981096
+          },
+          {
+            "date": "2024",
+            "value": 11.702023017148102
+          }
+        ]
+      }
+    },
+    {
+      "id": "MS",
+      "name": "Morgan Stanley",
+      "sector": "Financial Services",
+      "industry": "Capital Markets",
+      "marketCap": 280172888064,
+      "buffettScore": 20,
+      "metrics": {
+        "gross_margin": 0.0,
+        "net_margin": 23.24,
+        "roe": 12.81,
+        "roic": 0.0,
+        "debt_to_equity": 2.97,
+        "fcf_margin": -3.64,
+        "sga_ratio": 0,
+        "pe_ratio": 18.02,
+        "buffett_score": 20
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 0.0
+          },
+          {
+            "date": "2022",
+            "value": 0.0
+          },
+          {
+            "date": "2023",
+            "value": 0.0
+          },
+          {
+            "date": "2024",
+            "value": 0.0
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 26.649413266210516
+          },
+          {
+            "date": "2022",
+            "value": 21.96574387572197
+          },
+          {
+            "date": "2023",
+            "value": 17.934750429273493
+          },
+          {
+            "date": "2024",
+            "value": 23.238055570017877
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 14.258210752932921
+          },
+          {
+            "date": "2022",
+            "value": 11.013471005881707
+          },
+          {
+            "date": "2023",
+            "value": 9.175266059492317
+          },
+          {
+            "date": "2024",
+            "value": 12.81204849250318
+          }
+        ]
+      }
+    },
+    {
+      "id": "AXP",
+      "name": "American Express Company",
+      "sector": "Financial Services",
+      "industry": "Credit Services",
+      "marketCap": 262959988736,
+      "buffettScore": 45,
+      "metrics": {
+        "gross_margin": 0.0,
+        "net_margin": 15.36,
+        "roe": 33.47,
+        "roic": 0.0,
+        "debt_to_equity": 1.69,
+        "fcf_margin": 18.41,
+        "sga_ratio": 0,
+        "pe_ratio": 25.38,
+        "buffett_score": 45
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 0.0
+          },
+          {
+            "date": "2022",
+            "value": 0.0
+          },
+          {
+            "date": "2023",
+            "value": 0.0
+          },
+          {
+            "date": "2024",
+            "value": 0.0
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 18.68032539921663
+          },
+          {
+            "date": "2022",
+            "value": 14.214369490371153
+          },
+          {
+            "date": "2023",
+            "value": 13.837891431876395
+          },
+          {
+            "date": "2024",
+            "value": 15.358837889884608
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 36.34395995851558
+          },
+          {
+            "date": "2022",
+            "value": 30.4075108251386
+          },
+          {
+            "date": "2023",
+            "value": 29.84638414655879
+          },
+          {
+            "date": "2024",
+            "value": 33.46880782447793
+          }
+        ]
+      }
+    },
+    {
+      "id": "BLK",
+      "name": "BlackRock, Inc.",
+      "sector": "Financial Services",
+      "industry": "Asset Management",
+      "marketCap": 166621233152,
+      "buffettScore": 70,
+      "metrics": {
+        "gross_margin": 49.42,
+        "net_margin": 31.21,
+        "roe": 13.41,
+        "roic": 12.21,
+        "debt_to_equity": 0.3,
+        "fcf_margin": 23.04,
+        "sga_ratio": 0.0,
+        "pe_ratio": 27.62,
+        "buffett_score": 70
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 50.67616393104161
+          },
+          {
+            "date": "2022",
+            "value": 48.58725451798803
+          },
+          {
+            "date": "2023",
+            "value": 48.05420236295425
+          },
+          {
+            "date": "2024",
+            "value": 49.42421718037928
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 30.458346237225147
+          },
+          {
+            "date": "2022",
+            "value": 28.971073686566328
+          },
+          {
+            "date": "2023",
+            "value": 30.807995968419284
+          },
+          {
+            "date": "2024",
+            "value": 31.209878963100895
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 15.655426737059933
+          },
+          {
+            "date": "2022",
+            "value": 13.718736752861382
+          },
+          {
+            "date": "2023",
+            "value": 13.983276996975627
+          },
+          {
+            "date": "2024",
+            "value": 13.409832613959363
+          }
+        ]
+      }
+    },
+    {
+      "id": "JNJ",
+      "name": "Johnson & Johnson",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "marketCap": 506819313664,
+      "buffettScore": 85,
+      "metrics": {
+        "gross_margin": 69.07,
+        "net_margin": 15.84,
+        "roe": 19.68,
+        "roic": 20.48,
+        "debt_to_equity": 0.51,
+        "fcf_margin": 20.33,
+        "sga_ratio": 0.0,
+        "pe_ratio": 20.31,
+        "buffett_score": 85
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": 70.27940055880111
+          },
+          {
+            "date": "2022",
+            "value": 69.25115639454931
+          },
+          {
+            "date": "2023",
+            "value": 68.81950234267664
+          },
+          {
+            "date": "2024",
+            "value": 69.07150336069174
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": 26.51511303022606
+          },
+          {
+            "date": "2022",
+            "value": 22.42905363170396
+          },
+          {
+            "date": "2023",
+            "value": 41.27925410115196
+          },
+          {
+            "date": "2024",
+            "value": 15.836345008500242
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 28.204747173175903
+          },
+          {
+            "date": "2022",
+            "value": 23.3594604447685
+          },
+          {
+            "date": "2023",
+            "value": 51.1137930031698
+          },
+          {
+            "date": "2024",
+            "value": 19.675479087984332
+          }
+        ]
+      }
+    },
+    {
+      "id": "UNH",
+      "name": "UnitedHealth Group Incorporated",
+      "sector": "Healthcare",
+      "industry": "Healthcare Plans",
+      "marketCap": 301630652416,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 22.33,
+        "net_margin": 3.6,
+        "roe": 15.55,
+        "roic": 19.04,
+        "debt_to_equity": 0.83,
+        "fcf_margin": 5.17,
+        "sga_ratio": 0.0,
+        "pe_ratio": 17.36,
+        "buffett_score": 40
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 24.21861145978574
+          },
+          {
+            "date": "2022",
+            "value": 24.560867714291
+          },
+          {
+            "date": "2023",
+            "value": 24.47594598812772
+          },
+          {
+            "date": "2024",
+            "value": 22.33422771174034
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 6.010146141997309
+          },
+          {
+            "date": "2022",
+            "value": 6.20677315663156
+          },
+          {
+            "date": "2023",
+            "value": 6.022517504345814
+          },
+          {
+            "date": "2024",
+            "value": 3.598748869535673
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 24.087235228539576
+          },
+          {
+            "date": "2022",
+            "value": 25.870493236640435
+          },
+          {
+            "date": "2023",
+            "value": 25.216323403488218
+          },
+          {
+            "date": "2024",
+            "value": 15.546418010317511
+          }
+        ]
+      }
+    },
+    {
+      "id": "LLY",
+      "name": "Eli Lilly and Company",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "marketCap": 944883367936,
+      "buffettScore": 60,
+      "metrics": {
+        "gross_margin": 81.31,
+        "net_margin": 23.51,
+        "roe": 74.62,
+        "roic": 36.59,
+        "debt_to_equity": 2.37,
+        "fcf_margin": 0.92,
+        "sga_ratio": 0.0,
+        "pe_ratio": 51.54,
+        "buffett_score": 60
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 74.17650714729646
+          },
+          {
+            "date": "2022",
+            "value": 76.77128662223997
+          },
+          {
+            "date": "2023",
+            "value": 79.24575300154436
+          },
+          {
+            "date": "2024",
+            "value": 81.31040101947707
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 19.71050624329058
+          },
+          {
+            "date": "2022",
+            "value": 21.879795665244174
+          },
+          {
+            "date": "2023",
+            "value": 15.356888533323957
+          },
+          {
+            "date": "2024",
+            "value": 23.5110239839086
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 62.16255345687812
+          },
+          {
+            "date": "2022",
+            "value": 58.63772089616707
+          },
+          {
+            "date": "2023",
+            "value": 48.64879919048636
+          },
+          {
+            "date": "2024",
+            "value": 74.6189781639081
+          }
+        ]
+      }
+    },
+    {
+      "id": "PFE",
+      "name": "Pfizer, Inc.",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "marketCap": 143263924224,
+      "buffettScore": 30,
+      "metrics": {
+        "gross_margin": 71.94,
+        "net_margin": 12.62,
+        "roe": 9.11,
+        "roic": 9.77,
+        "debt_to_equity": 0.72,
+        "fcf_margin": 15.46,
+        "sga_ratio": 0.0,
+        "pe_ratio": 14.65,
+        "buffett_score": 30
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 62.08419446904833
+          },
+          {
+            "date": "2022",
+            "value": 66.05485544848035
+          },
+          {
+            "date": "2023",
+            "value": 58.09853242435437
+          },
+          {
+            "date": "2024",
+            "value": 71.9443003756267
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 27.038431256766067
+          },
+          {
+            "date": "2022",
+            "value": 31.007659995058066
+          },
+          {
+            "date": "2023",
+            "value": 3.558115323907714
+          },
+          {
+            "date": "2024",
+            "value": 12.62200009429959
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 28.469838473594898
+          },
+          {
+            "date": "2022",
+            "value": 32.79497391831572
+          },
+          {
+            "date": "2023",
+            "value": 2.3805244118902644
+          },
+          {
+            "date": "2024",
+            "value": 9.105132478487127
+          }
+        ]
+      }
+    },
+    {
+      "id": "ABBV",
+      "name": "AbbVie Inc.",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "marketCap": 398536376320,
+      "buffettScore": 60,
+      "metrics": {
+        "gross_margin": 69.99,
+        "net_margin": 7.59,
+        "roe": 128.66,
+        "roic": 16.88,
+        "debt_to_equity": 20.19,
+        "fcf_margin": 31.65,
+        "sga_ratio": 0.0,
+        "pe_ratio": 170.83,
+        "buffett_score": 60
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": 68.95563820132747
+          },
+          {
+            "date": "2022",
+            "value": 70.00378957522307
+          },
+          {
+            "date": "2023",
+            "value": 62.41577377664862
+          },
+          {
+            "date": "2024",
+            "value": 69.993254517698
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": 20.53846290727263
+          },
+          {
+            "date": "2022",
+            "value": 20.387914700106798
+          },
+          {
+            "date": "2023",
+            "value": 8.952833314923229
+          },
+          {
+            "date": "2024",
+            "value": 7.59399297049739
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 74.90913811007269
+          },
+          {
+            "date": "2022",
+            "value": 68.59858583516866
+          },
+          {
+            "date": "2023",
+            "value": 46.940154440154444
+          },
+          {
+            "date": "2024",
+            "value": 128.66165413533835
+          }
+        ]
+      }
+    },
+    {
+      "id": "MRK",
+      "name": "Merck & Company, Inc.",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "marketCap": 246681075712,
+      "buffettScore": 70,
+      "metrics": {
+        "gross_margin": 76.32,
+        "net_margin": 26.68,
+        "roe": 36.96,
+        "roic": 24.24,
+        "debt_to_equity": 0.8,
+        "fcf_margin": 28.2,
+        "sga_ratio": 0.0,
+        "pe_ratio": 13.06,
+        "buffett_score": 70
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 72.02283180026281
+          },
+          {
+            "date": "2022",
+            "value": 70.63070357438052
+          },
+          {
+            "date": "2023",
+            "value": 73.1747483989021
+          },
+          {
+            "date": "2024",
+            "value": 76.32308939035033
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 26.792460578186596
+          },
+          {
+            "date": "2022",
+            "value": 24.491000792807384
+          },
+          {
+            "date": "2023",
+            "value": 0.6071695916160692
+          },
+          {
+            "date": "2024",
+            "value": 26.675289864106723
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 34.17399958097633
+          },
+          {
+            "date": "2022",
+            "value": 31.569220064795285
+          },
+          {
+            "date": "2023",
+            "value": 0.9712354647295175
+          },
+          {
+            "date": "2024",
+            "value": 36.95938505387256
+          }
+        ]
+      }
+    },
+    {
+      "id": "TMO",
+      "name": "Thermo Fisher Scientific Inc",
+      "sector": "Healthcare",
+      "industry": "Diagnostics & Research",
+      "marketCap": 214121660416,
+      "buffettScore": 30,
+      "metrics": {
+        "gross_margin": 41.28,
+        "net_margin": 14.77,
+        "roe": 12.78,
+        "roic": 9.54,
+        "debt_to_equity": 0.63,
+        "fcf_margin": 16.95,
+        "sga_ratio": 0.0,
+        "pe_ratio": 32.89,
+        "buffett_score": 30
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": 50.082884904746116
+          },
+          {
+            "date": "2022",
+            "value": 42.23755983524435
+          },
+          {
+            "date": "2023",
+            "value": 39.90013300044333
+          },
+          {
+            "date": "2024",
+            "value": 41.28361202453416
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": 19.701104281961694
+          },
+          {
+            "date": "2022",
+            "value": 15.473672492485807
+          },
+          {
+            "date": "2023",
+            "value": 13.988379961266537
+          },
+          {
+            "date": "2024",
+            "value": 14.774131859418363
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 18.93707253695487
+          },
+          {
+            "date": "2022",
+            "value": 15.803356223566329
+          },
+          {
+            "date": "2023",
+            "value": 12.827645233764844
+          },
+          {
+            "date": "2024",
+            "value": 12.776041141474238
+          }
         ]
       }
     },
@@ -1959,353 +3348,323 @@
       "name": "Danaher Corporation",
       "sector": "Healthcare",
       "industry": "Diagnostics & Research",
-      "marketCap": 161591361536,
+      "marketCap": 160838795264,
       "buffettScore": 55,
       "metrics": {
         "gross_margin": 59.5,
-        "net_margin": 16.3,
-        "operating_margin": 20.4,
-        "sga_ratio": 0.0,
-        "roe": 7.9,
-        "roa": 5.0,
-        "roic": 7.3,
+        "net_margin": 16.33,
+        "roe": 7.87,
+        "roic": 7.29,
         "debt_to_equity": 0.35,
-        "interest_coverage": 0,
-        "current_ratio": 1.4,
-        "fcf_margin": 22.2,
-        "capex_ratio": 5.8,
-        "retained_earnings": 44188000000.0,
-        "pe_ratio": 46.529896,
-        "pb_ratio": 3.1209548,
+        "fcf_margin": 22.18,
+        "sga_ratio": 0.0,
+        "pe_ratio": 46.31,
         "buffett_score": 55
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          59.5,
-          58.7,
-          60.8,
-          61.4
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 61.4426255947101
+          },
+          {
+            "date": "2022",
+            "value": 60.75892354464587
+          },
+          {
+            "date": "2023",
+            "value": 58.74424445374634
+          },
+          {
+            "date": "2024",
+            "value": 59.50157068062827
+          }
         ],
         "net_margin": [
-          16.3,
-          19.9,
-          27.1,
-          25.9
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 25.937424401257964
+          },
+          {
+            "date": "2022",
+            "value": 27.05776376534174
+          },
+          {
+            "date": "2023",
+            "value": 19.94139807450816
+          },
+          {
+            "date": "2024",
+            "value": 16.330890052356022
+          }
         ],
         "roe": [
-          7.9,
-          8.9,
-          14.4,
-          14.2
-        ],
-        "debt_to_equity": [
-          0.35,
-          0.37,
-          0.41,
-          0.52
+          {
+            "date": "2021",
+            "value": 14.242699315872207
+          },
+          {
+            "date": "2022",
+            "value": 14.394393195159939
+          },
+          {
+            "date": "2023",
+            "value": 8.907003701903301
+          },
+          {
+            "date": "2024",
+            "value": 7.869931170902045
+          }
         ]
       }
     },
     {
-      "id": "VZ",
-      "name": "Verizon Communications Inc.",
-      "sector": "Communication Services",
-      "industry": "Telecom Services",
-      "marketCap": 171123621888,
-      "buffettScore": 30,
-      "metrics": {
-        "gross_margin": 59.9,
-        "net_margin": 13.0,
-        "operating_margin": 21.3,
-        "sga_ratio": 0.0,
-        "roe": 17.6,
-        "roa": 4.6,
-        "roic": 10.7,
-        "debt_to_equity": 1.7,
-        "interest_coverage": 0,
-        "current_ratio": 0.63,
-        "fcf_margin": 14.0,
-        "capex_ratio": 13.3,
-        "retained_earnings": 89110000000.0,
-        "pe_ratio": 8.653518,
-        "pb_ratio": 1.6290691,
-        "buffett_score": 30
-      },
-      "historical": {
-        "gross_margin": [
-          59.9,
-          59.0,
-          56.8,
-          57.9
-        ],
-        "net_margin": [
-          13.0,
-          8.7,
-          15.5,
-          16.5
-        ],
-        "roe": [
-          17.6,
-          12.6,
-          23.3,
-          27.0
-        ],
-        "debt_to_equity": [
-          1.7,
-          1.89,
-          1.93,
-          2.18
-        ]
-      }
-    },
-    {
-      "id": "INTC",
-      "name": "Intel Corporation",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "marketCap": 178727600128,
-      "buffettScore": 10,
-      "metrics": {
-        "gross_margin": 32.7,
-        "net_margin": -35.3,
-        "operating_margin": -8.9,
-        "sga_ratio": 0.0,
-        "roe": -18.9,
-        "roa": -9.5,
-        "roic": -3.2,
-        "debt_to_equity": 0.5,
-        "interest_coverage": 0,
-        "current_ratio": 1.33,
-        "fcf_margin": -29.5,
-        "capex_ratio": 45.1,
-        "retained_earnings": 49032000000.0,
-        "pe_ratio": 624.48505,
-        "pb_ratio": 1.6787232,
-        "buffett_score": 10
-      },
-      "historical": {
-        "gross_margin": [
-          32.7,
-          40.0,
-          42.6,
-          55.4
-        ],
-        "net_margin": [
-          -35.3,
-          3.1,
-          12.7,
-          25.1
-        ],
-        "roe": [
-          -18.9,
-          1.6,
-          7.9,
-          20.8
-        ],
-        "debt_to_equity": [
-          0.5,
-          0.47,
-          0.41,
-          0.4
-        ]
-      }
-    },
-    {
-      "id": "CMCSA",
-      "name": "Comcast Corporation",
-      "sector": "Communication Services",
-      "industry": "Telecom Services",
-      "marketCap": 110304673792,
+      "id": "XOM",
+      "name": "Exxon Mobil Corporation",
+      "sector": "Energy",
+      "industry": "Oil & Gas Integrated",
+      "marketCap": 496692166656,
       "buffettScore": 40,
       "metrics": {
-        "gross_margin": 70.1,
-        "net_margin": 13.1,
-        "operating_margin": 18.8,
+        "gross_margin": 22.62,
+        "net_margin": 9.93,
+        "roe": 12.77,
+        "roic": 12.98,
+        "debt_to_equity": 0.16,
+        "fcf_margin": 9.05,
         "sga_ratio": 0.0,
-        "roe": 18.9,
-        "roa": 6.1,
-        "roic": 12.6,
-        "debt_to_equity": 1.16,
-        "interest_coverage": 0,
-        "current_ratio": 0.68,
-        "fcf_margin": 10.1,
-        "capex_ratio": 12.2,
-        "retained_earnings": 56972000000.0,
-        "pe_ratio": 4.9626245,
-        "pb_ratio": 1.1246,
+        "pe_ratio": 16.93,
         "buffett_score": 40
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          70.1,
-          69.8,
-          68.5,
-          67.0
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 23.450623798302807
+          },
+          {
+            "date": "2022",
+            "value": 25.852386028720137
+          },
+          {
+            "date": "2023",
+            "value": 25.139753269374985
+          },
+          {
+            "date": "2024",
+            "value": 22.621275943486605
+          }
         ],
         "net_margin": [
-          13.1,
-          12.7,
-          4.4,
-          12.2
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 8.326948375811371
+          },
+          {
+            "date": "2022",
+            "value": 13.981313099642566
+          },
+          {
+            "date": "2023",
+            "value": 10.758984992396108
+          },
+          {
+            "date": "2024",
+            "value": 9.927869664285904
+          }
         ],
         "roe": [
-          18.9,
-          18.6,
-          6.6,
-          14.7
-        ],
-        "debt_to_equity": [
-          1.16,
-          1.17,
-          1.24,
-          1.04
+          {
+            "date": "2021",
+            "value": 13.667344892838287
+          },
+          {
+            "date": "2022",
+            "value": 28.57743438828192
+          },
+          {
+            "date": "2023",
+            "value": 17.58283610511616
+          },
+          {
+            "date": "2024",
+            "value": 12.771847329402172
+          }
         ]
       }
     },
     {
-      "id": "QCOM",
-      "name": "QUALCOMM Incorporated",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "marketCap": 190599970816,
-      "buffettScore": 75,
+      "id": "CVX",
+      "name": "Chevron Corporation",
+      "sector": "Energy",
+      "industry": "Oil & Gas Integrated",
+      "marketCap": 299946409984,
+      "buffettScore": 40,
       "metrics": {
-        "gross_margin": 55.4,
-        "net_margin": 12.5,
-        "operating_margin": 28.0,
+        "gross_margin": 29.43,
+        "net_margin": 9.13,
+        "roe": 11.59,
+        "roic": 10.7,
+        "debt_to_equity": 0.16,
+        "fcf_margin": 7.78,
         "sga_ratio": 0.0,
-        "roe": 26.1,
-        "roa": 11.1,
-        "roic": 34.4,
-        "debt_to_equity": 0.7,
-        "interest_coverage": 0,
-        "current_ratio": 2.82,
-        "fcf_margin": 28.9,
-        "capex_ratio": 2.7,
-        "retained_earnings": 20646000000.0,
-        "pe_ratio": 35.329002,
-        "pb_ratio": 8.946316,
-        "buffett_score": 75
+        "pe_ratio": 20.97,
+        "buffett_score": 40
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          55.4,
-          56.2,
-          55.7,
-          57.8
+          {
+            "date": "2021",
+            "value": 29.196817603434315
+          },
+          {
+            "date": "2022",
+            "value": 31.385941616429868
+          },
+          {
+            "date": "2023",
+            "value": 30.668874071290368
+          },
+          {
+            "date": "2024",
+            "value": 29.432202425884373
+          }
         ],
         "net_margin": [
-          12.5,
-          26.0,
-          20.2,
-          29.3
+          {
+            "date": "2021",
+            "value": 10.041386578923692
+          },
+          {
+            "date": "2022",
+            "value": 15.045584323574456
+          },
+          {
+            "date": "2023",
+            "value": 10.852000629719724
+          },
+          {
+            "date": "2024",
+            "value": 9.131190089652248
+          }
         ],
         "roe": [
-          26.1,
-          38.6,
-          33.5,
-          71.8
-        ],
-        "debt_to_equity": [
-          0.7,
-          0.56,
-          0.71,
-          0.86
+          {
+            "date": "2021",
+            "value": 11.235591477489267
+          },
+          {
+            "date": "2022",
+            "value": 22.265541618010822
+          },
+          {
+            "date": "2023",
+            "value": 13.276216629286083
+          },
+          {
+            "date": "2024",
+            "value": 11.594821360574588
+          }
         ]
       }
     },
     {
-      "id": "TXN",
-      "name": "Texas Instruments Incorporated",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "marketCap": 162126430208,
-      "buffettScore": 65,
+      "id": "GE",
+      "name": "GE Aerospace",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "marketCap": 313890045952,
+      "buffettScore": 50,
       "metrics": {
-        "gross_margin": 58.1,
-        "net_margin": 30.7,
-        "operating_margin": 34.1,
+        "gross_margin": 37.19,
+        "net_margin": 16.94,
+        "roe": 33.9,
+        "roic": 17.51,
+        "debt_to_equity": 1.0,
+        "fcf_margin": 9.5,
         "sga_ratio": 0.0,
-        "roe": 28.4,
-        "roa": 13.5,
-        "roic": 17.5,
-        "debt_to_equity": 0.8,
-        "interest_coverage": 0,
-        "current_ratio": 4.12,
-        "fcf_margin": 9.6,
-        "capex_ratio": 30.8,
-        "retained_earnings": 52262000000.0,
-        "pe_ratio": 32.482697,
-        "pb_ratio": 9.749071,
-        "buffett_score": 65
+        "pe_ratio": 39.63,
+        "buffett_score": 50
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          58.1,
-          62.9,
-          68.8,
-          67.5
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 23.182631178168553
+          },
+          {
+            "date": "2022",
+            "value": 34.83990528158139
+          },
+          {
+            "date": "2023",
+            "value": 35.10523933461582
+          },
+          {
+            "date": "2024",
+            "value": 37.191876388817114
+          }
         ],
         "net_margin": [
-          30.7,
-          37.2,
-          43.7,
-          42.4
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": -11.222086454514866
+          },
+          {
+            "date": "2022",
+            "value": 1.1530937918253885
+          },
+          {
+            "date": "2023",
+            "value": 26.824714269548487
+          },
+          {
+            "date": "2024",
+            "value": 16.939693039119426
+          }
         ],
         "roe": [
-          28.4,
-          38.5,
-          60.0,
-          58.3
-        ],
-        "debt_to_equity": [
-          0.8,
-          0.66,
-          0.6,
-          0.61
+          {
+            "date": "2021",
+            "value": -15.720664847432401
+          },
+          {
+            "date": "2022",
+            "value": 0.9971509971509971
+          },
+          {
+            "date": "2023",
+            "value": 34.602050870342666
+          },
+          {
+            "date": "2024",
+            "value": 33.895150449798365
+          }
         ]
-      }
-    },
-    {
-      "id": "PM",
-      "name": "Philip Morris International Inc",
-      "sector": "Consumer Defensive",
-      "industry": "Tobacco",
-      "marketCap": 246314729472,
-      "buffettScore": 70,
-      "metrics": {
-        "gross_margin": 64.8,
-        "net_margin": 18.6,
-        "operating_margin": 35.4,
-        "sga_ratio": 0.0,
-        "roe": 0,
-        "roa": 11.4,
-        "roic": 39.5,
-        "debt_to_equity": 0,
-        "interest_coverage": 0,
-        "current_ratio": 0.88,
-        "fcf_margin": 28.4,
-        "capex_ratio": 3.8,
-        "retained_earnings": 32869000000.0,
-        "pe_ratio": 22.572752,
-        "pb_ratio": -22.569532,
-        "buffett_score": 70
-      },
-      "historical": {
-        "gross_margin": [
-          64.8,
-          63.3,
-          64.1,
-          68.1
-        ],
-        "net_margin": [
-          18.6,
-          22.2,
-          28.5,
-          29.0
-        ],
-        "roe": [],
-        "debt_to_equity": []
       }
     },
     {
@@ -2313,203 +3672,73 @@
       "name": "Caterpillar, Inc.",
       "sector": "Industrials",
       "industry": "Farm & Heavy Construction Machinery",
-      "marketCap": 274050777088,
-      "buffettScore": 45,
+      "marketCap": 263390543872,
+      "buffettScore": 50,
       "metrics": {
-        "gross_margin": 36.0,
-        "net_margin": 16.7,
-        "operating_margin": 20.2,
-        "sga_ratio": 0.0,
-        "roe": 55.4,
-        "roa": 12.3,
-        "roic": 22.6,
+        "gross_margin": 35.99,
+        "net_margin": 16.65,
+        "roe": 55.37,
+        "roic": 22.58,
         "debt_to_equity": 1.97,
-        "interest_coverage": 0,
-        "current_ratio": 1.42,
-        "fcf_margin": 13.6,
-        "capex_ratio": 5.0,
-        "retained_earnings": 59352000000.0,
-        "pe_ratio": 30.014366,
-        "pb_ratio": 13.25193,
-        "buffett_score": 45
-      },
-      "historical": {
-        "gross_margin": [
-          36.0,
-          34.7,
-          29.5,
-          29.4
-        ],
-        "net_margin": [
-          16.7,
-          15.4,
-          11.3,
-          12.7
-        ],
-        "roe": [
-          55.4,
-          53.0,
-          42.3,
-          39.4
-        ],
-        "debt_to_equity": [
-          1.97,
-          1.94,
-          2.33,
-          2.29
-        ]
-      }
-    },
-    {
-      "id": "NEE",
-      "name": "NextEra Energy, Inc.",
-      "sector": "Utilities",
-      "industry": "Utilities - Regulated Electric",
-      "marketCap": 168587247616,
-      "buffettScore": 35,
-      "metrics": {
-        "gross_margin": 60.1,
-        "net_margin": 28.1,
-        "operating_margin": 28.8,
+        "fcf_margin": 13.61,
         "sga_ratio": 0.0,
-        "roe": 13.9,
-        "roa": 3.7,
-        "roic": 5.4,
-        "debt_to_equity": 1.64,
-        "interest_coverage": 0,
-        "current_ratio": 0.47,
-        "fcf_margin": 19.2,
-        "capex_ratio": 34.4,
-        "retained_earnings": 32946000000.0,
-        "pe_ratio": 25.69841,
-        "pb_ratio": 3.1115465,
-        "buffett_score": 35
+        "pe_ratio": 28.85,
+        "buffett_score": 50
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          60.1,
-          63.9,
-          48.4,
-          50.2
+          {
+            "date": "2021",
+            "value": 29.434384257715173
+          },
+          {
+            "date": "2022",
+            "value": 29.46808689652851
+          },
+          {
+            "date": "2023",
+            "value": 34.689830002982404
+          },
+          {
+            "date": "2024",
+            "value": 35.9888287120616
+          }
         ],
         "net_margin": [
-          28.1,
-          26.0,
-          19.8,
-          20.9
+          {
+            "date": "2021",
+            "value": 12.730768476192345
+          },
+          {
+            "date": "2022",
+            "value": 11.282750265031046
+          },
+          {
+            "date": "2023",
+            "value": 15.41157172681181
+          },
+          {
+            "date": "2024",
+            "value": 16.65200820873644
+          }
         ],
         "roe": [
-          13.9,
-          15.4,
-          10.6,
-          9.6
-        ],
-        "debt_to_equity": [
-          1.64,
-          1.54,
-          1.66,
-          1.47
-        ]
-      }
-    },
-    {
-      "id": "IBM",
-      "name": "International Business Machines",
-      "sector": "Technology",
-      "industry": "Information Technology Services",
-      "marketCap": 284888596480,
-      "buffettScore": 45,
-      "metrics": {
-        "gross_margin": 56.7,
-        "net_margin": 9.6,
-        "operating_margin": 16.1,
-        "sga_ratio": 0.0,
-        "roe": 22.1,
-        "roa": 4.4,
-        "roic": 11.8,
-        "debt_to_equity": 2.14,
-        "interest_coverage": 0,
-        "current_ratio": 1.04,
-        "fcf_margin": 18.7,
-        "capex_ratio": 2.7,
-        "retained_earnings": 151163000000.0,
-        "pe_ratio": 36.283337,
-        "pb_ratio": 10.209359,
-        "buffett_score": 45
-      },
-      "historical": {
-        "gross_margin": [
-          56.7,
-          55.4,
-          54.0,
-          54.9
-        ],
-        "net_margin": [
-          9.6,
-          12.1,
-          2.7,
-          10.0
-        ],
-        "roe": [
-          22.1,
-          33.3,
-          7.5,
-          30.4
-        ],
-        "debt_to_equity": [
-          2.14,
-          2.66,
-          2.46,
-          2.92
-        ]
-      }
-    },
-    {
-      "id": "AMGN",
-      "name": "Amgen Inc.",
-      "sector": "Healthcare",
-      "industry": "Drug Manufacturers - General",
-      "marketCap": 176702423040,
-      "buffettScore": 40,
-      "metrics": {
-        "gross_margin": 61.5,
-        "net_margin": 12.2,
-        "operating_margin": 21.7,
-        "sga_ratio": 0.0,
-        "roe": 69.6,
-        "roa": 4.5,
-        "roic": 11.0,
-        "debt_to_equity": 10.23,
-        "interest_coverage": 0,
-        "current_ratio": 1.26,
-        "fcf_margin": 31.1,
-        "capex_ratio": 3.3,
-        "retained_earnings": -27590000000.0,
-        "pe_ratio": 25.359352,
-        "pb_ratio": 18.370373,
-        "buffett_score": 40
-      },
-      "historical": {
-        "gross_margin": [
-          61.5,
-          70.0,
-          75.7,
-          75.2
-        ],
-        "net_margin": [
-          12.2,
-          23.8,
-          24.9,
-          22.7
-        ],
-        "roe": [
-          69.6,
-          107.8,
-          179.0,
-          88.0
-        ],
-        "debt_to_equity": [
-          4.97
+          {
+            "date": "2021",
+            "value": 39.36544528027178
+          },
+          {
+            "date": "2022",
+            "value": 42.25218980402042
+          },
+          {
+            "date": "2023",
+            "value": 53.016312711603575
+          },
+          {
+            "date": "2024",
+            "value": 55.369144733466726
+          }
         ]
       }
     },
@@ -2518,51 +3747,464 @@
       "name": "Union Pacific Corporation",
       "sector": "Industrials",
       "industry": "Railroads",
-      "marketCap": 140555403264,
-      "buffettScore": 65,
+      "marketCap": 140229165056,
+      "buffettScore": 70,
       "metrics": {
-        "gross_margin": 45.5,
-        "net_margin": 27.8,
-        "operating_margin": 40.1,
-        "sga_ratio": 0.0,
-        "roe": 39.9,
-        "roa": 10.0,
-        "roic": 19.7,
+        "gross_margin": 45.52,
+        "net_margin": 27.82,
+        "roe": 39.95,
+        "roic": 19.68,
         "debt_to_equity": 1.92,
-        "interest_coverage": 0,
-        "current_ratio": 0.77,
-        "fcf_margin": 24.3,
-        "capex_ratio": 14.2,
-        "retained_earnings": 65628000000.0,
-        "pe_ratio": 20.13254,
-        "pb_ratio": 8.122301,
-        "buffett_score": 65
+        "fcf_margin": 24.31,
+        "sga_ratio": 0.0,
+        "pe_ratio": 20.09,
+        "buffett_score": 70
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          45.5,
-          43.7,
-          45.0,
-          48.2
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 48.220509998165475
+          },
+          {
+            "date": "2022",
+            "value": 45.04522613065326
+          },
+          {
+            "date": "2023",
+            "value": 43.65438036402836
+          },
+          {
+            "date": "2024",
+            "value": 45.521649484536084
+          }
         ],
         "net_margin": [
-          27.8,
-          26.4,
-          28.1,
-          29.9
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 29.916529077233534
+          },
+          {
+            "date": "2022",
+            "value": 28.132663316582914
+          },
+          {
+            "date": "2023",
+            "value": 26.448028525229073
+          },
+          {
+            "date": "2024",
+            "value": 27.82268041237113
+          }
         ],
         "roe": [
-          39.9,
-          43.1,
-          57.5,
-          46.1
-        ],
-        "debt_to_equity": [
-          1.92,
-          2.31,
-          2.87,
-          2.22
+          {
+            "date": "2021",
+            "value": 46.06313113480686
+          },
+          {
+            "date": "2022",
+            "value": 57.53514757872236
+          },
+          {
+            "date": "2023",
+            "value": 43.136326751420064
+          },
+          {
+            "date": "2024",
+            "value": 39.94671403197158
+          }
         ]
+      }
+    },
+    {
+      "id": "UPS",
+      "name": "United Parcel Service, Inc.",
+      "sector": "Industrials",
+      "industry": "Integrated Freight & Logistics",
+      "marketCap": 85572411392,
+      "buffettScore": 55,
+      "metrics": {
+        "gross_margin": 17.96,
+        "net_margin": 6.35,
+        "roe": 34.59,
+        "roic": 19.99,
+        "debt_to_equity": 1.53,
+        "fcf_margin": 6.82,
+        "sga_ratio": 0.0,
+        "pe_ratio": 15.59,
+        "buffett_score": 55
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": 20.845539486262297
+          },
+          {
+            "date": "2022",
+            "value": 20.94321194363053
+          },
+          {
+            "date": "2023",
+            "value": 18.95160403702808
+          },
+          {
+            "date": "2024",
+            "value": 17.959811134292302
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": 13.249457789838315
+          },
+          {
+            "date": "2022",
+            "value": 11.50909924455341
+          },
+          {
+            "date": "2023",
+            "value": 7.374832340200972
+          },
+          {
+            "date": "2024",
+            "value": 6.348962336664105
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 90.43710096120115
+          },
+          {
+            "date": "2022",
+            "value": 58.36450015162236
+          },
+          {
+            "date": "2023",
+            "value": 38.76112330983474
+          },
+          {
+            "date": "2024",
+            "value": 34.58547673166647
+          }
+        ]
+      }
+    },
+    {
+      "id": "HON",
+      "name": "Honeywell International Inc.",
+      "sector": "Industrials",
+      "industry": "Conglomerates",
+      "marketCap": 136131788800,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 38.09,
+        "net_margin": 14.82,
+        "roe": 30.64,
+        "roic": 15.07,
+        "debt_to_equity": 1.73,
+        "fcf_margin": 12.81,
+        "sga_ratio": 0.0,
+        "pe_ratio": 21.31,
+        "buffett_score": 40
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 35.85426843451965
+          },
+          {
+            "date": "2022",
+            "value": 36.99035696159702
+          },
+          {
+            "date": "2023",
+            "value": 37.27838088483989
+          },
+          {
+            "date": "2024",
+            "value": 38.085095329627514
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 16.11421260758316
+          },
+          {
+            "date": "2022",
+            "value": 14.002142897422884
+          },
+          {
+            "date": "2023",
+            "value": 15.432873274780427
+          },
+          {
+            "date": "2024",
+            "value": 14.81895163385111
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 29.845441326942755
+          },
+          {
+            "date": "2022",
+            "value": 29.741869796969517
+          },
+          {
+            "date": "2023",
+            "value": 35.68365287588295
+          },
+          {
+            "date": "2024",
+            "value": 30.640743326709273
+          }
+        ]
+      }
+    },
+    {
+      "id": "LMT",
+      "name": "Lockheed Martin Corporation",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "marketCap": 110724308992,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 9.75,
+        "net_margin": 7.51,
+        "roe": 84.26,
+        "roic": 26.36,
+        "debt_to_equity": 3.2,
+        "fcf_margin": 7.44,
+        "sga_ratio": 0.0,
+        "pe_ratio": 26.44,
+        "buffett_score": 40
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 13.515005071296462
+          },
+          {
+            "date": "2022",
+            "value": 12.559105237633366
+          },
+          {
+            "date": "2023",
+            "value": 12.5482825472466
+          },
+          {
+            "date": "2024",
+            "value": 9.754655631096659
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 9.41918739931985
+          },
+          {
+            "date": "2022",
+            "value": 8.686954413191076
+          },
+          {
+            "date": "2023",
+            "value": 10.24107975314854
+          },
+          {
+            "date": "2024",
+            "value": 7.510944076122912
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 57.623870791130585
+          },
+          {
+            "date": "2022",
+            "value": 61.86056550830995
+          },
+          {
+            "date": "2023",
+            "value": 101.24359912216532
+          },
+          {
+            "date": "2024",
+            "value": 84.25706616137691
+          }
+        ]
+      }
+    },
+    {
+      "id": "RTX",
+      "name": "RTX Corporation",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "marketCap": 239911026688,
+      "buffettScore": 10,
+      "metrics": {
+        "gross_margin": 19.09,
+        "net_margin": 5.91,
+        "roe": 7.94,
+        "roic": 6.34,
+        "debt_to_equity": 0.71,
+        "fcf_margin": 4.86,
+        "sga_ratio": 0.0,
+        "pe_ratio": 36.67,
+        "buffett_score": 10
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 19.399577561036217
+          },
+          {
+            "date": "2022",
+            "value": 20.377493514625638
+          },
+          {
+            "date": "2023",
+            "value": 17.540626813697042
+          },
+          {
+            "date": "2024",
+            "value": 19.086427704426665
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 6.0011182207864815
+          },
+          {
+            "date": "2022",
+            "value": 7.748158750037272
+          },
+          {
+            "date": "2023",
+            "value": 4.635809634358677
+          },
+          {
+            "date": "2024",
+            "value": 5.912953008496618
+          }
+        ],
+        "roe": [
+          {
+            "date": "2021",
+            "value": 5.2882246674330755
+          },
+          {
+            "date": "2022",
+            "value": 7.155248375371737
+          },
+          {
+            "date": "2023",
+            "value": 5.342988059801331
+          },
+          {
+            "date": "2024",
+            "value": 7.936032980916284
+          }
+        ]
+      }
+    },
+    {
+      "id": "BA",
+      "name": "Boeing Company (The)",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "marketCap": 163787259904,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": -2.99,
+        "net_margin": -17.77,
+        "roe": 302.38,
+        "roic": -21.53,
+        "debt_to_equity": 0,
+        "fcf_margin": -21.65,
+        "sga_ratio": 0,
+        "pe_ratio": 0,
+        "buffett_score": 40
+      },
+      "history": {
+        "gross_margin": [
+          {
+            "date": "2021",
+            "value": 4.895161031371416
+          },
+          {
+            "date": "2022",
+            "value": 5.299663704059573
+          },
+          {
+            "date": "2023",
+            "value": 9.928786281718384
+          },
+          {
+            "date": "2024",
+            "value": -2.993219778402514
+          }
+        ],
+        "net_margin": [
+          {
+            "date": "2021",
+            "value": -6.746299328902161
+          },
+          {
+            "date": "2022",
+            "value": -7.4090199375450405
+          },
+          {
+            "date": "2023",
+            "value": -2.856261408334833
+          },
+          {
+            "date": "2024",
+            "value": -17.765383285475895
+          }
+        ],
+        "roe": []
       }
     },
     {
@@ -2570,50 +4212,73 @@
       "name": "SAP  SE",
       "sector": "Technology",
       "industry": "Software - Application",
-      "marketCap": 283904409600,
-      "buffettScore": 50,
+      "marketCap": 282842628096,
+      "buffettScore": 65,
       "metrics": {
-        "gross_margin": 73.0,
-        "net_margin": 9.1,
-        "operating_margin": 22.8,
-        "sga_ratio": 0.0,
-        "roe": 6.9,
-        "roa": 4.2,
-        "roic": 13.9,
+        "gross_margin": 72.95,
+        "net_margin": 9.14,
+        "roe": 6.88,
+        "roic": 13.92,
         "debt_to_equity": 0.23,
-        "interest_coverage": 0,
-        "current_ratio": 1.12,
-        "fcf_margin": 12.9,
-        "capex_ratio": 2.3,
-        "retained_earnings": 42907000000.0,
-        "pe_ratio": 34.41584,
-        "pb_ratio": 5.629049,
-        "buffett_score": 50
+        "fcf_margin": 12.94,
+        "sga_ratio": 0.0,
+        "pe_ratio": 34.29,
+        "buffett_score": 65
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          73.0,
-          72.2,
-          72.8,
-          73.2
+          {
+            "date": "2021",
+            "value": 73.21633955403851
+          },
+          {
+            "date": "2022",
+            "value": 72.77346793590569
+          },
+          {
+            "date": "2023",
+            "value": 72.20815842599417
+          },
+          {
+            "date": "2024",
+            "value": 72.95177902621724
+          }
         ],
         "net_margin": [
-          9.1,
-          19.7,
-          7.7,
-          19.5
+          {
+            "date": "2021",
+            "value": 19.500612176752124
+          },
+          {
+            "date": "2022",
+            "value": 7.737389477963346
+          },
+          {
+            "date": "2023",
+            "value": 19.671868491043675
+          },
+          {
+            "date": "2024",
+            "value": 9.140917602996254
+          }
         ],
         "roe": [
-          6.9,
-          14.2,
-          5.7,
-          13.5
-        ],
-        "debt_to_equity": [
-          0.23,
-          0.2,
-          0.33,
-          0.39
+          {
+            "date": "2021",
+            "value": 13.527912902478572
+          },
+          {
+            "date": "2022",
+            "value": 5.683571393022445
+          },
+          {
+            "date": "2023",
+            "value": 14.224807099659383
+          },
+          {
+            "date": "2024",
+            "value": 6.875000000000001
+          }
         ]
       }
     },
@@ -2622,50 +4287,81 @@
       "name": "SIEMENS AG                    N",
       "sector": "Industrials",
       "industry": "Specialty Industrial Machinery",
-      "marketCap": 184251908096,
-      "buffettScore": 35,
+      "marketCap": 182176382976,
+      "buffettScore": 25,
       "metrics": {
-        "gross_margin": 38.5,
-        "net_margin": 12.2,
-        "operating_margin": 11.5,
-        "sga_ratio": 0.0,
-        "roe": 15.5,
-        "roa": 5.8,
-        "roic": 7.7,
+        "gross_margin": 38.52,
+        "net_margin": 12.19,
+        "roe": 15.46,
+        "roic": 7.69,
         "debt_to_equity": 0.9,
-        "interest_coverage": 0,
-        "current_ratio": 1.37,
         "fcf_margin": 13.7,
-        "capex_ratio": 3.1,
-        "retained_earnings": 49601000000.0,
-        "pe_ratio": 24.711134,
-        "pb_ratio": 2.9489927,
-        "buffett_score": 35
+        "sga_ratio": 0.0,
+        "pe_ratio": 24.43,
+        "buffett_score": 25
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          38.5,
-          39.3,
-          38.9,
-          35.9
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 35.91008238742931
+          },
+          {
+            "date": "2023",
+            "value": 38.88384391442536
+          },
+          {
+            "date": "2024",
+            "value": 39.27696562623469
+          },
+          {
+            "date": "2025",
+            "value": 38.521681830853844
+          }
         ],
         "net_margin": [
-          12.2,
-          10.9,
-          10.6,
-          5.2
+          {
+            "date": "2021",
+            "value": NaN
+          },
+          {
+            "date": "2022",
+            "value": 5.172485655139837
+          },
+          {
+            "date": "2023",
+            "value": 10.615368179268717
+          },
+          {
+            "date": "2024",
+            "value": 10.932437771631767
+          },
+          {
+            "date": "2025",
+            "value": 12.190485845350635
+          }
         ],
         "roe": [
-          15.5,
-          16.2,
-          16.6,
-          7.6
-        ],
-        "debt_to_equity": [
-          0.9,
-          0.93,
-          0.98,
-          1.04
+          {
+            "date": "2022",
+            "value": 7.614275488291236
+          },
+          {
+            "date": "2023",
+            "value": 16.635971704826087
+          },
+          {
+            "date": "2024",
+            "value": 16.192649812734082
+          },
+          {
+            "date": "2025",
+            "value": 15.455304928989138
+          }
         ]
       }
     },
@@ -2674,50 +4370,81 @@
       "name": "Allianz SE                    v",
       "sector": "Financial Services",
       "industry": "Insurance - Diversified",
-      "marketCap": 148977025024,
-      "buffettScore": 45,
+      "marketCap": 148899921920,
+      "buffettScore": 35,
       "metrics": {
         "gross_margin": 0.0,
-        "net_margin": 7.3,
-        "operating_margin": 0.0,
-        "sga_ratio": 0,
-        "roe": 16.5,
-        "roa": 1.0,
+        "net_margin": 7.25,
+        "roe": 16.47,
         "roic": 0.0,
         "debt_to_equity": 0.53,
-        "interest_coverage": 0,
-        "current_ratio": 0.0,
         "fcf_margin": 21.9,
-        "capex_ratio": 1.4,
-        "retained_earnings": 33354000000.0,
-        "pe_ratio": 14.258302,
-        "pb_ratio": 2.440241,
-        "buffett_score": 45
+        "sga_ratio": 0,
+        "pe_ratio": 14.25,
+        "buffett_score": 35
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 0.0
+          },
+          {
+            "date": "2022",
+            "value": 0.0
+          },
+          {
+            "date": "2023",
+            "value": 0.0
+          },
+          {
+            "date": "2024",
+            "value": 0.0
+          }
         ],
         "net_margin": [
-          7.3,
-          7.1,
-          8.0,
-          5.6
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 5.558779255073122
+          },
+          {
+            "date": "2022",
+            "value": 8.040320560981717
+          },
+          {
+            "date": "2023",
+            "value": 7.137306024217202
+          },
+          {
+            "date": "2024",
+            "value": 7.253352420462181
+          }
         ],
         "roe": [
-          16.5,
-          14.7,
-          11.8,
-          10.8
-        ],
-        "debt_to_equity": [
-          0.53,
-          0.51,
-          0.54,
-          0.58
+          {
+            "date": "2021",
+            "value": 10.808247624965253
+          },
+          {
+            "date": "2022",
+            "value": 11.800055131857025
+          },
+          {
+            "date": "2023",
+            "value": 14.665430381702983
+          },
+          {
+            "date": "2024",
+            "value": 16.47287143165193
+          }
         ]
       }
     },
@@ -2727,49 +4454,72 @@
       "sector": "Communication Services",
       "industry": "Telecom Services",
       "marketCap": 134721331200,
-      "buffettScore": 40,
+      "buffettScore": 45,
       "metrics": {
-        "gross_margin": 61.1,
-        "net_margin": 9.7,
-        "operating_margin": 21.0,
-        "sga_ratio": 0.0,
-        "roe": 17.7,
-        "roa": 3.7,
-        "roic": 11.5,
+        "gross_margin": 61.13,
+        "net_margin": 9.74,
+        "roe": 17.71,
+        "roic": 11.51,
         "debt_to_equity": 2.32,
-        "interest_coverage": 0,
-        "current_ratio": 1.06,
-        "fcf_margin": 18.0,
-        "capex_ratio": 16.7,
-        "retained_earnings": -5750000000.0,
-        "pe_ratio": 10.955465,
-        "pb_ratio": 2.1594446,
-        "buffett_score": 40
+        "fcf_margin": 17.99,
+        "sga_ratio": 0.0,
+        "pe_ratio": 10.96,
+        "buffett_score": 45
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          61.1,
-          60.0,
-          55.9,
-          56.6
+          {
+            "date": "2021",
+            "value": 56.59809566400209
+          },
+          {
+            "date": "2022",
+            "value": 55.9476445320752
+          },
+          {
+            "date": "2023",
+            "value": 60.03342077838071
+          },
+          {
+            "date": "2024",
+            "value": 61.1322983902494
+          }
         ],
         "net_margin": [
-          9.7,
-          16.0,
-          7.0,
-          3.9
+          {
+            "date": "2021",
+            "value": 3.8906590642294145
+          },
+          {
+            "date": "2022",
+            "value": 7.042637842405465
+          },
+          {
+            "date": "2023",
+            "value": 15.980881877313402
+          },
+          {
+            "date": "2024",
+            "value": 9.737557661735195
+          }
         ],
         "roe": [
-          17.7,
-          31.2,
-          16.5,
-          9.8
-        ],
-        "debt_to_equity": [
-          2.32,
-          2.45,
-          2.98,
-          3.26
+          {
+            "date": "2021",
+            "value": 9.784671618360317
+          },
+          {
+            "date": "2022",
+            "value": 16.4772025206969
+          },
+          {
+            "date": "2023",
+            "value": 31.248133509003072
+          },
+          {
+            "date": "2024",
+            "value": 17.708859959555106
+          }
         ]
       }
     },
@@ -2778,50 +4528,81 @@
       "name": "BAYERISCHE MOTOREN WERKE AG   S",
       "sector": "Consumer Cyclical",
       "industry": "Auto Manufacturers",
-      "marketCap": 56823787520,
-      "buffettScore": 20,
+      "marketCap": 57079803904,
+      "buffettScore": 10,
       "metrics": {
-        "gross_margin": 16.1,
-        "net_margin": 5.1,
-        "operating_margin": 8.0,
-        "sga_ratio": 0.0,
+        "gross_margin": 16.08,
+        "net_margin": 5.12,
         "roe": 7.9,
-        "roa": 2.7,
-        "roic": 6.4,
+        "roic": 6.41,
         "debt_to_equity": 0.93,
-        "interest_coverage": 0,
-        "current_ratio": 1.1,
-        "fcf_margin": -3.3,
-        "capex_ratio": 8.6,
-        "retained_earnings": 0,
-        "pe_ratio": 8.191565,
-        "pb_ratio": 0.6283577,
-        "buffett_score": 20
+        "fcf_margin": -3.26,
+        "sga_ratio": 0.0,
+        "pe_ratio": 8.23,
+        "buffett_score": 10
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          16.1,
-          19.1,
-          17.2,
-          19.8
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 19.76465088682926
+          },
+          {
+            "date": "2022",
+            "value": 17.227403407895657
+          },
+          {
+            "date": "2023",
+            "value": 19.092850068811174
+          },
+          {
+            "date": "2024",
+            "value": 16.080207894367188
+          }
         ],
         "net_margin": [
-          5.1,
-          7.3,
-          12.6,
-          11.1
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 11.130988232544341
+          },
+          {
+            "date": "2022",
+            "value": 12.580464203071312
+          },
+          {
+            "date": "2023",
+            "value": 7.260543543968412
+          },
+          {
+            "date": "2024",
+            "value": 5.120101137800253
+          }
         ],
         "roe": [
-          7.9,
-          12.6,
-          20.6,
-          16.7
-        ],
-        "debt_to_equity": [
-          0.93,
-          0.8,
-          0.82,
-          1.13
+          {
+            "date": "2021",
+            "value": 16.650082026732647
+          },
+          {
+            "date": "2022",
+            "value": 20.5922525107604
+          },
+          {
+            "date": "2023",
+            "value": 12.601008973614894
+          },
+          {
+            "date": "2024",
+            "value": 7.896874830742566
+          }
         ]
       }
     },
@@ -2830,50 +4611,81 @@
       "name": "VOLKSWAGEN AG                 V",
       "sector": "Consumer Cyclical",
       "industry": "Auto Manufacturers",
-      "marketCap": 53196087296,
+      "marketCap": 53170597888,
       "buffettScore": 10,
       "metrics": {
-        "gross_margin": 18.3,
+        "gross_margin": 18.32,
         "net_margin": 3.5,
-        "operating_margin": 6.7,
-        "sga_ratio": 0.0,
-        "roe": 6.2,
-        "roa": 1.8,
-        "roic": 5.7,
+        "roe": 6.23,
+        "roic": 5.72,
         "debt_to_equity": 1.08,
-        "interest_coverage": 0,
-        "current_ratio": 1.13,
-        "fcf_margin": -3.2,
-        "capex_ratio": 8.5,
-        "retained_earnings": 155130000000.0,
-        "pe_ratio": 7.7815065,
-        "pb_ratio": 0.30936116,
+        "fcf_margin": -3.17,
+        "sga_ratio": 0.0,
+        "pe_ratio": 7.78,
         "buffett_score": 10
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          18.3,
-          18.9,
-          18.7,
-          18.9
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 18.88097074728516
+          },
+          {
+            "date": "2022",
+            "value": 18.700591291883175
+          },
+          {
+            "date": "2023",
+            "value": 18.922751362152635
+          },
+          {
+            "date": "2024",
+            "value": 18.31821472024149
+          }
         ],
         "net_margin": [
-          3.5,
-          5.1,
-          5.5,
-          6.1
+          {
+            "date": "2020",
+            "value": NaN
+          },
+          {
+            "date": "2021",
+            "value": 6.147906266611777
+          },
+          {
+            "date": "2022",
+            "value": 5.53915068984053
+          },
+          {
+            "date": "2023",
+            "value": 5.129637214382346
+          },
+          {
+            "date": "2024",
+            "value": 3.4963268700620658
+          }
         ],
         "roe": [
-          6.2,
-          9.4,
-          9.3,
-          10.6
-        ],
-        "debt_to_equity": [
-          1.08,
-          1.11,
-          1.08,
-          1.27
+          {
+            "date": "2021",
+            "value": 10.648741078165996
+          },
+          {
+            "date": "2022",
+            "value": 9.346579914860682
+          },
+          {
+            "date": "2023",
+            "value": 9.448584884093092
+          },
+          {
+            "date": "2024",
+            "value": 6.2267545832556195
+          }
         ]
       }
     },
@@ -2882,416 +4694,1127 @@
       "name": "Airbus SE                     A",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
-      "marketCap": 151450370048,
-      "buffettScore": 40,
+      "marketCap": 150203154432,
+      "buffettScore": 55,
       "metrics": {
-        "gross_margin": 15.4,
-        "net_margin": 6.1,
-        "operating_margin": 6.9,
-        "sga_ratio": 0.0,
-        "roe": 21.6,
-        "roa": 3.3,
-        "roic": 15.6,
+        "gross_margin": 15.42,
+        "net_margin": 6.11,
+        "roe": 21.59,
+        "roic": 15.56,
         "debt_to_equity": 0.58,
-        "interest_coverage": 0,
-        "current_ratio": 1.15,
-        "fcf_margin": 5.4,
-        "capex_ratio": 5.3,
-        "retained_earnings": 18687000000.0,
-        "pe_ratio": 29.978125,
-        "pb_ratio": 6.4158645,
-        "buffett_score": 40
-      },
-      "historical": {
-        "gross_margin": [
-          15.4,
-          15.3,
-          18.0,
-          18.5
-        ],
-        "net_margin": [
-          6.1,
-          5.8,
-          7.2,
-          8.1
-        ],
-        "roe": [
-          21.6,
-          21.4,
-          32.8,
-          44.5
-        ],
-        "debt_to_equity": [
-          0.58,
-          0.64,
-          0.85,
-          1.42
-        ]
-      }
-    },
-    {
-      "id": "BAS.DE",
-      "name": "BASF SE                       N",
-      "sector": "Basic Materials",
-      "industry": "Chemicals",
-      "marketCap": 39422701568,
-      "buffettScore": 20,
-      "metrics": {
-        "gross_margin": 26.2,
-        "net_margin": 2.0,
-        "operating_margin": 5.1,
+        "fcf_margin": 5.39,
         "sga_ratio": 0.0,
-        "roe": 3.6,
-        "roa": 1.6,
-        "roic": 5.6,
-        "debt_to_equity": 0.67,
-        "interest_coverage": 0,
-        "current_ratio": 1.83,
-        "fcf_margin": 1.1,
-        "capex_ratio": 9.5,
-        "retained_earnings": 30883000000.0,
-        "pe_ratio": 129.91176,
-        "pb_ratio": 1.2033454,
-        "buffett_score": 20
+        "pe_ratio": 29.73,
+        "buffett_score": 55
       },
-      "historical": {
+      "history": {
         "gross_margin": [
-          26.2,
-          24.2,
-          24.1,
-          25.2
+          {
+            "date": "2021",
+            "value": 18.468235248998063
+          },
+          {
+            "date": "2022",
+            "value": 17.989210898014058
+          },
+          {
+            "date": "2023",
+            "value": 15.347003636585887
+          },
+          {
+            "date": "2024",
+            "value": 15.419615773508594
+          }
         ],
         "net_margin": [
-          2.0,
-          0.3,
-          -0.7,
-          7.0
+          {
+            "date": "2021",
+            "value": 8.078774281386028
+          },
+          {
+            "date": "2022",
+            "value": 7.2273369297006615
+          },
+          {
+            "date": "2023",
+            "value": 5.78950585215292
+          },
+          {
+            "date": "2024",
+            "value": 6.112956810631229
+          }
         ],
         "roe": [
-          3.6,
-          0.6,
-          -1.6,
-          13.5
-        ],
-        "debt_to_equity": [
-          0.67,
-          0.61,
-          0.53,
-          0.47
-        ]
-      }
-    },
-    {
-      "id": "MUV2.DE",
-      "name": "MUENCHENER RUECKVERS.-GES. AG N",
-      "sector": "Financial Services",
-      "industry": "Insurance - Reinsurance",
-      "marketCap": 72720310272,
-      "buffettScore": 40,
-      "metrics": {
-        "gross_margin": 0.0,
-        "net_margin": 13.4,
-        "operating_margin": 0.0,
-        "sga_ratio": 0,
-        "roe": 17.4,
-        "roa": 2.0,
-        "roic": 0.0,
-        "debt_to_equity": 0.19,
-        "interest_coverage": 0,
-        "current_ratio": 0.0,
-        "fcf_margin": 6.7,
-        "capex_ratio": 0.7,
-        "retained_earnings": 24822000000.0,
-        "pe_ratio": 11.562892,
-        "pb_ratio": 2.2209558,
-        "buffett_score": 40
-      },
-      "historical": {
-        "gross_margin": [
-          0.0,
-          0.0,
-          0.0,
-          0.0
-        ],
-        "net_margin": [
-          13.4,
-          11.6,
-          13.4,
-          4.6
-        ],
-        "roe": [
-          17.4,
-          15.5,
-          19.6,
-          9.5
-        ],
-        "debt_to_equity": [
-          0.19,
-          0.16,
-          0.18,
-          0.22
-        ]
-      }
-    },
-    {
-      "id": "ADS.DE",
-      "name": "adidas AG                     N",
-      "sector": "Consumer Cyclical",
-      "industry": "Footwear & Accessories",
-      "marketCap": 29773060096,
-      "buffettScore": 20,
-      "metrics": {
-        "gross_margin": 50.8,
-        "net_margin": 3.2,
-        "operating_margin": 5.5,
-        "sga_ratio": 0.0,
-        "roe": 14.0,
-        "roa": 3.7,
-        "roic": 11.7,
-        "debt_to_equity": 1.02,
-        "interest_coverage": 0,
-        "current_ratio": 1.24,
-        "fcf_margin": 10.0,
-        "capex_ratio": 2.3,
-        "retained_earnings": 4775000000.0,
-        "pe_ratio": 24.594395,
-        "pb_ratio": 5.228092,
-        "buffett_score": 20
-      },
-      "historical": {
-        "gross_margin": [
-          50.8,
-          47.5,
-          47.3,
-          50.7
-        ],
-        "net_margin": [
-          3.2,
-          -0.4,
-          2.7,
-          10.0
-        ],
-        "roe": [
-          14.0,
-          -1.6,
-          12.3,
-          28.1
-        ],
-        "debt_to_equity": [
-          1.02,
-          1.21,
-          1.29,
-          0.71
+          {
+            "date": "2021",
+            "value": 44.50665539826748
+          },
+          {
+            "date": "2022",
+            "value": 32.795366795366796
+          },
+          {
+            "date": "2023",
+            "value": 21.41282848262221
+          },
+          {
+            "date": "2024",
+            "value": 21.585229011527083
+          }
         ]
       }
     }
   ],
-  "links": [],
+  "links": [
+    {
+      "source": "AAPL",
+      "target": "HON",
+      "value": 0.990958818378912
+    },
+    {
+      "source": "AAPL",
+      "target": "UNP",
+      "value": 0.992051435179537
+    },
+    {
+      "source": "AAPL",
+      "target": "CAT",
+      "value": 0.9945229098985793
+    },
+    {
+      "source": "MSFT",
+      "target": "MRK",
+      "value": 0.9965577207196448
+    },
+    {
+      "source": "MSFT",
+      "target": "META",
+      "value": 0.9974939258600326
+    },
+    {
+      "source": "MSFT",
+      "target": "GOOGL",
+      "value": 0.997758827474329
+    },
+    {
+      "source": "GOOGL",
+      "target": "MSFT",
+      "value": 0.997758827474329
+    },
+    {
+      "source": "GOOGL",
+      "target": "BLK",
+      "value": 0.9977798663921539
+    },
+    {
+      "source": "GOOGL",
+      "target": "PG",
+      "value": 0.9984190236002964
+    },
+    {
+      "source": "AMZN",
+      "target": "PEP",
+      "value": 0.9949647340368395
+    },
+    {
+      "source": "AMZN",
+      "target": "AMD",
+      "value": 0.9986720363968751
+    },
+    {
+      "source": "AMZN",
+      "target": "NKE",
+      "value": 0.9987749087751387
+    },
+    {
+      "source": "NVDA",
+      "target": "META",
+      "value": 0.9922114417209373
+    },
+    {
+      "source": "NVDA",
+      "target": "MSFT",
+      "value": 0.9922580556201495
+    },
+    {
+      "source": "NVDA",
+      "target": "V",
+      "value": 0.9972651290211915
+    },
+    {
+      "source": "META",
+      "target": "ADBE",
+      "value": 0.9960143396928887
+    },
+    {
+      "source": "META",
+      "target": "MSFT",
+      "value": 0.9974939258600326
+    },
+    {
+      "source": "META",
+      "target": "MRK",
+      "value": 0.9986146141963667
+    },
+    {
+      "source": "TSLA",
+      "target": "BMW.DE",
+      "value": 0.9984211812155809
+    },
+    {
+      "source": "TSLA",
+      "target": "AIR.DE",
+      "value": 0.9993390467990652
+    },
+    {
+      "source": "TSLA",
+      "target": "RTX",
+      "value": 0.9997146619419565
+    },
+    {
+      "source": "AVGO",
+      "target": "IBM",
+      "value": 0.9929622198198274
+    },
+    {
+      "source": "AVGO",
+      "target": "CRM",
+      "value": 0.9955845862280046
+    },
+    {
+      "source": "AVGO",
+      "target": "QCOM",
+      "value": 0.9968693374501484
+    },
+    {
+      "source": "ADBE",
+      "target": "META",
+      "value": 0.9960143396928887
+    },
+    {
+      "source": "ADBE",
+      "target": "CRM",
+      "value": 0.9975717441474409
+    },
+    {
+      "source": "ADBE",
+      "target": "MRK",
+      "value": 0.9976665827410686
+    },
+    {
+      "source": "CRM",
+      "target": "MRK",
+      "value": 0.9965578364096764
+    },
+    {
+      "source": "CRM",
+      "target": "JNJ",
+      "value": 0.9965878719808016
+    },
+    {
+      "source": "CRM",
+      "target": "ADBE",
+      "value": 0.9975717441474409
+    },
+    {
+      "source": "AMD",
+      "target": "DIS",
+      "value": 0.9942528875410466
+    },
+    {
+      "source": "AMD",
+      "target": "NKE",
+      "value": 0.9981812392176388
+    },
+    {
+      "source": "AMD",
+      "target": "AMZN",
+      "value": 0.9986720363968751
+    },
+    {
+      "source": "INTC",
+      "target": "BMW.DE",
+      "value": 0.8787285083004164
+    },
+    {
+      "source": "INTC",
+      "target": "VOW3.DE",
+      "value": 0.8859420293794946
+    },
+    {
+      "source": "INTC",
+      "target": "WMT",
+      "value": 0.8876270918486231
+    },
+    {
+      "source": "IBM",
+      "target": "JNJ",
+      "value": 0.9980690060777253
+    },
+    {
+      "source": "IBM",
+      "target": "DHR",
+      "value": 0.9987141112088832
+    },
+    {
+      "source": "IBM",
+      "target": "DTE.DE",
+      "value": 0.9993906504884726
+    },
+    {
+      "source": "QCOM",
+      "target": "AVGO",
+      "value": 0.9968693374501484
+    },
+    {
+      "source": "QCOM",
+      "target": "DHR",
+      "value": 0.9974478862188111
+    },
+    {
+      "source": "QCOM",
+      "target": "IBM",
+      "value": 0.9976661653227384
+    },
+    {
+      "source": "WMT",
+      "target": "VOW3.DE",
+      "value": 0.9977282219529451
+    },
+    {
+      "source": "WMT",
+      "target": "RTX",
+      "value": 0.9977416114909525
+    },
+    {
+      "source": "WMT",
+      "target": "UNH",
+      "value": 0.9991669531120634
+    },
+    {
+      "source": "PG",
+      "target": "DHR",
+      "value": 0.9970819035404076
+    },
+    {
+      "source": "PG",
+      "target": "TMO",
+      "value": 0.9974723613257648
+    },
+    {
+      "source": "PG",
+      "target": "GOOGL",
+      "value": 0.9984190236002964
+    },
+    {
+      "source": "KO",
+      "target": "MSFT",
+      "value": 0.9949366414832831
+    },
+    {
+      "source": "KO",
+      "target": "GOOGL",
+      "value": 0.996077670344929
+    },
+    {
+      "source": "KO",
+      "target": "PEP",
+      "value": 0.9967552913356567
+    },
+    {
+      "source": "PEP",
+      "target": "AMZN",
+      "value": 0.9949647340368395
+    },
+    {
+      "source": "PEP",
+      "target": "IBM",
+      "value": 0.9949743699034365
+    },
+    {
+      "source": "PEP",
+      "target": "KO",
+      "value": 0.9967552913356567
+    },
+    {
+      "source": "COST",
+      "target": "BMW.DE",
+      "value": 0.9974918439397262
+    },
+    {
+      "source": "COST",
+      "target": "TSLA",
+      "value": 0.9980326282426605
+    },
+    {
+      "source": "COST",
+      "target": "AIR.DE",
+      "value": 0.9989815189447461
+    },
+    {
+      "source": "MCD",
+      "target": "META",
+      "value": 0.9546453965697529
+    },
+    {
+      "source": "MCD",
+      "target": "MSFT",
+      "value": 0.9572139698126542
+    },
+    {
+      "source": "MCD",
+      "target": "BLK",
+      "value": 0.9576704755543284
+    },
+    {
+      "source": "NKE",
+      "target": "DIS",
+      "value": 0.9973397195627711
+    },
+    {
+      "source": "NKE",
+      "target": "AMD",
+      "value": 0.9981812392176388
+    },
+    {
+      "source": "NKE",
+      "target": "AMZN",
+      "value": 0.9987749087751387
+    },
+    {
+      "source": "SBUX",
+      "target": "UNH",
+      "value": 0.9976726386940802
+    },
+    {
+      "source": "SBUX",
+      "target": "RTX",
+      "value": 0.9979374995599569
+    },
+    {
+      "source": "SBUX",
+      "target": "XOM",
+      "value": 0.9980210430695973
+    },
+    {
+      "source": "HD",
+      "target": "CAT",
+      "value": 0.9309794549534419
+    },
+    {
+      "source": "HD",
+      "target": "MA",
+      "value": 0.9506546238610668
+    },
+    {
+      "source": "HD",
+      "target": "AAPL",
+      "value": 0.9605356128136899
+    },
+    {
+      "source": "LOW",
+      "target": "SBUX",
+      "value": 0.9950585916519401
+    },
+    {
+      "source": "LOW",
+      "target": "CVX",
+      "value": 0.995461707830139
+    },
+    {
+      "source": "LOW",
+      "target": "DIS",
+      "value": 0.9955751123620261
+    },
+    {
+      "source": "DIS",
+      "target": "TMO",
+      "value": 0.998467614687642
+    },
+    {
+      "source": "DIS",
+      "target": "GE",
+      "value": 0.9987401470936396
+    },
+    {
+      "source": "DIS",
+      "target": "SIE.DE",
+      "value": 0.9994237689488457
+    },
+    {
+      "source": "JPM",
+      "target": "MS",
+      "value": 0.9749490301436514
+    },
+    {
+      "source": "JPM",
+      "target": "BAC",
+      "value": 0.986332955776801
+    },
+    {
+      "source": "JPM",
+      "target": "GS",
+      "value": 0.998950132297811
+    },
+    {
+      "source": "V",
+      "target": "MSFT",
+      "value": 0.9882942154250931
+    },
+    {
+      "source": "V",
+      "target": "META",
+      "value": 0.9923790030513125
+    },
+    {
+      "source": "V",
+      "target": "NVDA",
+      "value": 0.9972651290211915
+    },
+    {
+      "source": "MA",
+      "target": "AAPL",
+      "value": 0.9803686654818771
+    },
+    {
+      "source": "MA",
+      "target": "V",
+      "value": 0.9872406884332317
+    },
+    {
+      "source": "MA",
+      "target": "NVDA",
+      "value": 0.9906136336602995
+    },
+    {
+      "source": "BRK-B",
+      "target": "BAC",
+      "value": 0.9930553615945448
+    },
+    {
+      "source": "BRK-B",
+      "target": "MS",
+      "value": 0.9957950257048497
+    },
+    {
+      "source": "BRK-B",
+      "target": "WFC",
+      "value": 0.9991702453368128
+    },
+    {
+      "source": "BAC",
+      "target": "BRK-B",
+      "value": 0.9930553615945448
+    },
+    {
+      "source": "BAC",
+      "target": "WFC",
+      "value": 0.9932769633231175
+    },
+    {
+      "source": "BAC",
+      "target": "MS",
+      "value": 0.9972112736655997
+    },
+    {
+      "source": "WFC",
+      "target": "BAC",
+      "value": 0.9932769633231175
+    },
+    {
+      "source": "WFC",
+      "target": "MS",
+      "value": 0.9975683594859799
+    },
+    {
+      "source": "WFC",
+      "target": "BRK-B",
+      "value": 0.9991702453368128
+    },
+    {
+      "source": "GS",
+      "target": "MS",
+      "value": 0.9679162878526564
+    },
+    {
+      "source": "GS",
+      "target": "BAC",
+      "value": 0.9809685552784856
+    },
+    {
+      "source": "GS",
+      "target": "JPM",
+      "value": 0.998950132297811
+    },
+    {
+      "source": "MS",
+      "target": "BRK-B",
+      "value": 0.9957950257048497
+    },
+    {
+      "source": "MS",
+      "target": "BAC",
+      "value": 0.9972112736655997
+    },
+    {
+      "source": "MS",
+      "target": "WFC",
+      "value": 0.9975683594859799
+    },
+    {
+      "source": "AXP",
+      "target": "LMT",
+      "value": 0.9865862892058289
+    },
+    {
+      "source": "AXP",
+      "target": "WFC",
+      "value": 0.9873753253145705
+    },
+    {
+      "source": "AXP",
+      "target": "ALV.DE",
+      "value": 0.9959993850963061
+    },
+    {
+      "source": "BLK",
+      "target": "PG",
+      "value": 0.9958991272094689
+    },
+    {
+      "source": "BLK",
+      "target": "GOOGL",
+      "value": 0.9977798663921539
+    },
+    {
+      "source": "BLK",
+      "target": "UNP",
+      "value": 0.9981001724429532
+    },
+    {
+      "source": "JNJ",
+      "target": "IBM",
+      "value": 0.9980690060777253
+    },
+    {
+      "source": "JNJ",
+      "target": "PFE",
+      "value": 0.9989050404304904
+    },
+    {
+      "source": "JNJ",
+      "target": "DTE.DE",
+      "value": 0.9993791736782762
+    },
+    {
+      "source": "UNH",
+      "target": "XOM",
+      "value": 0.9988133051590145
+    },
+    {
+      "source": "UNH",
+      "target": "WMT",
+      "value": 0.9991669531120634
+    },
+    {
+      "source": "UNH",
+      "target": "RTX",
+      "value": 0.9993078226253891
+    },
+    {
+      "source": "LLY",
+      "target": "SAP",
+      "value": 0.9833959649416227
+    },
+    {
+      "source": "LLY",
+      "target": "PFE",
+      "value": 0.9843070131159212
+    },
+    {
+      "source": "LLY",
+      "target": "KO",
+      "value": 0.9879587919837537
+    },
+    {
+      "source": "PFE",
+      "target": "DTE.DE",
+      "value": 0.9973845439607544
+    },
+    {
+      "source": "PFE",
+      "target": "JNJ",
+      "value": 0.9989050404304904
+    },
+    {
+      "source": "PFE",
+      "target": "SAP",
+      "value": 0.999341098300678
+    },
+    {
+      "source": "ABBV",
+      "target": "MA",
+      "value": 0.8806207777299087
+    },
+    {
+      "source": "MRK",
+      "target": "JNJ",
+      "value": 0.997111630117827
+    },
+    {
+      "source": "MRK",
+      "target": "ADBE",
+      "value": 0.9976665827410686
+    },
+    {
+      "source": "MRK",
+      "target": "META",
+      "value": 0.9986146141963667
+    },
+    {
+      "source": "TMO",
+      "target": "DIS",
+      "value": 0.998467614687642
+    },
+    {
+      "source": "TMO",
+      "target": "HON",
+      "value": 0.9987772911014047
+    },
+    {
+      "source": "TMO",
+      "target": "SIE.DE",
+      "value": 0.9996069953812062
+    },
+    {
+      "source": "DHR",
+      "target": "JNJ",
+      "value": 0.9978338912900396
+    },
+    {
+      "source": "DHR",
+      "target": "DTE.DE",
+      "value": 0.9979079458347578
+    },
+    {
+      "source": "DHR",
+      "target": "IBM",
+      "value": 0.9987141112088832
+    },
+    {
+      "source": "XOM",
+      "target": "CVX",
+      "value": 0.9983451328915899
+    },
+    {
+      "source": "XOM",
+      "target": "UNH",
+      "value": 0.9988133051590145
+    },
+    {
+      "source": "XOM",
+      "target": "RTX",
+      "value": 0.9992355343322485
+    },
+    {
+      "source": "CVX",
+      "target": "WMT",
+      "value": 0.9975589083250449
+    },
+    {
+      "source": "CVX",
+      "target": "UNH",
+      "value": 0.9980675792399175
+    },
+    {
+      "source": "CVX",
+      "target": "XOM",
+      "value": 0.9983451328915899
+    },
+    {
+      "source": "GE",
+      "target": "CAT",
+      "value": 0.9982320341308254
+    },
+    {
+      "source": "GE",
+      "target": "DIS",
+      "value": 0.9987401470936396
+    },
+    {
+      "source": "GE",
+      "target": "HON",
+      "value": 0.9991373267598617
+    },
+    {
+      "source": "CAT",
+      "target": "SIE.DE",
+      "value": 0.9968058081709635
+    },
+    {
+      "source": "CAT",
+      "target": "GE",
+      "value": 0.9982320341308254
+    },
+    {
+      "source": "CAT",
+      "target": "HON",
+      "value": 0.9991238137628216
+    },
+    {
+      "source": "UNP",
+      "target": "PG",
+      "value": 0.9942822100828594
+    },
+    {
+      "source": "UNP",
+      "target": "GOOGL",
+      "value": 0.9955274696960648
+    },
+    {
+      "source": "UNP",
+      "target": "BLK",
+      "value": 0.9981001724429532
+    },
+    {
+      "source": "UPS",
+      "target": "XOM",
+      "value": 0.9980571793755284
+    },
+    {
+      "source": "UPS",
+      "target": "RTX",
+      "value": 0.9983834030747858
+    },
+    {
+      "source": "UPS",
+      "target": "AIR.DE",
+      "value": 0.9988157876632862
+    },
+    {
+      "source": "HON",
+      "target": "SIE.DE",
+      "value": 0.9990875211828257
+    },
+    {
+      "source": "HON",
+      "target": "CAT",
+      "value": 0.9991238137628216
+    },
+    {
+      "source": "HON",
+      "target": "GE",
+      "value": 0.9991373267598617
+    },
+    {
+      "source": "LMT",
+      "target": "COST",
+      "value": 0.9872510831153329
+    },
+    {
+      "source": "LMT",
+      "target": "AIR.DE",
+      "value": 0.988679986761174
+    },
+    {
+      "source": "LMT",
+      "target": "UPS",
+      "value": 0.9921775144940894
+    },
+    {
+      "source": "RTX",
+      "target": "AIR.DE",
+      "value": 0.9992756366458969
+    },
+    {
+      "source": "RTX",
+      "target": "UNH",
+      "value": 0.9993078226253891
+    },
+    {
+      "source": "RTX",
+      "target": "TSLA",
+      "value": 0.9997146619419565
+    },
+    {
+      "source": "BA",
+      "target": "BMW.DE",
+      "value": 0.8760831127838764
+    },
+    {
+      "source": "BA",
+      "target": "COST",
+      "value": 0.8839690245879998
+    },
+    {
+      "source": "BA",
+      "target": "LMT",
+      "value": 0.8926214039494932
+    },
+    {
+      "source": "SAP",
+      "target": "DTE.DE",
+      "value": 0.995168326467015
+    },
+    {
+      "source": "SAP",
+      "target": "JNJ",
+      "value": 0.99691650681786
+    },
+    {
+      "source": "SAP",
+      "target": "PFE",
+      "value": 0.999341098300678
+    },
+    {
+      "source": "SIE.DE",
+      "target": "HON",
+      "value": 0.9990875211828257
+    },
+    {
+      "source": "SIE.DE",
+      "target": "DIS",
+      "value": 0.9994237689488457
+    },
+    {
+      "source": "SIE.DE",
+      "target": "TMO",
+      "value": 0.9996069953812062
+    },
+    {
+      "source": "ALV.DE",
+      "target": "LMT",
+      "value": 0.9799032216814384
+    },
+    {
+      "source": "ALV.DE",
+      "target": "AIR.DE",
+      "value": 0.9810200755386953
+    },
+    {
+      "source": "ALV.DE",
+      "target": "AXP",
+      "value": 0.9959993850963061
+    },
+    {
+      "source": "DTE.DE",
+      "target": "DHR",
+      "value": 0.9979079458347578
+    },
+    {
+      "source": "DTE.DE",
+      "target": "JNJ",
+      "value": 0.9993791736782762
+    },
+    {
+      "source": "DTE.DE",
+      "target": "IBM",
+      "value": 0.9993906504884726
+    },
+    {
+      "source": "BMW.DE",
+      "target": "COST",
+      "value": 0.9974918439397262
+    },
+    {
+      "source": "BMW.DE",
+      "target": "TSLA",
+      "value": 0.9984211812155809
+    },
+    {
+      "source": "BMW.DE",
+      "target": "VOW3.DE",
+      "value": 0.9996850540808183
+    },
+    {
+      "source": "VOW3.DE",
+      "target": "WMT",
+      "value": 0.9977282219529451
+    },
+    {
+      "source": "VOW3.DE",
+      "target": "TSLA",
+      "value": 0.9984008075009544
+    },
+    {
+      "source": "VOW3.DE",
+      "target": "BMW.DE",
+      "value": 0.9996850540808183
+    },
+    {
+      "source": "AIR.DE",
+      "target": "COST",
+      "value": 0.9989815189447461
+    },
+    {
+      "source": "AIR.DE",
+      "target": "RTX",
+      "value": 0.9992756366458969
+    },
+    {
+      "source": "AIR.DE",
+      "target": "TSLA",
+      "value": 0.9993390467990652
+    }
+  ],
   "industry_averages": {
     "Consumer Electronics": {
-      "gross_margin": 46.9,
-      "net_margin": 26.9,
-      "roe": 151.9,
+      "gross_margin": 46.91,
+      "roe": 151.91,
       "debt_to_equity": 1.34
     },
     "Software - Infrastructure": {
-      "gross_margin": 69.6,
-      "net_margin": 28.9,
-      "roe": 45.2,
-      "debt_to_equity": 2.64
+      "gross_margin": 68.82,
+      "roe": 29.65,
+      "debt_to_equity": 0.18
     },
     "Internet Content & Information": {
-      "gross_margin": 70.0,
-      "net_margin": 33.2,
-      "roe": 32.4,
+      "gross_margin": 69.94,
+      "roe": 32.47,
       "debt_to_equity": 0.18
     },
     "Internet Retail": {
-      "gross_margin": 48.9,
-      "net_margin": 9.3,
-      "roe": 20.7,
+      "gross_margin": 48.85,
+      "roe": 20.72,
       "debt_to_equity": 0.46
     },
     "Semiconductors": {
-      "gross_margin": 55.6,
-      "net_margin": 13.6,
-      "roe": 23.2,
-      "debt_to_equity": 0.53
-    },
-    "Insurance - Diversified": {
-      "gross_margin": 0.0,
-      "net_margin": 14.2,
-      "roe": 15.1,
-      "debt_to_equity": 0.36
-    },
-    "Drug Manufacturers - General": {
-      "gross_margin": 71.6,
-      "net_margin": 17.2,
-      "roe": 65.9,
-      "debt_to_equity": 6.82
+      "gross_margin": 55.09,
+      "roe": 22.13,
+      "debt_to_equity": 0.47
     },
     "Auto Manufacturers": {
-      "gross_margin": 17.4,
-      "net_margin": 5.3,
-      "roe": 8.0,
+      "gross_margin": 17.42,
+      "roe": 7.97,
       "debt_to_equity": 0.73
     },
-    "Banks - Diversified": {
-      "gross_margin": 0.0,
-      "net_margin": 28.4,
-      "roe": 12.4,
-      "debt_to_equity": 1.16
+    "Software - Application": {
+      "gross_margin": 79.73,
+      "roe": 18.81,
+      "debt_to_equity": 0.28
     },
-    "Credit Services": {
-      "gross_margin": 78.4,
-      "net_margin": 47.9,
-      "roe": 125.7,
-      "debt_to_equity": 1.74
-    },
-    "Healthcare Plans": {
-      "gross_margin": 22.3,
-      "net_margin": 3.6,
-      "roe": 15.5,
-      "debt_to_equity": 0.83
-    },
-    "Oil & Gas Integrated": {
-      "gross_margin": 26.0,
-      "net_margin": 9.5,
-      "roe": 12.2,
-      "debt_to_equity": 0.16
+    "Information Technology Services": {
+      "gross_margin": 56.65,
+      "roe": 22.06,
+      "debt_to_equity": 2.14
     },
     "Discount Stores": {
-      "gross_margin": 18.8,
-      "net_margin": 2.9,
-      "roe": 24.6,
+      "gross_margin": 18.84,
+      "roe": 24.56,
       "debt_to_equity": 0.47
     },
     "Household & Personal Products": {
-      "gross_margin": 51.2,
-      "net_margin": 19.0,
-      "roe": 30.7,
+      "gross_margin": 51.16,
+      "roe": 30.71,
       "debt_to_equity": 0.68
-    },
-    "Home Improvement Retail": {
-      "gross_margin": 33.4,
-      "net_margin": 9.3,
-      "roe": 223.0,
-      "debt_to_equity": 9.38
-    },
-    "Entertainment": {
-      "gross_margin": 42.0,
-      "net_margin": 17.7,
-      "roe": 23.2,
-      "debt_to_equity": 0.52
-    },
-    "Software - Application": {
-      "gross_margin": 79.7,
-      "net_margin": 17.1,
-      "roe": 18.8,
-      "debt_to_equity": 0.28
     },
     "Beverages - Non-Alcoholic": {
       "gross_margin": 57.8,
-      "net_margin": 16.5,
-      "roe": 48.0,
+      "roe": 47.93,
       "debt_to_equity": 2.14
     },
-    "Diagnostics & Research": {
-      "gross_margin": 50.4,
-      "net_margin": 15.6,
-      "roe": 10.4,
-      "debt_to_equity": 0.49
-    },
-    "Information Technology Services": {
-      "gross_margin": 44.3,
-      "net_margin": 10.3,
-      "roe": 23.4,
-      "debt_to_equity": 1.2
-    },
     "Restaurants": {
-      "gross_margin": 56.8,
-      "net_margin": 31.7,
-      "roe": 0.0,
+      "gross_margin": 39.76,
+      "roe": -119.78,
       "debt_to_equity": 0.0
-    },
-    "Communication Equipment": {
-      "gross_margin": 64.9,
-      "net_margin": 18.0,
-      "roe": 21.7,
-      "debt_to_equity": 0.6
-    },
-    "Medical Devices": {
-      "gross_margin": 55.4,
-      "net_margin": 31.9,
-      "roe": 28.1,
-      "debt_to_equity": 0.32
-    },
-    "Telecom Services": {
-      "gross_margin": 63.7,
-      "net_margin": 11.9,
-      "roe": 18.1,
-      "debt_to_equity": 1.73
-    },
-    "Tobacco": {
-      "gross_margin": 64.8,
-      "net_margin": 18.6,
-      "roe": 0.0,
-      "debt_to_equity": 0.0
-    },
-    "Farm & Heavy Construction Machinery": {
-      "gross_margin": 36.0,
-      "net_margin": 16.7,
-      "roe": 55.4,
-      "debt_to_equity": 1.97
-    },
-    "Utilities - Regulated Electric": {
-      "gross_margin": 60.1,
-      "net_margin": 28.1,
-      "roe": 13.9,
-      "debt_to_equity": 1.64
-    },
-    "Railroads": {
-      "gross_margin": 45.5,
-      "net_margin": 27.8,
-      "roe": 39.9,
-      "debt_to_equity": 1.92
-    },
-    "Specialty Industrial Machinery": {
-      "gross_margin": 38.5,
-      "net_margin": 12.2,
-      "roe": 15.5,
-      "debt_to_equity": 0.9
-    },
-    "Aerospace & Defense": {
-      "gross_margin": 15.4,
-      "net_margin": 6.1,
-      "roe": 21.6,
-      "debt_to_equity": 0.58
-    },
-    "Chemicals": {
-      "gross_margin": 26.2,
-      "net_margin": 2.0,
-      "roe": 3.6,
-      "debt_to_equity": 0.67
-    },
-    "Insurance - Reinsurance": {
-      "gross_margin": 0.0,
-      "net_margin": 13.4,
-      "roe": 17.4,
-      "debt_to_equity": 0.19
     },
     "Footwear & Accessories": {
-      "gross_margin": 50.8,
-      "net_margin": 3.2,
-      "roe": 14.0,
-      "debt_to_equity": 1.02
+      "gross_margin": 42.73,
+      "roe": 24.36,
+      "debt_to_equity": 0.83
+    },
+    "Home Improvement Retail": {
+      "gross_margin": 33.37,
+      "roe": 87.04,
+      "debt_to_equity": 4.69
+    },
+    "Entertainment": {
+      "gross_margin": 37.76,
+      "roe": 11.29,
+      "debt_to_equity": 0.41
+    },
+    "Banks - Diversified": {
+      "gross_margin": 0.0,
+      "roe": 12.38,
+      "debt_to_equity": 1.16
+    },
+    "Credit Services": {
+      "gross_margin": 52.22,
+      "roe": 94.97,
+      "debt_to_equity": 1.72
+    },
+    "Insurance - Diversified": {
+      "gross_margin": 0.0,
+      "roe": 15.08,
+      "debt_to_equity": 0.36
+    },
+    "Capital Markets": {
+      "gross_margin": 0.0,
+      "roe": 12.26,
+      "debt_to_equity": 2.89
+    },
+    "Asset Management": {
+      "gross_margin": 49.42,
+      "roe": 13.41,
+      "debt_to_equity": 0.3
+    },
+    "Drug Manufacturers - General": {
+      "gross_margin": 73.73,
+      "roe": 53.81,
+      "debt_to_equity": 4.92
+    },
+    "Healthcare Plans": {
+      "gross_margin": 22.33,
+      "roe": 15.55,
+      "debt_to_equity": 0.83
+    },
+    "Diagnostics & Research": {
+      "gross_margin": 50.39,
+      "roe": 10.32,
+      "debt_to_equity": 0.49
+    },
+    "Oil & Gas Integrated": {
+      "gross_margin": 26.02,
+      "roe": 12.18,
+      "debt_to_equity": 0.16
+    },
+    "Aerospace & Defense": {
+      "gross_margin": 15.69,
+      "roe": 90.01,
+      "debt_to_equity": 1.1
+    },
+    "Farm & Heavy Construction Machinery": {
+      "gross_margin": 35.99,
+      "roe": 55.37,
+      "debt_to_equity": 1.97
+    },
+    "Railroads": {
+      "gross_margin": 45.52,
+      "roe": 39.95,
+      "debt_to_equity": 1.92
+    },
+    "Integrated Freight & Logistics": {
+      "gross_margin": 17.96,
+      "roe": 34.59,
+      "debt_to_equity": 1.53
+    },
+    "Conglomerates": {
+      "gross_margin": 38.09,
+      "roe": 30.64,
+      "debt_to_equity": 1.73
+    },
+    "Specialty Industrial Machinery": {
+      "gross_margin": 38.52,
+      "roe": 15.46,
+      "debt_to_equity": 0.9
+    },
+    "Telecom Services": {
+      "gross_margin": 61.13,
+      "roe": 17.71,
+      "debt_to_equity": 2.32
     }
   },
   "metadata": {
-    "generated": "2025-12-17T15:07:44.653253",
-    "total_stocks": 60,
-    "total_links": 0,
-    "failed_tickers": [],
-    "target_count": 60
+    "generated_at": "2025-12-17T17:36:01.407049"
   }
 }
