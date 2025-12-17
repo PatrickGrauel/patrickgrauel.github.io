@@ -4,105 +4,140 @@
       "id": "AAPL",
       "name": "Apple Inc.",
       "sector": "Technology",
-      "buffettScore": 85,
-      "owner_earnings": 78862254080,
+      "buffettScore": 71,
+      "owner_earnings": 78862254080.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 50,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 40
+      },
       "metrics": {
-        "gm": 0.4690516410716045,
-        "sga_ratio": 0.141397841199584,
-        "capex_ratio": 0.11351665029908044,
-        "interest_ratio": 0.0,
-        "debt_years": 0.8807874296937773,
-        "de_ratio": 1.3380304612588665
+        "roic": 0.7717965079180927,
+        "gross_margin": 0.4690516410716045,
+        "debt_to_equity": 1.3380304612588665,
+        "fcf_yield": 0.019351184595450863
       }
     },
     {
       "id": "MSFT",
       "name": "Microsoft Corporation",
       "sector": "Technology",
-      "buffettScore": 80,
-      "owner_earnings": 53327376384,
+      "buffettScore": 83,
+      "owner_earnings": 53327376384.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 100,
+        "Moat": 98,
+        "Management": 50,
+        "Value": 40
+      },
       "metrics": {
-        "gm": 0.6882374238616519,
-        "sga_ratio": 0.16956259380173602,
-        "capex_ratio": 0.6338970068347867,
-        "interest_ratio": 0.0185562678949334,
-        "debt_years": 0.594979967004478,
-        "de_ratio": 0.17639506345366093
+        "roic": 0.318085861998134,
+        "gross_margin": 0.6882374238616519,
+        "debt_to_equity": 0.17639506345366093,
+        "fcf_yield": 0.015059609610760064
       }
     },
     {
       "id": "GOOGL",
       "name": "Alphabet Inc.",
       "sector": "Communication Services",
-      "buffettScore": 80,
-      "owner_earnings": 47997751296,
+      "buffettScore": 82,
+      "owner_earnings": 47997751296.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 100,
+        "Moat": 95,
+        "Management": 50,
+        "Value": 40
+      },
       "metrics": {
-        "gm": 0.5820043540617911,
-        "sga_ratio": 0.20615378573672635,
-        "capex_ratio": 0.5247308176351905,
-        "interest_ratio": 0.0023845537859240144,
-        "debt_years": 0.25430991430112465,
-        "de_ratio": 0.07832129541903016
+        "roic": 0.3206150422912893,
+        "gross_margin": 0.5820043540617911,
+        "debt_to_equity": 0.07832129541903016,
+        "fcf_yield": 0.012926203301003157
       }
     },
     {
       "id": "AMZN",
       "name": "Amazon.com, Inc.",
       "sector": "Consumer Cyclical",
-      "buffettScore": 80,
-      "owner_earnings": 26080000000,
+      "buffettScore": 78,
+      "owner_earnings": 26080000000.0,
+      "pillars": {
+        "Quality": 80,
+        "Strength": 100,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 40
+      },
       "metrics": {
-        "gm": 0.48854393464156787,
-        "sga_ratio": 0.17732159873712985,
-        "capex_ratio": 1.4008742911153118,
-        "interest_ratio": 0.035076465528552474,
-        "debt_years": 2.209357277882798,
-        "de_ratio": 0.45774032241144175
+        "roic": 0.1645429030633051,
+        "gross_margin": 0.48854393464156787,
+        "debt_to_equity": 0.45774032241144175,
+        "fcf_yield": 0.010961601039523762
       }
     },
     {
       "id": "BRK-B",
       "name": "Berkshire Hathaway Inc. New",
       "sector": "Financial Services",
-      "buffettScore": 40,
-      "owner_earnings": 48615874560,
+      "buffettScore": 30,
+      "owner_earnings": 48615874560.0,
+      "pillars": {
+        "Quality": 0,
+        "Strength": 50,
+        "Moat": 0,
+        "Management": 50,
+        "Value": 70
+      },
       "metrics": {
-        "gm": 0.0,
-        "sga_ratio": 1.0,
-        "capex_ratio": 0.21322546210461263,
-        "interest_ratio": 0.5,
-        "debt_years": 1.4018989830889377,
-        "de_ratio": 0.19212834633058604
+        "roic": 0.0,
+        "gross_margin": 0.0,
+        "debt_to_equity": 0.19212834633058604,
+        "fcf_yield": 0.045084738618968605
       }
     },
     {
       "id": "JNJ",
       "name": "Johnson & Johnson",
       "sector": "Healthcare",
-      "buffettScore": 80,
-      "owner_earnings": 12008999936,
+      "buffettScore": 84,
+      "owner_earnings": 12008999936.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 75,
+        "Moat": 97,
+        "Management": 100,
+        "Value": 40
+      },
       "metrics": {
-        "gm": 0.6907150336069173,
-        "sga_ratio": 0.3580929095354523,
-        "capex_ratio": 0.44127683776482296,
-        "interest_ratio": 0.03408731771186058,
-        "debt_years": 2.6044362292051755,
-        "de_ratio": 0.512435305637152
+        "roic": 0.2048481373238134,
+        "gross_margin": 0.6907150336069173,
+        "debt_to_equity": 0.512435305637152,
+        "fcf_yield": 0.023814836735891395
       }
     },
     {
       "id": "V",
       "name": "Visa Inc.",
       "sector": "Financial Services",
-      "buffettScore": 100,
-      "owner_earnings": 20072873984,
+      "buffettScore": 89,
+      "owner_earnings": 20072873984.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 75,
+        "Moat": 99,
+        "Management": 100,
+        "Value": 70
+      },
       "metrics": {
-        "gm": 0.803625,
-        "sga_ratio": 0.13591538341888318,
-        "capex_ratio": 0.0738857313790009,
-        "interest_ratio": 0.022179545112215693,
-        "debt_years": 1.2549107587994814,
-        "de_ratio": 0.6639848057189586
+        "roic": 0.42098922003804695,
+        "gross_margin": 0.803625,
+        "debt_to_equity": 0.6639848057189586,
+        "fcf_yield": 0.030138238994478077
       }
     },
     {
@@ -110,772 +145,867 @@
       "name": "Procter & Gamble Company (The)",
       "sector": "Consumer Defensive",
       "buffettScore": 80,
-      "owner_earnings": 12200999936,
+      "owner_earnings": 12200999936.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 75,
+        "Moat": 91,
+        "Management": 50,
+        "Value": 70
+      },
       "metrics": {
-        "gm": 0.5116036258364577,
-        "sga_ratio": 0.5257189239332096,
-        "capex_ratio": 0.2361963190184049,
-        "interest_ratio": 0.044349909539875804,
-        "debt_years": 2.2200450732440213,
-        "de_ratio": 0.6818234253633777
+        "roic": 0.2337925121463275,
+        "gross_margin": 0.5116036258364577,
+        "debt_to_equity": 0.6818234253633777,
+        "fcf_yield": 0.03589987590825937
       }
     },
     {
       "id": "KO",
       "name": "Coca-Cola Company (The)",
       "sector": "Consumer Defensive",
-      "buffettScore": 75,
-      "owner_earnings": 1412875008,
+      "buffettScore": 62,
+      "owner_earnings": 1412875008.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 30,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 10
+      },
       "metrics": {
-        "gm": 0.6106330082233696,
-        "sga_ratio": 0.2768904200160072,
-        "capex_ratio": 0.19414918634183048,
-        "interest_ratio": 0.11810012836970475,
-        "debt_years": 4.187940927476249,
-        "de_ratio": 1.7911972964274219
+        "roic": 0.20211017901928566,
+        "gross_margin": 0.6106330082233696,
+        "debt_to_equity": 1.7911972964274219,
+        "fcf_yield": 0.004665277761998741
       }
     },
     {
       "id": "PEP",
       "name": "Pepsico, Inc.",
       "sector": "Consumer Defensive",
-      "buffettScore": 35,
-      "owner_earnings": 7137500160,
+      "buffettScore": 76,
+      "owner_earnings": 7137500160.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 50,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 70
+      },
       "metrics": {
-        "gm": 0.5455396607659982,
-        "sga_ratio": 0.7421672320894033,
-        "capex_ratio": 0.5552307371058676,
-        "interest_ratio": 0.07113003095975232,
-        "debt_years": 4.692837753184381,
-        "de_ratio": 2.491436173161133
+        "roic": 0.20511517884074998,
+        "gross_margin": 0.5455396607659982,
+        "debt_to_equity": 2.491436173161133,
+        "fcf_yield": 0.034670251609326526
       }
     },
     {
       "id": "COST",
       "name": "Costco Wholesale Corporation",
       "sector": "Consumer Defensive",
-      "buffettScore": 40,
-      "owner_earnings": 7240249856,
+      "buffettScore": 78,
+      "owner_earnings": 7240249856.0,
+      "pillars": {
+        "Quality": 50,
+        "Strength": 100,
+        "Moat": 100,
+        "Management": 100,
+        "Value": 40
+      },
       "metrics": {
-        "gm": 0.12843206714262356,
-        "sga_ratio": 0.7062717474327421,
-        "capex_ratio": 0.6788492406469935,
-        "interest_ratio": 0.014831936819801599,
-        "debt_years": 1.009136930485245,
-        "de_ratio": 0.2802427650528048
+        "roic": 0.27808875913972736,
+        "gross_margin": 0.12843206714262356,
+        "debt_to_equity": 0.2802427650528048,
+        "fcf_yield": 0.018956338382668483
       }
     },
     {
       "id": "MCD",
       "name": "McDonald's Corporation",
       "sector": "Consumer Cyclical",
-      "buffettScore": 60,
-      "owner_earnings": 4394500096,
+      "buffettScore": 66,
+      "owner_earnings": 4394500096.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 30,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 40
+      },
       "metrics": {
-        "gm": 0.5675154320987654,
-        "sga_ratio": 0.16397008837525492,
-        "capex_ratio": 0.337468077344035,
-        "interest_ratio": 0.12707788372289258,
-        "debt_years": 6.317402407880335,
-        "de_ratio": 10.0
+        "roic": 0.24611646452899152,
+        "gross_margin": 0.5675154320987654,
+        "debt_to_equity": 10,
+        "fcf_yield": 0.019580839118956778
       }
     },
     {
       "id": "NVDA",
       "name": "NVIDIA Corporation",
       "sector": "Technology",
-      "buffettScore": 100,
-      "owner_earnings": 53282873344,
+      "buffettScore": 76,
+      "owner_earnings": 53282873344.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 100,
+        "Moat": 65,
+        "Management": 50,
+        "Value": 40
+      },
       "metrics": {
-        "gm": 0.7498869705816992,
-        "sga_ratio": 0.035674140080524844,
-        "capex_ratio": 0.04440175631174533,
-        "interest_ratio": 0.0030324236062514577,
-        "debt_years": 0.1409165751920966,
-        "de_ratio": 0.1294641168832806
+        "roic": 0.9091040994676161,
+        "gross_margin": 0.7498869705816992,
+        "debt_to_equity": 0.1294641168832806,
+        "fcf_yield": 0.01231418992704532
       }
     },
     {
       "id": "TSLA",
       "name": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
-      "buffettScore": 60,
-      "owner_earnings": 2979249920,
+      "buffettScore": 54,
+      "owner_earnings": 2979249920.0,
+      "pillars": {
+        "Quality": 0,
+        "Strength": 100,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 10
+      },
       "metrics": {
-        "gm": 0.17862626676220697,
-        "sga_ratio": 0.29512893982808025,
-        "capex_ratio": 1.590743338008415,
-        "interest_ratio": 0.045103092783505154,
-        "debt_years": 1.9106591865357643,
-        "de_ratio": 0.18683910962379824
+        "roic": 0.08967366182860312,
+        "gross_margin": 0.17862626676220697,
+        "debt_to_equity": 0.18683910962379824,
+        "fcf_yield": 0.0018285994263551803
       }
     },
     {
       "id": "XOM",
       "name": "Exxon Mobil Corporation",
       "sector": "Energy",
-      "buffettScore": 70,
-      "owner_earnings": 17292750848,
+      "buffettScore": 77,
+      "owner_earnings": 17292750848.0,
+      "pillars": {
+        "Quality": 55,
+        "Strength": 100,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 70
+      },
       "metrics": {
-        "gm": 0.22621275943486605,
-        "sga_ratio": 0.12999400588986473,
-        "capex_ratio": 0.7216745843230403,
-        "interest_ratio": 0.025118531221628167,
-        "debt_years": 1.2384204275534443,
-        "de_ratio": 0.15816916630325553
+        "roic": 0.1298299035738258,
+        "gross_margin": 0.22621275943486605,
+        "debt_to_equity": 0.15816916630325553,
+        "fcf_yield": 0.03537006803605605
       }
     },
     {
       "id": "META",
       "name": "Meta Platforms, Inc.",
       "sector": "Communication Services",
-      "buffettScore": 80,
-      "owner_earnings": 18617749504,
+      "buffettScore": 84,
+      "owner_earnings": 18617749504.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 100,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 40
+      },
       "metrics": {
-        "gm": 0.8166515705071702,
-        "sga_ratio": 0.15696739615899954,
-        "capex_ratio": 0.5974342527261065,
-        "interest_ratio": 0.010305563562986451,
-        "debt_years": 0.7867222578576011,
-        "de_ratio": 0.2686202686202686
+        "roic": 0.2994428067691856,
+        "gross_margin": 0.8166515705071702,
+        "debt_to_equity": 0.2686202686202686,
+        "fcf_yield": 0.011240126758122538
       }
     },
     {
       "id": "LLY",
       "name": "Eli Lilly and Company",
       "sector": "Healthcare",
-      "buffettScore": 55,
-      "owner_earnings": 1397924992,
+      "buffettScore": 66,
+      "owner_earnings": 1397924992.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 50,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 10
+      },
       "metrics": {
-        "gm": 0.8131040101947707,
-        "sga_ratio": 0.22204049759176941,
-        "capex_ratio": 0.7935410764872521,
-        "interest_ratio": 0.04460138158007508,
-        "debt_years": 3.176978281397545,
-        "de_ratio": 2.3706287300681366
+        "roic": 0.3658665072340461,
+        "gross_margin": 0.8131040101947707,
+        "debt_to_equity": 2.3706287300681366,
+        "fcf_yield": 0.0014790893423572633
       }
     },
     {
       "id": "AVGO",
       "name": "Broadcom Inc.",
       "sector": "Technology",
-      "buffettScore": 60,
-      "owner_earnings": 24535625728,
+      "buffettScore": 64,
+      "owner_earnings": 24535625728.0,
+      "pillars": {
+        "Quality": 80,
+        "Strength": 25,
+        "Moat": 85,
+        "Management": 100,
+        "Value": 40
+      },
       "metrics": {
-        "gm": 0.6303369915073487,
-        "sga_ratio": 0.15254237288135594,
-        "capex_ratio": 0.09296013570822731,
-        "interest_ratio": 0.2636036276340357,
-        "debt_years": 11.461577608142493,
-        "de_ratio": 0.998345104760779
+        "roic": 0.11088107420661915,
+        "gross_margin": 0.6303369915073487,
+        "debt_to_equity": 0.998345104760779,
+        "fcf_yield": 0.01522303753859596
       }
     },
     {
       "id": "JPM",
       "name": "JP Morgan Chase & Co.",
       "sector": "Financial Services",
-      "buffettScore": 10,
-      "owner_earnings": 0,
+      "buffettScore": 2,
+      "owner_earnings": -42012000000.0,
+      "pillars": {
+        "Quality": 0,
+        "Strength": 0,
+        "Moat": 0,
+        "Management": 0,
+        "Value": 10
+      },
       "metrics": {
-        "gm": 0.0,
-        "sga_ratio": 1.0,
-        "capex_ratio": 0.0,
-        "interest_ratio": 0.5,
-        "debt_years": 7.769851721366147,
-        "de_ratio": 1.3177678255471954
+        "roic": 0.0,
+        "gross_margin": 0.0,
+        "debt_to_equity": 1.3177678255471954,
+        "fcf_yield": -0.04841850527516653
       }
     },
     {
       "id": "UNH",
       "name": "UnitedHealth Group Incorporated",
       "sector": "Healthcare",
-      "buffettScore": 60,
-      "owner_earnings": 17768749056,
+      "buffettScore": 78,
+      "owner_earnings": 17768749056.0,
+      "pillars": {
+        "Quality": 55,
+        "Strength": 55,
+        "Moat": 100,
+        "Management": 100,
+        "Value": 100
+      },
       "metrics": {
-        "gm": 0.2233422771174034,
-        "sga_ratio": 0.0,
-        "capex_ratio": 0.24290177021867407,
-        "interest_ratio": 0.12097748319757178,
-        "debt_years": 5.338701839639014,
-        "de_ratio": 0.829976904314792
+        "roic": 0.19041412580648967,
+        "gross_margin": 0.2233422771174034,
+        "debt_to_equity": 0.829976904314792,
+        "fcf_yield": 0.0586947935975321
       }
     },
     {
       "id": "DIS",
       "name": "Walt Disney Company (The)",
       "sector": "Communication Services",
-      "buffettScore": 50,
-      "owner_earnings": 6932624896,
+      "buffettScore": 64,
+      "owner_earnings": 6932624896.0,
+      "pillars": {
+        "Quality": 25,
+        "Strength": 80,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 70
+      },
       "metrics": {
-        "gm": 0.3776436325125761,
-        "sga_ratio": 0.4627443282200847,
-        "capex_ratio": 0.6468881006127056,
-        "interest_ratio": 0.13100057836899942,
-        "debt_years": 3.6179458239277653,
-        "de_ratio": 0.4084591650055976
+        "roic": 0.0893851860468122,
+        "gross_margin": 0.3776436325125761,
+        "debt_to_equity": 0.4084591650055976,
+        "fcf_yield": 0.034544744581599125
       }
     },
     {
       "id": "NKE",
       "name": "Nike, Inc.",
       "sector": "Consumer Cyclical",
-      "buffettScore": 45,
-      "owner_earnings": 3629374976,
+      "buffettScore": 84,
+      "owner_earnings": 3629374976.0,
+      "pillars": {
+        "Quality": 80,
+        "Strength": 75,
+        "Moat": 100,
+        "Management": 100,
+        "Value": 70
+      },
       "metrics": {
-        "gm": 0.42734673605562634,
-        "sga_ratio": 0.8129358261748357,
-        "capex_ratio": 0.13358185771978875,
-        "interest_ratio": 0.0,
-        "debt_years": 3.4228021124572847,
-        "de_ratio": 0.8338757284492545
+        "roic": 0.1527794973381206,
+        "gross_margin": 0.42734673605562634,
+        "debt_to_equity": 0.8338757284492545,
+        "fcf_yield": 0.03658021840516834
       }
     },
     {
       "id": "INTC",
       "name": "Intel Corporation",
       "sector": "Technology",
-      "buffettScore": 35,
-      "owner_earnings": -4420874752,
+      "buffettScore": 34,
+      "owner_earnings": -4420874752.0,
+      "pillars": {
+        "Quality": 25,
+        "Strength": 25,
+        "Moat": 100,
+        "Management": 0,
+        "Value": 10
+      },
       "metrics": {
-        "gm": 0.32664168283083184,
-        "sga_ratio": 0.3174978379936581,
-        "capex_ratio": 1.0,
-        "interest_ratio": 0.5,
-        "debt_years": 10.0,
-        "de_ratio": 0.5037876498438602
+        "roic": -0.031537838036990645,
+        "gross_margin": 0.32664168283083184,
+        "debt_to_equity": 0.5037876498438602,
+        "fcf_yield": -0.02484074173005689
       }
     },
     {
       "id": "AMD",
       "name": "Advanced Micro Devices, Inc.",
       "sector": "Technology",
-      "buffettScore": 90,
-      "owner_earnings": 3245499904,
+      "buffettScore": 74,
+      "owner_earnings": 3245499904.0,
+      "pillars": {
+        "Quality": 50,
+        "Strength": 100,
+        "Moat": 100,
+        "Management": 100,
+        "Value": 10
+      },
       "metrics": {
-        "gm": 0.49350397517936784,
-        "sga_ratio": 0.21870333988212182,
-        "capex_ratio": 0.3875685557586837,
-        "interest_ratio": 0.04410354745925216,
-        "debt_years": 1.347958561852529,
-        "de_ratio": 0.03842412451361868
+        "roic": 0.034894613583138175,
+        "gross_margin": 0.49350397517936784,
+        "debt_to_equity": 0.03842412451361868,
+        "fcf_yield": 0.009530522934693099
       }
     },
     {
       "id": "NFLX",
       "name": "Netflix, Inc.",
       "sector": "Communication Services",
-      "buffettScore": 100,
-      "owner_earnings": 23363989504,
+      "buffettScore": 91,
+      "owner_earnings": 23363989504.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 75,
+        "Moat": 88,
+        "Management": 100,
+        "Value": 100
+      },
       "metrics": {
-        "gm": 0.46056556650417324,
-        "sga_ratio": 0.2571798182680787,
-        "capex_ratio": 0.05045415720661263,
-        "interest_ratio": 0.06899209358304119,
-        "debt_years": 1.788735542173446,
-        "de_ratio": 0.6297719322359626
+        "roic": 0.25833254373422293,
+        "gross_margin": 0.46056556650417324,
+        "debt_to_equity": 0.6297719322359626,
+        "fcf_yield": 0.05830449028368036
       }
     },
     {
       "id": "ADBE",
       "name": "Adobe Inc.",
       "sector": "Technology",
-      "buffettScore": 90,
-      "owner_earnings": 0,
+      "buffettScore": 99,
+      "owner_earnings": 7873000000.0,
+      "pillars": {
+        "Quality": 100,
+        "Strength": 100,
+        "Moat": 97,
+        "Management": 100,
+        "Value": 100
+      },
       "metrics": {
-        "gm": 0.89035108114392,
-        "sga_ratio": 0.3808951794014728,
-        "capex_ratio": 0.0329136690647482,
-        "interest_ratio": 0.0218318046763984,
-        "debt_years": 1.0892086330935251,
-        "de_ratio": 0.4293512938674229
+        "roic": 0.3839591290114578,
+        "gross_margin": 0.89035108114392,
+        "debt_to_equity": 0.4293512938674229,
+        "fcf_yield": 0.05334916335891825
       }
     },
     {
       "id": "CRM",
       "name": "Salesforce, Inc.",
       "sector": "Technology",
-      "buffettScore": 80,
-      "owner_earnings": 14523750400,
+      "buffettScore": 93,
+      "owner_earnings": 14523750400.0,
+      "pillars": {
+        "Quality": 80,
+        "Strength": 100,
+        "Moat": 92,
+        "Management": 100,
+        "Value": 100
+      },
       "metrics": {
-        "gm": 0.7719224172054361,
-        "sga_ratio": 0.5501504170654998,
-        "capex_ratio": 0.10618040987574633,
-        "interest_ratio": 0.0,
-        "debt_years": 1.8383088591253833,
-        "de_ratio": 0.18622594935674236
+        "roic": 0.10564321642665196,
+        "gross_margin": 0.7719224172054361,
+        "debt_to_equity": 0.18622594935674236,
+        "fcf_yield": 0.059848732401117634
       }
     },
     {
       "id": "CMCSA",
       "name": "Comcast Corporation",
       "sector": "Communication Services",
-      "buffettScore": 40,
-      "owner_earnings": 4067249920,
+      "buffettScore": 66,
+      "owner_earnings": 4067249920.0,
+      "pillars": {
+        "Quality": 80,
+        "Strength": 30,
+        "Moat": 100,
+        "Management": 50,
+        "Value": 70
+      },
       "metrics": {
-        "gm": 0.7007540551680662,
-        "sga_ratio": 0.09310881725390692,
-        "capex_ratio": 0.9344120553359684,
-        "interest_ratio": 0.177440123615761,
-        "debt_years": 6.119874011857707,
-        "de_ratio": 1.1581697054698457
+        "roic": 0.12617179249727867,
+        "gross_margin": 0.7007540551680662,
+        "debt_to_equity": 1.1581697054698457,
+        "fcf_yield": 0.03705270822809055
       }
     },
     {
       "id": "VZ",
       "name": "Verizon Communications Inc.",
       "sector": "Communication Services",
-      "buffettScore": 30,
-      "owner_earnings": 15382375424,
+      "buffettScore": 69,
+      "owner_earnings": 15382375424.0,
+      "pillars": {
+        "Quality": 80,
+        "Strength": 0,
+        "Moat": 94,
+        "Management": 100,
+        "Value": 100
+      },
       "metrics": {
-        "gm": 0.5986512152417129,
-        "sga_ratio": 0.4227609027029037,
-        "capex_ratio": 1.0276476636581744,
-        "interest_ratio": 0.2317855399846615,
-        "debt_years": 9.617102707643093,
-        "de_ratio": 1.6965144049094592
+        "roic": 0.10719971299804928,
+        "gross_margin": 0.5986512152417129,
+        "debt_to_equity": 1.6965144049094592,
+        "fcf_yield": 0.08952645150862686
       }
     },
     {
       "id": "T",
       "name": "AT&T Inc.",
       "sector": "Communication Services",
-      "buffettScore": 30,
-      "owner_earnings": 10321250304,
+      "buffettScore": 62,
+      "owner_earnings": 10321250304.0,
+      "pillars": {
+        "Quality": 50,
+        "Strength": 0,
+        "Moat": 100,
+        "Management": 100,
+        "Value": 100
+      },
       "metrics": {
-        "gm": 0.5976572717760921,
-        "sga_ratio": 0.388579634821856,
-        "capex_ratio": 1.8508403361344539,
-        "interest_ratio": 0.2801774166804842,
-        "debt_years": 12.872031421264158,
-        "de_ratio": 1.35019928716514
+        "roic": 0.09834688844044925,
+        "gross_margin": 0.5976572717760921,
+        "debt_to_equity": 1.35019928716514,
+        "fcf_yield": 0.05996899544558284
       }
     }
   ],
   "links": [
     {
       "source": "AAPL",
-      "target": "JNJ",
-      "similarity": 0.95
+      "target": "LLY",
+      "similarity": 0.978
     },
     {
       "source": "AAPL",
-      "target": "ADBE",
-      "similarity": 0.97
+      "target": "PEP",
+      "similarity": 0.982
     },
     {
       "source": "AAPL",
-      "target": "V",
-      "similarity": 0.977
+      "target": "MCD",
+      "similarity": 0.993
     },
     {
       "source": "MSFT",
-      "target": "AMD",
-      "similarity": 0.976
-    },
-    {
-      "source": "MSFT",
-      "target": "GOOGL",
-      "similarity": 0.995
-    },
-    {
-      "source": "MSFT",
-      "target": "META",
-      "similarity": 0.996
-    },
-    {
-      "source": "GOOGL",
-      "target": "AMD",
-      "similarity": 0.979
-    },
-    {
-      "source": "GOOGL",
-      "target": "META",
-      "similarity": 0.989
-    },
-    {
-      "source": "GOOGL",
-      "target": "MSFT",
-      "similarity": 0.995
-    },
-    {
-      "source": "AMZN",
-      "target": "LLY",
-      "similarity": 0.872
-    },
-    {
-      "source": "AMZN",
-      "target": "TSLA",
-      "similarity": 0.92
-    },
-    {
-      "source": "AMZN",
-      "target": "XOM",
-      "similarity": 0.995
-    },
-    {
-      "source": "BRK-B",
-      "target": "JPM",
-      "similarity": 0.94
-    },
-    {
-      "source": "JNJ",
-      "target": "GOOGL",
-      "similarity": 0.962
-    },
-    {
-      "source": "JNJ",
-      "target": "NFLX",
-      "similarity": 0.964
-    },
-    {
-      "source": "JNJ",
-      "target": "AMD",
-      "similarity": 0.991
-    },
-    {
-      "source": "V",
-      "target": "ADBE",
-      "similarity": 0.976
-    },
-    {
-      "source": "V",
-      "target": "AAPL",
-      "similarity": 0.977
-    },
-    {
-      "source": "V",
-      "target": "NVDA",
-      "similarity": 0.987
-    },
-    {
-      "source": "PG",
-      "target": "NFLX",
-      "similarity": 0.951
-    },
-    {
-      "source": "PG",
-      "target": "PEP",
-      "similarity": 0.964
-    },
-    {
-      "source": "PG",
-      "target": "CRM",
-      "similarity": 0.969
-    },
-    {
-      "source": "KO",
-      "target": "LLY",
-      "similarity": 0.926
-    },
-    {
-      "source": "KO",
-      "target": "JNJ",
-      "similarity": 0.943
-    },
-    {
-      "source": "KO",
-      "target": "NFLX",
-      "similarity": 0.972
-    },
-    {
-      "source": "PEP",
-      "target": "NKE",
-      "similarity": 0.946
-    },
-    {
-      "source": "PEP",
-      "target": "DIS",
-      "similarity": 0.947
-    },
-    {
-      "source": "PEP",
-      "target": "PG",
-      "similarity": 0.964
-    },
-    {
-      "source": "COST",
-      "target": "DIS",
-      "similarity": 0.823
-    },
-    {
-      "source": "COST",
-      "target": "PEP",
-      "similarity": 0.842
-    },
-    {
-      "source": "COST",
-      "target": "NKE",
-      "similarity": 0.862
-    },
-    {
-      "source": "MCD",
-      "target": "KO",
-      "similarity": 0.777
-    },
-    {
-      "source": "NVDA",
-      "target": "META",
-      "similarity": 0.945
-    },
-    {
-      "source": "NVDA",
-      "target": "ADBE",
-      "similarity": 0.946
-    },
-    {
-      "source": "NVDA",
-      "target": "V",
-      "similarity": 0.987
-    },
-    {
-      "source": "TSLA",
-      "target": "T",
-      "similarity": 0.803
-    },
-    {
-      "source": "TSLA",
-      "target": "AMZN",
-      "similarity": 0.92
-    },
-    {
-      "source": "TSLA",
-      "target": "XOM",
-      "similarity": 0.946
-    },
-    {
-      "source": "XOM",
-      "target": "T",
-      "similarity": 0.86
-    },
-    {
-      "source": "XOM",
-      "target": "TSLA",
-      "similarity": 0.946
-    },
-    {
-      "source": "XOM",
       "target": "AMZN",
       "similarity": 0.995
     },
     {
-      "source": "META",
-      "target": "AMD",
-      "similarity": 0.97
-    },
-    {
-      "source": "META",
+      "source": "MSFT",
       "target": "GOOGL",
-      "similarity": 0.989
+      "similarity": 1.0
     },
     {
-      "source": "META",
+      "source": "MSFT",
+      "target": "META",
+      "similarity": 1.0
+    },
+    {
+      "source": "GOOGL",
+      "target": "AMZN",
+      "similarity": 0.994
+    },
+    {
+      "source": "GOOGL",
+      "target": "META",
+      "similarity": 1.0
+    },
+    {
+      "source": "GOOGL",
       "target": "MSFT",
-      "similarity": 0.996
+      "similarity": 1.0
     },
     {
-      "source": "LLY",
-      "target": "JNJ",
-      "similarity": 0.96
+      "source": "AMZN",
+      "target": "GOOGL",
+      "similarity": 0.994
     },
     {
-      "source": "LLY",
-      "target": "AMD",
-      "similarity": 0.961
-    },
-    {
-      "source": "LLY",
+      "source": "AMZN",
       "target": "MSFT",
-      "similarity": 0.962
+      "similarity": 0.995
     },
     {
-      "source": "AVGO",
-      "target": "KO",
-      "similarity": 0.875
+      "source": "AMZN",
+      "target": "META",
+      "similarity": 0.995
     },
     {
-      "source": "AVGO",
-      "target": "VZ",
-      "similarity": 0.893
-    },
-    {
-      "source": "AVGO",
-      "target": "UNH",
-      "similarity": 0.965
-    },
-    {
-      "source": "JPM",
-      "target": "INTC",
-      "similarity": 0.795
-    },
-    {
-      "source": "JPM",
-      "target": "BRK-B",
-      "similarity": 0.94
-    },
-    {
-      "source": "UNH",
-      "target": "T",
-      "similarity": 0.893
-    },
-    {
-      "source": "UNH",
-      "target": "VZ",
-      "similarity": 0.912
-    },
-    {
-      "source": "UNH",
+      "source": "JNJ",
       "target": "AVGO",
       "similarity": 0.965
     },
     {
-      "source": "DIS",
-      "target": "PG",
-      "similarity": 0.91
-    },
-    {
-      "source": "DIS",
-      "target": "VZ",
-      "similarity": 0.939
-    },
-    {
-      "source": "DIS",
-      "target": "PEP",
-      "similarity": 0.947
-    },
-    {
-      "source": "NKE",
-      "target": "CRM",
-      "similarity": 0.884
-    },
-    {
-      "source": "NKE",
-      "target": "PEP",
-      "similarity": 0.946
-    },
-    {
-      "source": "NKE",
-      "target": "PG",
-      "similarity": 0.949
-    },
-    {
-      "source": "INTC",
-      "target": "UNH",
-      "similarity": 0.89
-    },
-    {
-      "source": "INTC",
-      "target": "VZ",
-      "similarity": 0.899
-    },
-    {
-      "source": "INTC",
-      "target": "T",
-      "similarity": 0.901
-    },
-    {
-      "source": "AMD",
-      "target": "MSFT",
-      "similarity": 0.976
-    },
-    {
-      "source": "AMD",
-      "target": "GOOGL",
+      "source": "JNJ",
+      "target": "NKE",
       "similarity": 0.979
     },
     {
+      "source": "JNJ",
+      "target": "V",
+      "similarity": 0.987
+    },
+    {
+      "source": "V",
+      "target": "ADBE",
+      "similarity": 0.986
+    },
+    {
+      "source": "V",
+      "target": "JNJ",
+      "similarity": 0.987
+    },
+    {
+      "source": "V",
+      "target": "NKE",
+      "similarity": 0.996
+    },
+    {
+      "source": "PG",
+      "target": "MSFT",
+      "similarity": 0.973
+    },
+    {
+      "source": "PG",
+      "target": "ADBE",
+      "similarity": 0.973
+    },
+    {
+      "source": "PG",
+      "target": "PEP",
+      "similarity": 0.989
+    },
+    {
+      "source": "KO",
+      "target": "AAPL",
+      "similarity": 0.971
+    },
+    {
+      "source": "KO",
+      "target": "MCD",
+      "similarity": 0.977
+    },
+    {
+      "source": "KO",
+      "target": "LLY",
+      "similarity": 0.992
+    },
+    {
+      "source": "PEP",
+      "target": "AAPL",
+      "similarity": 0.982
+    },
+    {
+      "source": "PEP",
+      "target": "PG",
+      "similarity": 0.989
+    },
+    {
+      "source": "PEP",
+      "target": "CMCSA",
+      "similarity": 0.99
+    },
+    {
+      "source": "COST",
+      "target": "JNJ",
+      "similarity": 0.956
+    },
+    {
+      "source": "COST",
+      "target": "NKE",
+      "similarity": 0.963
+    },
+    {
+      "source": "COST",
+      "target": "AMD",
+      "similarity": 0.983
+    },
+    {
+      "source": "MCD",
+      "target": "PEP",
+      "similarity": 0.976
+    },
+    {
+      "source": "MCD",
+      "target": "KO",
+      "similarity": 0.977
+    },
+    {
+      "source": "MCD",
+      "target": "AAPL",
+      "similarity": 0.993
+    },
+    {
+      "source": "NVDA",
+      "target": "META",
+      "similarity": 0.984
+    },
+    {
+      "source": "NVDA",
+      "target": "MSFT",
+      "similarity": 0.986
+    },
+    {
+      "source": "NVDA",
+      "target": "GOOGL",
+      "similarity": 0.988
+    },
+    {
+      "source": "TSLA",
+      "target": "DIS",
+      "similarity": 0.883
+    },
+    {
+      "source": "TSLA",
+      "target": "COST",
+      "similarity": 0.909
+    },
+    {
+      "source": "TSLA",
+      "target": "AMD",
+      "similarity": 0.925
+    },
+    {
+      "source": "XOM",
+      "target": "CRM",
+      "similarity": 0.962
+    },
+    {
+      "source": "XOM",
+      "target": "AMZN",
+      "similarity": 0.971
+    },
+    {
+      "source": "XOM",
+      "target": "DIS",
+      "similarity": 0.982
+    },
+    {
+      "source": "META",
+      "target": "AMZN",
+      "similarity": 0.995
+    },
+    {
+      "source": "META",
+      "target": "GOOGL",
+      "similarity": 1.0
+    },
+    {
+      "source": "META",
+      "target": "MSFT",
+      "similarity": 1.0
+    },
+    {
+      "source": "LLY",
+      "target": "MCD",
+      "similarity": 0.97
+    },
+    {
+      "source": "LLY",
+      "target": "AAPL",
+      "similarity": 0.978
+    },
+    {
+      "source": "LLY",
+      "target": "KO",
+      "similarity": 0.992
+    },
+    {
+      "source": "AVGO",
+      "target": "NKE",
+      "similarity": 0.953
+    },
+    {
+      "source": "AVGO",
+      "target": "V",
+      "similarity": 0.96
+    },
+    {
+      "source": "AVGO",
+      "target": "JNJ",
+      "similarity": 0.965
+    },
+    {
+      "source": "UNH",
+      "target": "NKE",
+      "similarity": 0.971
+    },
+    {
+      "source": "UNH",
+      "target": "NFLX",
+      "similarity": 0.972
+    },
+    {
+      "source": "UNH",
+      "target": "CRM",
+      "similarity": 0.972
+    },
+    {
+      "source": "DIS",
+      "target": "UNH",
+      "similarity": 0.934
+    },
+    {
+      "source": "DIS",
+      "target": "CRM",
+      "similarity": 0.941
+    },
+    {
+      "source": "DIS",
+      "target": "XOM",
+      "similarity": 0.982
+    },
+    {
+      "source": "NKE",
+      "target": "CRM",
+      "similarity": 0.983
+    },
+    {
+      "source": "NKE",
+      "target": "ADBE",
+      "similarity": 0.986
+    },
+    {
+      "source": "NKE",
+      "target": "V",
+      "similarity": 0.996
+    },
+    {
+      "source": "AMD",
+      "target": "AMZN",
+      "similarity": 0.929
+    },
+    {
       "source": "AMD",
       "target": "JNJ",
-      "similarity": 0.991
+      "similarity": 0.939
+    },
+    {
+      "source": "AMD",
+      "target": "COST",
+      "similarity": 0.983
     },
     {
       "source": "NFLX",
-      "target": "JNJ",
-      "similarity": 0.964
+      "target": "V",
+      "similarity": 0.986
+    },
+    {
+      "source": "NFLX",
+      "target": "CRM",
+      "similarity": 0.988
     },
     {
       "source": "NFLX",
       "target": "ADBE",
-      "similarity": 0.965
-    },
-    {
-      "source": "NFLX",
-      "target": "KO",
-      "similarity": 0.972
+      "similarity": 0.995
     },
     {
       "source": "ADBE",
-      "target": "AAPL",
-      "similarity": 0.97
+      "target": "NKE",
+      "similarity": 0.986
     },
     {
       "source": "ADBE",
-      "target": "V",
-      "similarity": 0.976
+      "target": "NFLX",
+      "similarity": 0.995
     },
     {
       "source": "ADBE",
       "target": "CRM",
-      "similarity": 0.976
+      "similarity": 0.997
     },
     {
       "source": "CRM",
-      "target": "JNJ",
-      "similarity": 0.962
+      "target": "NKE",
+      "similarity": 0.983
     },
     {
       "source": "CRM",
-      "target": "PG",
-      "similarity": 0.969
+      "target": "NFLX",
+      "similarity": 0.988
     },
     {
       "source": "CRM",
       "target": "ADBE",
-      "similarity": 0.976
+      "similarity": 0.997
     },
     {
       "source": "CMCSA",
-      "target": "T",
-      "similarity": 0.918
+      "target": "AAPL",
+      "similarity": 0.963
     },
     {
       "source": "CMCSA",
-      "target": "LLY",
-      "similarity": 0.927
+      "target": "MCD",
+      "similarity": 0.969
     },
     {
       "source": "CMCSA",
-      "target": "VZ",
-      "similarity": 0.941
-    },
-    {
-      "source": "VZ",
-      "target": "DIS",
-      "similarity": 0.939
+      "target": "PEP",
+      "similarity": 0.99
     },
     {
       "source": "VZ",
       "target": "CMCSA",
-      "similarity": 0.941
+      "similarity": 0.94
+    },
+    {
+      "source": "VZ",
+      "target": "UNH",
+      "similarity": 0.948
     },
     {
       "source": "VZ",
       "target": "T",
-      "similarity": 0.974
-    },
-    {
-      "source": "T",
-      "target": "INTC",
-      "similarity": 0.901
+      "similarity": 0.987
     },
     {
       "source": "T",
       "target": "CMCSA",
-      "similarity": 0.918
+      "similarity": 0.914
+    },
+    {
+      "source": "T",
+      "target": "UNH",
+      "similarity": 0.957
     },
     {
       "source": "T",
       "target": "VZ",
-      "similarity": 0.974
+      "similarity": 0.987
     }
   ]
 }
