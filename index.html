@@ -16,6 +16,9 @@
         /* SIDEBAR */
         #sidebar { width: 400px; background: var(--sidebar); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; z-index: 20; padding: 24px; box-shadow: -10px 0 30px rgba(0,0,0,0.5); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         #sidebar.hidden { transform: translateX(100%); width: 0; padding: 0; }
+        /* Add to your <style> block */
+        .section-header { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-top: 15px; margin-bottom: 5px; font-weight: 700; border-bottom: 1px solid #222; padding-bottom: 2px; }
+        .metric-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding: 6px; background: rgba(255,255,255,0.02); border-radius: 4px; }
         
         /* CONTROLS */
         #controls { position: absolute; top: 24px; left: 24px; z-index: 10; display: flex; gap: 12px; }
