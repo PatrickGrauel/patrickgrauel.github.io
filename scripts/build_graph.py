@@ -15,12 +15,13 @@ TICKERS = [
     "DIS", "NKE", "INTC", "AMD", "NFLX", "ADBE", "CRM", "CMCSA", "VZ", "T"
 ]
 
-def get_buffett_analysis(ticker):
+def get_buffett_indicators(ticker):
     """
-    Extracts deep 'Old School Value' metrics:
-    - SG&A Efficiency (<30% is best)
-    - CapEx Intensity (<25% is best)
-    - Interest Coverage (Interest < 15% of Op Income)
+    Extracts the 'Buffett Indicator' Moat Metrics:
+    - Gross Margin Consistency (>40%)
+    - SG&A Efficiency (<30% of Gross Profit)
+    - CapEx Intensity (<25% of Net Income)
+    - Fortress Balance Sheet (Debt < 3x Earnings)
     """
     try:
         stock = yf.Ticker(ticker)
@@ -33,7 +34,7 @@ def get_buffett_analysis(ticker):
         if inc.empty or bal.empty or cash.empty:
             return None
 
-        # Helper to get latest value or 0
+        # Helper to get latest value safely
         def get_latest(df, key):
             if key in df:
                 val = df[key].iloc[-1]
@@ -49,60 +50,59 @@ def get_buffett_analysis(ticker):
         sga = get_latest(inc, 'Selling General And Administration')
         interest = get_latest(inc, 'Interest Expense')
         
-        # Note: CapEx is usually negative in cashflow, so we flip it
+        # CapEx is usually negative in cashflow, using abs() to handle it
         capex = abs(get_latest(cash, 'Capital Expenditure'))
         
         total_debt = get_latest(bal, 'Total Debt')
         equity = get_latest(bal, 'Stockholders Equity')
 
-        # --- CALCULATE RATIOS ---
+        # --- CALCULATE BUFFETT INDICATORS ---
         
-        # 1. Gross Margin (>40% = Moat)
+        # 1. Gross Margin (>40% indicates a Moat)
         gm = (gross_profit / revenue) if revenue > 0 else 0
         
-        # 2. SG&A Efficiency (<30% of Gross Profit is fantastic)
+        # 2. SG&A Efficiency (<30% of Gross Profit is best)
         sga_ratio = (sga / gross_profit) if gross_profit > 0 else 1.0
         
         # 3. CapEx Intensity (<25% of Net Income = Moat)
         capex_ratio = (capex / net_income) if net_income > 0 else 1.0
         
         # 4. Interest Coverage (Interest < 15% of Op Income)
-        # Some companies report interest as negative numbers, some positive. use abs().
         interest_ratio = (abs(interest) / op_income) if op_income > 0 else 0.5
         
-        # 5. Debt Payoff Years (Total Debt / Net Income < 3 years is great)
+        # 5. Debt Payoff Years (Total Debt / Net Income < 3 years is fortress)
         debt_payoff_years = (total_debt / net_income) if net_income > 0 else 10.0
 
-        # 6. Debt to Equity (< 0.8 is great)
+        # 6. Debt to Equity (< 0.8 is conservative)
         de_ratio = (total_debt / equity) if equity > 0 else 10.0
 
-        # --- SCORING (The "Report Card") ---
+        # --- SCORING LOGIC ---
         score = 0
         
-        # Gross Margin
+        # Gross Margin (Moat Proxy)
         if gm > 0.40: score += 20
         elif gm > 0.20: score += 10
         
-        # SG&A (Lower is better)
+        # SG&A (Operational Efficiency)
         if sga_ratio < 0.30: score += 20
         elif sga_ratio < 0.50: score += 10
-        elif sga_ratio > 0.80: score -= 10
+        elif sga_ratio > 0.80: score -= 10 # Penalty for bloat
         
-        # CapEx (Lower is better)
+        # CapEx (Capital Efficiency)
         if capex_ratio < 0.25: score += 20
         elif capex_ratio < 0.50: score += 10
         
-        # Interest Coverage
+        # Interest Coverage (Safety)
         if interest_ratio < 0.15: score += 10
         
-        # Debt Payoff
+        # Debt Payoff (Solvency)
         if debt_payoff_years < 3.0: score += 15
         elif debt_payoff_years < 5.0: score += 5
         
-        # Debt/Equity
+        # Debt/Equity (Leverage)
         if de_ratio < 0.8: score += 15
 
-        # Final Cap
+        # Cap score at 100
         score = min(max(round(score), 0), 100)
         
         info = stock.info
@@ -113,7 +113,7 @@ def get_buffett_analysis(ticker):
             "sector": info.get('sector', 'Unknown'),
             "buffettScore": score,
             "owner_earnings": info.get('freeCashflow', 0) or 0,
-            # DETAILED METRICS FOR FRONTEND
+            # DETAILED INDICATORS FOR FRONTEND
             "metrics": {
                 "gm": gm,
                 "sga_ratio": sga_ratio,
@@ -129,18 +129,17 @@ def get_buffett_analysis(ticker):
         return None
 
 def build_similarity_links(df):
-    # Cluster by Fundamental DNA (Margins, CapEx, Debt Structure)
-    # We flatten the metrics dict into the main df for clustering
+    # Cluster companies based on the Buffett Indicators (Not price)
     metrics_df = pd.json_normalize(df['metrics'])
     
-    # Normalize
+    # Normalize data for fair comparison
     scaler = MinMaxScaler()
     features_norm = scaler.fit_transform(metrics_df.fillna(0))
     sim_matrix = cosine_similarity(features_norm)
     
     links = []
     for i in range(len(df)):
-        # Connect to top 3 most similar peers
+        # Connect to top 3 most similar fundamental peers
         similar_indices = sim_matrix[i].argsort()[-4:-1]
         for neighbor_idx in similar_indices:
             sim_score = sim_matrix[i][neighbor_idx]
@@ -153,21 +152,21 @@ def build_similarity_links(df):
     return links
 
 if __name__ == "__main__":
-    print(f"🚀 Analyzing {len(TICKERS)} companies using Old School Value rules...")
+    print(f"🚀 Running Buffett Indicator Analysis on {len(TICKERS)} companies...")
     
     data = []
     for t in tqdm(TICKERS):
-        res = get_buffett_analysis(t)
+        res = get_buffett_indicators(t)
         if res: 
             data.append(res)
-        time.sleep(0.25) # Be nice to API
+        time.sleep(0.25) # Rate limit protection
         
     if not data:
         print("❌ No data fetched.")
         exit(1)
 
     df = pd.DataFrame(data)
-    print("🕸️ Building Network...")
+    print("🕸️ Building Fundamental Similarity Graph...")
     links = build_similarity_links(df)
     
     output = {
@@ -179,4 +178,4 @@ if __name__ == "__main__":
     with open('data/graph_data.json', 'w') as f:
         json.dump(output, f, indent=2)
         
-    print(f"✅ Data generated: {len(df)} nodes, {len(links)} links.")
+    print(f"✅ Success: Analyzed {len(df)} companies.")
