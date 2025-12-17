@@ -8,178 +8,160 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics.pairwise import cosine_similarity
 from tqdm import tqdm
 
-# EXPANDED TARGET LIST (Test with these, then swap for full S&P 500)
+# EXPANDED TARGET LIST (30+ Tickers)
 TICKERS = [
     "AAPL", "MSFT", "GOOGL", "AMZN", "BRK-B", "JNJ", "V", "PG", "KO", "PEP", 
     "COST", "MCD", "NVDA", "TSLA", "XOM", "META", "LLY", "AVGO", "JPM", "UNH",
     "DIS", "NKE", "INTC", "AMD", "NFLX", "ADBE", "CRM", "CMCSA", "VZ", "T",
-    "BMW.DE", "SIE.DE", "SAP", "OR.PA", "MC.PA" # Added some EU stocks for industry variety
+    "BMW.DE", "SIE.DE", "SAP", "OR.PA", "MC.PA"
 ]
 
-def get_buffett_deep_dive(ticker):
+def get_data(ticker):
     try:
         stock = yf.Ticker(ticker)
+        info = stock.info
         
-        # 1. Fetch Financials (Income, Balance, Cashflow)
+        # Fetch Financials (Full History available)
         inc = stock.financials.T.sort_index()
         bal = stock.balance_sheet.T.sort_index()
         cash = stock.cashflow.T.sort_index()
-        info = stock.info
         
         if inc.empty or bal.empty: return None
 
-        # Helper: Safe Extraction
-        def get_val(df, key, default=0):
-            try:
-                # Try exact match first
-                if key in df: return float(df[key].iloc[-1])
-                # Try "fuzzy" match or fallback
-                return default
-            except: return default
+        # --- HELPERS ---
+        def safe_get(df, key):
+            if key in df: return df[key]
+            return pd.Series(dtype=float)
 
-        # --- RAW DATA MINING (The "Every Metric" Requirement) ---
-        revenue = get_val(inc, 'Total Revenue')
-        gross_profit = get_val(inc, 'Gross Profit')
-        op_income = get_val(inc, 'Operating Income')
-        net_income = get_val(inc, 'Net Income')
-        sga = get_val(inc, 'Selling General And Administration')
-        rd = get_val(inc, 'Research And Development')
-        depreciation = get_val(cash, 'Depreciation And Amortization') # Often better in CF stmt
-        interest = abs(get_val(inc, 'Interest Expense'))
+        # --- 1. HISTORICAL SERIES (For Charts) ---
+        # We align everything to the Income Statement dates
+        dates = inc.index.strftime('%Y').tolist()
         
-        cash_equiv = get_val(bal, 'Cash And Cash Equivalents')
-        total_debt = get_val(bal, 'Total Debt')
-        equity = get_val(bal, 'Stockholders Equity')
-        # Treasury Stock is often hidden in Equity as negative value, or explicit field
-        treasury_stock = get_val(bal, 'Treasury Stock') 
-        
-        capex = abs(get_val(cash, 'Capital Expenditure'))
-        fcf = info.get('freeCashflow', 0) or (get_val(cash, 'Free Cash Flow', 0))
-        shares = info.get('sharesOutstanding', 1)
-        
-        # --- CALCULATE THE 20 METRICS ---
-        
-        # 1. Margins
-        gross_margin = (gross_profit / revenue) if revenue > 0 else 0
-        op_margin = (op_income / revenue) if revenue > 0 else 0
-        net_margin = (net_income / revenue) if revenue > 0 else 0
-        
-        # 2. Efficiency (Buffett Red Flags)
-        sga_margin = (sga / gross_profit) if gross_profit > 0 else 0 # <30% is good
-        rd_margin = (rd / gross_profit) if gross_profit > 0 else 0 # High R&D threatens moat
-        dep_margin = (depreciation / gross_profit) if gross_profit > 0 else 0 # <10% is good
-        
-        # 3. Solvency
-        interest_coverage = (op_income / interest) if interest > 0 else 100
-        debt_to_equity = (total_debt / equity) if equity > 0 else 10
-        debt_payoff_years = (total_debt / net_income) if net_income > 0 else 10
-        
-        # 4. Capital Allocation
-        capex_ratio = (capex / net_income) if net_income > 0 else 1
-        fcf_yield = (fcf / info.get('marketCap', 1)) if info.get('marketCap') else 0
-        
-        # 5. ROIC (Quality)
-        invested_capital = equity + total_debt
-        roic = (op_income / invested_capital) if invested_capital > 0 else 0
+        # Extract Series
+        rev_series = safe_get(inc, 'Total Revenue')
+        gp_series = safe_get(inc, 'Gross Profit')
+        ni_series = safe_get(inc, 'Net Income')
+        debt_series = safe_get(bal, 'Total Debt').reindex(inc.index, method='nearest')
+        equity_series = safe_get(bal, 'Stockholders Equity').reindex(inc.index, method='nearest')
+        capex_series = abs(safe_get(cash, 'Capital Expenditure')).reindex(inc.index, method='nearest')
+        fcf_series = (safe_get(cash, 'Free Cash Flow')).reindex(inc.index, method='nearest')
 
-        # --- SCORING (Aggregated for Radar) ---
-        # We still need the scores for the "Pillars"
-        score_quality = 0
-        if roic > 0.15: score_quality += 50
-        if gross_margin > 0.40: score_quality += 50
+        # Calculate Metric Series (Aligned)
+        # 1. Gross Margin
+        gm_series = (gp_series / rev_series).fillna(0)
+        # 2. Debt/Equity
+        de_series = (debt_series / equity_series).fillna(0)
+        # 3. ROIC Proxy (Net Income / (Equity + Debt)) - simplified
+        invested_cap = equity_series + debt_series
+        roic_series = (ni_series / invested_cap).fillna(0)
         
-        score_strength = 0
-        if interest_coverage > 5: score_strength += 50
-        if debt_to_equity < 0.8: score_strength += 50
+        # Format for JSON: [{year: '2020', value: 0.45}, ...]
+        def to_hist(series):
+            return [{"year": d, "value": round(float(v), 4)} 
+                    for d, v in zip(dates, series) if not pd.isna(v)]
+
+        history = {
+            "gross_margin": to_hist(gm_series),
+            "debt_to_equity": to_hist(de_series),
+            "roic": to_hist(roic_series),
+            "fcf": to_hist(fcf_series),
+            "revenue": to_hist(rev_series)
+        }
+
+        # --- 2. SNAPSHOT METRICS (For Scoring & Radar) ---
+        # Use Weighted Average of last 4 years for performance metrics
+        def w_avg(s): 
+            if len(s) == 0: return 0
+            vals = s.tail(4).values
+            weights = np.arange(1, len(vals)+1)
+            return float(np.average(vals, weights=weights))
+
+        # Current Values (Snapshot)
+        curr_debt = float(debt_series.iloc[-1]) if not debt_series.empty else 0
+        curr_equity = float(equity_series.iloc[-1]) if not equity_series.empty else 1
+        curr_fcf = float(fcf_series.iloc[-1]) if not fcf_series.empty else 0
         
-        score_moat = 0
-        if sga_margin < 0.30: score_moat += 40
-        if dep_margin < 0.10: score_moat += 30
-        if net_margin > 0.20: score_moat += 30
+        # Averages
+        avg_gm = w_avg(gm_series)
+        avg_roic = w_avg(roic_series)
+        avg_de = w_avg(de_series)
+
+        # --- 3. SCORING (Buffett Composite) ---
+        score = 0
+        # Quality
+        if avg_gm > 0.40: score += 20
+        elif avg_gm > 0.20: score += 10
+        if avg_roic > 0.15: score += 20
         
-        score_mgmt = 0
-        if capex_ratio < 0.50: score_mgmt += 50
-        if treasury_stock != 0: score_mgmt += 50 # Presence of buybacks
+        # Health
+        if avg_de < 0.8: score += 20
+        elif avg_de < 2.0: score += 10
         
-        score_value = min(fcf_yield * 1000, 100) # 10% yield = 100 score
+        # Value/Growth
+        fcf_yield = (curr_fcf / info.get('marketCap', 1e9)) if info.get('marketCap') else 0
+        if fcf_yield > 0.05: score += 20
         
-        final_score = (score_quality + score_strength + score_moat + score_mgmt + score_value) / 5
+        # Consistency Bonus (Low Volatility in Margins)
+        if gm_series.std() < 0.05: score += 20
+        
+        score = min(score, 100)
 
         return {
             "id": ticker,
             "name": info.get('shortName', ticker),
             "sector": info.get('sector', 'Unknown'),
-            "buffettScore": round(final_score),
-            "owner_earnings": fcf,
-            # AGGREGATED PILLARS (For Radar)
+            "industry": info.get('industry', 'Unknown'), # NEW: For drilldown
+            "buffettScore": int(score),
+            "owner_earnings": curr_fcf,
             "pillars": {
-                "Quality": round(score_quality),
-                "Strength": round(score_strength),
-                "Moat": round(score_moat),
-                "Management": round(score_mgmt),
-                "Value": round(score_value)
+                "Quality": min(int(avg_gm * 200), 100), # Mock mapping
+                "Strength": min(int((1/avg_de)*50), 100) if avg_de > 0 else 100,
+                "Moat": min(int(avg_roic * 500), 100),
+                "Value": min(int(fcf_yield * 1000), 100),
+                "Growth": 50 # Placeholder
             },
-            # RAW DATA (The "Every Metric" List)
-            "raw": {
-                "Gross Margin": f"{gross_margin:.1%}",
-                "SG&A / GP": f"{sga_margin:.1%}",
-                "R&D / GP": f"{rd_margin:.1%}",
-                "Depr / GP": f"{dep_margin:.1%}",
-                "Net Margin": f"{net_margin:.1%}",
-                "Int. Coverage": f"{interest_coverage:.1f}x",
-                "Debt/Equity": f"{debt_to_equity:.2f}",
-                "Debt Payoff": f"{debt_payoff_years:.1f} yrs",
-                "CapEx/Earnings": f"{capex_ratio:.1%}",
-                "ROIC": f"{roic:.1%}",
-                "FCF Yield": f"{fcf_yield:.1%}",
-                "Buybacks": "Yes" if treasury_stock != 0 else "No"
-            },
-            # NUMERIC METRICS (For sorting/clustering)
             "metrics": {
-                "gross_margin": gross_margin,
-                "debt_to_equity": debt_to_equity,
-                "roic": roic,
-                "fcf_yield": fcf_yield
-            }
+                "gross_margin": float(avg_gm),
+                "debt_to_equity": float(avg_de),
+                "roic": float(avg_roic),
+                "fcf_yield": float(fcf_yield)
+            },
+            "history": history # NEW: Full time series
         }
 
     except Exception as e:
-        print(f"⚠️ Error {ticker}: {e}")
+        print(f"⚠️ {ticker}: {e}")
         return None
 
-def build_similarity_links(df):
-    features = pd.DataFrame(df['pillars'].tolist())
+def build_graph(df):
+    # Cluster by Metrics
+    features = pd.DataFrame(df['pillars'].tolist()).fillna(0)
     scaler = MinMaxScaler()
-    features_norm = scaler.fit_transform(features)
-    sim_matrix = cosine_similarity(features_norm)
+    sim_matrix = cosine_similarity(scaler.fit_transform(features))
     
     links = []
     for i in range(len(df)):
-        similar_indices = sim_matrix[i].argsort()[-4:-1]
-        for neighbor_idx in similar_indices:
-            sim_score = sim_matrix[i][neighbor_idx]
-            if sim_score > 0.80: 
+        # Top 3 neighbors
+        for idx in sim_matrix[i].argsort()[-4:-1]:
+            sim = sim_matrix[i][idx]
+            if sim > 0.75:
                 links.append({
                     "source": df.iloc[i]['id'],
-                    "target": df.iloc[neighbor_idx]['id'],
-                    "similarity": round(float(sim_score), 3)
+                    "target": df.iloc[idx]['id'],
+                    "similarity": round(float(sim), 3)
                 })
     return links
 
 if __name__ == "__main__":
-    print(f"🚀 Running Buffett Deep Dive...")
     data = []
     for t in tqdm(TICKERS):
-        res = get_buffett_deep_dive(t)
+        res = get_data(t)
         if res: data.append(res)
         time.sleep(0.1)
         
     df = pd.DataFrame(data)
-    links = build_similarity_links(df)
-    
-    output = {"nodes": df.to_dict(orient='records'), "links": links}
+    links = build_graph(df)
     
     os.makedirs('data', exist_ok=True)
     with open('data/graph_data.json', 'w') as f:
-        json.dump(output, f, indent=2)
-    print("✅ Done.")
+        json.dump({"nodes": df.to_dict(orient='records'), "links": links}, f)
