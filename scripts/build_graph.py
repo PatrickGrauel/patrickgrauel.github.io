@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import json
 import os
-import time
+import sys
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics.pairwise import cosine_similarity
 from tqdm import tqdm
@@ -71,7 +71,7 @@ def get_data(ticker):
                 "roic": roic,
                 "fcf_yield": fcf_yield
             },
-            # FULL RAW DATA FOR SIDEBAR (Display Strings)
+            # FULL RAW DATA FOR SIDEBAR
             "raw": {
                 "Gross Margin": f"{gross_margin:.1%}",
                 "Net Margin": f"{net_margin:.1%}",
@@ -90,31 +90,43 @@ def get_data(ticker):
 
 def build_graph(df):
     # 1. CALCULATE INDUSTRY AVERAGES
-    sector_avgs = df.groupby('sector')['metrics'].apply(lambda x: pd.DataFrame(x.tolist()).mean()).to_dict('index')
+    # Handle cases where sector might be missing or single items
+    if 'sector' in df.columns:
+        sector_avgs = df.groupby('sector')['metrics'].apply(lambda x: pd.DataFrame(x.tolist()).mean()).to_dict('index')
+    else:
+        sector_avgs = {}
 
     # 2. INJECT AVERAGES
     def inject_avg(row):
-        sec = row['sector']
-        if sec in sector_avgs:
+        sec = row.get('sector')
+        if sec and sec in sector_avgs:
             row['sector_avg'] = sector_avgs[sec]
         else:
-            row['sector_avg'] = row['metrics']
+            row['sector_avg'] = row['metrics'] # Fallback to self if no peer group
         return row
     
     df = df.apply(inject_avg, axis=1)
 
     # 3. BUILD LINKS
+    # Normalize features for similarity
     features = pd.DataFrame(df['metrics'].tolist()).fillna(0)
     scaler = MinMaxScaler()
-    sim_matrix = cosine_similarity(scaler.fit_transform(features))
+    features_norm = scaler.fit_transform(features)
+    sim_matrix = cosine_similarity(features_norm)
     
     links = []
     for i in range(len(df)):
-        for idx in sim_matrix[i].argsort()[-4:-1]:
-            if sim_matrix[i][idx] > 0.8:
+        # Get top 3 similar nodes (excluding self at index -1)
+        # argsort returns indices of sorted elements. [-4:-1] takes the last 3 before the self-match.
+        similar_indices = sim_matrix[i].argsort()[-4:-1]
+        
+        for idx in similar_indices:
+            sim_score = sim_matrix[i][idx]
+            if sim_score > 0.8:
                 links.append({
                     "source": df.iloc[i]['id'],
-                    "target": df.iloc[idx]['id']
+                    "target": df.iloc[idx]['id'],
+                    "similarity": float(sim_score)
                 })
     return links
 
@@ -129,30 +141,18 @@ if __name__ == "__main__":
     df = pd.DataFrame(data)
     links = build_graph(df)
     
-    # --- CRITICAL FIX: ENSURE FOLDER EXISTS & USE CORRECT PATH ---
-    os.makedirs('data', exist_ok=True)
-    with open('data/graph_data.json', 'w') as f:
+    # --- ABSOLUTE PATH FIX ---
+    # This determines the root directory based on where the script is located
+    # script_dir = /home/.../repo/scripts
+    # root_dir = /home/.../repo
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    root_dir = os.path.dirname(script_dir)
+    data_dir = os.path.join(root_dir, 'data')
+    
+    os.makedirs(data_dir, exist_ok=True)
+    output_path = os.path.join(data_dir, 'graph_data.json')
+    
+    with open(output_path, 'w') as f:
         json.dump({"nodes": df.to_dict(orient='records'), "links": links}, f)
         
-    print(f"✅ Success! Saved {len(df)} nodes to data/graph_data.json")
-
-if __name__ == "__main__":
-    print("Fetching data...")
-    data = [get_data(t) for t in tqdm(TICKERS) if get_data(t)]
-    
-    if not data:
-        print("❌ No data found.")
-        exit(1)
-        
-    df = pd.DataFrame(data)
-    links = build_graph(df)
-    
-    # --- THE FIX: REMOVE THE ".." ---
-    # 1. Create the 'data' folder if it doesn't exist
-    os.makedirs('data', exist_ok=True)
-    
-    # 2. Save inside the 'data' folder (NO DOTS)
-    with open('data/graph_data.json', 'w') as f:
-        json.dump({"nodes": df.to_dict(orient='records'), "links": links}, f)
-        
-    print(f"✅ Success! Saved {len(df)} nodes to data/graph_data.json")
+    print(f"✅ Success! Saved {len(df)} nodes to {output_path}")
