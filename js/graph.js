@@ -1,6 +1,3 @@
-// Buffett Focus - Stock Network Analyzer
-// D3.js Force-Directed Graph Implementation
-
 const app = {
     svg: null,
     g: null,
@@ -10,13 +7,9 @@ const app = {
     industryColors: {
         'Technology': '#00d4ff',
         'Communication Services': '#ff6b9d',
-        'Comm Services': '#ff6b9d',
         'Consumer Cyclical': '#ffa500',
-        'Consumer Disc': '#ffa500',
         'Consumer Defensive': '#32cd32',
-        'Cons Staples': '#32cd32',
         'Financial Services': '#ffd700',
-        'Financials': '#ffd700',
         'Healthcare': '#ff1493',
         'Industrials': '#4169e1',
         'Energy': '#dc143c',
@@ -31,14 +24,13 @@ const app = {
     },
     
     setupSVG() {
-        const container = d3.select('#graph-container');
-        const width = container.node().clientWidth;
-        const height = container.node().clientHeight;
-        
         this.svg = d3.select('#main-svg');
+        const container = d3.select('#graph-container');
+        
+        // Group for content
         this.g = this.svg.append('g');
         
-        // Setup zoom behavior
+        // Zoom Logic
         const zoom = d3.zoom()
             .scaleExtent([0.1, 4])
             .on('zoom', (event) => {
@@ -47,139 +39,90 @@ const app = {
         
         this.svg.call(zoom);
         this.currentZoom = zoom;
-        this.currentTransform = d3.zoomIdentity;
+        
+        // Background click clears selection
+        this.svg.on('click', (e) => {
+            if (e.target.tagName === 'svg') {
+                this.resetHighlight();
+                d3.select('#sidebar').classed('hidden', true); // Optional: hide sidebar
+            }
+        });
     },
     
     loadData() {
         d3.json('data/graph_data.json')
             .then(data => {
-                console.log('Data loaded:', data);
                 this.nodes = data.nodes;
-                
-                // Generate connections based on sector and industry
-                this.links = this.generateConnections(data.nodes);
-                
+                this.links = data.links || [];
                 this.industryAverages = data.industry_averages || {};
+                
                 this.renderGraph();
                 this.populateTickerList();
             })
-            .catch(error => {
-                console.error('Error loading data:', error);
-                alert('Failed to load graph data. Please check the console for details.');
-            });
-    },
-    
-    generateConnections(nodes) {
-        const links = [];
-        
-        // Create industry-based connections (stronger)
-        const industryGroups = {};
-        nodes.forEach(node => {
-            if (!industryGroups[node.industry]) {
-                industryGroups[node.industry] = [];
-            }
-            industryGroups[node.industry].push(node);
-        });
-        
-        // Connect nodes within same industry
-        Object.values(industryGroups).forEach(group => {
-            for (let i = 0; i < group.length; i++) {
-                for (let j = i + 1; j < group.length; j++) {
-                    links.push({
-                        source: group[i].id,
-                        target: group[j].id,
-                        type: 'industry',
-                        strength: 1
-                    });
-                }
-            }
-        });
-        
-        // Create sector-based connections (weaker, only if not in same industry)
-        const sectorGroups = {};
-        nodes.forEach(node => {
-            if (!sectorGroups[node.sector]) {
-                sectorGroups[node.sector] = [];
-            }
-            sectorGroups[node.sector].push(node);
-        });
-        
-        // Connect nodes within same sector but different industries
-        Object.values(sectorGroups).forEach(group => {
-            for (let i = 0; i < group.length; i++) {
-                for (let j = i + 1; j < group.length; j++) {
-                    if (group[i].industry !== group[j].industry) {
-                        links.push({
-                            source: group[i].id,
-                            target: group[j].id,
-                            type: 'sector',
-                            strength: 0.3
-                        });
-                    }
-                }
-            }
-        });
-        
-        console.log(`Generated ${links.length} connections`);
-        return links;
+            .catch(err => console.error("Data load failed:", err));
     },
     
     renderGraph() {
         const width = this.svg.node().clientWidth;
         const height = this.svg.node().clientHeight;
         
-        // Create force simulation
+        // SIMULATION SETUP
         this.simulation = d3.forceSimulation(this.nodes)
-            .force('charge', d3.forceManyBody().strength(-200))
+            .force('charge', d3.forceManyBody().strength(-300))
             .force('center', d3.forceCenter(width / 2, height / 2))
-            .force('collision', d3.forceCollide().radius(d => this.getNodeRadius(d) + 10))
-            .force('link', d3.forceLink(this.links)
-                .id(d => d.id)
-                .distance(d => d.type === 'industry' ? 80 : 150)
-                .strength(d => d.strength));
-        
-        // Draw links
+            .force('collide', d3.forceCollide().radius(d => this.getNodeRadius(d) + 5))
+            .force('link', d3.forceLink(this.links).id(d => d.id).distance(100));
+
+        // DRAW LINKS
         const link = this.g.append('g')
             .selectAll('line')
             .data(this.links)
             .join('line')
-            .attr('stroke', d => d.type === 'industry' ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.05)')
-            .attr('stroke-width', d => d.type === 'industry' ? 1.5 : 0.5);
-        
-        // Draw nodes
-        const node = this.g.append('g')
-            .selectAll('circle')
+            .attr('stroke', '#30363d')
+            .attr('stroke-width', d => Math.max(0.5, (d.value || 0) * 2))
+            .attr('opacity', 0.6);
+
+        // DRAW NODES
+        const nodeGroup = this.g.append('g')
+            .selectAll('g')
             .data(this.nodes)
-            .join('circle')
+            .join('g')
+            .call(this.drag(this.simulation));
+
+        // Node Circles
+        nodeGroup.append('circle')
             .attr('r', d => this.getNodeRadius(d))
-            .attr('fill', d => this.getNodeColor(d))
+            .attr('fill', d => this.industryColors[d.sector] || '#555')
             .attr('stroke', '#fff')
-            .attr('stroke-width', 2)
-            .attr('opacity', 0.9)
-            .style('cursor', 'pointer')
-            .call(this.drag(this.simulation))
-            .on('click', (event, d) => this.showDetails(d))
-            .on('mouseover', (event, d) => this.showTooltip(event, d))
-            .on('mouseout', () => this.hideTooltip());
-        
-        // Draw labels INSIDE bubbles
-        const label = this.g.append('g')
-            .selectAll('text')
-            .data(this.nodes)
-            .join('text')
+            .attr('stroke-width', 1.5)
+            .style('cursor', 'pointer');
+
+        // Node Labels (Text)
+        nodeGroup.append('text')
             .text(d => d.id)
-            .attr('font-size', d => Math.max(8, this.getNodeRadius(d) / 3))
-            .attr('font-weight', 'bold')
-            .attr('fill', '#fff')
             .attr('text-anchor', 'middle')
-            .attr('dy', '0.35em')
-            .attr('pointer-events', 'none')
-            .style('text-shadow', '0 0 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.7)');
-        
-        // Add industry labels
-        this.addIndustryLabels();
-        
-        // Update positions on tick
+            .attr('dy', '.35em')
+            .attr('font-size', d => Math.min(12, this.getNodeRadius(d)/2.5))
+            .attr('fill', '#fff')
+            .style('pointer-events', 'none')
+            .style('font-weight', 'bold');
+
+        // EVENTS
+        // Note: Using 'click' for mobile/desktop unification
+        nodeGroup.on('click', (event, d) => {
+            event.stopPropagation(); // Stop background click
+            this.showDetails(d);
+            this.highlightNode(d.id);
+        });
+
+        // HOVER (Desktop only enhancement)
+        nodeGroup.on('mouseover', (event, d) => {
+            this.showTooltip(event, d);
+        }).on('mouseout', () => {
+            this.hideTooltip();
+        });
+
+        // TICK
         this.simulation.on('tick', () => {
             link
                 .attr('x1', d => d.source.x)
@@ -187,467 +130,188 @@ const app = {
                 .attr('x2', d => d.target.x)
                 .attr('y2', d => d.target.y);
             
-            node
-                .attr('cx', d => d.x)
-                .attr('cy', d => d.y);
-            
-            label
-                .attr('x', d => d.x)
-                .attr('y', d => d.y);
+            nodeGroup.attr('transform', d => `translate(${d.x},${d.y})`);
         });
-        
-        // Store references
-        this.nodeElements = node;
-        this.labelElements = label;
-        this.linkElements = link;
-    },
-    
-    addIndustryLabels() {
-        // Wait for simulation to stabilize, then add industry labels
-        setTimeout(() => {
-            const industryGroups = {};
-            this.nodes.forEach(node => {
-                if (!industryGroups[node.industry]) {
-                    industryGroups[node.industry] = [];
-                }
-                industryGroups[node.industry].push(node);
-            });
-            
-            const industryLabels = this.g.append('g').attr('class', 'industry-labels');
-            
-            Object.entries(industryGroups).forEach(([industry, nodes]) => {
-                // Calculate centroid of industry group
-                const centerX = d3.mean(nodes, n => n.x);
-                const centerY = d3.mean(nodes, n => n.y);
-                
-                // Add industry label
-                industryLabels.append('text')
-                    .attr('x', centerX)
-                    .attr('y', centerY - 60)
-                    .attr('text-anchor', 'middle')
-                    .attr('font-size', 14)
-                    .attr('font-weight', '600')
-                    .attr('fill', this.getNodeColor(nodes[0]))
-                    .attr('opacity', 0.7)
-                    .attr('pointer-events', 'none')
-                    .style('text-shadow', '0 0 8px rgba(0,0,0,0.9)')
-                    .text(`${industry} (${nodes.length})`);
-            });
-        }, 2000);
+
+        this.nodeElements = nodeGroup; // Save for highlighting
     },
     
     getNodeRadius(d) {
-        // Scale based on market cap
-        const minRadius = 20;
-        const maxRadius = 60;
-        const minCap = d3.min(this.nodes, n => n.marketCap);
-        const maxCap = d3.max(this.nodes, n => n.marketCap);
-        
-        const scale = d3.scaleSqrt()
-            .domain([minCap, maxCap])
-            .range([minRadius, maxRadius]);
-        
-        return scale(d.marketCap);
+        // Log scale for Market Cap
+        const cap = d.marketCap || 1e9;
+        return Math.max(20, Math.log10(cap) * 3); 
     },
-    
-    getNodeColor(d) {
-        const sector = d.sector || 'Technology';
-        return this.industryColors[sector] || '#888';
+
+    showDetails(stock) {
+        // Reveal Sidebar
+        d3.select('#sidebar').classed('hidden', false);
+        d3.select('#state-empty').style('display', 'none');
+        d3.select('#state-details').style('display', 'block');
+
+        // Header Data
+        d3.select('#det-ticker').text(stock.id);
+        d3.select('#det-name').text(stock.name);
+        d3.select('#det-sector').text(stock.sector);
+        d3.select('#det-industry').text(stock.industry);
+        
+        const scoreEl = d3.select('#det-score');
+        scoreEl.text(stock.buffettScore);
+        scoreEl.attr('class', `score-lg ${stock.buffettScore >= 70 ? 'good' : stock.buffettScore >= 40 ? 'mid' : 'bad'}`);
+
+        // Render Sub-components
+        this.renderRadarChart(stock);
+        this.renderMetrics(stock);
     },
-    
-    calculateSharePrice(stock) {
-        // Estimate share price from market cap and P/E ratio
-        // This is approximate since we don't have shares outstanding
-        const marketCap = stock.marketCap;
-        const peRatio = stock.metrics.pe_ratio;
+
+    renderRadarChart(stock) {
+        // Simple 5-axis radar
+        const container = d3.select('#radar-container');
+        container.html(''); // Clear
+
+        const width = 200, height = 200;
+        const svg = container.append('svg').attr('width', width).attr('height', height);
         
-        if (peRatio && peRatio > 0) {
-            // Rough estimate: assume typical company has ~1B shares
-            // Adjust based on market cap size
-            const estimatedShares = marketCap / 1e9 * (marketCap < 100e9 ? 0.5 : marketCap < 1e12 ? 1 : 2);
-            return marketCap / estimatedShares;
+        // Define Axes based on Normalized Metrics (0-1)
+        const m = stock.metrics;
+        const data = [
+            {axis: "Margins", value: Math.min(1, m.gross_margin / 60)},
+            {axis: "Returns", value: Math.min(1, m.roe / 30)},
+            {axis: "Safety", value: Math.min(1, 1 / (m.debt_to_equity + 0.1))}, // Inverse debt
+            {axis: "Cash", value: Math.min(1, m.fcf_margin / 25)},
+            {axis: "Eff", value: Math.min(1, m.roic / 20)}
+        ];
+
+        const r = 80;
+        const center = {x: width/2, y: height/2};
+        const angleSlice = (Math.PI * 2) / data.length;
+
+        // Draw Web
+        for(let level=1; level<=4; level++) {
+            svg.append('circle')
+                .attr('cx', center.x).attr('cy', center.y)
+                .attr('r', r * (level/4))
+                .attr('fill', 'none').attr('stroke', '#30363d');
         }
+
+        // Draw Path
+        const linePath = d3.line()
+            .x((d, i) => center.x + (r * d.value * Math.cos(angleSlice*i - Math.PI/2)))
+            .y((d, i) => center.y + (r * d.value * Math.sin(angleSlice*i - Math.PI/2)));
         
-        // Fallback: simple scaling
-        return marketCap / 1e9;
+        // Close the loop
+        const pathData = [...data, data[0]]; 
+        
+        svg.append('path')
+            .datum(pathData)
+            .attr('d', linePath)
+            .attr('fill', 'rgba(0, 121, 253, 0.3)')
+            .attr('stroke', '#0079fd')
+            .attr('stroke-width', 2);
     },
-    
-    drag(simulation) {
-        function dragstarted(event) {
-            if (!event.active) simulation.alphaTarget(0.3).restart();
-            event.subject.fx = event.subject.x;
-            event.subject.fy = event.subject.y;
-        }
+
+    renderMetrics(stock) {
+        const container = d3.select('#metrics-list');
+        container.html(''); // Clear
         
-        function dragged(event) {
-            event.subject.fx = event.x;
-            event.subject.fy = event.y;
-        }
+        const ind = this.industryAverages[stock.industry] || {};
+
+        const createCard = (label, key, suffix='', inverse=false) => {
+            const val = stock.metrics[key];
+            if (val === undefined) return;
+            
+            const card = container.append('div').attr('class', 'metric-card');
+            const head = card.append('div').attr('class', 'm-header');
+            head.append('span').text(label);
+            
+            card.append('div').attr('class', 'm-value').text(val + suffix);
+
+            // Comparison Bar
+            if (ind[key]) {
+                const avg = ind[key];
+                const max = Math.max(val, avg) * 1.2;
+                
+                // If inverse (e.g. debt), lower is better (Green)
+                const isGood = inverse ? val < avg : val > avg;
+                const color = isGood ? '#00c853' : '#ff3d00';
+                
+                const barBox = card.append('div').attr('class', 'comp-bar-container');
+                barBox.append('div').attr('class', 'comp-bar')
+                    .style('width', `${(val/max)*100}%`)
+                    .style('background', color);
+                
+                // Marker for Industry Avg
+                barBox.append('div').attr('class', 'comp-marker')
+                    .style('left', `${(avg/max)*100}%`);
+            }
+        };
+
+        container.append('div').attr('class', 'section-header').text('Profitability');
+        createCard('Gross Margin', 'gross_margin', '%');
+        createCard('Net Margin', 'net_margin', '%');
         
-        function dragended(event) {
-            if (!event.active) simulation.alphaTarget(0);
-            event.subject.fx = null;
-            event.subject.fy = null;
-        }
+        container.append('div').attr('class', 'section-header').style('margin-top','15px').text('Health');
+        createCard('Debt/Equity', 'debt_to_equity', '', true);
+        createCard('ROE', 'roe', '%');
         
-        return d3.drag()
-            .on('start', dragstarted)
-            .on('drag', dragged)
-            .on('end', dragended);
+        container.append('div').attr('class', 'section-header').style('margin-top','15px').text('Value');
+        createCard('FCF Margin', 'fcf_margin', '%');
+        createCard('P/E Ratio', 'pe_ratio');
     },
-    
-    showTooltip(event, d) {
-        const sharePrice = this.calculateSharePrice(d);
-        const tooltip = d3.select('#tooltip');
-        tooltip
-            .style('opacity', 1)
-            .style('left', (event.pageX + 10) + 'px')
-            .style('top', (event.pageY - 10) + 'px')
-            .html(`
-                <strong>${d.id}</strong><br>
-                ${d.name}<br>
-                Price: $${sharePrice.toFixed(2)}<br>
-                Score: ${d.buffettScore}
-            `);
+
+    highlightNode(id) {
+        this.resetHighlight();
+        this.nodeElements.attr('opacity', d => d.id === id ? 1 : 0.2);
+    },
+
+    resetHighlight() {
+        this.nodeElements.attr('opacity', 1);
+    },
+
+    setupSearch() {
+        const input = document.getElementById('search-input');
+        input.addEventListener('input', (e) => {
+            const term = e.target.value.toUpperCase();
+            if (!term) { this.resetHighlight(); return; }
+
+            // Fuzzy Find
+            const match = this.nodes.find(n => n.id.includes(term) || n.name.toUpperCase().includes(term));
+            
+            if (match) {
+                this.highlightNode(match.id);
+                this.showDetails(match);
+                // Center view
+                const transform = d3.zoomIdentity.translate(
+                    (this.svg.node().clientWidth/2) - match.x, 
+                    (this.svg.node().clientHeight/2) - match.y
+                );
+                this.svg.transition().duration(750).call(this.currentZoom.transform, transform);
+            }
+        });
+    },
+
+    populateTickerList() {
+        const dl = d3.select('#tickers');
+        this.nodes.forEach(n => dl.append('option').attr('value', n.id));
+    },
+
+    showTooltip(e, d) {
+        const tt = d3.select('#tooltip');
+        tt.style('opacity', 1)
+          .style('left', (e.pageX + 15) + 'px')
+          .style('top', (e.pageY - 15) + 'px')
+          .html(`<strong>${d.id}</strong><br>Score: ${d.buffettScore}`);
     },
     
     hideTooltip() {
         d3.select('#tooltip').style('opacity', 0);
     },
-    
-    showDetails(stock) {
-        // Hide empty state, show details
-        d3.select('#state-empty').style('display', 'none');
-        d3.select('#state-details').style('display', 'block');
-        
-        // Calculate share price
-        const sharePrice = this.calculateSharePrice(stock);
-        
-        // Populate header
-        d3.select('#det-ticker').text(stock.id);
-        d3.select('#det-name').html(`${stock.name}<br><span style="font-size: 18px; color: #00c853;">$${sharePrice.toFixed(2)}</span>`);
-        d3.select('#det-score')
-            .text(stock.buffettScore)
-            .attr('class', 'score-lg ' + this.getScoreClass(stock.buffettScore));
-        d3.select('#det-sector').text(stock.sector);
-        d3.select('#det-industry').text(stock.industry);
-        
-        // Render radar chart
-        this.renderRadarChart(stock);
-        
-        // Render metrics with historical data
-        this.renderMetrics(stock);
-        
-        // Highlight node
-        this.highlightNode(stock.id);
-    },
-    
-    getScoreClass(score) {
-        if (score >= 70) return 'good';
-        if (score >= 40) return 'mid';
-        return 'bad';
-    },
-    
-    renderRadarChart(stock) {
-        const container = d3.select('#radar-container');
-        container.html(''); // Clear previous
-        
-        const metrics = stock.metrics;
-        const radarData = [
-            { axis: 'Margins', value: (metrics.gross_margin || 0) / 100 },
-            { axis: 'Returns', value: Math.min((metrics.roe || 0) / 100, 1) },
-            { axis: 'FCF', value: Math.min((metrics.fcf_margin || 0) / 100, 1) },
-            { axis: 'Debt', value: Math.max(0, 1 - (metrics.debt_to_equity || 0) / 3) },
-            { axis: 'Efficiency', value: Math.min((metrics.roic || 0) / 100, 1) }
-        ];
-        
-        const width = 180;
-        const height = 180;
-        const radius = Math.min(width, height) / 2 - 20;
-        
-        const svg = container.append('svg')
-            .attr('width', width)
-            .attr('height', height);
-        
-        const g = svg.append('g')
-            .attr('transform', `translate(${width/2},${height/2})`);
-        
-        // Draw background circles
-        const levels = 5;
-        for (let i = 1; i <= levels; i++) {
-            g.append('circle')
-                .attr('r', radius * i / levels)
-                .attr('fill', 'none')
-                .attr('stroke', 'rgba(255,255,255,0.1)')
-                .attr('stroke-width', 1);
-        }
-        
-        // Draw axes
-        const angleSlice = Math.PI * 2 / radarData.length;
-        radarData.forEach((d, i) => {
-            const angle = angleSlice * i - Math.PI / 2;
-            const x = radius * Math.cos(angle);
-            const y = radius * Math.sin(angle);
-            
-            g.append('line')
-                .attr('x1', 0)
-                .attr('y1', 0)
-                .attr('x2', x)
-                .attr('y2', y)
-                .attr('stroke', 'rgba(255,255,255,0.1)')
-                .attr('stroke-width', 1);
-            
-            g.append('text')
-                .attr('x', x * 1.15)
-                .attr('y', y * 1.15)
-                .attr('text-anchor', 'middle')
-                .attr('dy', '0.35em')
-                .attr('font-size', 10)
-                .attr('fill', '#8b949e')
-                .text(d.axis);
-        });
-        
-        // Draw data polygon
-        const radarLine = d3.lineRadial()
-            .radius(d => radius * d.value)
-            .angle((d, i) => angleSlice * i)
-            .curve(d3.curveLinearClosed);
-        
-        g.append('path')
-            .datum(radarData)
-            .attr('d', radarLine)
-            .attr('fill', '#0079fd')
-            .attr('fill-opacity', 0.3)
-            .attr('stroke', '#0079fd')
-            .attr('stroke-width', 2);
-        
-        // Draw data points
-        radarData.forEach((d, i) => {
-            const angle = angleSlice * i - Math.PI / 2;
-            const x = radius * d.value * Math.cos(angle);
-            const y = radius * d.value * Math.sin(angle);
-            
-            g.append('circle')
-                .attr('cx', x)
-                .attr('cy', y)
-                .attr('r', 4)
-                .attr('fill', '#0079fd')
-                .attr('stroke', '#fff')
-                .attr('stroke-width', 2);
-        });
-    },
-    
-    renderMetrics(stock) {
-        const container = d3.select('#metrics-list');
-        container.html(''); // Clear previous
-        
-        const metrics = stock.metrics;
-        const historical = stock.historical || {};
-        const industry = stock.industry;
-        const industryAvg = this.industryAverages[industry] || {};
-        
-        // Buffett metric explanations based on Old School Value
-        const metricExplanations = {
-            'gross_margin': 'Buffett looks for consistently high gross margins (>40%) as a sign of durable competitive advantage. Companies with pricing power maintain strong margins.',
-            'net_margin': 'High net margins (>15%) indicate efficient operations and pricing power. Buffett seeks companies that consistently convert revenue to profit.',
-            'operating_margin': 'Operating margin shows profitability before interest and taxes. Higher margins indicate competitive advantages and pricing power.',
-            'sga_ratio': 'SG&A as % of Gross Profit. Buffett prefers <30%. Lower ratios indicate operational efficiency and strong cost control.',
-            'capex_ratio': 'Capital Expenditure as % of Revenue. Buffett favors <5% - indicates asset-light business model with low reinvestment needs.',
-            'debt_to_equity': 'Buffett prefers low debt (<0.5). Companies with little debt have financial flexibility and lower risk during downturns.',
-            'current_ratio': 'Current Ratio >1.5 indicates strong short-term liquidity. The company can easily pay its bills and has financial cushion.',
-            'roa': 'Return on Assets >7% shows efficient use of assets to generate profits. Higher ROA indicates better asset productivity.',
-            'retained_earnings': 'Positive and growing retained earnings demonstrate consistent profitability and reinvestment capacity over time.',
-            'roe': 'Return on Equity >15% consistently shows management efficiently uses shareholder capital. Buffett\'s favorite metric for measuring profitability.',
-            'roic': 'Return on Invested Capital >12% indicates the company generates strong returns on all capital deployed. Shows quality of business economics.',
-            'fcf_margin': 'Free Cash Flow margin >15% shows the company generates real cash, not just accounting profits. Buffett values cash generation highly.',
-            'interest_coverage': 'Ability to pay interest expenses. Higher ratios (>5) indicate strong debt servicing capacity and financial health.',
-            'pe_ratio': 'Price-to-Earnings ratio. Buffett looks for reasonable valuations relative to earnings power and growth prospects.',
-            'pb_ratio': 'Price-to-Book ratio. Buffett uses this to assess if you\'re paying a fair price for the company\'s net assets.'
-        };
-        
-        // Organize metrics by financial statement source
-        const metricCategories = [
-            {
-                title: 'Income Statement',
-                metrics: [
-                    { key: 'gross_margin', label: 'Gross Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.gross_margin, hist: 'gross_margin' },
-                    { key: 'net_margin', label: 'Net Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.net_margin, hist: 'net_margin' },
-                    { key: 'operating_margin', label: 'Operating Margin', format: d => d.toFixed(1) + '%' },
-                    { key: 'sga_ratio', label: 'SG&A % of GP', format: d => d.toFixed(1) + '%', inverse: true },
-                    { key: 'capex_ratio', label: 'Capex % of Rev', format: d => d.toFixed(1) + '%', inverse: true }
-                ]
-            },
-            {
-                title: 'Balance Sheet',
-                metrics: [
-                    { key: 'debt_to_equity', label: 'Debt/Equity', format: d => d.toFixed(2), avg: industryAvg.debt_to_equity, inverse: true, hist: 'debt_to_equity' },
-                    { key: 'current_ratio', label: 'Current Ratio', format: d => d.toFixed(2) },
-                    { key: 'roa', label: 'ROA', format: d => d.toFixed(1) + '%' },
-                    { key: 'retained_earnings', label: 'Retained Earnings', format: d => '$' + (d / 1e9).toFixed(1) + 'B' }
-                ]
-            },
-            {
-                title: 'Profitability & Returns',
-                metrics: [
-                    { key: 'roe', label: 'ROE', format: d => d.toFixed(1) + '%', avg: industryAvg.roe, hist: 'roe' },
-                    { key: 'roic', label: 'ROIC', format: d => d.toFixed(1) + '%' },
-                    { key: 'fcf_margin', label: 'FCF Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.fcf_margin },
-                    { key: 'interest_coverage', label: 'Interest Coverage', format: d => d.toFixed(1) + 'x' }
-                ]
-            },
-            {
-                title: 'Valuation',
-                metrics: [
-                    { key: 'pe_ratio', label: 'P/E Ratio', format: d => d.toFixed(1) },
-                    { key: 'pb_ratio', label: 'P/B Ratio', format: d => d.toFixed(1) }
-                ]
-            }
-        ];
-        
-        // Render metrics by category
-        metricCategories.forEach(category => {
-            // Add category header
-            container.append('div')
-                .attr('class', 'section-header')
-                .style('margin-top', '20px')
-                .style('margin-bottom', '12px')
-                .text(category.title);
-            
-            // Render metrics in this category
-            category.metrics.forEach(metric => {
-                const value = metrics[metric.key];
-                if (value === undefined || value === null || isNaN(value)) return;
-                
-                const tooltip = metricExplanations[metric.key] || '';
-                
-                const card = container.append('div')
-                    .attr('class', 'metric-card')
-                    .attr('title', tooltip)
-                    .style('cursor', 'help');
-                
-                const header = card.append('div').attr('class', 'm-header');
-                header.append('div').attr('class', 'm-title').text(metric.label);
-                
-                // Add trend indicator if historical data exists
-                if (metric.hist && historical[metric.hist] && historical[metric.hist].length > 1) {
-                    const histData = historical[metric.hist];
-                    const trend = histData[0] > histData[histData.length - 1] ? '↑' : '↓';
-                    const trendColor = (metric.inverse ? histData[0] < histData[histData.length - 1] : histData[0] > histData[histData.length - 1]) ? '#00c853' : '#ff3d00';
-                    header.append('span')
-                        .style('color', trendColor)
-                        .style('font-size', '14px')
-                        .text(trend);
-                }
-                
-                card.append('div')
-                    .attr('class', 'm-value')
-                    .text(metric.format(value));
-                
-                // Comparison bar if industry average exists
-                if (metric.avg !== null && metric.avg !== undefined && !isNaN(metric.avg)) {
-                    const barContainer = card.append('div').attr('class', 'comp-bar-container');
-                    
-                    const maxVal = Math.max(value, metric.avg) * 1.2;
-                    const stockPct = (value / maxVal) * 100;
-                    const avgPct = (metric.avg / maxVal) * 100;
-                    
-                    // Determine color based on comparison
-                    let barColor = '#0079fd';
-                    if (metric.inverse) {
-                        barColor = value < metric.avg ? '#00c853' : '#ff3d00';
-                    } else {
-                        barColor = value > metric.avg ? '#00c853' : '#ff3d00';
-                    }
-                    
-                    barContainer.append('div')
-                        .attr('class', 'comp-bar')
-                        .style('width', stockPct + '%')
-                        .style('background', barColor);
-                    
-                    barContainer.append('div')
-                        .attr('class', 'comp-marker')
-                        .style('left', avgPct + '%');
-                    
-                    const labels = card.append('div').attr('class', 'comp-label');
-                    labels.append('span').text('Stock');
-                    labels.append('span').text('Ind. Avg');
-                }
-            });
-        });
-    },
-    
-    highlightNode(ticker) {
-        this.nodeElements
-            .attr('opacity', d => d.id === ticker ? 1 : 0.3)
-            .attr('stroke-width', d => d.id === ticker ? 4 : 2);
-        
-        this.labelElements
-            .attr('opacity', d => d.id === ticker ? 1 : 0.3);
-    },
-    
-    setupSearch() {
-        const searchInput = d3.select('#search-input');
-        
-        searchInput.on('input', (event) => {
-            const query = event.target.value.toUpperCase();
-            if (query.length === 0) {
-                this.resetHighlight();
-                return;
-            }
-            
-            const match = this.nodes.find(n => n.id === query);
-            if (match) {
-                this.showDetails(match);
-                this.focusOnNode(match);
-            }
-        });
-    },
-    
-    populateTickerList() {
-        const datalist = d3.select('#tickers');
-        this.nodes.forEach(node => {
-            datalist.append('option').attr('value', node.id);
-        });
-    },
-    
-    resetHighlight() {
-        this.nodeElements.attr('opacity', 0.9).attr('stroke-width', 2);
-        this.labelElements.attr('opacity', 1);
-    },
-    
-    focusOnNode(node) {
-        const width = this.svg.node().clientWidth;
-        const height = this.svg.node().clientHeight;
-        
-        const scale = 1.5;
-        const x = -node.x * scale + width / 2;
-        const y = -node.y * scale + height / 2;
-        
-        this.svg.transition()
-            .duration(750)
-            .call(this.currentZoom.transform, d3.zoomIdentity.translate(x, y).scale(scale));
-    },
-    
-    zoomIn() {
-        this.svg.transition().duration(300).call(this.currentZoom.scaleBy, 1.3);
-    },
-    
-    zoomOut() {
-        this.svg.transition().duration(300).call(this.currentZoom.scaleBy, 0.7);
-    },
-    
-    resetZoom() {
-        this.svg.transition().duration(500).call(this.currentZoom.transform, d3.zoomIdentity);
-    },
-    
-    toggleSidebar() {
-        d3.select('#sidebar').classed('hidden', function() {
-            return !d3.select(this).classed('hidden');
-        });
+
+    drag(sim) {
+        return d3.drag()
+            .on('start', (e) => { if(!e.active) sim.alphaTarget(0.3).restart(); e.subject.fx = e.subject.x; e.subject.fy = e.subject.y; })
+            .on('drag', (e) => { e.subject.fx = e.x; e.subject.fy = e.y; })
+            .on('end', (e) => { if(!e.active) sim.alphaTarget(0); e.subject.fx = null; e.subject.fy = null; });
     }
 };
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-    app.init();
-});
+document.addEventListener('DOMContentLoaded', () => app.init());
