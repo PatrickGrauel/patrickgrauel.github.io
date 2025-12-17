@@ -37,21 +37,6 @@ def get_safe_val(df, key, row=0, default=0):
     except:
         return default
 
-def get_historical_series(df, key, years=5):
-    """Extracts historical values for a metric over available years"""
-    series = []
-    try:
-        # Columns are usually dates, sorted new to old. We want old to new for charts.
-        cols = df.columns[:years][::-1] 
-        for col in cols:
-            val = df[col].get(key, 0)
-            if val is not None:
-                date_str = str(col).split(' ')[0] # YYYY-MM-DD
-                series.append({"date": date_str, "value": float(val)})
-    except:
-        pass
-    return series
-
 def analyze_stock(ticker):
     try:
         stock = yf.Ticker(ticker)
@@ -88,39 +73,32 @@ def analyze_stock(ticker):
             'pe_ratio': info.get('trailingPE', 0),
         }
 
-        # 2. Historical Data for Charts (Gross Margin, Net Margin, ROE)
-        # We calculate these year-by-year from the dataframe
+        # 2. Historical Data
         history = {}
-        
-        # Helper to build time series
-        def build_metric_history(numerator_key, denominator_key, label):
+        def build_history(num_key, den_key):
             data = []
-            cols = inc.columns[:5][::-1] # Last 5 years, ascending
+            cols = inc.columns[:5][::-1] 
             for col in cols:
                 try:
-                    num = float(inc[col].get(numerator_key, 0))
-                    den = float(inc[col].get(denominator_key, 0))
+                    num = float(inc[col].get(num_key, 0))
+                    den = float(inc[col].get(den_key, 0))
                     if den != 0:
                         data.append({"date": str(col)[:4], "value": (num/den)*100})
                 except: continue
             return data
 
-        history['gross_margin'] = build_metric_history('Gross Profit', 'Total Revenue', 'Gross Margin')
-        history['net_margin'] = build_metric_history('Net Income', 'Total Revenue', 'Net Margin')
+        history['gross_margin'] = build_history('Gross Profit', 'Total Revenue')
+        history['net_margin'] = build_history('Net Income', 'Total Revenue')
         
-        # ROE History
         roe_data = []
         cols = inc.columns[:5][::-1]
         for col in cols:
             try:
-                # Need matching balance sheet date (approximate)
-                net_inc = float(inc[col].get('Net Income', 0))
-                # Try to find corresponding equity (using column index as proxy since dates might slightly differ)
                 idx = inc.columns.get_loc(col)
                 if idx < len(bal.columns):
+                    ni = float(inc[col].get('Net Income', 0))
                     eq = float(bal.iloc[:, idx].get('Stockholders Equity', 1))
-                    if eq > 0:
-                        roe_data.append({"date": str(col)[:4], "value": (net_inc/eq)*100})
+                    if eq > 0: roe_data.append({"date": str(col)[:4], "value": (ni/eq)*100})
             except: continue
         history['roe'] = roe_data
 
@@ -134,7 +112,6 @@ def analyze_stock(ticker):
         score += SCORING['debt_to_equity']['pts'] if metrics['debt_to_equity'] < SCORING['debt_to_equity']['thresh'] else 0
         score += SCORING['sga_ratio']['pts'] if metrics['sga_ratio'] < SCORING['sga_ratio']['thresh'] else 0
         
-        # Consistency Bonus
         if len(history['gross_margin']) >= 3:
             vals = [x['value'] for x in history['gross_margin']]
             if max(vals) - min(vals) < 5: score += 15
@@ -155,8 +132,9 @@ def analyze_stock(ticker):
     except Exception as e:
         return None
 
-def build_similarity_links(nodes, threshold=0.85):
+def build_similarity_links(nodes, threshold=0.70):
     if len(nodes) < 2: return []
+    
     features = []
     for n in nodes:
         m = n['metrics']
@@ -174,9 +152,11 @@ def build_similarity_links(nodes, threshold=0.85):
     
     links = []
     for i in range(len(nodes)):
+        # Take top 3 most similar
         similar_indices = sim_matrix[i].argsort()[-4:-1]
         for idx in similar_indices:
             sim_score = sim_matrix[i][idx]
+            # Use lower threshold to ensure connectivity
             if sim_score > threshold:
                 links.append({
                     "source": nodes[i]['id'],
@@ -186,7 +166,7 @@ def build_similarity_links(nodes, threshold=0.85):
     return links
 
 def main():
-    print("="*60 + "\nBUFFETT SCANNER v2.1 (Charts & History)\n" + "="*60)
+    print("="*60 + "\nBUFFETT SCANNER v2.2 (Fixing Connectivity)\n" + "="*60)
     
     nodes = []
     for i, ticker in enumerate(TARGET_TICKERS):
@@ -202,14 +182,17 @@ def main():
 
     if not nodes: sys.exit(1)
 
-    links = build_similarity_links(nodes)
-    
+    print("\nBuilding links (Threshold 0.70)...")
+    links = build_similarity_links(nodes, threshold=0.70)
+    print(f"Generated {len(links)} connections.")
+
     # Industry Averages
     ind_stats = {}
     for n in nodes:
         ind = n['industry']
-        if ind not in ind_stats: ind_stats[ind] = {'gross_margin': [], 'roe': [], 'debt_to_equity': []}
+        if ind not in ind_stats: ind_stats[ind] = {'gross_margin': [], 'roe': [], 'debt_to_equity': [], 'net_margin': []}
         ind_stats[ind]['gross_margin'].append(n['metrics'].get('gross_margin', 0))
+        ind_stats[ind]['net_margin'].append(n['metrics'].get('net_margin', 0))
         ind_stats[ind]['roe'].append(n['metrics'].get('roe', 0))
         ind_stats[ind]['debt_to_equity'].append(n['metrics'].get('debt_to_equity', 0))
     
