@@ -6,93 +6,101 @@
     <title>Buffett Focus | Market Network</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        :root { --bg: #0d1117; --sidebar: #161b22; --text: #c9d1d9; --accent: #0079fd; --border: #30363d; }
+        :root { --bg: #0d1117; --sidebar: #161b22; --text: #c9d1d9; --accent: #0079fd; --border: #30363d; --green: #00c853; --red: #ff3d00; }
         body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
         
-        /* LAYOUT */
         #app { display: flex; width: 100vw; height: 100vh; }
         #graph-container { flex-grow: 1; position: relative; cursor: grab; }
         #graph-container:active { cursor: grabbing; }
         
         /* SIDEBAR */
-        #sidebar { width: 350px; background: var(--sidebar); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; z-index: 10; padding: 20px; box-shadow: -4px 0 20px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
+        #sidebar { width: 380px; background: var(--sidebar); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; z-index: 10; padding: 20px; box-shadow: -4px 0 20px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
         #sidebar.hidden { transform: translateX(100%); width: 0; padding: 0; }
         
-        /* CONTROLS (Top Left) */
+        /* CONTROLS */
         #controls { position: absolute; top: 20px; left: 20px; z-index: 5; display: flex; gap: 10px; }
         input#search-input { background: var(--sidebar); border: 1px solid var(--border); color: #fff; padding: 8px 12px; border-radius: 6px; width: 200px; outline: none; }
-        input#search-input:focus { border-color: var(--accent); }
-        
-        /* SIDEBAR COMPONENTS */
+        .btn { background: var(--sidebar); border: 1px solid var(--border); color: #fff; padding: 8px 16px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+        .btn:hover, .btn.active { border-color: var(--accent); color: var(--accent); }
+
+        /* LEADERBOARD OVERLAY */
+        #leaderboard { 
+            position: absolute; top: 80px; left: 20px; bottom: 20px; width: 400px; 
+            background: rgba(22, 27, 34, 0.95); backdrop-filter: blur(10px);
+            border: 1px solid var(--border); border-radius: 8px; 
+            z-index: 20; display: none; flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        #leaderboard.visible { display: flex; }
+        .lb-header { padding: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .lb-header h3 { margin: 0; font-size: 16px; }
+        .lb-content { overflow-y: auto; flex-grow: 1; }
+        .lb-row { display: flex; padding: 12px 15px; border-bottom: 1px solid #21262d; align-items: center; cursor: pointer; transition: background 0.2s; }
+        .lb-row:hover { background: #21262d; }
+        .lb-rank { width: 30px; font-weight: bold; color: #8b949e; font-size: 14px; }
+        .lb-info { flex-grow: 1; }
+        .lb-ticker { font-weight: bold; color: #fff; display: block; }
+        .lb-name { font-size: 12px; color: #8b949e; }
+        .lb-score { font-weight: bold; font-size: 14px; padding: 4px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); }
+
+        /* SIDEBAR DETAILS */
         .header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
         h2#det-ticker { margin: 0; font-size: 2em; color: #fff; }
-        #det-name { font-size: 0.9em; color: #8b949e; margin-top: 4px; }
-        
-        /* Score Badge */
         .score-lg { font-size: 24px; font-weight: bold; padding: 5px 12px; border-radius: 8px; }
-        .score-lg.good { color: #00c853; border: 1px solid #00c853; background: rgba(0,200,83,0.1); }
+        .score-lg.good { color: var(--green); border: 1px solid var(--green); background: rgba(0,200,83,0.1); }
         .score-lg.mid { color: #ffd600; border: 1px solid #ffd600; background: rgba(255,214,0,0.1); }
-        .score-lg.bad { color: #ff3d00; border: 1px solid #ff3d00; background: rgba(255,61,0,0.1); }
-        
-        /* Radar & Metrics */
-        #radar-container { display: flex; justify-content: center; margin: 20px 0; }
-        .section-header { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #8b949e; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
-        
-        .metric-card { background: #21262d; border: 1px solid var(--border); border-radius: 6px; padding: 10px; margin-bottom: 8px; }
-        .m-header { display: flex; justify-content: space-between; font-size: 12px; color: #8b949e; }
-        .m-value { font-size: 16px; font-weight: 600; color: #fff; margin-top: 4px; }
-        
-        /* Comparison Bar */
-        .comp-bar-container { height: 4px; background: #30363d; margin-top: 8px; position: relative; border-radius: 2px; }
-        .comp-bar { height: 100%; border-radius: 2px; transition: width 0.5s; }
-        .comp-marker { position: absolute; top: -2px; width: 2px; height: 8px; background: #fff; opacity: 0.7; }
-        .comp-label { display: flex; justify-content: space-between; font-size: 10px; color: #484f58; margin-top: 2px; }
+        .score-lg.bad { color: var(--red); border: 1px solid var(--red); background: rgba(255,61,0,0.1); }
 
-        /* TOOLTIP */
-        #tooltip { position: absolute; pointer-events: none; background: rgba(22, 27, 34, 0.95); border: 1px solid var(--border); padding: 10px; border-radius: 6px; font-size: 12px; opacity: 0; transition: opacity 0.2s; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+        /* CHARTS */
+        .chart-container { margin-bottom: 20px; height: 120px; width: 100%; }
+        .chart-label { font-size: 12px; color: #8b949e; margin-bottom: 5px; display: flex; justify-content: space-between; }
+        .axis line, .axis path { stroke: #30363d; }
+        .axis text { fill: #8b949e; font-size: 10px; }
+        .line-stock { fill: none; stroke: var(--accent); stroke-width: 2px; }
+        .line-industry { fill: none; stroke: #8b949e; stroke-width: 1.5px; stroke-dasharray: 4; opacity: 0.6; }
 
-        /* STATES */
-        #state-empty { text-align: center; color: #484f58; margin-top: 100px; }
-        #state-details { display: none; }
+        #tooltip { position: absolute; pointer-events: none; background: rgba(22, 27, 34, 0.95); border: 1px solid var(--border); padding: 10px; border-radius: 6px; font-size: 12px; opacity: 0; z-index: 100; }
     </style>
 </head>
 <body>
-
     <div id="app">
         <div id="graph-container">
             <div id="controls">
-                <input list="tickers" id="search-input" placeholder="Search Ticker (e.g. AAPL)...">
+                <input list="tickers" id="search-input" placeholder="Search Ticker...">
+                <button class="btn" id="btn-leaderboard">🏆 Leaderboard</button>
                 <datalist id="tickers"></datalist>
             </div>
             
+            <div id="leaderboard">
+                <div class="lb-header">
+                    <h3>Buffett Score Ranking</h3>
+                    <span style="font-size: 12px; color: #8b949e">Top 50</span>
+                </div>
+                <div class="lb-content" id="lb-list"></div>
+            </div>
+
             <div id="tooltip"></div>
-            
             <svg id="main-svg" width="100%" height="100%"></svg>
         </div>
 
-        <div id="sidebar">
-            <div id="state-empty">
-                <p>Select a stock node<br>to view Buffett Metrics</p>
-            </div>
-
+        <div id="sidebar" class="hidden">
             <div id="state-details">
                 <div class="header-row">
                     <div>
-                        <h2 id="det-ticker">AAPL</h2>
-                        <div id="det-name">Apple Inc.</div>
+                        <h2 id="det-ticker">--</h2>
+                        <div id="det-name">--</div>
                         <div style="font-size: 12px; color: #8b949e; margin-top: 4px;">
-                            <span id="det-sector">Tech</span> • <span id="det-industry">Consumer Electronics</span>
+                            <span id="det-sector">--</span>
                         </div>
                     </div>
                     <div id="det-score" class="score-lg">--</div>
                 </div>
 
                 <div id="radar-container"></div>
-                <div id="metrics-list"></div>
+                <div id="charts-container"></div>
             </div>
         </div>
     </div>
-
     <script src="js/graph.js"></script>
 </body>
 </html>
