@@ -446,24 +446,41 @@ const app = {
         const industry = stock.industry;
         const industryAvg = this.industryAverages[industry] || {};
         
+        // Buffett metric explanations based on Old School Value
+        const metricExplanations = {
+            'gross_margin': 'Buffett looks for consistently high gross margins (>40%) as a sign of durable competitive advantage. Companies with pricing power maintain strong margins.',
+            'net_margin': 'High net margins (>15%) indicate efficient operations and pricing power. Buffett seeks companies that consistently convert revenue to profit.',
+            'roe': 'Return on Equity >15% consistently shows management efficiently uses shareholder capital. Buffett\'s favorite metric for measuring profitability.',
+            'roic': 'Return on Invested Capital >12% indicates the company generates strong returns on all capital deployed. Shows quality of business economics.',
+            'debt_to_equity': 'Buffett prefers low debt (<0.5). Companies with little debt have financial flexibility and lower risk during downturns.',
+            'fcf_margin': 'Free Cash Flow margin >15% shows the company generates real cash, not just accounting profits. Buffett values cash generation highly.',
+            'operating_margin': 'Operating margin shows profitability before interest and taxes. Higher margins indicate competitive advantages and pricing power.',
+            'current_ratio': 'Current Ratio >1.5 indicates strong short-term liquidity. The company can easily pay its bills and has financial cushion.',
+            'pe_ratio': 'Price-to-Earnings ratio. Buffett looks for reasonable valuations relative to earnings power and growth prospects.',
+            'pb_ratio': 'Price-to-Book ratio. Buffett uses this to assess if you\'re paying a fair price for the company\'s net assets.'
+        };
+        
         const metricsToShow = [
-            { key: 'gross_margin', label: 'Gross Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.gross_margin, hist: 'gross_margin' },
-            { key: 'net_margin', label: 'Net Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.net_margin, hist: 'net_margin' },
-            { key: 'roe', label: 'ROE', format: d => d.toFixed(1) + '%', avg: industryAvg.roe, hist: 'roe' },
-            { key: 'roic', label: 'ROIC', format: d => d.toFixed(1) + '%', avg: industryAvg.roic },
-            { key: 'debt_to_equity', label: 'Debt/Equity', format: d => d.toFixed(2), avg: industryAvg.debt_to_equity, inverse: true, hist: 'debt_to_equity' },
-            { key: 'fcf_margin', label: 'FCF Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.fcf_margin },
-            { key: 'operating_margin', label: 'Op. Margin', format: d => d.toFixed(1) + '%' },
-            { key: 'current_ratio', label: 'Current Ratio', format: d => d.toFixed(2) },
-            { key: 'pe_ratio', label: 'P/E Ratio', format: d => d.toFixed(1) },
-            { key: 'pb_ratio', label: 'P/B Ratio', format: d => d.toFixed(1) }
+            { key: 'gross_margin', label: 'Gross Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.gross_margin, hist: 'gross_margin', tooltip: metricExplanations.gross_margin },
+            { key: 'net_margin', label: 'Net Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.net_margin, hist: 'net_margin', tooltip: metricExplanations.net_margin },
+            { key: 'roe', label: 'ROE', format: d => d.toFixed(1) + '%', avg: industryAvg.roe, hist: 'roe', tooltip: metricExplanations.roe },
+            { key: 'roic', label: 'ROIC', format: d => d.toFixed(1) + '%', avg: industryAvg.roic, tooltip: metricExplanations.roic },
+            { key: 'debt_to_equity', label: 'Debt/Equity', format: d => d.toFixed(2), avg: industryAvg.debt_to_equity, inverse: true, hist: 'debt_to_equity', tooltip: metricExplanations.debt_to_equity },
+            { key: 'fcf_margin', label: 'FCF Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.fcf_margin, tooltip: metricExplanations.fcf_margin },
+            { key: 'operating_margin', label: 'Op. Margin', format: d => d.toFixed(1) + '%', tooltip: metricExplanations.operating_margin },
+            { key: 'current_ratio', label: 'Current Ratio', format: d => d.toFixed(2), tooltip: metricExplanations.current_ratio },
+            { key: 'pe_ratio', label: 'P/E Ratio', format: d => d.toFixed(1), tooltip: metricExplanations.pe_ratio },
+            { key: 'pb_ratio', label: 'P/B Ratio', format: d => d.toFixed(1), tooltip: metricExplanations.pb_ratio }
         ];
         
         metricsToShow.forEach(metric => {
             const value = metrics[metric.key];
             if (value === undefined || value === null || isNaN(value)) return;
             
-            const card = container.append('div').attr('class', 'metric-card');
+            const card = container.append('div')
+                .attr('class', 'metric-card')
+                .attr('title', metric.tooltip)
+                .style('cursor', 'help');
             
             const header = card.append('div').attr('class', 'm-header');
             header.append('div').attr('class', 'm-title').text(metric.label);
