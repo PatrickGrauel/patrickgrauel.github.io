@@ -146,8 +146,8 @@ jobs:
         run: |
           echo "Preparing to commit changes..."
           
-          git config --local user.name "GitHub Action Bot"
-          git config --local user.email "action@github.com"
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "action@github.com"
           
           # Add the data file
           git add data/graph_data.json
