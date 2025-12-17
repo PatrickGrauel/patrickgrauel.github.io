@@ -1,1 +1,3296 @@
-{"nodes": [{"id": "AAPL", "name": "Apple Inc.", "sector": "Technology", "industry": "Consumer Electronics", "buffettScore": 50, "owner_earnings": 98767000000.0, "metrics": {"gross_margin": 0.4690516410716045, "debt_to_equity": 1.3380304612588665, "roic": 0.7717965079180927, "fcf_yield": 0.024235402236918856}, "raw": {"Gross Margin": "46.9%", "Net Margin": "26.9%", "Debt/Equity": "1.34", "ROIC": "77.2%", "FCF Yield": "2.4%", "P/E Ratio": "36.8", "Div Yield": "38.0%"}, "pillars": {"Quality": 50, "Value": 24, "Moat": 46}}, {"id": "MSFT", "name": "Microsoft Corporation", "sector": "Technology", "industry": "Software - Infrastructure", "buffettScore": 80, "owner_earnings": 71611000000.0, "metrics": {"gross_margin": 0.6882374238616519, "debt_to_equity": 0.17639506345366093, "roic": 0.318085861998134, "fcf_yield": 0.020222890698213782}, "raw": {"Gross Margin": "68.8%", "Net Margin": "36.1%", "Debt/Equity": "0.18", "ROIC": "31.8%", "FCF Yield": "2.0%", "P/E Ratio": "33.9", "Div Yield": "76.0%"}, "pillars": {"Quality": 80, "Value": 20, "Moat": 68}}, {"id": "GOOGL", "name": "Alphabet Inc.", "sector": "Communication Services", "industry": "Internet Content & Information", "buffettScore": 80, "owner_earnings": 72764000000.0, "metrics": {"gross_margin": 0.5820043540617911, "debt_to_equity": 0.07832129541903016, "roic": 0.3206150422912893, "fcf_yield": 0.019595965052483146}, "raw": {"Gross Margin": "58.2%", "Net Margin": "28.6%", "Debt/Equity": "0.08", "ROIC": "32.1%", "FCF Yield": "2.0%", "P/E Ratio": "30.3", "Div Yield": "27.0%"}, "pillars": {"Quality": 80, "Value": 19, "Moat": 58}}, {"id": "AMZN", "name": "Amazon.com, Inc.", "sector": "Consumer Cyclical", "industry": "Internet Retail", "buffettScore": 80, "owner_earnings": 32878000000.0, "metrics": {"gross_margin": 0.48854393464156787, "debt_to_equity": 0.45774032241144175, "roic": 0.1645429030633051, "fcf_yield": 0.013818846586559136}, "raw": {"Gross Margin": "48.9%", "Net Margin": "9.3%", "Debt/Equity": "0.46", "ROIC": "16.5%", "FCF Yield": "1.4%", "P/E Ratio": "31.4", "Div Yield": "0%"}, "pillars": {"Quality": 80, "Value": 13, "Moat": 48}}, {"id": "BRK-B", "name": "Berkshire Hathaway Inc. New", "sector": "Financial Services", "industry": "Insurance - Diversified", "buffettScore": 30, "owner_earnings": 11616000000.0, "metrics": {"gross_margin": 0.0, "debt_to_equity": 0.19212834633058604, "roic": 0.0, "fcf_yield": 0.010772290502592973}, "raw": {"Gross Margin": "0.0%", "Net Margin": "21.0%", "Debt/Equity": "0.19", "ROIC": "0.0%", "FCF Yield": "1.1%", "P/E Ratio": "16.0", "Div Yield": "0%"}, "pillars": {"Quality": 30, "Value": 10, "Moat": 0}}, {"id": "JNJ", "name": "Johnson & Johnson", "sector": "Healthcare", "industry": "Drug Manufacturers - General", "buffettScore": 80, "owner_earnings": 18059000000.0, "metrics": {"gross_margin": 0.6907150336069173, "debt_to_equity": 0.512435305637152, "roic": 0.2048481373238134, "fcf_yield": 0.03581248554463001}, "raw": {"Gross Margin": "69.1%", "Net Margin": "15.8%", "Debt/Equity": "0.51", "ROIC": "20.5%", "FCF Yield": "3.6%", "P/E Ratio": "20.2", "Div Yield": "248.0%"}, "pillars": {"Quality": 80, "Value": 35, "Moat": 69}}, {"id": "V", "name": "Visa Inc.", "sector": "Financial Services", "industry": "Credit Services", "buffettScore": 80, "owner_earnings": 21577000000.0, "metrics": {"gross_margin": 0.803625, "debt_to_equity": 0.6639848057189586, "roic": 0.42098922003804695, "fcf_yield": 0.03239659568939649}, "raw": {"Gross Margin": "80.4%", "Net Margin": "50.1%", "Debt/Equity": "0.66", "ROIC": "42.1%", "FCF Yield": "3.2%", "P/E Ratio": "33.8", "Div Yield": "78.0%"}, "pillars": {"Quality": 80, "Value": 32, "Moat": 80}}, {"id": "PG", "name": "Procter & Gamble Company (The)", "sector": "Consumer Defensive", "industry": "Household & Personal Products", "buffettScore": 80, "owner_earnings": 14044000000.0, "metrics": {"gross_margin": 0.5116036258364577, "debt_to_equity": 0.6818234253633777, "roic": 0.2337925121463275, "fcf_yield": 0.0413226669863327}, "raw": {"Gross Margin": "51.2%", "Net Margin": "19.0%", "Debt/Equity": "0.68", "ROIC": "23.4%", "FCF Yield": "4.1%", "P/E Ratio": "21.2", "Div Yield": "291.0%"}, "pillars": {"Quality": 80, "Value": 41, "Moat": 51}}, {"id": "KO", "name": "Coca-Cola Company (The)", "sector": "Consumer Defensive", "industry": "Beverages - Non-Alcoholic", "buffettScore": 50, "owner_earnings": 4741000000.0, "metrics": {"gross_margin": 0.6106330082233696, "debt_to_equity": 1.7911972964274219, "roic": 0.20211017901928566, "fcf_yield": 0.015654662828911776}, "raw": {"Gross Margin": "61.1%", "Net Margin": "22.6%", "Debt/Equity": "1.79", "ROIC": "20.2%", "FCF Yield": "1.6%", "P/E Ratio": "23.3", "Div Yield": "290.0%"}, "pillars": {"Quality": 50, "Value": 15, "Moat": 61}}, {"id": "PEP", "name": "Pepsico, Inc.", "sector": "Consumer Defensive", "industry": "Beverages - Non-Alcoholic", "buffettScore": 50, "owner_earnings": 7189000000.0, "metrics": {"gross_margin": 0.5455396607659982, "debt_to_equity": 2.491436173161133, "roic": 0.20511517884074998, "fcf_yield": 0.034920410960726116}, "raw": {"Gross Margin": "54.6%", "Net Margin": "10.4%", "Debt/Equity": "2.49", "ROIC": "20.5%", "FCF Yield": "3.5%", "P/E Ratio": "28.6", "Div Yield": "378.0%"}, "pillars": {"Quality": 50, "Value": 34, "Moat": 54}}, {"id": "COST", "name": "Costco Wholesale Corporation", "sector": "Consumer Defensive", "industry": "Discount Stores", "buffettScore": 50, "owner_earnings": 7837000000.0, "metrics": {"gross_margin": 0.12843206714262356, "debt_to_equity": 0.2802427650528048, "roic": 0.27808875913972736, "fcf_yield": 0.0205187427035906}, "raw": {"Gross Margin": "12.8%", "Net Margin": "2.9%", "Debt/Equity": "0.28", "ROIC": "27.8%", "FCF Yield": "2.1%", "P/E Ratio": "46.1", "Div Yield": "60.0%"}, "pillars": {"Quality": 50, "Value": 20, "Moat": 12}}, {"id": "MCD", "name": "McDonald's Corporation", "sector": "Consumer Cyclical", "industry": "Restaurants", "buffettScore": 80, "owner_earnings": 6672000000.0, "metrics": {"gross_margin": 0.5675154320987654, "debt_to_equity": 0, "roic": 0.24611646452899152, "fcf_yield": 0.02972883280184587}, "raw": {"Gross Margin": "56.8%", "Net Margin": "31.7%", "Debt/Equity": "0.00", "ROIC": "24.6%", "FCF Yield": "3.0%", "P/E Ratio": "26.8", "Div Yield": "237.0%"}, "pillars": {"Quality": 80, "Value": 29, "Moat": 56}}, {"id": "NVDA", "name": "NVIDIA Corporation", "sector": "Technology", "industry": "Semiconductors", "buffettScore": 80, "owner_earnings": 60853000000.0, "metrics": {"gross_margin": 0.7498869705816992, "debt_to_equity": 0.1294641168832806, "roic": 0.9091040994676161, "fcf_yield": 0.014063719777133063}, "raw": {"Gross Margin": "75.0%", "Net Margin": "55.8%", "Debt/Equity": "0.13", "ROIC": "90.9%", "FCF Yield": "1.4%", "P/E Ratio": "44.1", "Div Yield": "2.0%"}, "pillars": {"Quality": 80, "Value": 14, "Moat": 74}}, {"id": "TSLA", "name": "Tesla, Inc.", "sector": "Consumer Cyclical", "industry": "Auto Manufacturers", "buffettScore": 30, "owner_earnings": 3581000000.0, "metrics": {"gross_margin": 0.17862626676220697, "debt_to_equity": 0.18683910962379824, "roic": 0.08967366182860312, "fcf_yield": 0.002197940663459983}, "raw": {"Gross Margin": "17.9%", "Net Margin": "7.3%", "Debt/Equity": "0.19", "ROIC": "9.0%", "FCF Yield": "0.2%", "P/E Ratio": "333.3", "Div Yield": "0%"}, "pillars": {"Quality": 30, "Value": 2, "Moat": 17}}, {"id": "XOM", "name": "Exxon Mobil Corporation", "sector": "Energy", "industry": "Oil & Gas Integrated", "buffettScore": 65, "owner_earnings": 30716000000.0, "metrics": {"gross_margin": 0.22621275943486605, "debt_to_equity": 0.15816916630325553, "roic": 0.1298299035738258, "fcf_yield": 0.06282557467837159}, "raw": {"Gross Margin": "22.6%", "Net Margin": "9.9%", "Debt/Equity": "0.16", "ROIC": "13.0%", "FCF Yield": "6.3%", "P/E Ratio": "16.7", "Div Yield": "359.0%"}, "pillars": {"Quality": 65, "Value": 62, "Moat": 22}}, {"id": "META", "name": "Meta Platforms, Inc.", "sector": "Communication Services", "industry": "Internet Content & Information", "buffettScore": 80, "owner_earnings": 54072000000.0, "metrics": {"gross_margin": 0.8166515705071702, "debt_to_equity": 0.2686202686202686, "roic": 0.2994428067691856, "fcf_yield": 0.0326449839672954}, "raw": {"Gross Margin": "81.7%", "Net Margin": "37.9%", "Debt/Equity": "0.27", "ROIC": "29.9%", "FCF Yield": "3.3%", "P/E Ratio": "29.1", "Div Yield": "32.0%"}, "pillars": {"Quality": 80, "Value": 32, "Moat": 81}}, {"id": "LLY", "name": "Eli Lilly and Company", "sector": "Healthcare", "industry": "Drug Manufacturers - General", "buffettScore": 50, "owner_earnings": 414300000.0, "metrics": {"gross_margin": 0.8131040101947707, "debt_to_equity": 2.3706287300681366, "roic": 0.3658665072340461, "fcf_yield": 0.0004383545025988162}, "raw": {"Gross Margin": "81.3%", "Net Margin": "23.5%", "Debt/Equity": "2.37", "ROIC": "36.6%", "FCF Yield": "0.0%", "P/E Ratio": "51.6", "Div Yield": "59.0%"}, "pillars": {"Quality": 50, "Value": 0, "Moat": 81}}, {"id": "AVGO", "name": "Broadcom Inc.", "sector": "Technology", "industry": "Semiconductors", "buffettScore": 30, "owner_earnings": 19414000000.0, "metrics": {"gross_margin": 0.6303369915073487, "debt_to_equity": 0.998345104760779, "roic": 0.11088107420661915, "fcf_yield": 0.012045343943970922}, "raw": {"Gross Margin": "63.0%", "Net Margin": "11.4%", "Debt/Equity": "1.00", "ROIC": "11.1%", "FCF Yield": "1.2%", "P/E Ratio": "71.4", "Div Yield": "76.0%"}, "pillars": {"Quality": 30, "Value": 12, "Moat": 63}}, {"id": "JPM", "name": "JP Morgan Chase & Co.", "sector": "Financial Services", "industry": "Banks - Diversified", "buffettScore": 0, "owner_earnings": -42012000000.0, "metrics": {"gross_margin": 0.0, "debt_to_equity": 1.3177678255471954, "roic": 0.0, "fcf_yield": -0.04841850527516653}, "raw": {"Gross Margin": "0.0%", "Net Margin": "34.5%", "Debt/Equity": "1.32", "ROIC": "0.0%", "FCF Yield": "-4.8%", "P/E Ratio": "15.6", "Div Yield": "190.0%"}, "pillars": {"Quality": 0, "Value": -48, "Moat": 0}}, {"id": "UNH", "name": "UnitedHealth Group Incorporated", "sector": "Healthcare", "industry": "Healthcare Plans", "buffettScore": 55, "owner_earnings": 20705000000.0, "metrics": {"gross_margin": 0.2233422771174034, "debt_to_equity": 0.829976904314792, "roic": 0.19041412580648967, "fcf_yield": 0.06839399316219946}, "raw": {"Gross Margin": "22.3%", "Net Margin": "3.6%", "Debt/Equity": "0.83", "ROIC": "19.0%", "FCF Yield": "6.8%", "P/E Ratio": "17.4", "Div Yield": "265.0%"}, "pillars": {"Quality": 55, "Value": 68, "Moat": 22}}, {"id": "DIS", "name": "Walt Disney Company (The)", "sector": "Communication Services", "industry": "Entertainment", "buffettScore": 65, "owner_earnings": 10077000000.0, "metrics": {"gross_margin": 0.3776436325125761, "debt_to_equity": 0.4084591650055976, "roic": 0.0893851860468122, "fcf_yield": 0.050212927479983245}, "raw": {"Gross Margin": "37.8%", "Net Margin": "13.1%", "Debt/Equity": "0.41", "ROIC": "8.9%", "FCF Yield": "5.0%", "P/E Ratio": "16.3", "Div Yield": "134.0%"}, "pillars": {"Quality": 65, "Value": 50, "Moat": 37}}, {"id": "NKE", "name": "Nike, Inc.", "sector": "Consumer Cyclical", "industry": "Footwear & Accessories", "buffettScore": 50, "owner_earnings": 3268000000.0, "metrics": {"gross_margin": 0.42734673605562634, "debt_to_equity": 0.8338757284492545, "roic": 0.1527794973381206, "fcf_yield": 0.03293794511137615}, "raw": {"Gross Margin": "42.7%", "Net Margin": "7.0%", "Debt/Equity": "0.83", "ROIC": "15.3%", "FCF Yield": "3.3%", "P/E Ratio": "34.4", "Div Yield": "244.0%"}, "pillars": {"Quality": 50, "Value": 32, "Moat": 42}}, {"id": "INTC", "name": "Intel Corporation", "sector": "Technology", "industry": "Semiconductors", "buffettScore": 45, "owner_earnings": -15656000000.0, "metrics": {"gross_margin": 0.32664168283083184, "debt_to_equity": 0.5037876498438602, "roic": -0.031537838036990645, "fcf_yield": -0.08797052039301263}, "raw": {"Gross Margin": "32.7%", "Net Margin": "-35.3%", "Debt/Equity": "0.50", "ROIC": "-3.2%", "FCF Yield": "-8.8%", "P/E Ratio": "621.8", "Div Yield": "0%"}, "pillars": {"Quality": 45, "Value": -87, "Moat": 32}}, {"id": "AMD", "name": "Advanced Micro Devices, Inc.", "sector": "Technology", "industry": "Semiconductors", "buffettScore": 60, "owner_earnings": 2405000000.0, "metrics": {"gross_margin": 0.49350397517936784, "debt_to_equity": 0.03842412451361868, "roic": 0.034894613583138175, "fcf_yield": 0.007062365840679101}, "raw": {"Gross Margin": "49.4%", "Net Margin": "6.4%", "Debt/Equity": "0.04", "ROIC": "3.5%", "FCF Yield": "0.7%", "P/E Ratio": "110.1", "Div Yield": "0%"}, "pillars": {"Quality": 60, "Value": 7, "Moat": 49}}, {"id": "NFLX", "name": "Netflix, Inc.", "sector": "Communication Services", "industry": "Entertainment", "buffettScore": 80, "owner_earnings": 6921826000.0, "metrics": {"gross_margin": 0.46056556650417324, "debt_to_equity": 0.6297719322359626, "roic": 0.25833254373422293, "fcf_yield": 0.01727331441803776}, "raw": {"Gross Margin": "46.1%", "Net Margin": "22.3%", "Debt/Equity": "0.63", "ROIC": "25.8%", "FCF Yield": "1.7%", "P/E Ratio": "39.6", "Div Yield": "0%"}, "pillars": {"Quality": 80, "Value": 17, "Moat": 46}}, {"id": "ADBE", "name": "Adobe Inc.", "sector": "Technology", "industry": "Software - Application", "buffettScore": 100, "owner_earnings": 7873000000.0, "metrics": {"gross_margin": 0.89035108114392, "debt_to_equity": 0.4293512938674229, "roic": 0.3839591290114578, "fcf_yield": 0.05334916335891825}, "raw": {"Gross Margin": "89.0%", "Net Margin": "25.9%", "Debt/Equity": "0.43", "ROIC": "38.4%", "FCF Yield": "5.3%", "P/E Ratio": "20.8", "Div Yield": "0%"}, "pillars": {"Quality": 100, "Value": 53, "Moat": 89}}, {"id": "CRM", "name": "Salesforce, Inc.", "sector": "Technology", "industry": "Software - Application", "buffettScore": 80, "owner_earnings": 12434000000.0, "metrics": {"gross_margin": 0.7719224172054361, "debt_to_equity": 0.18622594935674236, "roic": 0.10564321642665196, "fcf_yield": 0.05123739517552551}, "raw": {"Gross Margin": "77.2%", "Net Margin": "16.4%", "Debt/Equity": "0.19", "ROIC": "10.6%", "FCF Yield": "5.1%", "P/E Ratio": "34.0", "Div Yield": "65.0%"}, "pillars": {"Quality": 80, "Value": 51, "Moat": 77}}, {"id": "CMCSA", "name": "Comcast Corporation", "sector": "Communication Services", "industry": "Telecom Services", "buffettScore": 50, "owner_earnings": 12543000000.0, "metrics": {"gross_margin": 0.7007540551680662, "debt_to_equity": 1.1581697054698457, "roic": 0.12617179249727867, "fcf_yield": 0.11426691952702522}, "raw": {"Gross Margin": "70.1%", "Net Margin": "13.1%", "Debt/Equity": "1.16", "ROIC": "12.6%", "FCF Yield": "11.4%", "P/E Ratio": "4.9", "Div Yield": "444.0%"}, "pillars": {"Quality": 50, "Value": 114, "Moat": 70}}, {"id": "VZ", "name": "Verizon Communications Inc.", "sector": "Communication Services", "industry": "Telecom Services", "buffettScore": 50, "owner_earnings": 18922000000.0, "metrics": {"gross_margin": 0.5986512152417129, "debt_to_equity": 1.6965144049094592, "roic": 0.10719971299804928, "fcf_yield": 0.110127302757361}, "raw": {"Gross Margin": "59.9%", "Net Margin": "13.0%", "Debt/Equity": "1.70", "ROIC": "10.7%", "FCF Yield": "11.0%", "P/E Ratio": "8.7", "Div Yield": "677.0%"}, "pillars": {"Quality": 50, "Value": 110, "Moat": 59}}, {"id": "T", "name": "AT&T Inc.", "sector": "Communication Services", "industry": "Telecom Services", "buffettScore": 50, "owner_earnings": 18508000000.0, "metrics": {"gross_margin": 0.5976572717760921, "debt_to_equity": 1.35019928716514, "roic": 0.09834688844044925, "fcf_yield": 0.1075360188946007}, "raw": {"Gross Margin": "59.8%", "Net Margin": "8.9%", "Debt/Equity": "1.35", "ROIC": "9.8%", "FCF Yield": "10.8%", "P/E Ratio": "7.8", "Div Yield": "461.0%"}, "pillars": {"Quality": 50, "Value": 107, "Moat": 59}}, {"id": "BMW.DE", "name": "BAYERISCHE MOTOREN WERKE AG   S", "sector": "Consumer Cyclical", "industry": "Auto Manufacturers", "buffettScore": 0, "owner_earnings": -4639000000.0, "metrics": {"gross_margin": 0.16080207894367188, "debt_to_equity": 0.926220007582733, "roic": 0.06407639228653855, "fcf_yield": -0.08128953810985994}, "raw": {"Gross Margin": "16.1%", "Net Margin": "5.1%", "Debt/Equity": "0.93", "ROIC": "6.4%", "FCF Yield": "-8.1%", "P/E Ratio": "8.2", "Div Yield": "456.0%"}, "pillars": {"Quality": 0, "Value": -81, "Moat": 16}}, {"id": "SIE.DE", "name": "SIEMENS AG                    N", "sector": "Industrials", "industry": "Specialty Industrial Machinery", "buffettScore": 35, "owner_earnings": 10812000000.0, "metrics": {"gross_margin": 0.38521681830853843, "debt_to_equity": 0.8999260972945183, "roic": 0.07688209776845736, "fcf_yield": 0.05848165734409882}, "raw": {"Gross Margin": "38.5%", "Net Margin": "12.2%", "Debt/Equity": "0.90", "ROIC": "7.7%", "FCF Yield": "5.8%", "P/E Ratio": "24.8", "Div Yield": "225.0%"}, "pillars": {"Quality": 35, "Value": 58, "Moat": 38}}, {"id": "SAP", "name": "SAP  SE", "sector": "Technology", "industry": "Software - Application", "buffettScore": 60, "owner_earnings": 4423000000.0, "metrics": {"gross_margin": 0.7295177902621723, "debt_to_equity": 0.23439700704225352, "roic": 0.1392023675812519, "fcf_yield": 0.015557447739901607}, "raw": {"Gross Margin": "73.0%", "Net Margin": "9.1%", "Debt/Equity": "0.23", "ROIC": "13.9%", "FCF Yield": "1.6%", "P/E Ratio": "34.5", "Div Yield": "104.0%"}, "pillars": {"Quality": 60, "Value": 15, "Moat": 72}}, {"id": "OR.PA", "name": "L'OREAL", "sector": "Consumer Defensive", "industry": "Household & Personal Products", "buffettScore": 80, "owner_earnings": 6644300000.0, "metrics": {"gross_margin": 0.7418297046460075, "debt_to_equity": 0.25638858791608443, "roic": 0.20869216374437582, "fcf_yield": 0.03339387523010296}, "raw": {"Gross Margin": "74.2%", "Net Margin": "14.7%", "Debt/Equity": "0.26", "ROIC": "20.9%", "FCF Yield": "3.3%", "P/E Ratio": "32.6", "Div Yield": "187.0%"}, "pillars": {"Quality": 80, "Value": 33, "Moat": 74}}, {"id": "MC.PA", "name": "LVMH", "sector": "Consumer Cyclical", "industry": "Luxury Goods", "buffettScore": 80, "owner_earnings": 13373000000.0, "metrics": {"gross_margin": 0.6703195484282374, "debt_to_equity": 0.6102611194217753, "roic": 0.1800680647534952, "fcf_yield": 0.04271369794638081}, "raw": {"Gross Margin": "67.0%", "Net Margin": "14.8%", "Debt/Equity": "0.61", "ROIC": "18.0%", "FCF Yield": "4.3%", "P/E Ratio": "28.6", "Div Yield": "204.0%"}, "pillars": {"Quality": 80, "Value": 42, "Moat": 67}}], "links": [{"source": "AAPL", "target": "V", "similarity": 0.8853100015346176}, {"source": "AAPL", "target": "NVDA", "similarity": 0.9042334775903955}, {"source": "AAPL", "target": "NFLX", "similarity": 0.9081691139578785}, {"source": "MSFT", "target": "GOOGL", "similarity": 0.9959461853082928}, {"source": "MSFT", "target": "META", "similarity": 0.9972345967065592}, {"source": "MSFT", "target": "ADBE", "similarity": 0.9976426567408467}, {"source": "GOOGL", "target": "ADBE", "similarity": 0.99045773761566}, {"source": "GOOGL", "target": "MCD", "similarity": 0.99410323074704}, {"source": "GOOGL", "target": "MSFT", "similarity": 0.9959461853082928}, {"source": "AMZN", "target": "PG", "similarity": 0.9933133371815049}, {"source": "AMZN", "target": "JNJ", "similarity": 0.9966854524328215}, {"source": "AMZN", "target": "MC.PA", "similarity": 0.998330140473405}, {"source": "BRK-B", "target": "TSLA", "similarity": 0.8995142195862209}, {"source": "BRK-B", "target": "UNH", "similarity": 0.912241192706854}, {"source": "BRK-B", "target": "XOM", "similarity": 0.9352232842390613}, {"source": "JNJ", "target": "OR.PA", "similarity": 0.9938994641473988}, {"source": "JNJ", "target": "AMZN", "similarity": 0.9966854524328215}, {"source": "JNJ", "target": "MC.PA", "similarity": 0.998214991307446}, {"source": "V", "target": "META", "similarity": 0.9861982393589367}, {"source": "V", "target": "MSFT", "similarity": 0.9874598902386916}, {"source": "V", "target": "ADBE", "similarity": 0.9932438363368462}, {"source": "PG", "target": "NKE", "similarity": 0.9911188088353583}, {"source": "PG", "target": "AMZN", "similarity": 0.9933133371815049}, {"source": "PG", "target": "NFLX", "similarity": 0.99593929134228}, {"source": "KO", "target": "AVGO", "similarity": 0.9643792588068273}, {"source": "KO", "target": "PEP", "similarity": 0.9825757405348766}, {"source": "KO", "target": "LLY", "similarity": 0.9857181006207147}, {"source": "PEP", "target": "VZ", "similarity": 0.9315816811681366}, {"source": "PEP", "target": "LLY", "similarity": 0.9643170995659199}, {"source": "PEP", "target": "KO", "similarity": 0.9825757405348766}, {"source": "COST", "target": "XOM", "similarity": 0.943802075540104}, {"source": "COST", "target": "UNH", "similarity": 0.9495348823893845}, {"source": "COST", "target": "TSLA", "similarity": 0.9521001929597983}, {"source": "MCD", "target": "OR.PA", "similarity": 0.9855280737639114}, {"source": "MCD", "target": "MSFT", "similarity": 0.9885171116081033}, {"source": "MCD", "target": "GOOGL", "similarity": 0.99410323074704}, {"source": "NVDA", "target": "MSFT", "similarity": 0.9122040887535247}, {"source": "NVDA", "target": "V", "similarity": 0.9143748656793117}, {"source": "NVDA", "target": "GOOGL", "similarity": 0.9234737737420502}, {"source": "TSLA", "target": "UNH", "similarity": 0.9688177961367385}, {"source": "TSLA", "target": "DIS", "similarity": 0.9857701530324777}, {"source": "TSLA", "target": "XOM", "similarity": 0.9925692499089618}, {"source": "XOM", "target": "UNH", "similarity": 0.9541562749891196}, {"source": "XOM", "target": "DIS", "similarity": 0.9670525734494659}, {"source": "XOM", "target": "TSLA", "similarity": 0.9925692499089618}, {"source": "META", "target": "OR.PA", "similarity": 0.9967056235991624}, {"source": "META", "target": "MSFT", "similarity": 0.9972345967065592}, {"source": "META", "target": "ADBE", "similarity": 0.9981191781123}, {"source": "LLY", "target": "AVGO", "similarity": 0.9343118525226237}, {"source": "LLY", "target": "PEP", "similarity": 0.9643170995659199}, {"source": "LLY", "target": "KO", "similarity": 0.9857181006207147}, {"source": "AVGO", "target": "AMZN", "similarity": 0.969240956422358}, {"source": "AVGO", "target": "JNJ", "similarity": 0.969768294967782}, {"source": "AVGO", "target": "MC.PA", "similarity": 0.9762608318195006}, {"source": "JPM", "target": "BMW.DE", "similarity": 0.8562623965216419}, {"source": "JPM", "target": "PEP", "similarity": 0.8638820605366876}, {"source": "UNH", "target": "XOM", "similarity": 0.9541562749891196}, {"source": "UNH", "target": "TSLA", "similarity": 0.9688177961367385}, {"source": "UNH", "target": "SIE.DE", "similarity": 0.9699373595895121}, {"source": "DIS", "target": "SIE.DE", "similarity": 0.9791885271662703}, {"source": "DIS", "target": "CMCSA", "similarity": 0.9830193058536992}, {"source": "DIS", "target": "TSLA", "similarity": 0.9857701530324777}, {"source": "NKE", "target": "T", "similarity": 0.9901930732100961}, {"source": "NKE", "target": "PG", "similarity": 0.9911188088353583}, {"source": "NKE", "target": "CMCSA", "similarity": 0.9924267447523507}, {"source": "INTC", "target": "KO", "similarity": 0.8275201989241286}, {"source": "INTC", "target": "AVGO", "similarity": 0.8438319790846129}, {"source": "INTC", "target": "LLY", "similarity": 0.8670107525628199}, {"source": "AMD", "target": "SAP", "similarity": 0.9831340333523004}, {"source": "AMD", "target": "OR.PA", "similarity": 0.9834116298015976}, {"source": "AMD", "target": "CRM", "similarity": 0.9978658395783182}, {"source": "NFLX", "target": "NKE", "similarity": 0.9818035273873585}, {"source": "NFLX", "target": "AMZN", "similarity": 0.9891756597580761}, {"source": "NFLX", "target": "PG", "similarity": 0.99593929134228}, {"source": "ADBE", "target": "OR.PA", "similarity": 0.9940006832394714}, {"source": "ADBE", "target": "MSFT", "similarity": 0.9976426567408467}, {"source": "ADBE", "target": "META", "similarity": 0.9981191781123}, {"source": "CRM", "target": "SAP", "similarity": 0.9919758820807304}, {"source": "CRM", "target": "OR.PA", "similarity": 0.9921884298787162}, {"source": "CRM", "target": "AMD", "similarity": 0.9978658395783182}, {"source": "CMCSA", "target": "SIE.DE", "similarity": 0.9915623610305951}, {"source": "CMCSA", "target": "NKE", "similarity": 0.9924267447523507}, {"source": "CMCSA", "target": "T", "similarity": 0.9950889871821018}, {"source": "VZ", "target": "NKE", "similarity": 0.9845863128504102}, {"source": "VZ", "target": "SIE.DE", "similarity": 0.9916691570529066}, {"source": "VZ", "target": "T", "similarity": 0.9960835881075015}, {"source": "T", "target": "CMCSA", "similarity": 0.9950889871821018}, {"source": "T", "target": "VZ", "similarity": 0.9960835881075015}, {"source": "T", "target": "SIE.DE", "similarity": 0.9975394995716458}, {"source": "BMW.DE", "target": "KO", "similarity": 0.886318328764049}, {"source": "BMW.DE", "target": "PEP", "similarity": 0.9199486493969086}, {"source": "BMW.DE", "target": "LLY", "similarity": 0.9291755809282523}, {"source": "SIE.DE", "target": "CMCSA", "similarity": 0.9915623610305951}, {"source": "SIE.DE", "target": "VZ", "similarity": 0.9916691570529066}, {"source": "SIE.DE", "target": "T", "similarity": 0.9975394995716458}, {"source": "SAP", "target": "CRM", "similarity": 0.9919758820807304}, {"source": "SAP", "target": "META", "similarity": 0.9920576793743694}, {"source": "SAP", "target": "OR.PA", "similarity": 0.9962870324366593}, {"source": "OR.PA", "target": "ADBE", "similarity": 0.9940006832394714}, {"source": "OR.PA", "target": "SAP", "similarity": 0.9962870324366593}, {"source": "OR.PA", "target": "META", "similarity": 0.9967056235991624}, {"source": "MC.PA", "target": "PG", "similarity": 0.9870266146092033}, {"source": "MC.PA", "target": "JNJ", "similarity": 0.998214991307446}, {"source": "MC.PA", "target": "AMZN", "similarity": 0.998330140473405}]}
+{
+  "nodes": [
+    {
+      "id": "AAPL",
+      "name": "Apple Inc.",
+      "sector": "Technology",
+      "industry": "Consumer Electronics",
+      "marketCap": 4075319197696,
+      "buffettScore": 70,
+      "metrics": {
+        "gross_margin": 46.9,
+        "net_margin": 26.9,
+        "operating_margin": 32.0,
+        "sga_ratio": 0.0,
+        "roe": 151.9,
+        "roa": 31.2,
+        "roic": 77.2,
+        "debt_to_equity": 1.34,
+        "interest_coverage": 0,
+        "current_ratio": 0.89,
+        "fcf_margin": 23.7,
+        "capex_ratio": 3.1,
+        "retained_earnings": -14264000000.0,
+        "pe_ratio": 36.76171,
+        "pb_ratio": 55.021034,
+        "buffett_score": 70
+      },
+      "historical": {
+        "gross_margin": [
+          46.9,
+          46.2,
+          44.1,
+          43.3
+        ],
+        "net_margin": [
+          26.9,
+          24.0,
+          25.3,
+          25.3
+        ],
+        "roe": [
+          151.9,
+          164.6,
+          156.1,
+          197.0
+        ],
+        "debt_to_equity": [
+          1.34,
+          1.87,
+          1.79,
+          2.61
+        ]
+      }
+    },
+    {
+      "id": "MSFT",
+      "name": "Microsoft Corporation",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "marketCap": 3541086240768,
+      "buffettScore": 80,
+      "metrics": {
+        "gross_margin": 68.8,
+        "net_margin": 36.1,
+        "operating_margin": 45.6,
+        "sga_ratio": 0.0,
+        "roe": 29.6,
+        "roa": 16.5,
+        "roic": 31.8,
+        "debt_to_equity": 0.18,
+        "interest_coverage": 0,
+        "current_ratio": 1.35,
+        "fcf_margin": 25.4,
+        "capex_ratio": 22.9,
+        "retained_earnings": 237731000000.0,
+        "pe_ratio": 33.90676,
+        "pb_ratio": 9.754095,
+        "buffett_score": 80
+      },
+      "historical": {
+        "gross_margin": [
+          68.8,
+          69.8,
+          68.9,
+          68.4
+        ],
+        "net_margin": [
+          36.1,
+          36.0,
+          34.1,
+          36.7
+        ],
+        "roe": [
+          29.6,
+          32.8,
+          35.1,
+          43.7
+        ],
+        "debt_to_equity": [
+          0.18,
+          0.25,
+          0.29,
+          0.37
+        ]
+      }
+    },
+    {
+      "id": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Communication Services",
+      "industry": "Internet Content & Information",
+      "marketCap": 3713213399040,
+      "buffettScore": 85,
+      "metrics": {
+        "gross_margin": 58.2,
+        "net_margin": 28.6,
+        "operating_margin": 32.1,
+        "sga_ratio": 0.0,
+        "roe": 30.8,
+        "roa": 22.2,
+        "roic": 32.1,
+        "debt_to_equity": 0.08,
+        "interest_coverage": 0,
+        "current_ratio": 1.84,
+        "fcf_margin": 20.8,
+        "capex_ratio": 15.0,
+        "retained_earnings": 245084000000.0,
+        "pe_ratio": 30.29348,
+        "pb_ratio": 9.570443,
+        "buffett_score": 85
+      },
+      "historical": {
+        "gross_margin": [
+          58.2,
+          56.6,
+          55.4,
+          56.9
+        ],
+        "net_margin": [
+          28.6,
+          24.0,
+          21.2,
+          29.5
+        ],
+        "roe": [
+          30.8,
+          26.0,
+          23.4,
+          30.2
+        ],
+        "debt_to_equity": [
+          0.08,
+          0.1,
+          0.12,
+          0.11
+        ]
+      }
+    },
+    {
+      "id": "AMZN",
+      "name": "Amazon.com, Inc.",
+      "sector": "Consumer Cyclical",
+      "industry": "Internet Retail",
+      "marketCap": 2379214487552,
+      "buffettScore": 55,
+      "metrics": {
+        "gross_margin": 48.9,
+        "net_margin": 9.3,
+        "operating_margin": 10.8,
+        "sga_ratio": 0.0,
+        "roe": 20.7,
+        "roa": 9.5,
+        "roic": 16.5,
+        "debt_to_equity": 0.46,
+        "interest_coverage": 0,
+        "current_ratio": 1.06,
+        "fcf_margin": 5.2,
+        "capex_ratio": 13.0,
+        "retained_earnings": 172866000000.0,
+        "pe_ratio": 31.435028,
+        "pb_ratio": 6.4347873,
+        "buffett_score": 55
+      },
+      "historical": {
+        "gross_margin": [
+          48.9,
+          47.0,
+          43.8,
+          42.0
+        ],
+        "net_margin": [
+          9.3,
+          5.3,
+          -0.5,
+          7.1
+        ],
+        "roe": [
+          20.7,
+          15.1,
+          -1.9,
+          24.1
+        ],
+        "debt_to_equity": [
+          0.46,
+          0.67,
+          0.96,
+          0.84
+        ]
+      }
+    },
+    {
+      "id": "NVDA",
+      "name": "NVIDIA Corporation",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "marketCap": 4326949126144,
+      "buffettScore": 85,
+      "metrics": {
+        "gross_margin": 75.0,
+        "net_margin": 55.8,
+        "operating_margin": 62.4,
+        "sga_ratio": 0.0,
+        "roe": 91.9,
+        "roa": 65.3,
+        "roic": 90.9,
+        "debt_to_equity": 0.13,
+        "interest_coverage": 0,
+        "current_ratio": 4.44,
+        "fcf_margin": 46.6,
+        "capex_ratio": 2.5,
+        "retained_earnings": 68038000000.0,
+        "pe_ratio": 44.099255,
+        "pb_ratio": 36.328697,
+        "buffett_score": 85
+      },
+      "historical": {
+        "gross_margin": [
+          75.0,
+          72.7,
+          56.9,
+          64.9
+        ],
+        "net_margin": [
+          55.8,
+          48.8,
+          16.2,
+          36.2
+        ],
+        "roe": [
+          91.9,
+          69.2,
+          19.8,
+          36.6
+        ],
+        "debt_to_equity": [
+          0.13,
+          0.26,
+          0.54,
+          0.44
+        ]
+      }
+    },
+    {
+      "id": "META",
+      "name": "Meta Platforms, Inc.",
+      "sector": "Communication Services",
+      "industry": "Internet Content & Information",
+      "marketCap": 1656364728320,
+      "buffettScore": 85,
+      "metrics": {
+        "gross_margin": 81.7,
+        "net_margin": 37.9,
+        "operating_margin": 42.2,
+        "sga_ratio": 0.0,
+        "roe": 34.1,
+        "roa": 22.6,
+        "roic": 29.9,
+        "debt_to_equity": 0.27,
+        "interest_coverage": 0,
+        "current_ratio": 2.98,
+        "fcf_margin": 32.9,
+        "capex_ratio": 22.6,
+        "retained_earnings": 102506000000.0,
+        "pe_ratio": 29.064573,
+        "pb_ratio": 8.536633,
+        "buffett_score": 85
+      },
+      "historical": {
+        "gross_margin": [
+          81.7,
+          80.8,
+          78.3,
+          80.8
+        ],
+        "net_margin": [
+          37.9,
+          29.0,
+          19.9,
+          33.4
+        ],
+        "roe": [
+          34.1,
+          25.5,
+          18.5,
+          31.5
+        ],
+        "debt_to_equity": [
+          0.27,
+          0.24,
+          0.21,
+          0.11
+        ]
+      }
+    },
+    {
+      "id": "BRK-B",
+      "name": "Berkshire Hathaway Inc. New",
+      "sector": "Financial Services",
+      "industry": "Insurance - Diversified",
+      "marketCap": 1078322200576,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 0.0,
+        "net_margin": 21.0,
+        "operating_margin": 0.0,
+        "sga_ratio": 0,
+        "roe": 13.7,
+        "roa": 7.7,
+        "roic": 0.0,
+        "debt_to_equity": 0.19,
+        "interest_coverage": 0,
+        "current_ratio": 0.0,
+        "fcf_margin": 2.7,
+        "capex_ratio": 4.5,
+        "retained_earnings": 696218000000.0,
+        "pe_ratio": 15.974432,
+        "pb_ratio": 0.0010300153,
+        "buffett_score": 40
+      },
+      "historical": {
+        "gross_margin": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "net_margin": [
+          21.0,
+          21.9,
+          -9.7,
+          25.4
+        ],
+        "roe": [
+          13.7,
+          17.1,
+          -4.8,
+          17.8
+        ],
+        "debt_to_equity": [
+          0.19,
+          0.23,
+          0.26,
+          0.23
+        ]
+      }
+    },
+    {
+      "id": "LLY",
+      "name": "Eli Lilly and Company",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "marketCap": 945125457920,
+      "buffettScore": 55,
+      "metrics": {
+        "gross_margin": 81.3,
+        "net_margin": 23.5,
+        "operating_margin": 38.9,
+        "sga_ratio": 0.0,
+        "roe": 74.6,
+        "roa": 13.5,
+        "roic": 36.6,
+        "debt_to_equity": 2.37,
+        "interest_coverage": 0,
+        "current_ratio": 1.15,
+        "fcf_margin": 0.9,
+        "capex_ratio": 18.7,
+        "retained_earnings": 13545000000.0,
+        "pe_ratio": 51.554523,
+        "pb_ratio": 39.694656,
+        "buffett_score": 55
+      },
+      "historical": {
+        "gross_margin": [
+          81.3,
+          79.2,
+          76.8,
+          74.2
+        ],
+        "net_margin": [
+          23.5,
+          15.4,
+          21.9,
+          19.7
+        ],
+        "roe": [
+          74.6,
+          48.6,
+          58.6,
+          62.2
+        ],
+        "debt_to_equity": [
+          2.37,
+          2.34,
+          1.52,
+          1.88
+        ]
+      }
+    },
+    {
+      "id": "AVGO",
+      "name": "Broadcom Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "marketCap": 1611743100928,
+      "buffettScore": 35,
+      "metrics": {
+        "gross_margin": 63.0,
+        "net_margin": 11.4,
+        "operating_margin": 29.1,
+        "sga_ratio": 0.0,
+        "roe": 8.7,
+        "roa": 3.6,
+        "roic": 11.1,
+        "debt_to_equity": 1.0,
+        "interest_coverage": 0,
+        "current_ratio": 1.17,
+        "fcf_margin": 37.6,
+        "capex_ratio": 1.1,
+        "retained_earnings": 0.0,
+        "pe_ratio": 71.401665,
+        "pb_ratio": 5.763158,
+        "buffett_score": 35
+      },
+      "historical": {
+        "gross_margin": [
+          63.0,
+          68.9,
+          66.5,
+          61.4
+        ],
+        "net_margin": [
+          11.4,
+          39.3,
+          34.6,
+          24.5
+        ],
+        "roe": [
+          8.7,
+          58.7,
+          50.6,
+          27.0
+        ],
+        "debt_to_equity": [
+          1.0,
+          1.64,
+          1.74,
+          1.59
+        ]
+      }
+    },
+    {
+      "id": "TSLA",
+      "name": "Tesla, Inc.",
+      "sector": "Consumer Cyclical",
+      "industry": "Auto Manufacturers",
+      "marketCap": 1629252354048,
+      "buffettScore": 30,
+      "metrics": {
+        "gross_margin": 17.9,
+        "net_margin": 7.3,
+        "operating_margin": 7.9,
+        "sga_ratio": 0.0,
+        "roe": 9.8,
+        "roa": 5.8,
+        "roic": 9.0,
+        "debt_to_equity": 0.19,
+        "interest_coverage": 0,
+        "current_ratio": 2.02,
+        "fcf_margin": 3.7,
+        "capex_ratio": 11.6,
+        "retained_earnings": 35209000000.0,
+        "pe_ratio": 333.2517,
+        "pb_ratio": 20.362457,
+        "buffett_score": 30
+      },
+      "historical": {
+        "gross_margin": [
+          17.9,
+          18.2,
+          25.6,
+          25.3
+        ],
+        "net_margin": [
+          7.3,
+          15.5,
+          15.4,
+          10.3
+        ],
+        "roe": [
+          9.8,
+          23.9,
+          28.1,
+          18.3
+        ],
+        "debt_to_equity": [
+          0.19,
+          0.15,
+          0.13,
+          0.29
+        ]
+      }
+    },
+    {
+      "id": "JPM",
+      "name": "JP Morgan Chase & Co.",
+      "sector": "Financial Services",
+      "industry": "Banks - Diversified",
+      "marketCap": 867684777984,
+      "buffettScore": 30,
+      "metrics": {
+        "gross_margin": 0.0,
+        "net_margin": 34.5,
+        "operating_margin": 0.0,
+        "sga_ratio": 0,
+        "roe": 17.0,
+        "roa": 1.5,
+        "roic": 0.0,
+        "debt_to_equity": 1.32,
+        "interest_coverage": 0,
+        "current_ratio": 0.0,
+        "fcf_margin": -24.8,
+        "capex_ratio": 0.0,
+        "retained_earnings": 376166000000.0,
+        "pe_ratio": 15.621286,
+        "pb_ratio": 2.5252686,
+        "buffett_score": 30
+      },
+      "historical": {
+        "gross_margin": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "net_margin": [
+          34.5,
+          32.0,
+          29.5,
+          39.7
+        ],
+        "roe": [
+          17.0,
+          15.1,
+          12.9,
+          16.4
+        ],
+        "debt_to_equity": [
+          1.32,
+          1.33,
+          1.16,
+          1.21
+        ]
+      }
+    },
+    {
+      "id": "V",
+      "name": "Visa Inc.",
+      "sector": "Financial Services",
+      "industry": "Credit Services",
+      "marketCap": 666026770432,
+      "buffettScore": 80,
+      "metrics": {
+        "gross_margin": 80.4,
+        "net_margin": 50.1,
+        "operating_margin": 66.4,
+        "sga_ratio": 0.0,
+        "roe": 52.9,
+        "roa": 20.1,
+        "roic": 42.1,
+        "debt_to_equity": 0.66,
+        "interest_coverage": 0,
+        "current_ratio": 1.08,
+        "fcf_margin": 53.9,
+        "capex_ratio": 3.7,
+        "retained_earnings": 15106000000.0,
+        "pe_ratio": 33.7681,
+        "pb_ratio": 17.805695,
+        "buffett_score": 80
+      },
+      "historical": {
+        "gross_margin": [
+          80.4,
+          80.4,
+          79.9,
+          80.4
+        ],
+        "net_margin": [
+          50.1,
+          55.0,
+          52.9,
+          51.0
+        ],
+        "roe": [
+          52.9,
+          50.4,
+          44.6,
+          42.0
+        ],
+        "debt_to_equity": [
+          0.66,
+          0.53,
+          0.53,
+          0.63
+        ]
+      }
+    },
+    {
+      "id": "UNH",
+      "name": "UnitedHealth Group Incorporated",
+      "sector": "Healthcare",
+      "industry": "Healthcare Plans",
+      "marketCap": 302731264000,
+      "buffettScore": 45,
+      "metrics": {
+        "gross_margin": 22.3,
+        "net_margin": 3.6,
+        "operating_margin": 8.1,
+        "sga_ratio": 0.0,
+        "roe": 15.5,
+        "roa": 4.8,
+        "roic": 19.0,
+        "debt_to_equity": 0.83,
+        "interest_coverage": 0,
+        "current_ratio": 0.83,
+        "fcf_margin": 5.2,
+        "capex_ratio": 0.9,
+        "retained_earnings": 96036000000.0,
+        "pe_ratio": 17.4244,
+        "pb_ratio": 3.1610312,
+        "buffett_score": 45
+      },
+      "historical": {
+        "gross_margin": [
+          22.3,
+          24.5,
+          24.6,
+          24.2
+        ],
+        "net_margin": [
+          3.6,
+          6.0,
+          6.2,
+          6.0
+        ],
+        "roe": [
+          15.5,
+          25.2,
+          25.9,
+          24.1
+        ],
+        "debt_to_equity": [
+          0.83,
+          0.7,
+          0.74,
+          0.64
+        ]
+      }
+    },
+    {
+      "id": "XOM",
+      "name": "Exxon Mobil Corporation",
+      "sector": "Energy",
+      "industry": "Oil & Gas Integrated",
+      "marketCap": 488909176832,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 22.6,
+        "net_margin": 9.9,
+        "operating_margin": 11.7,
+        "sga_ratio": 0.0,
+        "roe": 12.8,
+        "roa": 7.4,
+        "roic": 13.0,
+        "debt_to_equity": 0.16,
+        "interest_coverage": 0,
+        "current_ratio": 1.31,
+        "fcf_margin": 9.1,
+        "capex_ratio": 7.2,
+        "retained_earnings": 470903000000.0,
+        "pe_ratio": 16.668604,
+        "pb_ratio": 1.8560839,
+        "buffett_score": 40
+      },
+      "historical": {
+        "gross_margin": [
+          22.6,
+          25.1,
+          25.9,
+          23.5
+        ],
+        "net_margin": [
+          9.9,
+          10.8,
+          14.0,
+          8.3
+        ],
+        "roe": [
+          12.8,
+          17.6,
+          28.6,
+          13.7
+        ],
+        "debt_to_equity": [
+          0.16,
+          0.2,
+          0.21,
+          0.28
+        ]
+      }
+    },
+    {
+      "id": "WMT",
+      "name": "Walmart Inc.",
+      "sector": "Consumer Defensive",
+      "industry": "Discount Stores",
+      "marketCap": 920226496512,
+      "buffettScore": 50,
+      "metrics": {
+        "gross_margin": 24.9,
+        "net_margin": 2.9,
+        "operating_margin": 4.3,
+        "sga_ratio": 0.0,
+        "roe": 21.4,
+        "roa": 7.5,
+        "roic": 19.4,
+        "debt_to_equity": 0.66,
+        "interest_coverage": 0,
+        "current_ratio": 0.82,
+        "fcf_margin": 1.9,
+        "capex_ratio": 3.5,
+        "retained_earnings": 98313000000.0,
+        "pe_ratio": 40.356644,
+        "pb_ratio": 9.575245,
+        "buffett_score": 50
+      },
+      "historical": {
+        "gross_margin": [
+          24.9,
+          24.4,
+          24.1,
+          25.1
+        ],
+        "net_margin": [
+          2.9,
+          2.4,
+          1.9,
+          2.4
+        ],
+        "roe": [
+          21.4,
+          18.5,
+          15.2,
+          16.4
+        ],
+        "debt_to_equity": [
+          0.66,
+          0.73,
+          0.77,
+          0.69
+        ]
+      }
+    },
+    {
+      "id": "MA",
+      "name": "Mastercard Incorporated",
+      "sector": "Financial Services",
+      "industry": "Credit Services",
+      "marketCap": 511688802304,
+      "buffettScore": 70,
+      "metrics": {
+        "gross_margin": 76.3,
+        "net_margin": 45.7,
+        "operating_margin": 58.0,
+        "sga_ratio": 0.0,
+        "roe": 198.5,
+        "roa": 26.8,
+        "roic": 66.1,
+        "debt_to_equity": 2.81,
+        "interest_coverage": 0,
+        "current_ratio": 1.03,
+        "fcf_margin": 48.2,
+        "capex_ratio": 4.2,
+        "retained_earnings": 72907000000.0,
+        "pe_ratio": 36.236877,
+        "pb_ratio": 64.45963,
+        "buffett_score": 70
+      },
+      "historical": {
+        "gross_margin": [
+          76.3,
+          76.0,
+          76.3,
+          76.2
+        ],
+        "net_margin": [
+          45.7,
+          44.6,
+          44.7,
+          46.0
+        ],
+        "roe": [
+          198.5,
+          161.6,
+          157.7,
+          118.8
+        ],
+        "debt_to_equity": [
+          2.81,
+          2.26,
+          2.23,
+          1.9
+        ]
+      }
+    },
+    {
+      "id": "JNJ",
+      "name": "Johnson & Johnson",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "marketCap": 504265474048,
+      "buffettScore": 75,
+      "metrics": {
+        "gross_margin": 69.1,
+        "net_margin": 15.8,
+        "operating_margin": 24.9,
+        "sga_ratio": 0.0,
+        "roe": 19.7,
+        "roa": 7.8,
+        "roic": 20.5,
+        "debt_to_equity": 0.51,
+        "interest_coverage": 0,
+        "current_ratio": 1.11,
+        "fcf_margin": 20.3,
+        "capex_ratio": 7.0,
+        "retained_earnings": NaN,
+        "pe_ratio": 20.202703,
+        "pb_ratio": 6.3526273,
+        "buffett_score": 75
+      },
+      "historical": {
+        "gross_margin": [
+          69.1,
+          68.8,
+          69.3,
+          70.3
+        ],
+        "net_margin": [
+          15.8,
+          41.3,
+          22.4,
+          26.5
+        ],
+        "roe": [
+          19.7,
+          51.1,
+          23.4,
+          28.2
+        ],
+        "debt_to_equity": [
+          0.51,
+          0.43,
+          0.52,
+          0.46
+        ]
+      }
+    },
+    {
+      "id": "PG",
+      "name": "Procter & Gamble Company (The)",
+      "sector": "Consumer Defensive",
+      "industry": "Household & Personal Products",
+      "marketCap": 339861897216,
+      "buffettScore": 80,
+      "metrics": {
+        "gross_margin": 51.2,
+        "net_margin": 19.0,
+        "operating_margin": 24.3,
+        "sga_ratio": 0.0,
+        "roe": 30.7,
+        "roa": 12.8,
+        "roic": 23.4,
+        "debt_to_equity": 0.68,
+        "interest_coverage": 0,
+        "current_ratio": 0.7,
+        "fcf_margin": 16.7,
+        "capex_ratio": 4.5,
+        "retained_earnings": 129973000000.0,
+        "pe_ratio": 21.198542,
+        "pb_ratio": 6.463258,
+        "buffett_score": 80
+      },
+      "historical": {
+        "gross_margin": [
+          51.2,
+          51.4,
+          47.9,
+          47.4
+        ],
+        "net_margin": [
+          19.0,
+          17.7,
+          17.9,
+          18.4
+        ],
+        "roe": [
+          30.7,
+          29.6,
+          31.3,
+          31.6
+        ],
+        "debt_to_equity": [
+          0.68,
+          0.66,
+          0.76,
+          0.69
+        ]
+      }
+    },
+    {
+      "id": "ORCL",
+      "name": "Oracle Corporation",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "marketCap": 542015946752,
+      "buffettScore": 50,
+      "metrics": {
+        "gross_margin": 70.5,
+        "net_margin": 21.7,
+        "operating_margin": 31.5,
+        "sga_ratio": 0.0,
+        "roe": 60.8,
+        "roa": 7.4,
+        "roic": 14.5,
+        "debt_to_equity": 5.09,
+        "interest_coverage": 0,
+        "current_ratio": 0.75,
+        "fcf_margin": -0.7,
+        "capex_ratio": 37.0,
+        "retained_earnings": -15481000000.0,
+        "pe_ratio": 35.460526,
+        "pb_ratio": 18.095922,
+        "buffett_score": 50
+      },
+      "historical": {
+        "gross_margin": [
+          70.5,
+          71.4,
+          72.8,
+          79.1
+        ],
+        "net_margin": [
+          21.7,
+          19.8,
+          17.0,
+          15.8
+        ],
+        "roe": [
+          60.8,
+          120.3
+        ],
+        "debt_to_equity": [
+          5.09
+        ]
+      }
+    },
+    {
+      "id": "HD",
+      "name": "Home Depot, Inc. (The)",
+      "sector": "Consumer Cyclical",
+      "industry": "Home Improvement Retail",
+      "marketCap": 351096995840,
+      "buffettScore": 35,
+      "metrics": {
+        "gross_margin": 33.4,
+        "net_margin": 9.3,
+        "operating_margin": 13.5,
+        "sga_ratio": 0.0,
+        "roe": 223.0,
+        "roa": 15.4,
+        "roic": 31.2,
+        "debt_to_equity": 9.38,
+        "interest_coverage": 0,
+        "current_ratio": 1.11,
+        "fcf_margin": 10.2,
+        "capex_ratio": 2.2,
+        "retained_earnings": 89533000000.0,
+        "pe_ratio": 24.0409,
+        "pb_ratio": 28.962797,
+        "buffett_score": 35
+      },
+      "historical": {
+        "gross_margin": [
+          33.4,
+          33.4,
+          33.5,
+          33.6
+        ],
+        "net_margin": [
+          9.3,
+          9.9,
+          10.9,
+          10.9
+        ],
+        "roe": [
+          223.0
+        ],
+        "debt_to_equity": [
+          9.38
+        ]
+      }
+    },
+    {
+      "id": "COST",
+      "name": "Costco Wholesale Corporation",
+      "sector": "Consumer Defensive",
+      "industry": "Discount Stores",
+      "marketCap": 381943480320,
+      "buffettScore": 55,
+      "metrics": {
+        "gross_margin": 12.8,
+        "net_margin": 2.9,
+        "operating_margin": 3.8,
+        "sga_ratio": 0.0,
+        "roe": 27.8,
+        "roa": 10.5,
+        "roic": 27.8,
+        "debt_to_equity": 0.28,
+        "interest_coverage": 0,
+        "current_ratio": 1.03,
+        "fcf_margin": 2.8,
+        "capex_ratio": 2.0,
+        "retained_earnings": 22650000000.0,
+        "pe_ratio": 46.08409,
+        "pb_ratio": 12.604231,
+        "buffett_score": 55
+      },
+      "historical": {
+        "gross_margin": [
+          12.8,
+          12.6,
+          12.3,
+          12.1
+        ],
+        "net_margin": [
+          2.9,
+          2.9,
+          2.6,
+          2.6
+        ],
+        "roe": [
+          27.8,
+          31.2,
+          25.1,
+          28.3
+        ],
+        "debt_to_equity": [
+          0.28,
+          0.35,
+          0.35,
+          0.44
+        ]
+      }
+    },
+    {
+      "id": "NFLX",
+      "name": "Netflix, Inc.",
+      "sector": "Communication Services",
+      "industry": "Entertainment",
+      "marketCap": 400723673088,
+      "buffettScore": 80,
+      "metrics": {
+        "gross_margin": 46.1,
+        "net_margin": 22.3,
+        "operating_margin": 26.7,
+        "sga_ratio": 0.0,
+        "roe": 35.2,
+        "roa": 16.2,
+        "roic": 25.8,
+        "debt_to_equity": 0.63,
+        "interest_coverage": 0,
+        "current_ratio": 1.22,
+        "fcf_margin": 17.7,
+        "capex_ratio": 1.1,
+        "retained_earnings": 31300917000.0,
+        "pe_ratio": 39.569035,
+        "pb_ratio": 15.44,
+        "buffett_score": 80
+      },
+      "historical": {
+        "gross_margin": [
+          46.1,
+          41.5,
+          39.4,
+          41.6
+        ],
+        "net_margin": [
+          22.3,
+          16.0,
+          14.2,
+          17.2
+        ],
+        "roe": [
+          35.2,
+          26.3,
+          21.6,
+          32.3
+        ],
+        "debt_to_equity": [
+          0.63,
+          0.71,
+          0.69,
+          0.97
+        ]
+      }
+    },
+    {
+      "id": "BAC",
+      "name": "Bank of America Corporation",
+      "sector": "Financial Services",
+      "industry": "Banks - Diversified",
+      "marketCap": 405974777856,
+      "buffettScore": 20,
+      "metrics": {
+        "gross_margin": 0.0,
+        "net_margin": 26.6,
+        "operating_margin": 0.0,
+        "sga_ratio": 0,
+        "roe": 9.2,
+        "roa": 0.8,
+        "roic": 0.0,
+        "debt_to_equity": 1.11,
+        "interest_coverage": 0,
+        "current_ratio": 0.0,
+        "fcf_margin": -8.6,
+        "capex_ratio": 0.0,
+        "retained_earnings": 242349000000.0,
+        "pe_ratio": 14.9754095,
+        "pb_ratio": 1.4442308,
+        "buffett_score": 20
+      },
+      "historical": {
+        "gross_margin": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "net_margin": [
+          26.6,
+          26.9,
+          29.0,
+          35.9
+        ],
+        "roe": [
+          9.2,
+          9.1,
+          10.1,
+          11.8
+        ],
+        "debt_to_equity": [
+          1.11,
+          1.15,
+          1.11,
+          1.13
+        ]
+      }
+    },
+    {
+      "id": "ABBV",
+      "name": "AbbVie Inc.",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "marketCap": 395310891008,
+      "buffettScore": 55,
+      "metrics": {
+        "gross_margin": 70.0,
+        "net_margin": 7.6,
+        "operating_margin": 21.1,
+        "sga_ratio": 0.0,
+        "roe": 128.7,
+        "roa": 3.2,
+        "roic": 16.9,
+        "debt_to_equity": 20.19,
+        "interest_coverage": 0,
+        "current_ratio": 0.66,
+        "fcf_margin": 31.7,
+        "capex_ratio": 1.7,
+        "retained_earnings": -7900000000.0,
+        "pe_ratio": 169.44696,
+        "pb_ratio": -149.61205,
+        "buffett_score": 55
+      },
+      "historical": {
+        "gross_margin": [
+          70.0,
+          62.4,
+          70.0,
+          69.0
+        ],
+        "net_margin": [
+          7.6,
+          9.0,
+          20.4,
+          20.5
+        ],
+        "roe": [
+          128.7,
+          46.9,
+          68.6,
+          74.9
+        ],
+        "debt_to_equity": [
+          5.73,
+          3.67,
+          4.98
+        ]
+      }
+    },
+    {
+      "id": "CRM",
+      "name": "Salesforce, Inc.",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "marketCap": 242674319360,
+      "buffettScore": 60,
+      "metrics": {
+        "gross_margin": 77.2,
+        "net_margin": 16.4,
+        "operating_margin": 20.2,
+        "sga_ratio": 0.0,
+        "roe": 10.1,
+        "roa": 6.0,
+        "roic": 10.6,
+        "debt_to_equity": 0.19,
+        "interest_coverage": 0,
+        "current_ratio": 1.06,
+        "fcf_margin": 32.8,
+        "capex_ratio": 1.7,
+        "retained_earnings": 16369000000.0,
+        "pe_ratio": 34.03338,
+        "pb_ratio": 4.0006595,
+        "buffett_score": 60
+      },
+      "historical": {
+        "gross_margin": [
+          77.2,
+          75.5,
+          73.3,
+          73.5
+        ],
+        "net_margin": [
+          16.4,
+          11.9,
+          0.7,
+          5.5
+        ],
+        "roe": [
+          10.1,
+          6.9,
+          0.4,
+          2.5
+        ],
+        "debt_to_equity": [
+          0.19,
+          0.21,
+          0.24,
+          0.24
+        ]
+      }
+    },
+    {
+      "id": "CVX",
+      "name": "Chevron Corporation",
+      "sector": "Energy",
+      "industry": "Oil & Gas Integrated",
+      "marketCap": 295675199488,
+      "buffettScore": 25,
+      "metrics": {
+        "gross_margin": 29.4,
+        "net_margin": 9.1,
+        "operating_margin": 9.8,
+        "sga_ratio": 0.0,
+        "roe": 11.6,
+        "roa": 6.9,
+        "roic": 10.7,
+        "debt_to_equity": 0.16,
+        "interest_coverage": 0,
+        "current_ratio": 1.06,
+        "fcf_margin": 7.8,
+        "capex_ratio": 8.5,
+        "retained_earnings": 205852000000.0,
+        "pe_ratio": 20.669014,
+        "pb_ratio": 1.5564678,
+        "buffett_score": 25
+      },
+      "historical": {
+        "gross_margin": [
+          29.4,
+          30.7,
+          31.4,
+          29.2
+        ],
+        "net_margin": [
+          9.1,
+          10.9,
+          15.0,
+          10.0
+        ],
+        "roe": [
+          11.6,
+          13.3,
+          22.3,
+          11.2
+        ],
+        "debt_to_equity": [
+          0.16,
+          0.13,
+          0.15,
+          0.23
+        ]
+      }
+    },
+    {
+      "id": "MRK",
+      "name": "Merck & Company, Inc.",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "marketCap": 245457158144,
+      "buffettScore": 75,
+      "metrics": {
+        "gross_margin": 76.3,
+        "net_margin": 26.7,
+        "operating_margin": 31.5,
+        "sga_ratio": 0.0,
+        "roe": 37.0,
+        "roa": 14.6,
+        "roic": 24.2,
+        "debt_to_equity": 0.8,
+        "interest_coverage": 0,
+        "current_ratio": 1.36,
+        "fcf_margin": 28.2,
+        "capex_ratio": 5.3,
+        "retained_earnings": 63069000000.0,
+        "pe_ratio": 12.998677,
+        "pb_ratio": 4.71432,
+        "buffett_score": 75
+      },
+      "historical": {
+        "gross_margin": [
+          76.3,
+          73.2,
+          70.6,
+          72.0
+        ],
+        "net_margin": [
+          26.7,
+          0.6,
+          24.5,
+          26.8
+        ],
+        "roe": [
+          37.0,
+          1.0,
+          31.6,
+          34.2
+        ],
+        "debt_to_equity": [
+          0.8,
+          0.93,
+          0.67,
+          0.87
+        ]
+      }
+    },
+    {
+      "id": "KO",
+      "name": "Coca-Cola Company (The)",
+      "sector": "Consumer Defensive",
+      "industry": "Beverages - Non-Alcoholic",
+      "marketCap": 302849064960,
+      "buffettScore": 60,
+      "metrics": {
+        "gross_margin": 61.1,
+        "net_margin": 22.6,
+        "operating_margin": 29.8,
+        "sga_ratio": 0.0,
+        "roe": 42.8,
+        "roa": 10.6,
+        "roic": 20.2,
+        "debt_to_equity": 1.79,
+        "interest_coverage": 0,
+        "current_ratio": 1.03,
+        "fcf_margin": 10.1,
+        "capex_ratio": 4.4,
+        "retained_earnings": 76054000000.0,
+        "pe_ratio": 23.301325,
+        "pb_ratio": 9.688834,
+        "buffett_score": 60
+      },
+      "historical": {
+        "gross_margin": [
+          61.1,
+          59.5,
+          58.1,
+          60.3
+        ],
+        "net_margin": [
+          22.6,
+          23.4,
+          22.2,
+          25.3
+        ],
+        "roe": [
+          42.8,
+          41.3,
+          39.6,
+          42.5
+        ],
+        "debt_to_equity": [
+          1.79,
+          1.62,
+          1.62,
+          1.86
+        ]
+      }
+    },
+    {
+      "id": "PEP",
+      "name": "Pepsico, Inc.",
+      "sector": "Consumer Defensive",
+      "industry": "Beverages - Non-Alcoholic",
+      "marketCap": 205868138496,
+      "buffettScore": 45,
+      "metrics": {
+        "gross_margin": 54.6,
+        "net_margin": 10.4,
+        "operating_margin": 14.1,
+        "sga_ratio": 0.0,
+        "roe": 53.1,
+        "roa": 9.6,
+        "roic": 20.5,
+        "debt_to_equity": 2.49,
+        "interest_coverage": 0,
+        "current_ratio": 0.82,
+        "fcf_margin": 7.8,
+        "capex_ratio": 5.8,
+        "retained_earnings": 72266000000.0,
+        "pe_ratio": 28.58745,
+        "pb_ratio": 10.61785,
+        "buffett_score": 45
+      },
+      "historical": {
+        "gross_margin": [
+          54.6,
+          54.2,
+          53.0,
+          53.3
+        ],
+        "net_margin": [
+          10.4,
+          9.9,
+          10.3,
+          9.6
+        ],
+        "roe": [
+          53.1,
+          49.0,
+          52.0,
+          47.5
+        ],
+        "debt_to_equity": [
+          2.49,
+          2.41,
+          2.31,
+          2.54
+        ]
+      }
+    },
+    {
+      "id": "AMD",
+      "name": "Advanced Micro Devices, Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "marketCap": 340537442304,
+      "buffettScore": 45,
+      "metrics": {
+        "gross_margin": 49.4,
+        "net_margin": 6.4,
+        "operating_margin": 8.1,
+        "sga_ratio": 0.0,
+        "roe": 2.9,
+        "roa": 2.4,
+        "roic": 3.5,
+        "debt_to_equity": 0.04,
+        "interest_coverage": 0,
+        "current_ratio": 2.62,
+        "fcf_margin": 9.3,
+        "capex_ratio": 2.5,
+        "retained_earnings": 2364000000.0,
+        "pe_ratio": 110.08948,
+        "pb_ratio": 5.6017675,
+        "buffett_score": 45
+      },
+      "historical": {
+        "gross_margin": [
+          49.4,
+          46.1,
+          44.9,
+          48.2
+        ],
+        "net_margin": [
+          6.4,
+          3.8,
+          5.6,
+          19.2
+        ],
+        "roe": [
+          2.9,
+          1.5,
+          2.4,
+          42.2
+        ],
+        "debt_to_equity": [
+          0.04,
+          0.05,
+          0.05,
+          0.09
+        ]
+      }
+    },
+    {
+      "id": "ADBE",
+      "name": "Adobe Inc.",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "marketCap": 147574947840,
+      "buffettScore": 85,
+      "metrics": {
+        "gross_margin": 89.0,
+        "net_margin": 25.9,
+        "operating_margin": 36.0,
+        "sga_ratio": 0.0,
+        "roe": 39.4,
+        "roa": 18.4,
+        "roic": 38.4,
+        "debt_to_equity": 0.43,
+        "interest_coverage": 0,
+        "current_ratio": 1.07,
+        "fcf_margin": 36.6,
+        "capex_ratio": 0.9,
+        "retained_earnings": 38470000000.0,
+        "pe_ratio": 20.831736,
+        "pb_ratio": 12.481256,
+        "buffett_score": 85
+      },
+      "historical": {
+        "gross_margin": [
+          89.0,
+          87.9,
+          87.7,
+          88.2
+        ],
+        "net_margin": [
+          25.9,
+          28.0,
+          27.0,
+          30.5
+        ],
+        "roe": [
+          39.4,
+          32.9,
+          33.8,
+          32.6
+        ],
+        "debt_to_equity": [
+          0.43,
+          0.25,
+          0.33,
+          0.32
+        ]
+      }
+    },
+    {
+      "id": "TMO",
+      "name": "Thermo Fisher Scientific Inc",
+      "sector": "Healthcare",
+      "industry": "Diagnostics & Research",
+      "marketCap": 214213705728,
+      "buffettScore": 45,
+      "metrics": {
+        "gross_margin": 41.3,
+        "net_margin": 14.8,
+        "operating_margin": 18.0,
+        "sga_ratio": 0.0,
+        "roe": 12.8,
+        "roa": 6.5,
+        "roic": 9.5,
+        "debt_to_equity": 0.63,
+        "interest_coverage": 0,
+        "current_ratio": 1.66,
+        "fcf_margin": 16.9,
+        "capex_ratio": 3.3,
+        "retained_earnings": 53102000000.0,
+        "pe_ratio": 32.900173,
+        "pb_ratio": 4.1987743,
+        "buffett_score": 45
+      },
+      "historical": {
+        "gross_margin": [
+          41.3,
+          39.9,
+          42.2,
+          50.1
+        ],
+        "net_margin": [
+          14.8,
+          14.0,
+          15.5,
+          19.7
+        ],
+        "roe": [
+          12.8,
+          12.8,
+          15.8,
+          18.9
+        ],
+        "debt_to_equity": [
+          0.63,
+          0.75,
+          0.78,
+          0.85
+        ]
+      }
+    },
+    {
+      "id": "ACN",
+      "name": "Accenture plc",
+      "sector": "Technology",
+      "industry": "Information Technology Services",
+      "marketCap": 179642400768,
+      "buffettScore": 65,
+      "metrics": {
+        "gross_margin": 31.9,
+        "net_margin": 11.0,
+        "operating_margin": 14.7,
+        "sga_ratio": 0.0,
+        "roe": 24.6,
+        "roa": 11.7,
+        "roic": 26.0,
+        "debt_to_equity": 0.26,
+        "interest_coverage": 0,
+        "current_ratio": 1.42,
+        "fcf_margin": 15.6,
+        "capex_ratio": 0.9,
+        "retained_earnings": 21018731000.0,
+        "pe_ratio": 22.371712,
+        "pb_ratio": 5.4229045,
+        "buffett_score": 65
+      },
+      "historical": {
+        "gross_margin": [
+          31.9,
+          32.6,
+          32.3,
+          32.0
+        ],
+        "net_margin": [
+          11.0,
+          11.2,
+          10.7,
+          11.2
+        ],
+        "roe": [
+          24.6,
+          25.7,
+          26.7,
+          31.1
+        ],
+        "debt_to_equity": [
+          0.26,
+          0.15,
+          0.12,
+          0.15
+        ]
+      }
+    },
+    {
+      "id": "MCD",
+      "name": "McDonald's Corporation",
+      "sector": "Consumer Cyclical",
+      "industry": "Restaurants",
+      "marketCap": 224428589056,
+      "buffettScore": 65,
+      "metrics": {
+        "gross_margin": 56.8,
+        "net_margin": 31.7,
+        "operating_margin": 45.7,
+        "sga_ratio": 0.0,
+        "roe": 0,
+        "roa": 14.9,
+        "roic": 24.6,
+        "debt_to_equity": 0,
+        "interest_coverage": 0,
+        "current_ratio": 1.19,
+        "fcf_margin": 25.7,
+        "capex_ratio": 10.7,
+        "retained_earnings": 66834000000.0,
+        "pe_ratio": 26.811596,
+        "pb_ratio": -103.556145,
+        "buffett_score": 65
+      },
+      "historical": {
+        "gross_margin": [
+          56.8,
+          57.1,
+          57.0,
+          54.2
+        ],
+        "net_margin": [
+          31.7,
+          33.2,
+          26.6,
+          32.5
+        ],
+        "roe": [],
+        "debt_to_equity": []
+      }
+    },
+    {
+      "id": "CSCO",
+      "name": "Cisco Systems, Inc.",
+      "sector": "Technology",
+      "industry": "Communication Equipment",
+      "marketCap": 306407407616,
+      "buffettScore": 80,
+      "metrics": {
+        "gross_margin": 64.9,
+        "net_margin": 18.0,
+        "operating_margin": 22.1,
+        "sga_ratio": 0.0,
+        "roe": 21.7,
+        "roa": 8.3,
+        "roic": 16.7,
+        "debt_to_equity": 0.6,
+        "interest_coverage": 0,
+        "current_ratio": 1.0,
+        "fcf_margin": 23.5,
+        "capex_ratio": 1.6,
+        "retained_earnings": 50000000.0,
+        "pe_ratio": 29.942087,
+        "pb_ratio": 6.5151644,
+        "buffett_score": 80
+      },
+      "historical": {
+        "gross_margin": [
+          64.9,
+          64.7,
+          62.7,
+          62.5
+        ],
+        "net_margin": [
+          18.0,
+          19.2,
+          22.1,
+          22.9
+        ],
+        "roe": [
+          21.7,
+          22.7,
+          28.4,
+          29.7
+        ],
+        "debt_to_equity": [
+          0.6,
+          0.68,
+          0.19,
+          0.24
+        ]
+      }
+    },
+    {
+      "id": "ABT",
+      "name": "Abbott Laboratories",
+      "sector": "Healthcare",
+      "industry": "Medical Devices",
+      "marketCap": 220794634240,
+      "buffettScore": 75,
+      "metrics": {
+        "gross_margin": 55.4,
+        "net_margin": 31.9,
+        "operating_margin": 16.3,
+        "sga_ratio": 0.0,
+        "roe": 28.1,
+        "roa": 16.5,
+        "roic": 10.9,
+        "debt_to_equity": 0.32,
+        "interest_coverage": 0,
+        "current_ratio": 1.67,
+        "fcf_margin": 15.1,
+        "capex_ratio": 5.3,
+        "retained_earnings": 47261000000.0,
+        "pe_ratio": 15.957233,
+        "pb_ratio": 4.32925,
+        "buffett_score": 75
+      },
+      "historical": {
+        "gross_margin": [
+          55.4,
+          55.2,
+          56.1,
+          57.0
+        ],
+        "net_margin": [
+          31.9,
+          14.3,
+          15.9,
+          16.4
+        ],
+        "roe": [
+          28.1,
+          14.8,
+          18.9,
+          19.8
+        ],
+        "debt_to_equity": [
+          0.32,
+          0.4,
+          0.48,
+          0.53
+        ]
+      }
+    },
+    {
+      "id": "DIS",
+      "name": "Walt Disney Company (The)",
+      "sector": "Communication Services",
+      "industry": "Entertainment",
+      "marketCap": 200685371392,
+      "buffettScore": 25,
+      "metrics": {
+        "gross_margin": 37.8,
+        "net_margin": 13.1,
+        "operating_margin": 14.6,
+        "sga_ratio": 0.0,
+        "roe": 11.3,
+        "roa": 6.3,
+        "roic": 8.9,
+        "debt_to_equity": 0.41,
+        "interest_coverage": 0,
+        "current_ratio": 0.71,
+        "fcf_margin": 10.7,
+        "capex_ratio": 8.5,
+        "retained_earnings": 60410000000.0,
+        "pe_ratio": 16.294891,
+        "pb_ratio": 1.8195451,
+        "buffett_score": 25
+      },
+      "historical": {
+        "gross_margin": [
+          37.8,
+          35.8,
+          33.4,
+          34.2
+        ],
+        "net_margin": [
+          13.1,
+          5.4,
+          2.6,
+          3.8
+        ],
+        "roe": [
+          11.3,
+          4.9,
+          2.4,
+          3.3
+        ],
+        "debt_to_equity": [
+          0.41,
+          0.48,
+          0.5,
+          0.54
+        ]
+      }
+    },
+    {
+      "id": "WFC",
+      "name": "Wells Fargo & Company",
+      "sector": "Financial Services",
+      "industry": "Banks - Diversified",
+      "marketCap": 295325237248,
+      "buffettScore": 20,
+      "metrics": {
+        "gross_margin": 0.0,
+        "net_margin": 24.0,
+        "operating_margin": 0.0,
+        "sga_ratio": 0,
+        "roe": 11.0,
+        "roa": 1.0,
+        "roic": 0.0,
+        "debt_to_equity": 1.04,
+        "interest_coverage": 0,
+        "current_ratio": 0.0,
+        "fcf_margin": 3.7,
+        "capex_ratio": 0.0,
+        "retained_earnings": 214198000000.0,
+        "pe_ratio": 15.187809,
+        "pb_ratio": 1.7642668,
+        "buffett_score": 20
+      },
+      "historical": {
+        "gross_margin": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "net_margin": [
+          24.0,
+          23.2,
+          18.4,
+          27.9
+        ],
+        "roe": [
+          11.0,
+          10.3,
+          7.6,
+          11.8
+        ],
+        "debt_to_equity": [
+          1.04,
+          1.18,
+          1.08,
+          0.93
+        ]
+      }
+    },
+    {
+      "id": "DHR",
+      "name": "Danaher Corporation",
+      "sector": "Healthcare",
+      "industry": "Diagnostics & Research",
+      "marketCap": 160896794624,
+      "buffettScore": 55,
+      "metrics": {
+        "gross_margin": 59.5,
+        "net_margin": 16.3,
+        "operating_margin": 20.4,
+        "sga_ratio": 0.0,
+        "roe": 7.9,
+        "roa": 5.0,
+        "roic": 7.3,
+        "debt_to_equity": 0.35,
+        "interest_coverage": 0,
+        "current_ratio": 1.4,
+        "fcf_margin": 22.2,
+        "capex_ratio": 5.8,
+        "retained_earnings": 44188000000.0,
+        "pe_ratio": 46.3299,
+        "pb_ratio": 3.10754,
+        "buffett_score": 55
+      },
+      "historical": {
+        "gross_margin": [
+          59.5,
+          58.7,
+          60.8,
+          61.4
+        ],
+        "net_margin": [
+          16.3,
+          19.9,
+          27.1,
+          25.9
+        ],
+        "roe": [
+          7.9,
+          8.9,
+          14.4,
+          14.2
+        ],
+        "debt_to_equity": [
+          0.35,
+          0.37,
+          0.41,
+          0.52
+        ]
+      }
+    },
+    {
+      "id": "VZ",
+      "name": "Verizon Communications Inc.",
+      "sector": "Communication Services",
+      "industry": "Telecom Services",
+      "marketCap": 171819335680,
+      "buffettScore": 30,
+      "metrics": {
+        "gross_margin": 59.9,
+        "net_margin": 13.0,
+        "operating_margin": 21.3,
+        "sga_ratio": 0.0,
+        "roe": 17.6,
+        "roa": 4.6,
+        "roic": 10.7,
+        "debt_to_equity": 1.7,
+        "interest_coverage": 0,
+        "current_ratio": 0.63,
+        "fcf_margin": 14.0,
+        "capex_ratio": 13.3,
+        "retained_earnings": 89110000000.0,
+        "pe_ratio": 8.6887,
+        "pb_ratio": 1.6356922,
+        "buffett_score": 30
+      },
+      "historical": {
+        "gross_margin": [
+          59.9,
+          59.0,
+          56.8,
+          57.9
+        ],
+        "net_margin": [
+          13.0,
+          8.7,
+          15.5,
+          16.5
+        ],
+        "roe": [
+          17.6,
+          12.6,
+          23.3,
+          27.0
+        ],
+        "debt_to_equity": [
+          1.7,
+          1.89,
+          1.93,
+          2.18
+        ]
+      }
+    },
+    {
+      "id": "INTC",
+      "name": "Intel Corporation",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "marketCap": 177968709632,
+      "buffettScore": 10,
+      "metrics": {
+        "gross_margin": 32.7,
+        "net_margin": -35.3,
+        "operating_margin": -8.9,
+        "sga_ratio": 0.0,
+        "roe": -18.9,
+        "roa": -9.5,
+        "roic": -3.2,
+        "debt_to_equity": 0.5,
+        "interest_coverage": 0,
+        "current_ratio": 1.33,
+        "fcf_margin": -29.5,
+        "capex_ratio": 45.1,
+        "retained_earnings": 49032000000.0,
+        "pe_ratio": 621.8334,
+        "pb_ratio": 1.6715951,
+        "buffett_score": 10
+      },
+      "historical": {
+        "gross_margin": [
+          32.7,
+          40.0,
+          42.6,
+          55.4
+        ],
+        "net_margin": [
+          -35.3,
+          3.1,
+          12.7,
+          25.1
+        ],
+        "roe": [
+          -18.9,
+          1.6,
+          7.9,
+          20.8
+        ],
+        "debt_to_equity": [
+          0.5,
+          0.47,
+          0.41,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "CMCSA",
+      "name": "Comcast Corporation",
+      "sector": "Communication Services",
+      "industry": "Telecom Services",
+      "marketCap": 109769302016,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 70.1,
+        "net_margin": 13.1,
+        "operating_margin": 18.8,
+        "sga_ratio": 0.0,
+        "roe": 18.9,
+        "roa": 6.1,
+        "roic": 12.6,
+        "debt_to_equity": 1.16,
+        "interest_coverage": 0,
+        "current_ratio": 0.68,
+        "fcf_margin": 10.1,
+        "capex_ratio": 12.2,
+        "retained_earnings": 56972000000.0,
+        "pe_ratio": 4.938538,
+        "pb_ratio": 1.1191417,
+        "buffett_score": 40
+      },
+      "historical": {
+        "gross_margin": [
+          70.1,
+          69.8,
+          68.5,
+          67.0
+        ],
+        "net_margin": [
+          13.1,
+          12.7,
+          4.4,
+          12.2
+        ],
+        "roe": [
+          18.9,
+          18.6,
+          6.6,
+          14.7
+        ],
+        "debt_to_equity": [
+          1.16,
+          1.17,
+          1.24,
+          1.04
+        ]
+      }
+    },
+    {
+      "id": "QCOM",
+      "name": "QUALCOMM Incorporated",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "marketCap": 190033494016,
+      "buffettScore": 75,
+      "metrics": {
+        "gross_margin": 55.4,
+        "net_margin": 12.5,
+        "operating_margin": 28.0,
+        "sga_ratio": 0.0,
+        "roe": 26.1,
+        "roa": 11.1,
+        "roic": 34.4,
+        "debt_to_equity": 0.7,
+        "interest_coverage": 0,
+        "current_ratio": 2.82,
+        "fcf_margin": 28.9,
+        "capex_ratio": 2.7,
+        "retained_earnings": 20646000000.0,
+        "pe_ratio": 35.224,
+        "pb_ratio": 8.919725,
+        "buffett_score": 75
+      },
+      "historical": {
+        "gross_margin": [
+          55.4,
+          56.2,
+          55.7,
+          57.8
+        ],
+        "net_margin": [
+          12.5,
+          26.0,
+          20.2,
+          29.3
+        ],
+        "roe": [
+          26.1,
+          38.6,
+          33.5,
+          71.8
+        ],
+        "debt_to_equity": [
+          0.7,
+          0.56,
+          0.71,
+          0.86
+        ]
+      }
+    },
+    {
+      "id": "TXN",
+      "name": "Texas Instruments Incorporated",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "marketCap": 161426391040,
+      "buffettScore": 65,
+      "metrics": {
+        "gross_margin": 58.1,
+        "net_margin": 30.7,
+        "operating_margin": 34.1,
+        "sga_ratio": 0.0,
+        "roe": 28.4,
+        "roa": 13.5,
+        "roic": 17.5,
+        "debt_to_equity": 0.8,
+        "interest_coverage": 0,
+        "current_ratio": 4.12,
+        "fcf_margin": 9.6,
+        "capex_ratio": 30.8,
+        "retained_earnings": 52262000000.0,
+        "pe_ratio": 32.34244,
+        "pb_ratio": 9.706976,
+        "buffett_score": 65
+      },
+      "historical": {
+        "gross_margin": [
+          58.1,
+          62.9,
+          68.8,
+          67.5
+        ],
+        "net_margin": [
+          30.7,
+          37.2,
+          43.7,
+          42.4
+        ],
+        "roe": [
+          28.4,
+          38.5,
+          60.0,
+          58.3
+        ],
+        "debt_to_equity": [
+          0.8,
+          0.66,
+          0.6,
+          0.61
+        ]
+      }
+    },
+    {
+      "id": "PM",
+      "name": "Philip Morris International Inc",
+      "sector": "Consumer Defensive",
+      "industry": "Tobacco",
+      "marketCap": 245871083520,
+      "buffettScore": 70,
+      "metrics": {
+        "gross_margin": 64.8,
+        "net_margin": 18.6,
+        "operating_margin": 35.4,
+        "sga_ratio": 0.0,
+        "roe": 0,
+        "roa": 11.4,
+        "roic": 39.5,
+        "debt_to_equity": 0,
+        "interest_coverage": 0,
+        "current_ratio": 0.88,
+        "fcf_margin": 28.4,
+        "capex_ratio": 3.8,
+        "retained_earnings": 32869000000.0,
+        "pe_ratio": 22.532095,
+        "pb_ratio": -22.528883,
+        "buffett_score": 70
+      },
+      "historical": {
+        "gross_margin": [
+          64.8,
+          63.3,
+          64.1,
+          68.1
+        ],
+        "net_margin": [
+          18.6,
+          22.2,
+          28.5,
+          29.0
+        ],
+        "roe": [],
+        "debt_to_equity": []
+      }
+    },
+    {
+      "id": "CAT",
+      "name": "Caterpillar, Inc.",
+      "sector": "Industrials",
+      "industry": "Farm & Heavy Construction Machinery",
+      "marketCap": 275901284352,
+      "buffettScore": 45,
+      "metrics": {
+        "gross_margin": 36.0,
+        "net_margin": 16.7,
+        "operating_margin": 20.2,
+        "sga_ratio": 0.0,
+        "roe": 55.4,
+        "roa": 12.3,
+        "roic": 22.6,
+        "debt_to_equity": 1.97,
+        "interest_coverage": 0,
+        "current_ratio": 1.42,
+        "fcf_margin": 13.6,
+        "capex_ratio": 5.0,
+        "retained_earnings": 59352000000.0,
+        "pe_ratio": 30.217035,
+        "pb_ratio": 13.341413,
+        "buffett_score": 45
+      },
+      "historical": {
+        "gross_margin": [
+          36.0,
+          34.7,
+          29.5,
+          29.4
+        ],
+        "net_margin": [
+          16.7,
+          15.4,
+          11.3,
+          12.7
+        ],
+        "roe": [
+          55.4,
+          53.0,
+          42.3,
+          39.4
+        ],
+        "debt_to_equity": [
+          1.97,
+          1.94,
+          2.33,
+          2.29
+        ]
+      }
+    },
+    {
+      "id": "NEE",
+      "name": "NextEra Energy, Inc.",
+      "sector": "Utilities",
+      "industry": "Utilities - Regulated Electric",
+      "marketCap": 169357819904,
+      "buffettScore": 35,
+      "metrics": {
+        "gross_margin": 60.1,
+        "net_margin": 28.1,
+        "operating_margin": 28.8,
+        "sga_ratio": 0.0,
+        "roe": 13.9,
+        "roa": 3.7,
+        "roic": 5.4,
+        "debt_to_equity": 1.64,
+        "interest_coverage": 0,
+        "current_ratio": 0.47,
+        "fcf_margin": 19.2,
+        "capex_ratio": 34.4,
+        "retained_earnings": 32946000000.0,
+        "pe_ratio": 25.815872,
+        "pb_ratio": 3.1257687,
+        "buffett_score": 35
+      },
+      "historical": {
+        "gross_margin": [
+          60.1,
+          63.9,
+          48.4,
+          50.2
+        ],
+        "net_margin": [
+          28.1,
+          26.0,
+          19.8,
+          20.9
+        ],
+        "roe": [
+          13.9,
+          15.4,
+          10.6,
+          9.6
+        ],
+        "debt_to_equity": [
+          1.64,
+          1.54,
+          1.66,
+          1.47
+        ]
+      }
+    },
+    {
+      "id": "IBM",
+      "name": "International Business Machines",
+      "sector": "Technology",
+      "industry": "Information Technology Services",
+      "marketCap": 283393032192,
+      "buffettScore": 45,
+      "metrics": {
+        "gross_margin": 56.7,
+        "net_margin": 9.6,
+        "operating_margin": 16.1,
+        "sga_ratio": 0.0,
+        "roe": 22.1,
+        "roa": 4.4,
+        "roic": 11.8,
+        "debt_to_equity": 2.14,
+        "interest_coverage": 0,
+        "current_ratio": 1.04,
+        "fcf_margin": 18.7,
+        "capex_ratio": 2.7,
+        "retained_earnings": 151163000000.0,
+        "pe_ratio": 36.092857,
+        "pb_ratio": 10.155763,
+        "buffett_score": 45
+      },
+      "historical": {
+        "gross_margin": [
+          56.7,
+          55.4,
+          54.0,
+          54.9
+        ],
+        "net_margin": [
+          9.6,
+          12.1,
+          2.7,
+          10.0
+        ],
+        "roe": [
+          22.1,
+          33.3,
+          7.5,
+          30.4
+        ],
+        "debt_to_equity": [
+          2.14,
+          2.66,
+          2.46,
+          2.92
+        ]
+      }
+    },
+    {
+      "id": "AMGN",
+      "name": "Amgen Inc.",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - General",
+      "marketCap": 175943155712,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 61.5,
+        "net_margin": 12.2,
+        "operating_margin": 21.7,
+        "sga_ratio": 0.0,
+        "roe": 69.6,
+        "roa": 4.5,
+        "roic": 11.0,
+        "debt_to_equity": 10.23,
+        "interest_coverage": 0,
+        "current_ratio": 1.26,
+        "fcf_margin": 31.1,
+        "capex_ratio": 3.3,
+        "retained_earnings": -27590000000.0,
+        "pe_ratio": 25.250387,
+        "pb_ratio": 18.29144,
+        "buffett_score": 40
+      },
+      "historical": {
+        "gross_margin": [
+          61.5,
+          70.0,
+          75.7,
+          75.2
+        ],
+        "net_margin": [
+          12.2,
+          23.8,
+          24.9,
+          22.7
+        ],
+        "roe": [
+          69.6,
+          107.8,
+          179.0,
+          88.0
+        ],
+        "debt_to_equity": [
+          4.97
+        ]
+      }
+    },
+    {
+      "id": "UNP",
+      "name": "Union Pacific Corporation",
+      "sector": "Industrials",
+      "industry": "Railroads",
+      "marketCap": 139914788864,
+      "buffettScore": 65,
+      "metrics": {
+        "gross_margin": 45.5,
+        "net_margin": 27.8,
+        "operating_margin": 40.1,
+        "sga_ratio": 0.0,
+        "roe": 39.9,
+        "roa": 10.0,
+        "roic": 19.7,
+        "debt_to_equity": 1.92,
+        "interest_coverage": 0,
+        "current_ratio": 0.77,
+        "fcf_margin": 24.3,
+        "capex_ratio": 14.2,
+        "retained_earnings": 65628000000.0,
+        "pe_ratio": 20.040781,
+        "pb_ratio": 8.085281,
+        "buffett_score": 65
+      },
+      "historical": {
+        "gross_margin": [
+          45.5,
+          43.7,
+          45.0,
+          48.2
+        ],
+        "net_margin": [
+          27.8,
+          26.4,
+          28.1,
+          29.9
+        ],
+        "roe": [
+          39.9,
+          43.1,
+          57.5,
+          46.1
+        ],
+        "debt_to_equity": [
+          1.92,
+          2.31,
+          2.87,
+          2.22
+        ]
+      }
+    },
+    {
+      "id": "SAP",
+      "name": "SAP  SE",
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "marketCap": 284301131776,
+      "buffettScore": 50,
+      "metrics": {
+        "gross_margin": 73.0,
+        "net_margin": 9.1,
+        "operating_margin": 22.8,
+        "sga_ratio": 0.0,
+        "roe": 6.9,
+        "roa": 4.2,
+        "roic": 13.9,
+        "debt_to_equity": 0.23,
+        "interest_coverage": 0,
+        "current_ratio": 1.12,
+        "fcf_margin": 12.9,
+        "capex_ratio": 2.3,
+        "retained_earnings": 42907000000.0,
+        "pe_ratio": 34.463932,
+        "pb_ratio": 5.6369143,
+        "buffett_score": 50
+      },
+      "historical": {
+        "gross_margin": [
+          73.0,
+          72.2,
+          72.8,
+          73.2
+        ],
+        "net_margin": [
+          9.1,
+          19.7,
+          7.7,
+          19.5
+        ],
+        "roe": [
+          6.9,
+          14.2,
+          5.7,
+          13.5
+        ],
+        "debt_to_equity": [
+          0.23,
+          0.2,
+          0.33,
+          0.39
+        ]
+      }
+    },
+    {
+      "id": "SIE.DE",
+      "name": "SIEMENS AG                    N",
+      "sector": "Industrials",
+      "industry": "Specialty Industrial Machinery",
+      "marketCap": 184604360704,
+      "buffettScore": 35,
+      "metrics": {
+        "gross_margin": 38.5,
+        "net_margin": 12.2,
+        "operating_margin": 11.5,
+        "sga_ratio": 0.0,
+        "roe": 15.5,
+        "roa": 5.8,
+        "roic": 7.7,
+        "debt_to_equity": 0.9,
+        "interest_coverage": 0,
+        "current_ratio": 1.37,
+        "fcf_margin": 13.7,
+        "capex_ratio": 3.1,
+        "retained_earnings": 49601000000.0,
+        "pe_ratio": 24.758402,
+        "pb_ratio": 2.9546337,
+        "buffett_score": 35
+      },
+      "historical": {
+        "gross_margin": [
+          38.5,
+          39.3,
+          38.9,
+          35.9
+        ],
+        "net_margin": [
+          12.2,
+          10.9,
+          10.6,
+          5.2
+        ],
+        "roe": [
+          15.5,
+          16.2,
+          16.6,
+          7.6
+        ],
+        "debt_to_equity": [
+          0.9,
+          0.93,
+          0.98,
+          1.04
+        ]
+      }
+    },
+    {
+      "id": "ALV.DE",
+      "name": "Allianz SE                    v",
+      "sector": "Financial Services",
+      "industry": "Insurance - Diversified",
+      "marketCap": 148552925184,
+      "buffettScore": 45,
+      "metrics": {
+        "gross_margin": 0.0,
+        "net_margin": 7.3,
+        "operating_margin": 0.0,
+        "sga_ratio": 0,
+        "roe": 16.5,
+        "roa": 1.0,
+        "roic": 0.0,
+        "debt_to_equity": 0.53,
+        "interest_coverage": 0,
+        "current_ratio": 0.0,
+        "fcf_margin": 21.9,
+        "capex_ratio": 1.4,
+        "retained_earnings": 33354000000.0,
+        "pe_ratio": 14.217711,
+        "pb_ratio": 2.4332943,
+        "buffett_score": 45
+      },
+      "historical": {
+        "gross_margin": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "net_margin": [
+          7.3,
+          7.1,
+          8.0,
+          5.6
+        ],
+        "roe": [
+          16.5,
+          14.7,
+          11.8,
+          10.8
+        ],
+        "debt_to_equity": [
+          0.53,
+          0.51,
+          0.54,
+          0.58
+        ]
+      }
+    },
+    {
+      "id": "DTE.DE",
+      "name": "DEUTSCHE TELEKOM AG           N",
+      "sector": "Communication Services",
+      "industry": "Telecom Services",
+      "marketCap": 133377105920,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 61.1,
+        "net_margin": 9.7,
+        "operating_margin": 21.0,
+        "sga_ratio": 0.0,
+        "roe": 17.7,
+        "roa": 3.7,
+        "roic": 11.5,
+        "debt_to_equity": 2.32,
+        "interest_coverage": 0,
+        "current_ratio": 1.06,
+        "fcf_margin": 18.0,
+        "capex_ratio": 16.7,
+        "retained_earnings": -5750000000.0,
+        "pe_ratio": 10.846154,
+        "pb_ratio": 2.137898,
+        "buffett_score": 40
+      },
+      "historical": {
+        "gross_margin": [
+          61.1,
+          60.0,
+          55.9,
+          56.6
+        ],
+        "net_margin": [
+          9.7,
+          16.0,
+          7.0,
+          3.9
+        ],
+        "roe": [
+          17.7,
+          31.2,
+          16.5,
+          9.8
+        ],
+        "debt_to_equity": [
+          2.32,
+          2.45,
+          2.98,
+          3.26
+        ]
+      }
+    },
+    {
+      "id": "BMW.DE",
+      "name": "BAYERISCHE MOTOREN WERKE AG   S",
+      "sector": "Consumer Cyclical",
+      "industry": "Auto Manufacturers",
+      "marketCap": 56677490688,
+      "buffettScore": 20,
+      "metrics": {
+        "gross_margin": 16.1,
+        "net_margin": 5.1,
+        "operating_margin": 8.0,
+        "sga_ratio": 0.0,
+        "roe": 7.9,
+        "roa": 2.7,
+        "roic": 6.4,
+        "debt_to_equity": 0.93,
+        "interest_coverage": 0,
+        "current_ratio": 1.1,
+        "fcf_margin": -3.3,
+        "capex_ratio": 8.6,
+        "retained_earnings": 0,
+        "pe_ratio": 8.170475,
+        "pb_ratio": 0.62674,
+        "buffett_score": 20
+      },
+      "historical": {
+        "gross_margin": [
+          16.1,
+          19.1,
+          17.2,
+          19.8
+        ],
+        "net_margin": [
+          5.1,
+          7.3,
+          12.6,
+          11.1
+        ],
+        "roe": [
+          7.9,
+          12.6,
+          20.6,
+          16.7
+        ],
+        "debt_to_equity": [
+          0.93,
+          0.8,
+          0.82,
+          1.13
+        ]
+      }
+    },
+    {
+      "id": "VOW3.DE",
+      "name": "VOLKSWAGEN AG                 V",
+      "sector": "Consumer Cyclical",
+      "industry": "Auto Manufacturers",
+      "marketCap": 53170597888,
+      "buffettScore": 10,
+      "metrics": {
+        "gross_margin": 18.3,
+        "net_margin": 3.5,
+        "operating_margin": 6.7,
+        "sga_ratio": 0.0,
+        "roe": 6.2,
+        "roa": 1.8,
+        "roic": 5.7,
+        "debt_to_equity": 1.08,
+        "interest_coverage": 0,
+        "current_ratio": 1.13,
+        "fcf_margin": -3.2,
+        "capex_ratio": 8.5,
+        "retained_earnings": 155130000000.0,
+        "pe_ratio": 7.777778,
+        "pb_ratio": 0.30921295,
+        "buffett_score": 10
+      },
+      "historical": {
+        "gross_margin": [
+          18.3,
+          18.9,
+          18.7,
+          18.9
+        ],
+        "net_margin": [
+          3.5,
+          5.1,
+          5.5,
+          6.1
+        ],
+        "roe": [
+          6.2,
+          9.4,
+          9.3,
+          10.6
+        ],
+        "debt_to_equity": [
+          1.08,
+          1.11,
+          1.08,
+          1.27
+        ]
+      }
+    },
+    {
+      "id": "AIR.DE",
+      "name": "Airbus SE                     A",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "marketCap": 152145018880,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 15.4,
+        "net_margin": 6.1,
+        "operating_margin": 6.9,
+        "sga_ratio": 0.0,
+        "roe": 21.6,
+        "roa": 3.3,
+        "roic": 15.6,
+        "debt_to_equity": 0.58,
+        "interest_coverage": 0,
+        "current_ratio": 1.15,
+        "fcf_margin": 5.4,
+        "capex_ratio": 5.3,
+        "retained_earnings": 18687000000.0,
+        "pe_ratio": 30.115625,
+        "pb_ratio": 6.445292,
+        "buffett_score": 40
+      },
+      "historical": {
+        "gross_margin": [
+          15.4,
+          15.3,
+          18.0,
+          18.5
+        ],
+        "net_margin": [
+          6.1,
+          5.8,
+          7.2,
+          8.1
+        ],
+        "roe": [
+          21.6,
+          21.4,
+          32.8,
+          44.5
+        ],
+        "debt_to_equity": [
+          0.58,
+          0.64,
+          0.85,
+          1.42
+        ]
+      }
+    },
+    {
+      "id": "BAS.DE",
+      "name": "BASF SE                       N",
+      "sector": "Basic Materials",
+      "industry": "Chemicals",
+      "marketCap": 39431630848,
+      "buffettScore": 20,
+      "metrics": {
+        "gross_margin": 26.2,
+        "net_margin": 2.0,
+        "operating_margin": 5.1,
+        "sga_ratio": 0.0,
+        "roe": 3.6,
+        "roa": 1.6,
+        "roic": 5.6,
+        "debt_to_equity": 0.67,
+        "interest_coverage": 0,
+        "current_ratio": 1.83,
+        "fcf_margin": 1.1,
+        "capex_ratio": 9.5,
+        "retained_earnings": 30883000000.0,
+        "pe_ratio": 129.94118,
+        "pb_ratio": 1.2036179,
+        "buffett_score": 20
+      },
+      "historical": {
+        "gross_margin": [
+          26.2,
+          24.2,
+          24.1,
+          25.2
+        ],
+        "net_margin": [
+          2.0,
+          0.3,
+          -0.7,
+          7.0
+        ],
+        "roe": [
+          3.6,
+          0.6,
+          -1.6,
+          13.5
+        ],
+        "debt_to_equity": [
+          0.67,
+          0.61,
+          0.53,
+          0.47
+        ]
+      }
+    },
+    {
+      "id": "MUV2.DE",
+      "name": "MUENCHENER RUECKVERS.-GES. AG N",
+      "sector": "Financial Services",
+      "industry": "Insurance - Reinsurance",
+      "marketCap": 72667750400,
+      "buffettScore": 40,
+      "metrics": {
+        "gross_margin": 0.0,
+        "net_margin": 13.4,
+        "operating_margin": 0.0,
+        "sga_ratio": 0,
+        "roe": 17.4,
+        "roa": 2.0,
+        "roic": 0.0,
+        "debt_to_equity": 0.19,
+        "interest_coverage": 0,
+        "current_ratio": 0.0,
+        "fcf_margin": 6.7,
+        "capex_ratio": 0.7,
+        "retained_earnings": 24822000000.0,
+        "pe_ratio": 11.554534,
+        "pb_ratio": 2.2193506,
+        "buffett_score": 40
+      },
+      "historical": {
+        "gross_margin": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "net_margin": [
+          13.4,
+          11.6,
+          13.4,
+          4.6
+        ],
+        "roe": [
+          17.4,
+          15.5,
+          19.6,
+          9.5
+        ],
+        "debt_to_equity": [
+          0.19,
+          0.16,
+          0.18,
+          0.22
+        ]
+      }
+    },
+    {
+      "id": "ADS.DE",
+      "name": "adidas AG                     N",
+      "sector": "Consumer Cyclical",
+      "industry": "Footwear & Accessories",
+      "marketCap": 29674858496,
+      "buffettScore": 20,
+      "metrics": {
+        "gross_margin": 50.8,
+        "net_margin": 3.2,
+        "operating_margin": 5.5,
+        "sga_ratio": 0.0,
+        "roe": 14.0,
+        "roa": 3.7,
+        "roic": 11.7,
+        "debt_to_equity": 1.02,
+        "interest_coverage": 0,
+        "current_ratio": 1.24,
+        "fcf_margin": 10.0,
+        "capex_ratio": 2.3,
+        "retained_earnings": 4775000000.0,
+        "pe_ratio": 24.513273,
+        "pb_ratio": 5.210848,
+        "buffett_score": 20
+      },
+      "historical": {
+        "gross_margin": [
+          50.8,
+          47.5,
+          47.3,
+          50.7
+        ],
+        "net_margin": [
+          3.2,
+          -0.4,
+          2.7,
+          10.0
+        ],
+        "roe": [
+          14.0,
+          -1.6,
+          12.3,
+          28.1
+        ],
+        "debt_to_equity": [
+          1.02,
+          1.21,
+          1.29,
+          0.71
+        ]
+      }
+    }
+  ],
+  "links": [],
+  "industry_averages": {
+    "Consumer Electronics": {
+      "gross_margin": 46.9,
+      "net_margin": 26.9,
+      "roe": 151.9,
+      "debt_to_equity": 1.34
+    },
+    "Software - Infrastructure": {
+      "gross_margin": 69.6,
+      "net_margin": 28.9,
+      "roe": 45.2,
+      "debt_to_equity": 2.64
+    },
+    "Internet Content & Information": {
+      "gross_margin": 70.0,
+      "net_margin": 33.2,
+      "roe": 32.4,
+      "debt_to_equity": 0.18
+    },
+    "Internet Retail": {
+      "gross_margin": 48.9,
+      "net_margin": 9.3,
+      "roe": 20.7,
+      "debt_to_equity": 0.46
+    },
+    "Semiconductors": {
+      "gross_margin": 55.6,
+      "net_margin": 13.6,
+      "roe": 23.2,
+      "debt_to_equity": 0.53
+    },
+    "Insurance - Diversified": {
+      "gross_margin": 0.0,
+      "net_margin": 14.2,
+      "roe": 15.1,
+      "debt_to_equity": 0.36
+    },
+    "Drug Manufacturers - General": {
+      "gross_margin": 71.6,
+      "net_margin": 17.2,
+      "roe": 65.9,
+      "debt_to_equity": 6.82
+    },
+    "Auto Manufacturers": {
+      "gross_margin": 17.4,
+      "net_margin": 5.3,
+      "roe": 8.0,
+      "debt_to_equity": 0.73
+    },
+    "Banks - Diversified": {
+      "gross_margin": 0.0,
+      "net_margin": 28.4,
+      "roe": 12.4,
+      "debt_to_equity": 1.16
+    },
+    "Credit Services": {
+      "gross_margin": 78.4,
+      "net_margin": 47.9,
+      "roe": 125.7,
+      "debt_to_equity": 1.74
+    },
+    "Healthcare Plans": {
+      "gross_margin": 22.3,
+      "net_margin": 3.6,
+      "roe": 15.5,
+      "debt_to_equity": 0.83
+    },
+    "Oil & Gas Integrated": {
+      "gross_margin": 26.0,
+      "net_margin": 9.5,
+      "roe": 12.2,
+      "debt_to_equity": 0.16
+    },
+    "Discount Stores": {
+      "gross_margin": 18.8,
+      "net_margin": 2.9,
+      "roe": 24.6,
+      "debt_to_equity": 0.47
+    },
+    "Household & Personal Products": {
+      "gross_margin": 51.2,
+      "net_margin": 19.0,
+      "roe": 30.7,
+      "debt_to_equity": 0.68
+    },
+    "Home Improvement Retail": {
+      "gross_margin": 33.4,
+      "net_margin": 9.3,
+      "roe": 223.0,
+      "debt_to_equity": 9.38
+    },
+    "Entertainment": {
+      "gross_margin": 42.0,
+      "net_margin": 17.7,
+      "roe": 23.2,
+      "debt_to_equity": 0.52
+    },
+    "Software - Application": {
+      "gross_margin": 79.7,
+      "net_margin": 17.1,
+      "roe": 18.8,
+      "debt_to_equity": 0.28
+    },
+    "Beverages - Non-Alcoholic": {
+      "gross_margin": 57.8,
+      "net_margin": 16.5,
+      "roe": 48.0,
+      "debt_to_equity": 2.14
+    },
+    "Diagnostics & Research": {
+      "gross_margin": 50.4,
+      "net_margin": 15.6,
+      "roe": 10.4,
+      "debt_to_equity": 0.49
+    },
+    "Information Technology Services": {
+      "gross_margin": 44.3,
+      "net_margin": 10.3,
+      "roe": 23.4,
+      "debt_to_equity": 1.2
+    },
+    "Restaurants": {
+      "gross_margin": 56.8,
+      "net_margin": 31.7,
+      "roe": 0.0,
+      "debt_to_equity": 0.0
+    },
+    "Communication Equipment": {
+      "gross_margin": 64.9,
+      "net_margin": 18.0,
+      "roe": 21.7,
+      "debt_to_equity": 0.6
+    },
+    "Medical Devices": {
+      "gross_margin": 55.4,
+      "net_margin": 31.9,
+      "roe": 28.1,
+      "debt_to_equity": 0.32
+    },
+    "Telecom Services": {
+      "gross_margin": 63.7,
+      "net_margin": 11.9,
+      "roe": 18.1,
+      "debt_to_equity": 1.73
+    },
+    "Tobacco": {
+      "gross_margin": 64.8,
+      "net_margin": 18.6,
+      "roe": 0.0,
+      "debt_to_equity": 0.0
+    },
+    "Farm & Heavy Construction Machinery": {
+      "gross_margin": 36.0,
+      "net_margin": 16.7,
+      "roe": 55.4,
+      "debt_to_equity": 1.97
+    },
+    "Utilities - Regulated Electric": {
+      "gross_margin": 60.1,
+      "net_margin": 28.1,
+      "roe": 13.9,
+      "debt_to_equity": 1.64
+    },
+    "Railroads": {
+      "gross_margin": 45.5,
+      "net_margin": 27.8,
+      "roe": 39.9,
+      "debt_to_equity": 1.92
+    },
+    "Specialty Industrial Machinery": {
+      "gross_margin": 38.5,
+      "net_margin": 12.2,
+      "roe": 15.5,
+      "debt_to_equity": 0.9
+    },
+    "Aerospace & Defense": {
+      "gross_margin": 15.4,
+      "net_margin": 6.1,
+      "roe": 21.6,
+      "debt_to_equity": 0.58
+    },
+    "Chemicals": {
+      "gross_margin": 26.2,
+      "net_margin": 2.0,
+      "roe": 3.6,
+      "debt_to_equity": 0.67
+    },
+    "Insurance - Reinsurance": {
+      "gross_margin": 0.0,
+      "net_margin": 13.4,
+      "roe": 17.4,
+      "debt_to_equity": 0.19
+    },
+    "Footwear & Accessories": {
+      "gross_margin": 50.8,
+      "net_margin": 3.2,
+      "roe": 14.0,
+      "debt_to_equity": 1.02
+    }
+  },
+  "metadata": {
+    "generated": "2025-12-17T13:11:02.746354",
+    "total_stocks": 60,
+    "total_links": 0,
+    "failed_tickers": []
+  }
+}
