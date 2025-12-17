@@ -1,83 +1,142 @@
 import yfinance as yf
 import json
 import os
+import pandas as pd
+import numpy as np
 
-# 1. Define the "Watchlist"
-# (We start with 20 stocks to keep it fast. You can add more later.)
+# 1. THE WATCHLIST (Expanded for better clustering)
 tickers = [
-    "AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", # Tech
-    "XOM", "CVX", "SHEL",                    # Energy
-    "JPM", "BAC", "WFC",                     # Banks
-    "KO", "PEP", "MCD",                      # Consumer
-    "PFE", "JNJ", "MRK",                     # Pharma
-    "BA", "LMT", "GE"                        # Aerospace
+    # Tech
+    "AAPL", "MSFT", "GOOGL", "AMZN", "META", "NVDA", "TSLA",
+    # Banks
+    "JPM", "BAC", "WFC", "GS", "MS",
+    # Consumer
+    "KO", "PEP", "MCD", "SBUX", "NKE",
+    # Energy
+    "XOM", "CVX", "SHEL", "BP",
+    # Pharma
+    "PFE", "JNJ", "MRK", "ABBV"
 ]
 
-stock_data = []
+print("--- 1. Fetching Financials & Price History ---")
 
-print("--- Starting Market Radar Scan ---")
+nodes = []
+price_data = {}
 
 for symbol in tickers:
     try:
         print(f"Scanning {symbol}...")
         stock = yf.Ticker(symbol)
         
-        # Fetch key data
+        # A. Fetch Fundamentals
         info = stock.info
         fin = stock.financials
         bal = stock.balance_sheet
-
-        # Default values if data is missing
-        gross_margin = 0
-        debt_to_equity = 0
+        
+        # --- BUFFETT METRICS CALCULATION ---
         score = 0
-        
-        # --- BUFFETT METRIC 1: Gross Margin (> 40% is good) ---
-        # Banks often don't have 'Gross Profit', so we handle that safely
-        if "Gross Profit" in fin.index:
-            gross_profit = fin.loc["Gross Profit"].iloc[0]
-            revenue = fin.loc["Total Revenue"].iloc[0]
-            gross_margin = gross_profit / revenue
-            if gross_margin > 0.4:
-                score += 1
-        
-        # --- BUFFETT METRIC 2: Debt to Equity (< 0.5 is good) ---
+        metrics = {}
+
+        # 1. Gross Margin (> 40%)
+        # Logic: High margins = Moat
+        gm = 0
+        if "Gross Profit" in fin.index and "Total Revenue" in fin.index:
+            rev = fin.loc["Total Revenue"].iloc[0]
+            gp = fin.loc["Gross Profit"].iloc[0]
+            if rev > 0:
+                gm = gp / rev
+                if gm > 0.40: score += 1
+        metrics["grossMargin"] = round(gm, 2)
+
+        # 2. SG&A Ratio (< 30% of Gross Profit)
+        # Logic: Efficient operations
+        sga_ratio = 1.0 # Default bad
+        if "Selling General And Administration" in fin.index and gm > 0:
+            sga = fin.loc["Selling General And Administration"].iloc[0]
+            sga_ratio = sga / gp
+            if sga_ratio < 0.30: score += 1
+        metrics["sgaRatio"] = round(sga_ratio, 2)
+
+        # 3. Debt to Equity (< 0.5)
+        # Logic: Low leverage
+        de = 10.0 # Default bad
         if "Total Debt" in bal.index and "Stockholders Equity" in bal.index:
-            total_debt = bal.loc["Total Debt"].iloc[0]
+            debt = bal.loc["Total Debt"].iloc[0]
             equity = bal.loc["Stockholders Equity"].iloc[0]
-            # Avoid division by zero
-            if equity != 0:
-                debt_to_equity = total_debt / equity
-                if debt_to_equity < 0.5:
-                    score += 1
+            if equity > 0:
+                de = debt / equity
+                if de < 0.50: score += 1
+        metrics["debtToEquity"] = round(de, 2)
 
-        # Determine Color based on Score
-        # Score 2 = Green (Buffett Approved)
-        # Score 1 = Yellow (Okay)
-        # Score 0 = Red (Risky)
-        color = "#ff3333" # Red
-        if score == 1: color = "#ffcc00" # Yellow
-        if score == 2: color = "#00ff41" # Green
+        # 4. Interest Coverage (Interest < 15% of Operating Income)
+        # Logic: Safety
+        int_ratio = 1.0
+        if "Interest Expense" in fin.index and "Operating Income" in fin.index:
+            interest = fin.loc["Interest Expense"].iloc[0]
+            op_income = fin.loc["Operating Income"].iloc[0]
+            if op_income > 0:
+                int_ratio = interest / op_income
+                if int_ratio < 0.15: score += 1
+        metrics["interestRatio"] = round(int_ratio, 2)
 
-        # Add to list
-        stock_data.append({
-            "ticker": symbol,
+        # 5. Net Earnings Trend (Simple check: positive earnings)
+        # Logic: Profitable
+        profitable = False
+        if "Net Income" in fin.index:
+            ni = fin.loc["Net Income"].iloc[0]
+            if ni > 0: 
+                profitable = True
+                score += 1
+        metrics["profitable"] = profitable
+
+        # Save Node Data
+        nodes.append({
+            "id": symbol,
             "sector": info.get("sector", "Unknown"),
             "marketCap": info.get("marketCap", 1000000000),
-            "grossMargin": round(gross_margin, 2),
-            "debtToEquity": round(debt_to_equity, 2),
-            "score": score,
-            "color": color
+            "buffettScore": score,
+            "metrics": metrics
         })
-        
+
+        # B. Fetch Price History (for Correlation Lines)
+        # We grab 6 months of history
+        hist = stock.history(period="6mo")
+        if not hist.empty:
+            price_data[symbol] = hist["Close"]
+
     except Exception as e:
-        print(f"⚠️ Failed to scan {symbol}: {e}")
+        print(f"⚠️ Error on {symbol}: {e}")
 
-# Ensure the 'stocks' folder exists
+print("--- 2. Calculating Correlations (The Web) ---")
+
+# Create a DataFrame of all prices
+df_prices = pd.DataFrame(price_data)
+# Calculate Correlation Matrix
+corr_matrix = df_prices.corr()
+
+links = []
+# Create links between stocks that move together
+# Threshold: 0.7 (Strong positive correlation)
+tickers_list = df_prices.columns.tolist()
+for i in range(len(tickers_list)):
+    for j in range(i + 1, len(tickers_list)):
+        t1 = tickers_list[i]
+        t2 = tickers_list[j]
+        correlation = corr_matrix.loc[t1, t2]
+        
+        if correlation > 0.7:
+            links.append({
+                "source": t1,
+                "target": t2,
+                "value": round(correlation, 2)
+            })
+
+print(f"Generated {len(links)} connections.")
+
+# Save everything
+output = {"nodes": nodes, "links": links}
 os.makedirs("stocks", exist_ok=True)
-
-# Save the file inside the 'stocks' folder
 with open("stocks/data.json", "w") as f:
-    json.dump(stock_data, f, indent=2)
+    json.dump(output, f, indent=2)
 
-print("--- Scan Complete. Data Saved. ---")
+print("--- Scan Complete. ---")
