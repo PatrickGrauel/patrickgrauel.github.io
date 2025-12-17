@@ -5,7 +5,7 @@
       "name": "Apple Inc.",
       "sector": "Technology",
       "industry": "Consumer Electronics",
-      "marketCap": 4051426344960,
+      "marketCap": 4060627337216,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 46.91,
@@ -15,7 +15,7 @@
         "debt_to_equity": 1.34,
         "fcf_margin": 23.73,
         "sga_ratio": 0.0,
-        "pe_ratio": 36.55,
+        "pe_ratio": 36.63,
         "buffett_score": 70
       },
       "history": {
@@ -88,7 +88,7 @@
       "name": "Microsoft Corporation",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "marketCap": 3546512359424,
+      "marketCap": 3553016414208,
       "buffettScore": 100,
       "metrics": {
         "gross_margin": 68.82,
@@ -98,7 +98,7 @@
         "debt_to_equity": 0.18,
         "fcf_margin": 25.42,
         "sga_ratio": 0.0,
-        "pe_ratio": 33.96,
+        "pe_ratio": 34.02,
         "buffett_score": 100
       },
       "history": {
@@ -163,7 +163,7 @@
       "name": "Alphabet Inc.",
       "sector": "Communication Services",
       "industry": "Internet Content & Information",
-      "marketCap": 3618860957696,
+      "marketCap": 3626005954560,
       "buffettScore": 100,
       "metrics": {
         "gross_margin": 58.2,
@@ -173,7 +173,7 @@
         "debt_to_equity": 0.08,
         "fcf_margin": 20.79,
         "sga_ratio": 0.0,
-        "pe_ratio": 29.52,
+        "pe_ratio": 29.58,
         "buffett_score": 100
       },
       "history": {
@@ -238,7 +238,7 @@
       "name": "Amazon.com, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Internet Retail",
-      "marketCap": 2389263253504,
+      "marketCap": 2392140021760,
       "buffettScore": 65,
       "metrics": {
         "gross_margin": 48.85,
@@ -248,7 +248,7 @@
         "debt_to_equity": 0.46,
         "fcf_margin": 5.15,
         "sga_ratio": 0.0,
-        "pe_ratio": 31.57,
+        "pe_ratio": 31.61,
         "buffett_score": 65
       },
       "history": {
@@ -321,7 +321,7 @@
       "name": "NVIDIA Corporation",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 4175267364864,
+      "marketCap": 4197301354496,
       "buffettScore": 85,
       "metrics": {
         "gross_margin": 74.99,
@@ -331,7 +331,7 @@
         "debt_to_equity": 0.13,
         "fcf_margin": 46.63,
         "sga_ratio": 0.0,
-        "pe_ratio": 42.55,
+        "pe_ratio": 42.78,
         "buffett_score": 85
       },
       "history": {
@@ -396,7 +396,7 @@
       "name": "Meta Platforms, Inc.",
       "sector": "Communication Services",
       "industry": "Internet Content & Information",
-      "marketCap": 1659339014144,
+      "marketCap": 1661506551808,
       "buffettScore": 85,
       "metrics": {
         "gross_margin": 81.67,
@@ -406,7 +406,7 @@
         "debt_to_equity": 0.27,
         "fcf_margin": 32.87,
         "sga_ratio": 0.0,
-        "pe_ratio": 29.12,
+        "pe_ratio": 29.15,
         "buffett_score": 85
       },
       "history": {
@@ -479,7 +479,7 @@
       "name": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Auto Manufacturers",
-      "marketCap": 1573578080256,
+      "marketCap": 1579065671680,
       "buffettScore": 25,
       "metrics": {
         "gross_margin": 17.86,
@@ -489,7 +489,7 @@
         "debt_to_equity": 0.19,
         "fcf_margin": 3.67,
         "sga_ratio": 0.0,
-        "pe_ratio": 321.86,
+        "pe_ratio": 322.99,
         "buffett_score": 25
       },
       "history": {
@@ -562,7 +562,7 @@
       "name": "Broadcom Inc.",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 1521120837632,
+      "marketCap": 1527118430208,
       "buffettScore": 30,
       "metrics": {
         "gross_margin": 63.03,
@@ -572,7 +572,7 @@
         "debt_to_equity": 1.0,
         "fcf_margin": 37.64,
         "sga_ratio": 0.0,
-        "pe_ratio": 67.39,
+        "pe_ratio": 67.65,
         "buffett_score": 30
       },
       "history": {
@@ -637,7 +637,7 @@
       "name": "Adobe Inc.",
       "sector": "Technology",
       "industry": "Software - Application",
-      "marketCap": 149932736512,
+      "marketCap": 150073475072,
       "buffettScore": 100,
       "metrics": {
         "gross_margin": 89.04,
@@ -647,7 +647,7 @@
         "debt_to_equity": 0.43,
         "fcf_margin": 36.61,
         "sga_ratio": 0.0,
-        "pe_ratio": 21.16,
+        "pe_ratio": 21.18,
         "buffett_score": 100
       },
       "history": {
@@ -712,7 +712,7 @@
       "name": "Salesforce, Inc.",
       "sector": "Technology",
       "industry": "Software - Application",
-      "marketCap": 248234000384,
+      "marketCap": 248038850560,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 77.19,
@@ -722,7 +722,7 @@
         "debt_to_equity": 0.19,
         "fcf_margin": 32.81,
         "sga_ratio": 0.0,
-        "pe_ratio": 34.81,
+        "pe_ratio": 34.79,
         "buffett_score": 70
       },
       "history": {
@@ -787,7 +787,7 @@
       "name": "Advanced Micro Devices, Inc.",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 326047891456,
+      "marketCap": 327089848320,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 49.35,
@@ -797,7 +797,7 @@
         "debt_to_equity": 0.04,
         "fcf_margin": 9.33,
         "sga_ratio": 0.0,
-        "pe_ratio": 105.41,
+        "pe_ratio": 105.74,
         "buffett_score": 35
       },
       "history": {
@@ -870,7 +870,7 @@
       "name": "Intel Corporation",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 173532594176,
+      "marketCap": 173961904128,
       "buffettScore": 10,
       "metrics": {
         "gross_margin": 32.66,
@@ -880,7 +880,7 @@
         "debt_to_equity": 0.5,
         "fcf_margin": -29.48,
         "sga_ratio": 0.0,
-        "pe_ratio": 606.33,
+        "pe_ratio": 607.83,
         "buffett_score": 10
       },
       "history": {
@@ -953,7 +953,7 @@
       "name": "International Business Machines",
       "sector": "Technology",
       "industry": "Information Technology Services",
-      "marketCap": 285197041664,
+      "marketCap": 285566304256,
       "buffettScore": 45,
       "metrics": {
         "gross_margin": 56.65,
@@ -963,7 +963,7 @@
         "debt_to_equity": 2.14,
         "fcf_margin": 18.74,
         "sga_ratio": 0.0,
-        "pe_ratio": 36.32,
+        "pe_ratio": 36.37,
         "buffett_score": 45
       },
       "history": {
@@ -1036,7 +1036,7 @@
       "name": "QUALCOMM Incorporated",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 187174141952,
+      "marketCap": 187551793152,
       "buffettScore": 60,
       "metrics": {
         "gross_margin": 55.43,
@@ -1046,7 +1046,7 @@
         "debt_to_equity": 0.7,
         "fcf_margin": 28.95,
         "sga_ratio": 0.0,
-        "pe_ratio": 34.69,
+        "pe_ratio": 34.76,
         "buffett_score": 60
       },
       "history": {
@@ -1119,7 +1119,7 @@
       "name": "Walmart Inc.",
       "sector": "Consumer Defensive",
       "industry": "Discount Stores",
-      "marketCap": 925169680384,
+      "marketCap": 925568270336,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 24.85,
@@ -1129,7 +1129,7 @@
         "debt_to_equity": 0.66,
         "fcf_margin": 1.86,
         "sga_ratio": 0.0,
-        "pe_ratio": 40.57,
+        "pe_ratio": 40.59,
         "buffett_score": 40
       },
       "history": {
@@ -1202,7 +1202,7 @@
       "name": "Procter & Gamble Company (The)",
       "sector": "Consumer Defensive",
       "industry": "Household & Personal Products",
-      "marketCap": 345626050560,
+      "marketCap": 345438093312,
       "buffettScore": 85,
       "metrics": {
         "gross_margin": 51.16,
@@ -1212,7 +1212,7 @@
         "debt_to_equity": 0.68,
         "fcf_margin": 16.66,
         "sga_ratio": 0.0,
-        "pe_ratio": 21.56,
+        "pe_ratio": 21.55,
         "buffett_score": 85
       },
       "history": {
@@ -1277,7 +1277,7 @@
       "name": "Coca-Cola Company (The)",
       "sector": "Consumer Defensive",
       "industry": "Beverages - Non-Alcoholic",
-      "marketCap": 302978170880,
+      "marketCap": 302956642304,
       "buffettScore": 60,
       "metrics": {
         "gross_margin": 61.06,
@@ -1360,7 +1360,7 @@
       "name": "Pepsico, Inc.",
       "sector": "Consumer Defensive",
       "industry": "Beverages - Non-Alcoholic",
-      "marketCap": 204923469824,
+      "marketCap": 204786581504,
       "buffettScore": 50,
       "metrics": {
         "gross_margin": 54.55,
@@ -1370,7 +1370,7 @@
         "debt_to_equity": 2.49,
         "fcf_margin": 7.83,
         "sga_ratio": 0.0,
-        "pe_ratio": 28.46,
+        "pe_ratio": 28.44,
         "buffett_score": 50
       },
       "history": {
@@ -1443,7 +1443,7 @@
       "name": "Costco Wholesale Corporation",
       "sector": "Consumer Defensive",
       "industry": "Discount Stores",
-      "marketCap": 381628284928,
+      "marketCap": 382165450752,
       "buffettScore": 55,
       "metrics": {
         "gross_margin": 12.84,
@@ -1453,7 +1453,7 @@
         "debt_to_equity": 0.28,
         "fcf_margin": 2.85,
         "sga_ratio": 0.0,
-        "pe_ratio": 46.05,
+        "pe_ratio": 46.11,
         "buffett_score": 55
       },
       "history": {
@@ -1592,7 +1592,7 @@
       "name": "Nike, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Footwear & Accessories",
-      "marketCap": 97576075264,
+      "marketCap": 97738678272,
       "buffettScore": 50,
       "metrics": {
         "gross_margin": 42.73,
@@ -1602,7 +1602,7 @@
         "debt_to_equity": 0.83,
         "fcf_margin": 7.06,
         "sga_ratio": 0.0,
-        "pe_ratio": 33.85,
+        "pe_ratio": 33.91,
         "buffett_score": 50
       },
       "history": {
@@ -1675,7 +1675,7 @@
       "name": "Starbucks Corporation",
       "sector": "Consumer Cyclical",
       "industry": "Restaurants",
-      "marketCap": 96698990592,
+      "marketCap": 96721723392,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 22.77,
@@ -1685,7 +1685,7 @@
         "debt_to_equity": 0,
         "fcf_margin": 6.57,
         "sga_ratio": 0.0,
-        "pe_ratio": 52.17,
+        "pe_ratio": 52.18,
         "buffett_score": 40
       },
       "history": {
@@ -1741,7 +1741,7 @@
       "name": "Home Depot, Inc. (The)",
       "sector": "Consumer Cyclical",
       "industry": "Home Improvement Retail",
-      "marketCap": 353834631168,
+      "marketCap": 353436434432,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 33.42,
@@ -1751,7 +1751,7 @@
         "debt_to_equity": 9.38,
         "fcf_margin": 10.23,
         "sga_ratio": 0.0,
-        "pe_ratio": 24.23,
+        "pe_ratio": 24.2,
         "buffett_score": 40
       },
       "history": {
@@ -1820,7 +1820,7 @@
       "name": "Lowe's Companies, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Home Improvement Retail",
-      "marketCap": 139085119488,
+      "marketCap": 139093540864,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 33.32,
@@ -1886,7 +1886,7 @@
       "name": "Walt Disney Company (The)",
       "sector": "Communication Services",
       "industry": "Entertainment",
-      "marketCap": 199642759168,
+      "marketCap": 199732461568,
       "buffettScore": 25,
       "metrics": {
         "gross_margin": 37.76,
@@ -1896,7 +1896,7 @@
         "debt_to_equity": 0.41,
         "fcf_margin": 10.67,
         "sga_ratio": 0.0,
-        "pe_ratio": 16.21,
+        "pe_ratio": 16.22,
         "buffett_score": 25
       },
       "history": {
@@ -1969,7 +1969,7 @@
       "name": "JP Morgan Chase & Co.",
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
-      "marketCap": 870090801152,
+      "marketCap": 869121589248,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 0.0,
@@ -1979,7 +1979,7 @@
         "debt_to_equity": 1.32,
         "fcf_margin": -24.79,
         "sga_ratio": 0,
-        "pe_ratio": 15.66,
+        "pe_ratio": 15.65,
         "buffett_score": 35
       },
       "history": {
@@ -2052,7 +2052,7 @@
       "name": "Visa Inc.",
       "sector": "Financial Services",
       "industry": "Credit Services",
-      "marketCap": 664946081792,
+      "marketCap": 665544294400,
       "buffettScore": 85,
       "metrics": {
         "gross_margin": 80.36,
@@ -2062,7 +2062,7 @@
         "debt_to_equity": 0.66,
         "fcf_margin": 53.94,
         "sga_ratio": 0.0,
-        "pe_ratio": 33.71,
+        "pe_ratio": 33.74,
         "buffett_score": 85
       },
       "history": {
@@ -2127,7 +2127,7 @@
       "name": "Mastercard Incorporated",
       "sector": "Financial Services",
       "industry": "Credit Services",
-      "marketCap": 514780495872,
+      "marketCap": 515169222656,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 76.31,
@@ -2137,7 +2137,7 @@
         "debt_to_equity": 2.81,
         "fcf_margin": 48.23,
         "sga_ratio": 0.0,
-        "pe_ratio": 36.46,
+        "pe_ratio": 36.48,
         "buffett_score": 70
       },
       "history": {
@@ -2210,7 +2210,7 @@
       "name": "Berkshire Hathaway Inc. New",
       "sector": "Financial Services",
       "industry": "Insurance - Diversified",
-      "marketCap": 1084592291840,
+      "marketCap": 1085840556032,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 0.0,
@@ -2220,7 +2220,7 @@
         "debt_to_equity": 0.19,
         "fcf_margin": 2.74,
         "sga_ratio": 0,
-        "pe_ratio": 16.07,
+        "pe_ratio": 16.09,
         "buffett_score": 35
       },
       "history": {
@@ -2293,7 +2293,7 @@
       "name": "Bank of America Corporation",
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
-      "marketCap": 405308178432,
+      "marketCap": 405789605888,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": 0.0,
@@ -2303,7 +2303,7 @@
         "debt_to_equity": 1.11,
         "fcf_margin": -8.64,
         "sga_ratio": 0,
-        "pe_ratio": 14.95,
+        "pe_ratio": 14.97,
         "buffett_score": 20
       },
       "history": {
@@ -2376,7 +2376,7 @@
       "name": "Wells Fargo & Company",
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
-      "marketCap": 298240376832,
+      "marketCap": 298416570368,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": 0.0,
@@ -2386,7 +2386,7 @@
         "debt_to_equity": 1.04,
         "fcf_margin": 3.69,
         "sga_ratio": 0,
-        "pe_ratio": 15.34,
+        "pe_ratio": 15.35,
         "buffett_score": 20
       },
       "history": {
@@ -2459,7 +2459,7 @@
       "name": "Goldman Sachs Group, Inc. (The)",
       "sector": "Financial Services",
       "industry": "Capital Markets",
-      "marketCap": 264202862592,
+      "marketCap": 264093892608,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": 0.0,
@@ -2469,7 +2469,7 @@
         "debt_to_equity": 2.81,
         "fcf_margin": -28.6,
         "sga_ratio": 0,
-        "pe_ratio": 17.73,
+        "pe_ratio": 17.72,
         "buffett_score": 20
       },
       "history": {
@@ -2542,7 +2542,7 @@
       "name": "Morgan Stanley",
       "sector": "Financial Services",
       "industry": "Capital Markets",
-      "marketCap": 279678025728,
+      "marketCap": 279558291456,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": 0.0,
@@ -2552,7 +2552,7 @@
         "debt_to_equity": 2.97,
         "fcf_margin": -3.64,
         "sga_ratio": 0,
-        "pe_ratio": 17.99,
+        "pe_ratio": 17.98,
         "buffett_score": 20
       },
       "history": {
@@ -2625,7 +2625,7 @@
       "name": "American Express Company",
       "sector": "Financial Services",
       "industry": "Credit Services",
-      "marketCap": 262765133824,
+      "marketCap": 262904299520,
       "buffettScore": 45,
       "metrics": {
         "gross_margin": 0.0,
@@ -2635,7 +2635,7 @@
         "debt_to_equity": 1.69,
         "fcf_margin": 18.41,
         "sga_ratio": 0,
-        "pe_ratio": 25.36,
+        "pe_ratio": 25.37,
         "buffett_score": 45
       },
       "history": {
@@ -2708,7 +2708,7 @@
       "name": "BlackRock, Inc.",
       "sector": "Financial Services",
       "industry": "Asset Management",
-      "marketCap": 166254280704,
+      "marketCap": 166205407232,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 49.42,
@@ -2718,7 +2718,7 @@
         "debt_to_equity": 0.3,
         "fcf_margin": 23.04,
         "sga_ratio": 0.0,
-        "pe_ratio": 27.56,
+        "pe_ratio": 27.55,
         "buffett_score": 70
       },
       "history": {
@@ -2791,7 +2791,7 @@
       "name": "Johnson & Johnson",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
-      "marketCap": 506783170560,
+      "marketCap": 506217005056,
       "buffettScore": 85,
       "metrics": {
         "gross_margin": 69.07,
@@ -2801,7 +2801,7 @@
         "debt_to_equity": 0.51,
         "fcf_margin": 20.33,
         "sga_ratio": 0.0,
-        "pe_ratio": 20.3,
+        "pe_ratio": 20.28,
         "buffett_score": 85
       },
       "history": {
@@ -2866,7 +2866,7 @@
       "name": "UnitedHealth Group Incorporated",
       "sector": "Healthcare",
       "industry": "Healthcare Plans",
-      "marketCap": 301689536512,
+      "marketCap": 301456293888,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 22.33,
@@ -2876,7 +2876,7 @@
         "debt_to_equity": 0.83,
         "fcf_margin": 5.17,
         "sga_ratio": 0.0,
-        "pe_ratio": 17.36,
+        "pe_ratio": 17.35,
         "buffett_score": 40
       },
       "history": {
@@ -2949,7 +2949,7 @@
       "name": "Eli Lilly and Company",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
-      "marketCap": 943713550336,
+      "marketCap": 940176965632,
       "buffettScore": 60,
       "metrics": {
         "gross_margin": 81.31,
@@ -2959,7 +2959,7 @@
         "debt_to_equity": 2.37,
         "fcf_margin": 0.92,
         "sga_ratio": 0.0,
-        "pe_ratio": 51.48,
+        "pe_ratio": 51.28,
         "buffett_score": 60
       },
       "history": {
@@ -3032,7 +3032,7 @@
       "name": "Pfizer, Inc.",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
-      "marketCap": 143137685504,
+      "marketCap": 143023980544,
       "buffettScore": 30,
       "metrics": {
         "gross_margin": 71.94,
@@ -3042,7 +3042,7 @@
         "debt_to_equity": 0.72,
         "fcf_margin": 15.46,
         "sga_ratio": 0.0,
-        "pe_ratio": 14.64,
+        "pe_ratio": 14.62,
         "buffett_score": 30
       },
       "history": {
@@ -3115,7 +3115,7 @@
       "name": "AbbVie Inc.",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
-      "marketCap": 397767573504,
+      "marketCap": 397237354496,
       "buffettScore": 60,
       "metrics": {
         "gross_margin": 69.99,
@@ -3125,7 +3125,7 @@
         "debt_to_equity": 20.19,
         "fcf_margin": 31.65,
         "sga_ratio": 0.0,
-        "pe_ratio": 170.5,
+        "pe_ratio": 170.27,
         "buffett_score": 60
       },
       "history": {
@@ -3190,7 +3190,7 @@
       "name": "Merck & Company, Inc.",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
-      "marketCap": 246593650688,
+      "marketCap": 246019178496,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 76.32,
@@ -3200,7 +3200,7 @@
         "debt_to_equity": 0.8,
         "fcf_margin": 28.2,
         "sga_ratio": 0.0,
-        "pe_ratio": 13.06,
+        "pe_ratio": 13.03,
         "buffett_score": 70
       },
       "history": {
@@ -3273,7 +3273,7 @@
       "name": "Thermo Fisher Scientific Inc",
       "sector": "Healthcare",
       "industry": "Diagnostics & Research",
-      "marketCap": 213755346944,
+      "marketCap": 213563736064,
       "buffettScore": 30,
       "metrics": {
         "gross_margin": 41.28,
@@ -3283,7 +3283,7 @@
         "debt_to_equity": 0.63,
         "fcf_margin": 16.95,
         "sga_ratio": 0.0,
-        "pe_ratio": 32.83,
+        "pe_ratio": 32.8,
         "buffett_score": 30
       },
       "history": {
@@ -3348,7 +3348,7 @@
       "name": "Danaher Corporation",
       "sector": "Healthcare",
       "industry": "Diagnostics & Research",
-      "marketCap": 160316784640,
+      "marketCap": 160223690752,
       "buffettScore": 55,
       "metrics": {
         "gross_margin": 59.5,
@@ -3358,7 +3358,7 @@
         "debt_to_equity": 0.35,
         "fcf_margin": 22.18,
         "sga_ratio": 0.0,
-        "pe_ratio": 46.16,
+        "pe_ratio": 46.14,
         "buffett_score": 55
       },
       "history": {
@@ -3431,7 +3431,7 @@
       "name": "Exxon Mobil Corporation",
       "sector": "Energy",
       "industry": "Oil & Gas Integrated",
-      "marketCap": 496540385280,
+      "marketCap": 496924065792,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 22.62,
@@ -3441,7 +3441,7 @@
         "debt_to_equity": 0.16,
         "fcf_margin": 9.05,
         "sga_ratio": 0.0,
-        "pe_ratio": 16.93,
+        "pe_ratio": 16.94,
         "buffett_score": 40
       },
       "history": {
@@ -3514,7 +3514,7 @@
       "name": "Chevron Corporation",
       "sector": "Energy",
       "industry": "Oil & Gas Integrated",
-      "marketCap": 299706023936,
+      "marketCap": 299704844288,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 29.43,
@@ -3589,7 +3589,7 @@
       "name": "GE Aerospace",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
-      "marketCap": 313259098112,
+      "marketCap": 312978079744,
       "buffettScore": 50,
       "metrics": {
         "gross_margin": 37.19,
@@ -3599,7 +3599,7 @@
         "debt_to_equity": 1.0,
         "fcf_margin": 9.5,
         "sga_ratio": 0.0,
-        "pe_ratio": 39.55,
+        "pe_ratio": 39.51,
         "buffett_score": 50
       },
       "history": {
@@ -3672,7 +3672,7 @@
       "name": "Caterpillar, Inc.",
       "sector": "Industrials",
       "industry": "Farm & Heavy Construction Machinery",
-      "marketCap": 263402274816,
+      "marketCap": 264540667904,
       "buffettScore": 50,
       "metrics": {
         "gross_margin": 35.99,
@@ -3682,7 +3682,7 @@
         "debt_to_equity": 1.97,
         "fcf_margin": 13.61,
         "sga_ratio": 0.0,
-        "pe_ratio": 28.85,
+        "pe_ratio": 28.97,
         "buffett_score": 50
       },
       "history": {
@@ -3747,7 +3747,7 @@
       "name": "Union Pacific Corporation",
       "sector": "Industrials",
       "industry": "Railroads",
-      "marketCap": 140401180672,
+      "marketCap": 140211306496,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 45.52,
@@ -3757,7 +3757,7 @@
         "debt_to_equity": 1.92,
         "fcf_margin": 24.31,
         "sga_ratio": 0.0,
-        "pe_ratio": 20.11,
+        "pe_ratio": 20.08,
         "buffett_score": 70
       },
       "history": {
@@ -3830,7 +3830,7 @@
       "name": "United Parcel Service, Inc.",
       "sector": "Industrials",
       "industry": "Integrated Freight & Logistics",
-      "marketCap": 85423947776,
+      "marketCap": 85432426496,
       "buffettScore": 55,
       "metrics": {
         "gross_margin": 17.96,
@@ -3905,7 +3905,7 @@
       "name": "Honeywell International Inc.",
       "sector": "Industrials",
       "industry": "Conglomerates",
-      "marketCap": 135926259712,
+      "marketCap": 135703879680,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 38.09,
@@ -3915,7 +3915,7 @@
         "debt_to_equity": 1.73,
         "fcf_margin": 12.81,
         "sga_ratio": 0.0,
-        "pe_ratio": 21.28,
+        "pe_ratio": 21.24,
         "buffett_score": 40
       },
       "history": {
@@ -3988,7 +3988,7 @@
       "name": "Lockheed Martin Corporation",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
-      "marketCap": 110783832064,
+      "marketCap": 110584012800,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 9.75,
@@ -3998,7 +3998,7 @@
         "debt_to_equity": 3.2,
         "fcf_margin": 7.44,
         "sga_ratio": 0.0,
-        "pe_ratio": 26.45,
+        "pe_ratio": 26.4,
         "buffett_score": 40
       },
       "history": {
@@ -4071,7 +4071,7 @@
       "name": "RTX Corporation",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
-      "marketCap": 239736717312,
+      "marketCap": 239502098432,
       "buffettScore": 10,
       "metrics": {
         "gross_margin": 19.09,
@@ -4081,7 +4081,7 @@
         "debt_to_equity": 0.71,
         "fcf_margin": 4.86,
         "sga_ratio": 0.0,
-        "pe_ratio": 36.64,
+        "pe_ratio": 36.6,
         "buffett_score": 10
       },
       "history": {
@@ -4154,7 +4154,7 @@
       "name": "Boeing Company (The)",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
-      "marketCap": 163565879296,
+      "marketCap": 163517087744,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": -2.99,
@@ -4212,7 +4212,7 @@
       "name": "SAP  SE",
       "sector": "Technology",
       "industry": "Software - Application",
-      "marketCap": 282690945024,
+      "marketCap": 282992541696,
       "buffettScore": 65,
       "metrics": {
         "gross_margin": 72.95,
@@ -4222,7 +4222,7 @@
         "debt_to_equity": 0.23,
         "fcf_margin": 12.94,
         "sga_ratio": 0.0,
-        "pe_ratio": 34.27,
+        "pe_ratio": 34.31,
         "buffett_score": 65
       },
       "history": {
@@ -5856,6 +5856,6 @@
     }
   },
   "metadata": {
-    "generated_at": "2025-12-17T17:46:51.346819"
+    "generated_at": "2025-12-17T17:57:24.645358"
   }
 }
