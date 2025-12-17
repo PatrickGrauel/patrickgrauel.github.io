@@ -6,20 +6,25 @@ async function initGraph() {
     const ctx = canvas.node().getContext("2d");
     const svg = d3.select("#nodes-svg").attr("width", width).attr("height", height);
 
-    // --- DATA LOAD ---
     let data;
-    try { data = await d3.json("data/graph_data.json"); } 
-    catch (e) { console.error("Data missing."); return; }
+    try { data = await d3.json("data/graph_data.json"); } catch (e) { return; }
 
-    // --- SCALES ---
     const sizeScale = d3.scaleLog().domain([1e8, d3.max(data.nodes, d => d.owner_earnings)]).range([15, 50]).clamp(true);
     const colorScale = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100]);
-    const axisScale = d3.scaleLinear().range([150, width - 150]);
 
-    // --- INIT SECTOR FILTER ---
-    const sectors = [...new Set(data.nodes.map(d => d.sector))].sort();
+    // Populate Datalist & Sector Dropdown
+    const tickList = document.getElementById("tickers-list");
     const sectorSelect = document.getElementById("sector-select");
-    sectors.forEach(s => {
+    const sectors = new Set();
+    
+    data.nodes.forEach(n => {
+        sectors.add(n.sector);
+        const opt = document.createElement("option");
+        opt.value = n.id;
+        tickList.appendChild(opt);
+    });
+    
+    [...sectors].sort().forEach(s => {
         if(s && s !== "Unknown") {
             const opt = document.createElement("option");
             opt.value = s; opt.innerText = s;
@@ -27,214 +32,182 @@ async function initGraph() {
         }
     });
 
-    // --- SIMULATION ---
-    let activeNodes = data.nodes; // For filtering
-    
+    // SIMULATION
     let simulation = d3.forceSimulation(data.nodes)
         .force("link", d3.forceLink(data.links).id(d => d.id).distance(100).strength(0.1))
         .force("charge", d3.forceManyBody().strength(-200))
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force("collide", d3.forceCollide().radius(d => sizeScale(d.owner_earnings) + 5).iterations(2));
 
-    // --- DRAW NODES ---
     const nodeGroup = svg.append("g").selectAll("g")
-        .data(data.nodes).join("g")
-        .call(drag(simulation));
+        .data(data.nodes).join("g").call(drag(simulation));
 
-    const circle = nodeGroup.append("circle")
+    nodeGroup.append("circle")
         .attr("r", d => sizeScale(d.owner_earnings))
         .attr("fill", d => colorScale(d.buffettScore))
-        .attr("stroke", "#fff").attr("stroke-width", 1.5)
-        .style("cursor", "pointer");
+        .attr("stroke", "#fff").attr("stroke-width", 1.5).style("cursor", "pointer");
 
-    const text = nodeGroup.append("text")
+    nodeGroup.append("text")
         .text(d => d.id).attr("text-anchor", "middle").attr("dy", ".35em")
-        .attr("fill", "#0f111a").style("font-weight", "800")
-        .style("font-size", d => Math.min(12, sizeScale(d.owner_earnings) / 2.5) + "px")
-        .style("font-family", "sans-serif").style("pointer-events", "none");
+        .style("font-size", d => Math.min(12, sizeScale(d.owner_earnings)/2.5)+"px")
+        .style("font-weight","800").style("fill","#0f111a").style("pointer-events","none");
 
-    // --- RADAR INIT (Default View) ---
-    // Draw an "Average" radar initially to populate the UI
-    drawRadar({ Quality: 50, Strength: 50, Moat: 50, Management: 50, Value: 50 });
+    // --- MULTI-SELECT LOGIC ---
+    let selectedIds = new Set();
 
-    // --- INTERACTIONS ---
-
-    // 1. HOVER: Smart Dimming
-    nodeGroup.on("mouseover", (event, d) => {
-        // Dim Everything slightly (keep readable)
-        nodeGroup.transition().duration(100).style("opacity", 0.2);
-        
-        // Highlight SELF
-        const self = d3.select(event.currentTarget);
-        self.transition().duration(100).style("opacity", 1);
-        
-        // Find Connections
-        const neighbors = new Set();
-        data.links.forEach(l => {
-            if(l.source.id === d.id) neighbors.add(l.target.id);
-            if(l.target.id === d.id) neighbors.add(l.source.id);
-        });
-
-        // Highlight NEIGHBORS (Full Opacity)
-        nodeGroup.filter(n => neighbors.has(n.id))
-            .transition().duration(100).style("opacity", 1);
-
-        // Highlight SECTOR PEERS (Medium Opacity - Context)
-        nodeGroup.filter(n => n.sector === d.sector && !neighbors.has(n.id) && n.id !== d.id)
-            .transition().duration(100).style("opacity", 0.6);
-
-        // Update Radar to Hovered Node (Preview)
-        drawRadar(d.pillars);
-        updateSidebarMetrics(d);
-
-    }).on("mouseout", () => {
-        // Reset Opacity based on active filter
-        const currentSector = document.getElementById("sector-select").value;
-        if(currentSector === 'all') {
-            nodeGroup.transition().duration(200).style("opacity", 1);
+    function toggleSelection(d) {
+        if (selectedIds.has(d.id)) {
+            selectedIds.delete(d.id);
         } else {
-            nodeGroup.style("opacity", n => n.sector === currentSector ? 1 : 0.05);
+            if (selectedIds.size >= 10) alert("Max 10 items for comparison.");
+            else selectedIds.add(d.id);
         }
-    });
-
-    // 2. CLICK: Lock Sidebar
-    nodeGroup.on("click", (event, d) => {
-        updateSidebarMetrics(d);
-        drawRadar(d.pillars); // Lock radar
-    });
-
-    // --- HELPER: UPDATE SIDEBAR ---
-    function updateSidebarMetrics(d) {
-        document.getElementById("detail-ticker").innerText = d.name;
-        document.getElementById("detail-sector").innerText = d.sector;
-        
-        const badge = document.getElementById("detail-score");
-        badge.innerText = `BCS: ${d.buffettScore}`;
-        badge.style.background = colorScale(d.buffettScore);
-        badge.style.color = d.buffettScore > 50 ? "#0f111a" : "#fff";
-
-        const m = d.metrics;
-        document.getElementById("detail-margin").innerText = (m.gross_margin * 100).toFixed(1) + "%";
-        document.getElementById("detail-debt").innerText = m.debt_to_equity.toFixed(2);
-        document.getElementById("detail-roic").innerText = (m.roic * 100).toFixed(1) + "%";
-        document.getElementById("detail-yield").innerText = (m.fcf_yield * 100).toFixed(1) + "%";
+        renderSelection();
     }
 
-    // --- FILTER: SECTOR ---
-    window.filterBySector = (sector) => {
-        if (sector === "all") {
-            activeNodes = data.nodes;
-            nodeGroup.transition().style("opacity", 1).style("pointer-events", "all");
-        } else {
-            activeNodes = data.nodes.filter(d => d.sector === sector);
-            nodeGroup.transition().duration(300)
-                .style("opacity", d => d.sector === sector ? 1 : 0.05)
-                .style("pointer-events", d => d.sector === sector ? "all" : "none");
+    function renderSelection() {
+        // Visual Highlight
+        nodeGroup.select("circle").attr("stroke", d => selectedIds.has(d.id) ? "#3b82f6" : "#fff")
+                                  .attr("stroke-width", d => selectedIds.has(d.id) ? 4 : 1.5);
+
+        // Sidebar List
+        const bar = document.getElementById("selection-bar");
+        bar.innerHTML = "";
+        
+        if (selectedIds.size === 0) {
+            bar.innerHTML = '<span style="color:#64748b; font-size:12px; padding:4px;">Select companies to compare...</span>';
+            document.getElementById("metrics-table").innerHTML = "";
+            drawRadar(null);
+            return;
         }
+
+        const selectedNodes = data.nodes.filter(n => selectedIds.has(n.id));
+        
+        // Draw Chips
+        selectedNodes.forEach(n => {
+            const chip = document.createElement("div");
+            chip.className = "chip";
+            chip.innerHTML = `${n.id} <span onclick="event.stopPropagation(); window.removeSel('${n.id}')">✕</span>`;
+            chip.onclick = () => window.focusNode(n.id);
+            bar.appendChild(chip);
+        });
+
+        // Draw Comparison Table
+        buildTable(selectedNodes);
+        
+        // Draw Radar (Use Average or Most Recent? Let's use Most Recent for clarity, or overlay?)
+        // For simplicity: Draw the LAST selected node's radar
+        const lastNode = selectedNodes[selectedNodes.length - 1];
+        drawRadar(lastNode.pillars);
+    }
+
+    // Expose remove function to window for the "X" button
+    window.removeSel = (id) => {
+        const node = data.nodes.find(n => n.id === id);
+        if(node) toggleSelection(node);
     };
 
-    // --- LAYOUT: METRIC SHUFFLER ---
-    window.updateLayout = (mode) => {
-        if (mode === "network") {
-            simulation.force("x", null).force("y", null)
-                .force("center", d3.forceCenter(width / 2, height / 2))
-                .force("charge", d3.forceManyBody().strength(-200))
-                .alpha(0.5).restart();
-        } else {
-            // Linear Layout
-            const values = activeNodes.map(d => d.metrics[mode] || 0);
-            axisScale.domain([d3.min(values), d3.max(values)]);
-
-            simulation.force("center", null).force("charge", null)
-                .force("x", d3.forceX(d => axisScale(d.metrics[mode] || 0)).strength(0.5))
-                .force("y", d3.forceY(height / 2).strength(0.1))
-                .alpha(0.5).restart();
-        }
+    window.focusNode = (id) => {
+        // Center view logic if needed
     };
 
-    // --- RENDER LOOP ---
+    function buildTable(nodes) {
+        const container = document.getElementById("metrics-table");
+        container.innerHTML = "";
+        
+        // Header Row (Tickers)
+        let html = `<div class="comp-row" style="border-bottom: 2px solid #444;">
+                        <span class="comp-label">METRIC</span>
+                        ${nodes.map(n => `<span class="comp-val" style="color:${colorScale(n.buffettScore)}">${n.id}</span>`).join("")}
+                    </div>`;
+
+        // Data Rows
+        // Get all raw keys from first node
+        const keys = Object.keys(nodes[0].raw);
+        
+        keys.forEach(key => {
+            html += `<div class="comp-row">
+                        <span class="comp-label">${key}</span>
+                        ${nodes.map(n => `<span class="comp-val">${n.raw[key] || '--'}</span>`).join("")}
+                     </div>`;
+        });
+        
+        container.innerHTML = html;
+    }
+
+    // CLICK HANDLER
+    nodeGroup.on("click", (e, d) => {
+        document.getElementById("sidebar").classList.remove("collapsed");
+        toggleSelection(d);
+    });
+
+    // SEARCH HANDLER
+    const searchBox = document.getElementById("search-box");
+    searchBox.addEventListener("change", (e) => {
+        const val = e.target.value.toUpperCase();
+        const node = data.nodes.find(n => n.id === val);
+        if (node) {
+            if(!selectedIds.has(node.id)) toggleSelection(node);
+            e.target.value = ""; // Clear box
+        }
+    });
+
+    // HOVER
+    nodeGroup.on("mouseover", (e, d) => {
+        const tooltip = d3.select("#tooltip");
+        tooltip.style("opacity", 1).html(`<strong>${d.name}</strong><br/>Score: ${d.buffettScore}`)
+               .style("left", (e.pageX+15)+"px").style("top", (e.pageY-15)+"px");
+    }).on("mouseout", () => d3.select("#tooltip").style("opacity", 0));
+
+    // ANIMATION LOOP
     simulation.on("tick", () => {
         ctx.clearRect(0, 0, width, height);
-        
-        // Draw Links (Only visible ones)
-        const currentSector = document.getElementById("sector-select").value;
-        const isNetwork = document.getElementById("view-select").value === "network";
-
-        if (isNetwork) {
-            ctx.save();
-            ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
-            ctx.beginPath();
-            data.links.forEach(link => {
-                // If filtering by sector, only draw links between visible nodes
-                const sourceVis = currentSector === 'all' || link.source.sector === currentSector;
-                const targetVis = currentSector === 'all' || link.target.sector === currentSector;
-                
-                if (sourceVis && targetVis) {
-                    ctx.moveTo(link.source.x, link.source.y);
-                    ctx.lineTo(link.target.x, link.target.y);
-                }
-            });
-            ctx.stroke();
-            ctx.restore();
-        }
+        ctx.save(); ctx.strokeStyle = "rgba(255,255,255,0.05)"; ctx.beginPath();
+        data.links.forEach(l => { ctx.moveTo(l.source.x, l.source.y); ctx.lineTo(l.target.x, l.target.y); });
+        ctx.stroke(); ctx.restore();
         nodeGroup.attr("transform", d => `translate(${d.x},${d.y})`);
     });
 
     function drag(sim) {
-        return d3.drag()
-            .on("start", (e, d) => { if(!e.active) sim.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
-            .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
-            .on("end", (e, d) => { if(!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; });
+        return d3.drag().on("start", (e,d)=>{ if(!e.active)sim.alphaTarget(0.3).restart(); d.fx=d.x;d.fy=d.y; })
+                        .on("drag", (e,d)=>{ d.fx=e.x;d.fy=e.y; })
+                        .on("end", (e,d)=>{ if(!e.active)sim.alphaTarget(0); d.fx=null;d.fy=null; });
     }
 }
 
-// --- RADAR CHART DRAWING ---
+// RADAR
 function drawRadar(pillars) {
     const svg = d3.select("#radar-viz");
     svg.selectAll("*").remove();
-
     if(!pillars) return;
 
-    const keys = ["Quality", "Strength", "Moat", "Management", "Value"];
-    const values = keys.map(k => pillars[k] || 0);
-    const radius = 70; 
-    const center = { x: 110, y: 110 };
-
+    const keys = Object.keys(pillars);
+    const radius = 70; const center = {x: 110, y: 100};
     const rScale = d3.scaleLinear().range([0, radius]).domain([0, 100]);
     const angleSlice = Math.PI * 2 / keys.length;
 
-    // 1. Grid
-    [25, 50, 75, 100].forEach(level => {
-        svg.append("circle")
-            .attr("cx", center.x).attr("cy", center.y).attr("r", rScale(level))
-            .style("fill", "none").style("stroke", "#444").style("stroke-dasharray", "2,4");
+    // Grid
+    [25,50,75,100].forEach(l => {
+        svg.append("circle").attr("cx", center.x).attr("cy", center.y).attr("r", rScale(l))
+           .style("fill","none").style("stroke","#444").style("stroke-dasharray","2,4");
     });
 
-    // 2. Axes
-    keys.forEach((key, i) => {
-        const angle = i * angleSlice - Math.PI / 2;
-        const x = center.x + rScale(100) * Math.cos(angle);
-        const y = center.y + rScale(100) * Math.sin(angle);
-        svg.append("line").attr("x1", center.x).attr("y1", center.y).attr("x2", x).attr("y2", y).style("stroke", "#444");
-        
-        // Label
-        const lx = center.x + (radius + 15) * Math.cos(angle);
-        const ly = center.y + (radius + 15) * Math.sin(angle);
-        svg.append("text").attr("x", lx).attr("y", ly).text(key)
-           .attr("text-anchor", "middle").attr("dy", "0.35em")
-           .style("font-size", "10px").style("fill", "#888");
+    // Shape
+    const points = keys.map((k, i) => {
+        const angle = i * angleSlice - Math.PI/2;
+        return [center.x + rScale(pillars[k]) * Math.cos(angle), center.y + rScale(pillars[k]) * Math.sin(angle)];
     });
 
-    // 3. Shape
-    const points = values.map((d, i) => {
-        const angle = i * angleSlice - Math.PI / 2;
-        return [center.x + rScale(d) * Math.cos(angle), center.y + rScale(d) * Math.sin(angle)];
+    svg.append("polygon").attr("points", points.map(p=>p.join(",")).join(" "))
+       .style("fill","rgba(59,130,246,0.5)").style("stroke","#3b82f6").style("stroke-width",2);
+       
+    // Labels
+    keys.forEach((k, i) => {
+        const angle = i * angleSlice - Math.PI/2;
+        const x = center.x + (radius+15)*Math.cos(angle);
+        const y = center.y + (radius+15)*Math.sin(angle);
+        svg.append("text").attr("x",x).attr("y",y).text(k).attr("text-anchor","middle").style("font-size","10px").style("fill","#888");
     });
-
-    svg.append("polygon")
-        .attr("points", points.map(p => p.join(",")).join(" "))
-        .style("fill", "rgba(59, 130, 246, 0.4)")
-        .style("stroke", "#3b82f6").style("stroke-width", 2);
 }
 
 initGraph();
