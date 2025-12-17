@@ -1,312 +1,185 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="system">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buffett Focus</title>
     <style>
         :root {
-            /* LIGHT THEME (Default) */
-            --bg: #f7f7fa;
-            --surface: #ffffff;
-            --text: #0d0e11;
-            --muted: #606061;
-            --muted2: #a2a2a5;
-            --border: rgba(13,14,17,0.08);
-            --primary: #0079fd;
-            --primary-rgb: 0, 121, 253;
-            --primary2: #2488f2;
-            --primaryTint: #a8cef4;
-            --accent: #fecc05;
-            --accent-text: #0d0e11;
-            --shadow: 0 8px 24px rgba(13,14,17,0.08);
-            
-            --radius: 16px;
-            --radius-sm: 8px;
-            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            --font-mono: "SF Mono", "Monaco", "Inconsolata", "Fira Mono", monospace;
-        }
-
-        [data-theme="dark"] {
-            /* DARK THEME */
+            /* DARK MODE DEFAULT (User Preference) */
             --bg: #0b0c10;
-            --surface: #12141a;
+            --surface: #15171e;
+            --surface-Highlight: #1e212b;
             --text: #f7f7fa;
-            --muted: rgba(247,247,250,0.65);
-            --muted2: rgba(247,247,250,0.4);
-            --border: rgba(247,247,250,0.10);
-            --primary: #4da3ff;
-            --primary-rgb: 77, 163, 255;
-            --primary2: #6fb3ff;
-            --primaryTint: rgba(77, 163, 255, 0.2);
-            --accent: #fecc05;
-            --accent-text: #000000;
-            --shadow: 0 10px 30px rgba(0,0,0,0.45);
+            --muted: #8b949e;
+            --border: rgba(255,255,255,0.1);
+            --primary: #0079fd;
+            --success: #00c853; /* Green */
+            --warning: #ffd700; /* Yellow */
+            --danger: #ff3d00;  /* Red */
+            --shadow: 0 12px 40px rgba(0,0,0,0.5);
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
-        /* RESET & BASE */
-        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-main); transition: background 0.3s ease, color 0.3s ease; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
+        * { box-sizing: border-box; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); overflow: hidden; height: 100vh; }
+
+        /* --- LAYER 1: THE GRAPH (Background) --- */
+        #graph-container {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+        }
+        canvas, svg { position: absolute; width: 100%; height: 100%; }
+
+        /* --- LAYER 2: THE HUD (Foreground) --- */
+        #sidebar {
+            position: absolute; top: 20px; left: 20px; bottom: 20px; width: 380px;
+            background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+            box-shadow: var(--shadow); z-index: 10; display: flex; flex-direction: column;
+            backdrop-filter: blur(10px); /* Glass effect */
+        }
+
+        /* HEADER & SEARCH */
+        .panel-header { padding: 20px; border-bottom: 1px solid var(--border); background: var(--surface-Highlight); border-radius: 16px 16px 0 0; }
+        .app-title { font-size: 14px; font-weight: 800; letter-spacing: 1px; color: var(--muted); margin-bottom: 12px; text-transform: uppercase; }
         
-        /* HEADER */
-        header {
-            padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;
-            background: var(--bg); z-index: 50; flex-shrink: 0;
+        .search-container { position: relative; }
+        #search-input {
+            width: 100%; padding: 12px 16px; background: var(--bg); border: 1px solid var(--border);
+            color: white; border-radius: 8px; font-size: 14px; outline: none; transition: 0.2s;
         }
-        .app-title { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
-        .app-title span { color: var(--primary); }
+        #search-input:focus { border-color: var(--primary); }
+
+        /* SCROLLABLE CONTENT */
+        .panel-content { flex: 1; overflow-y: auto; padding: 20px; position: relative; }
+
+        /* STATE: EMPTY / FILTERS */
+        #state-filters { display: block; }
+        .filter-group { margin-bottom: 20px; }
+        .filter-label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; display: block; }
+        select {
+            width: 100%; padding: 10px; background: var(--bg); border: 1px solid var(--border);
+            color: white; border-radius: 8px; cursor: pointer; outline: none;
+        }
+
+        /* STATE: SELECTED STOCK */
+        #state-details { display: none; }
         
-        /* THEME TOGGLE */
-        .theme-toggle {
-            background: var(--surface); border: 1px solid var(--border);
-            width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; color: var(--text); box-shadow: var(--shadow);
+        /* METRIC CARDS */
+        .stock-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        .stock-ticker { font-size: 32px; font-weight: 800; line-height: 1; }
+        .stock-name { font-size: 13px; color: var(--muted); margin-top: 4px; }
+        .stock-score { 
+            padding: 6px 12px; border-radius: 8px; font-weight: 700; font-size: 16px; 
+            background: var(--bg); border: 1px solid var(--border);
         }
-        
-        /* NAV PILL BAR */
-        .nav-container { display: flex; justify-content: center; width: 100%; margin-top: -10px; }
-        .nav-pills {
-            background: var(--surface); padding: 4px; border-radius: 999px;
-            display: flex; gap: 4px; box-shadow: var(--shadow); border: 1px solid var(--border);
-        }
-        .nav-item {
-            padding: 8px 24px; border-radius: 999px; font-size: 14px; font-weight: 600;
-            cursor: pointer; color: var(--muted); transition: 0.2s; user-select: none;
-        }
-        .nav-item:hover { color: var(--text); }
-        .nav-item.active {
-            background: var(--accent); color: var(--accent-text); box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        [data-theme="dark"] .nav-item.active { background: var(--primary); color: #fff; }
+        .stock-score.good { color: var(--success); border-color: rgba(0, 200, 83, 0.3); }
+        .stock-score.mid { color: var(--warning); border-color: rgba(255, 215, 0, 0.3); }
+        .stock-score.bad { color: var(--danger); border-color: rgba(255, 61, 0, 0.3); }
 
-        /* SEARCH BAR (Floating) */
-        .search-bar {
-            position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
-            width: 320px; z-index: 60; display: none; /* Shown in specific views */
+        .metric-list { display: flex; flex-direction: column; gap: 8px; }
+        .metric-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px; background: var(--bg); border-radius: 8px; border: 1px solid var(--border);
         }
-        .search-input {
-            width: 100%; padding: 12px 20px; border-radius: 999px; border: 1px solid var(--border);
-            background: var(--surface); color: var(--text); font-size: 14px;
-            box-shadow: var(--shadow); outline: none; transition: 0.2s;
-        }
-        .search-input:focus { border-color: var(--primary); }
+        .m-label { font-size: 12px; color: var(--muted); }
+        .m-val { font-size: 14px; font-weight: 600; font-feature-settings: "tnum"; }
+        .m-bench { font-size: 11px; margin-left: 6px; opacity: 0.7; }
 
-        /* MAIN CONTENT AREA */
-        main { flex: 1; position: relative; overflow: hidden; padding: 20px; }
-        .view-panel {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            padding: 0 20px 20px 20px; opacity: 0; pointer-events: none;
-            transform: translateY(10px); transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            overflow-y: auto; display: flex; flex-direction: column; gap: 20px;
+        /* BACK BUTTON */
+        .btn-back {
+            background: none; border: none; color: var(--muted); cursor: pointer;
+            font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 5px;
+            margin-bottom: 10px; padding: 0;
         }
-        .view-panel.active { opacity: 1; pointer-events: all; transform: translateY(0); }
+        .btn-back:hover { color: var(--text); }
 
-        /* --- VIEW: OVERVIEW (Grid Layout) --- */
-        .overview-grid {
-            display: grid; grid-template-columns: 320px 1fr; gap: 24px; height: 100%;
-            max-width: 1400px; margin: 0 auto; width: 100%;
+        /* LEGEND (Bottom Right) */
+        #legend {
+            position: absolute; bottom: 20px; right: 20px; 
+            background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+            padding: 10px; z-index: 5; pointer-events: none;
         }
-        .side-col { display: flex; flex-direction: column; gap: 24px; }
-        .main-col { display: flex; flex-direction: column; gap: 24px; overflow-y: auto; padding-bottom: 40px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; }
 
-        /* CARDS */
-        .card {
-            background: var(--surface); border-radius: var(--radius);
-            box-shadow: var(--shadow); border: 1px solid var(--border);
-            padding: 20px; position: relative;
-        }
-        .card-header {
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
-        }
-        .card-title {
-            font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted2); font-weight: 700;
-        }
-
-        /* METRIC INSTRUMENT */
-        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
-        .metric-instrument {
-            background: var(--bg); border-radius: 12px; padding: 16px; border: 1px solid var(--border);
-            display: flex; flex-direction: column; justify-content: space-between; min-height: 110px;
-        }
-        .mi-top { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
-        .mi-val { font-size: 24px; font-weight: 700; color: var(--text); font-feature-settings: "tnum"; margin: 8px 0; }
-        .mi-bot { font-size: 11px; color: var(--muted2); display: flex; align-items: center; gap: 6px; }
-        .badge {
-            padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 700;
-        }
-        .badge.good { background: rgba(0, 200, 83, 0.15); color: #00c853; }
-        .badge.bad { background: rgba(255, 61, 0, 0.15); color: #ff3d00; }
-        .badge.neutral { background: rgba(120, 120, 120, 0.15); color: var(--muted); }
-
-        /* --- VIEW: NETWORK (Canvas Card) --- */
-        .network-container {
-            width: 100%; height: 100%; border-radius: var(--radius); overflow: hidden;
-            background: var(--surface); border: 1px solid var(--border); position: relative;
-            box-shadow: var(--shadow);
-        }
-        .network-overlay {
-            position: absolute; top: 20px; left: 20px; z-index: 10;
-            display: flex; flex-direction: column; gap: 10px;
-        }
-        .pill-group { display: flex; gap: 8px; flex-wrap: wrap; }
-        .filter-chip {
-            background: var(--surface); border: 1px solid var(--border); padding: 6px 12px;
-            border-radius: 99px; font-size: 12px; font-weight: 600; color: var(--muted); cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: 0.2s;
-        }
-        .filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-        
-        .network-details {
-            position: absolute; top: 20px; right: 20px; width: 280px;
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow);
-            transform: translateX(120%); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .network-details.visible { transform: translateX(0); }
-
-        /* --- VIEW: HISTORY --- */
-        .history-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .time-range { display: flex; background: var(--surface); border-radius: 99px; padding: 4px; border: 1px solid var(--border); }
-        .tr-btn {
-            padding: 6px 16px; border-radius: 99px; font-size: 12px; font-weight: 600;
-            color: var(--muted); cursor: pointer; transition: 0.2s;
-        }
-        .tr-btn.active { background: var(--text); color: var(--bg); }
-
-        /* D3 TOOLTIP */
+        /* TOOLTIP */
         #tooltip {
             position: absolute; opacity: 0; pointer-events: none;
-            background: var(--surface); color: var(--text);
-            padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 100; font-size: 12px;
-            font-weight: 500;
+            background: var(--surface); padding: 8px 12px; border-radius: 6px;
+            border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 100; font-size: 12px; transition: opacity 0.1s;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="app-title">
-            BUFFETT<span>FOCUS</span>
-        </div>
-        
-        <div class="nav-container">
-            <div class="nav-pills">
-                <div class="nav-item active" onclick="app.switchView('overview')">Overview</div>
-                <div class="nav-item" onclick="app.switchView('history')">History</div>
-                <div class="nav-item" onclick="app.switchView('network')">Network</div>
-                <div class="nav-item" onclick="app.switchView('compare')">Compare</div>
-            </div>
-        </div>
-
-        <button class="theme-toggle" onclick="app.toggleTheme()">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="5"></circle>
-                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-            </svg>
-        </button>
-    </header>
-
-    <div class="search-bar" id="global-search">
-        <input type="text" class="search-input" placeholder="Search Ticker (e.g., AAPL)..." list="tickers">
-        <datalist id="tickers"></datalist>
+    <div id="graph-container">
+        <canvas id="edges-canvas"></canvas>
+        <svg id="nodes-svg"></svg>
     </div>
 
-    <main>
-        
-        <div id="view-overview" class="view-panel active">
-            <div class="overview-grid">
-                <div class="side-col">
-                    <div class="card" style="text-align: center;">
-                        <h2 id="ov-ticker" style="font-size: 32px; font-weight: 800; margin: 0;">--</h2>
-                        <div id="ov-name" style="color: var(--muted); font-size: 14px; margin-bottom: 10px;">Select a company</div>
-                        <div id="ov-score" class="badge neutral" style="display: inline-block; font-size: 14px; padding: 6px 12px;">Score: --</div>
-                        <div id="radar-container" style="height: 220px; margin-top: 20px;"></div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">Profile</span></div>
-                        <div style="font-size: 13px; line-height: 1.6; color: var(--muted);">
-                            <div id="ov-sector">--</div>
-                            <div id="ov-industry" style="color: var(--text); font-weight: 600;">--</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="main-col">
-                    <div class="card">
-                        <div class="card-header">
-                            <span class="card-title">Moat Indicators</span>
-                            <span class="card-title" style="cursor:help">ⓘ</span>
-                        </div>
-                        <div class="metric-grid" id="moat-metrics">
-                            </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-header"><span class="card-title">Financial Strength</span></div>
-                        <div class="metric-grid" id="strength-metrics"></div>
-                    </div>
-                </div>
+    <div id="sidebar">
+        <div class="panel-header">
+            <div class="app-title">Buffett Focus</div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search Ticker (e.g., AAPL)..." list="tickers">
+                <datalist id="tickers"></datalist>
             </div>
         </div>
 
-        <div id="view-history" class="view-panel">
-            <div class="card" style="min-height: 100%;">
-                <div class="history-controls">
+        <div class="panel-content">
+            
+            <div id="state-filters">
+                <div class="filter-group">
+                    <label class="filter-label">Filter by Sector</label>
+                    <select id="sector-select" onchange="app.filterGraph('sector', this.value)">
+                        <option value="all">🌍 All Sectors</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">Filter by Moat Score</label>
+                    <select id="score-select" onchange="app.filterGraph('score', this.value)">
+                        <option value="all">All Scores</option>
+                        <option value="good">🟢 Wide Moat (>70)</option>
+                        <option value="mid">🟡 Narrow Moat (40-70)</option>
+                        <option value="bad">🔴 No Moat (<40)</option>
+                    </select>
+                </div>
+
+                <hr style="border:0; border-top:1px solid var(--border); margin: 20px 0;">
+                
+                <div style="text-align: center; color: var(--muted); font-size: 13px; margin-top: 30px;">
+                    Select a bubble to view<br>Deep Fundamental Analysis
+                </div>
+            </div>
+
+            <div id="state-details">
+                <button class="btn-back" onclick="app.clearSelection()">← Back to Filters</button>
+                
+                <div class="stock-header">
                     <div>
-                        <h2 id="hist-title" style="margin:0; font-size: 20px;">Historical Performance</h2>
-                        <span id="hist-ticker" style="color: var(--primary); font-weight: 700;">--</span>
+                        <div class="stock-ticker" id="det-id">AAPL</div>
+                        <div class="stock-name" id="det-name">Apple Inc.</div>
                     </div>
-                    <div class="time-range">
-                        <div class="tr-btn" onclick="app.setRange('1Y')">1Y</div>
-                        <div class="tr-btn active" onclick="app.setRange('5Y')">5Y</div>
-                        <div class="tr-btn" onclick="app.setRange('10Y')">10Y</div>
-                    </div>
+                    <div class="stock-score" id="det-score">95</div>
                 </div>
-                <div id="history-charts-container" style="display: flex; flex-direction: column; gap: 24px; padding-bottom: 40px;">
+
+                <div id="radar-container" style="height: 200px; margin: -10px -20px 20px -20px;"></div>
+
+                <div class="filter-label">Buffett Checklist</div>
+                <div class="metric-list" id="det-metrics">
                     </div>
             </div>
+
         </div>
+    </div>
 
-        <div id="view-network" class="view-panel" style="padding: 0;">
-            <div class="network-container">
-                <div class="network-overlay">
-                    <div class="pill-group">
-                        <div class="filter-chip active" onclick="app.graphFilter('sector')">By Sector</div>
-                        <div class="filter-chip" onclick="app.graphFilter('moat')">By Moat Score</div>
-                    </div>
-                    <div id="sector-legend" style="margin-top: 10px; display: flex; flex-direction: column; gap: 4px;"></div>
-                </div>
-
-                <div class="network-details" id="net-details">
-                    <h3 id="net-ticker" style="margin: 0;">--</h3>
-                    <p id="net-name" style="color: var(--muted); font-size: 12px; margin-top: 4px;">--</p>
-                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 15px 0;">
-                    <div class="metric-instrument" style="background: var(--bg);">
-                        <div class="mi-top">Score</div>
-                        <div class="mi-val" id="net-score">--</div>
-                    </div>
-                    <button style="width: 100%; margin-top: 15px; padding: 10px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;" onclick="app.switchView('history')">
-                        View History
-                    </button>
-                </div>
-
-                <canvas id="edges-canvas" style="position: absolute; top:0; left:0; pointer-events:none;"></canvas>
-                <svg id="nodes-svg" style="position: absolute; top:0; left:0; width:100%; height:100%;"></svg>
-            </div>
-        </div>
-
-        <div id="view-compare" class="view-panel">
-            <div class="card">
-                <div class="card-header"><span class="card-title">Comparison Table</span></div>
-                <div style="text-align: center; padding: 40px; color: var(--muted);">
-                    Select multiple companies from the Network view to compare.
-                </div>
-            </div>
-        </div>
-
-    </main>
+    <div id="legend">
+        <div class="legend-item"><div class="dot" style="background:var(--success)"></div> Wide Moat (>70)</div>
+        <div class="legend-item"><div class="dot" style="background:var(--warning)"></div> Narrow Moat (40-70)</div>
+        <div class="legend-item"><div class="dot" style="background:var(--danger)"></div> No Moat (<40)</div>
+    </div>
 
     <div id="tooltip"></div>
 
