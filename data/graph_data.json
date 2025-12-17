@@ -2622,7 +2622,7 @@
       "name": "SIEMENS AG                    N",
       "sector": "Industrials",
       "industry": "Specialty Industrial Machinery",
-      "marketCap": 184251908096,
+      "marketCap": 183781982208,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 38.5,
@@ -2638,8 +2638,8 @@
         "fcf_margin": 13.7,
         "capex_ratio": 3.1,
         "retained_earnings": 49601000000.0,
-        "pe_ratio": 24.711134,
-        "pb_ratio": 2.9489927,
+        "pe_ratio": 24.648108,
+        "pb_ratio": 2.9414713,
         "buffett_score": 35
       },
       "historical": {
@@ -2674,7 +2674,7 @@
       "name": "Allianz SE                    v",
       "sector": "Financial Services",
       "industry": "Insurance - Diversified",
-      "marketCap": 148630044672,
+      "marketCap": 148822818816,
       "buffettScore": 45,
       "metrics": {
         "gross_margin": 0.0,
@@ -2690,8 +2690,8 @@
         "fcf_margin": 21.9,
         "capex_ratio": 1.4,
         "retained_earnings": 33354000000.0,
-        "pe_ratio": 14.225092,
-        "pb_ratio": 2.4345574,
+        "pe_ratio": 14.243543,
+        "pb_ratio": 2.437715,
         "buffett_score": 45
       },
       "historical": {
@@ -2726,7 +2726,7 @@
       "name": "DEUTSCHE TELEKOM AG           N",
       "sector": "Communication Services",
       "industry": "Telecom Services",
-      "marketCap": 133576245248,
+      "marketCap": 133725609984,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 61.1,
@@ -2742,8 +2742,8 @@
         "fcf_margin": 18.0,
         "capex_ratio": 16.7,
         "retained_earnings": -5750000000.0,
-        "pe_ratio": 10.862348,
-        "pb_ratio": 2.1410902,
+        "pe_ratio": 10.874494,
+        "pb_ratio": 2.143484,
         "buffett_score": 40
       },
       "historical": {
@@ -2778,7 +2778,7 @@
       "name": "BAYERISCHE MOTOREN WERKE AG   S",
       "sector": "Consumer Cyclical",
       "industry": "Auto Manufacturers",
-      "marketCap": 56604340224,
+      "marketCap": 56689680384,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": 16.1,
@@ -2794,8 +2794,8 @@
         "fcf_margin": -3.3,
         "capex_ratio": 8.6,
         "retained_earnings": 0,
-        "pe_ratio": 8.159929,
-        "pb_ratio": 0.6259311,
+        "pe_ratio": 8.172232,
+        "pb_ratio": 0.62687474,
         "buffett_score": 20
       },
       "historical": {
@@ -2830,7 +2830,7 @@
       "name": "VOLKSWAGEN AG                 V",
       "sector": "Consumer Cyclical",
       "industry": "Auto Manufacturers",
-      "marketCap": 53043154944,
+      "marketCap": 53145108480,
       "buffettScore": 10,
       "metrics": {
         "gross_margin": 18.3,
@@ -2846,8 +2846,8 @@
         "fcf_margin": -3.2,
         "capex_ratio": 8.5,
         "retained_earnings": 155130000000.0,
-        "pe_ratio": 7.7591352,
-        "pb_ratio": 0.30847177,
+        "pe_ratio": 7.7740493,
+        "pb_ratio": 0.3090647,
         "buffett_score": 10
       },
       "historical": {
@@ -2882,7 +2882,7 @@
       "name": "Airbus SE                     A",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
-      "marketCap": 151750328320,
+      "marketCap": 151702962176,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 15.4,
@@ -2898,8 +2898,8 @@
         "fcf_margin": 5.4,
         "capex_ratio": 5.3,
         "retained_earnings": 18687000000.0,
-        "pe_ratio": 30.0375,
-        "pb_ratio": 6.4285717,
+        "pe_ratio": 30.028124,
+        "pb_ratio": 6.4265647,
         "buffett_score": 40
       },
       "historical": {
@@ -2986,7 +2986,7 @@
       "name": "MUENCHENER RUECKVERS.-GES. AG N",
       "sector": "Financial Services",
       "industry": "Insurance - Reinsurance",
-      "marketCap": 72720310272,
+      "marketCap": 72431214592,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 0.0,
@@ -3002,8 +3002,8 @@
         "fcf_margin": 6.7,
         "capex_ratio": 0.7,
         "retained_earnings": 24822000000.0,
-        "pe_ratio": 11.562892,
-        "pb_ratio": 2.2209558,
+        "pe_ratio": 11.516925,
+        "pb_ratio": 2.2121267,
         "buffett_score": 40
       },
       "historical": {
@@ -3038,7 +3038,7 @@
       "name": "adidas AG                     N",
       "sector": "Consumer Cyclical",
       "industry": "Footwear & Accessories",
-      "marketCap": 29701642240,
+      "marketCap": 29790916608,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": 50.8,
@@ -3054,8 +3054,8 @@
         "fcf_margin": 10.0,
         "capex_ratio": 2.3,
         "retained_earnings": 4775000000.0,
-        "pe_ratio": 24.535398,
-        "pb_ratio": 5.2155514,
+        "pe_ratio": 24.609144,
+        "pb_ratio": 5.2312274,
         "buffett_score": 20
       },
       "historical": {
@@ -3288,9 +3288,10 @@
     }
   },
   "metadata": {
-    "generated": "2025-12-17T13:22:17.985953",
+    "generated": "2025-12-17T13:58:21.939655",
     "total_stocks": 60,
     "total_links": 0,
-    "failed_tickers": []
+    "failed_tickers": [],
+    "target_count": 60
   }
 }
