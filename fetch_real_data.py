@@ -1,383 +1,247 @@
 import yfinance as yf
 import json
 import os
+import sys
 import pandas as pd
 import numpy as np
 from datetime import datetime
 import time
-import sys
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics.pairwise import cosine_similarity
 
-# Predefined ticker lists
-SP500_TOP = [
-    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "BRK-B", "LLY", "AVGO", "TSLA",
-    "JPM", "V", "UNH", "XOM", "WMT", "MA", "JNJ", "PG", "ORCL", "HD",
-    "COST", "NFLX", "BAC", "ABBV", "CRM", "CVX", "MRK", "KO", "PEP", "AMD",
-    "ADBE", "TMO", "ACN", "MCD", "CSCO", "ABT", "DIS", "WFC", "DHR", "VZ",
-    "INTC", "CMCSA", "QCOM", "TXN", "PM", "CAT", "NEE", "IBM", "AMGN", "UNP",
-    "HON", "LOW", "RTX", "NKE", "GE", "SPGI", "BA", "LMT", "SBUX", "T",
-    "BLK", "AXP", "BKNG", "DE", "PLD", "SYK", "GILD", "MDLZ", "ADI", "MMC",
-    "ADP", "VRTX", "CI", "AMT", "REGN", "ISRG", "TJX", "PFE", "CVS", "ZTS"
+# --- CONFIGURATION ---
+TARGET_TICKERS = [
+    # Tech / Growth
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA", "AVGO", "ADBE", "CRM", "AMD", "INTC", "IBM", "QCOM",
+    # Consumer / Staples
+    "WMT", "PG", "KO", "PEP", "COST", "MCD", "NKE", "SBUX", "HD", "LOW", "DIS",
+    # Financials
+    "JPM", "V", "MA", "BRK-B", "BAC", "WFC", "GS", "MS", "AXP", "BLK",
+    # Healthcare
+    "JNJ", "UNH", "LLY", "PFE", "ABBV", "MRK", "TMO", "DHR",
+    # Industrial / Energy
+    "XOM", "CVX", "GE", "CAT", "UNP", "UPS", "HON", "LMT", "RTX", "BA",
+    # DAX / Europe
+    "SAP", "SIE.DE", "ALV.DE", "DTE.DE", "BMW.DE", "VOW3.DE", "AIR.DE"
 ]
 
-DAX_STOCKS = [
-    "SAP", "SIE.DE", "ALV.DE", "DTE.DE", "BMW.DE", "VOW3.DE", "AIR.DE", "BAS.DE", 
-    "MUV2.DE", "ADS.DE", "1COV.DE", "DAI.DE", "DB1.DE", "HEI.DE", "RWE.DE"
-]
-
-def test_connection():
-    """Test if we can connect to Yahoo Finance"""
-    print("\n🔍 Testing Yahoo Finance connection...")
-    try:
-        test_stock = yf.Ticker("AAPL")
-        info = test_stock.info
-        if 'marketCap' in info and info['marketCap'] > 0:
-            print("✅ Connection successful!")
-            print(f"   Test: AAPL market cap = ${info['marketCap']/1e9:.1f}B")
-            return True
-        else:
-            print("⚠️  Connection established but data incomplete")
-            return False
-    except Exception as e:
-        print(f"❌ Connection failed: {str(e)[:100]}")
-        return False
-
-def calculate_buffett_metrics(stock, symbol):
-    """Calculate comprehensive Buffett metrics"""
-    try:
-        info = stock.info
-        
-        # Get financial statements
-        try:
-            income_stmt = stock.financials
-            balance_sheet = stock.balance_sheet
-            cash_flow = stock.cashflow
-        except Exception as e:
-            print(f"    → Failed to get statements: {str(e)[:50]}")
-            return None
-        
-        if income_stmt.empty or balance_sheet.empty:
-            print(f"    → Empty financial statements")
-            return None
-        
-        metrics = {}
-        historical = {
-            'gross_margin': [],
-            'net_margin': [],
-            'roe': [],
-            'debt_to_equity': []
-        }
-        
-        # Process historical data
-        years = min(5, len(income_stmt.columns))
-        
-        for i in range(years):
-            try:
-                revenue = income_stmt.iloc[:, i].get('Total Revenue', 0)
-                if revenue == 0:
-                    revenue = income_stmt.iloc[:, i].get('Total Revenues', 0)
-                
-                gross_profit = income_stmt.iloc[:, i].get('Gross Profit', 0)
-                net_income = income_stmt.iloc[:, i].get('Net Income', 0)
-                
-                total_equity = balance_sheet.iloc[:, i].get('Stockholders Equity', 1)
-                if total_equity == 0:
-                    total_equity = balance_sheet.iloc[:, i].get('Total Stockholder Equity', 1)
-                
-                total_debt = balance_sheet.iloc[:, i].get('Total Debt', 0)
-                
-                if revenue > 0:
-                    gm = (gross_profit / revenue) * 100
-                    nm = (net_income / revenue) * 100
-                    if -100 < gm < 100:
-                        historical['gross_margin'].append(round(gm, 1))
-                    if -100 < nm < 100:
-                        historical['net_margin'].append(round(nm, 1))
-                
-                if total_equity > 0:
-                    roe = (net_income / total_equity) * 100
-                    if -200 < roe < 500:
-                        historical['roe'].append(round(roe, 1))
-                    
-                    de = total_debt / total_equity
-                    if de >= 0 and de < 10:
-                        historical['debt_to_equity'].append(round(de, 2))
-                    
-            except:
-                continue
-        
-        # Current year metrics
-        revenue = income_stmt.iloc[:, 0].get('Total Revenue', 0)
-        if revenue == 0:
-            revenue = income_stmt.iloc[:, 0].get('Total Revenues', 0)
-            
-        gross_profit = income_stmt.iloc[:, 0].get('Gross Profit', 0)
-        net_income = income_stmt.iloc[:, 0].get('Net Income', 0)
-        operating_income = income_stmt.iloc[:, 0].get('Operating Income', 0)
-        sga = income_stmt.iloc[:, 0].get('Selling General Administrative', 0)
-        
-        total_assets = balance_sheet.iloc[:, 0].get('Total Assets', 1)
-        total_equity = balance_sheet.iloc[:, 0].get('Stockholders Equity', 1)
-        if total_equity == 0:
-            total_equity = balance_sheet.iloc[:, 0].get('Total Stockholder Equity', 1)
-            
-        total_debt = balance_sheet.iloc[:, 0].get('Total Debt', 0)
-        current_assets = balance_sheet.iloc[:, 0].get('Current Assets', 0)
-        current_liabilities = balance_sheet.iloc[:, 0].get('Current Liabilities', 1)
-        
-        free_cash_flow = cash_flow.iloc[:, 0].get('Free Cash Flow', 0)
-        capex = abs(cash_flow.iloc[:, 0].get('Capital Expenditure', 0))
-        
-        # Calculate metrics
-        metrics['gross_margin'] = round((gross_profit / revenue * 100) if revenue > 0 else 0, 1)
-        metrics['net_margin'] = round((net_income / revenue * 100) if revenue > 0 else 0, 1)
-        metrics['operating_margin'] = round((operating_income / revenue * 100) if revenue > 0 else 0, 1)
-        metrics['sga_ratio'] = round((sga / gross_profit * 100) if gross_profit > 0 else 0, 1)
-        
-        metrics['roe'] = round((net_income / total_equity * 100) if total_equity > 0 else 0, 1)
-        metrics['roa'] = round((net_income / total_assets * 100) if total_assets > 0 else 0, 1)
-        metrics['roic'] = round((operating_income / (total_equity + total_debt) * 100) if (total_equity + total_debt) > 0 else 0, 1)
-        
-        metrics['debt_to_equity'] = round((total_debt / total_equity) if total_equity > 0 else 0, 2)
-        metrics['interest_coverage'] = info.get('interestCoverage', 0) or 0
-        metrics['current_ratio'] = round((current_assets / current_liabilities) if current_liabilities > 0 else 0, 2)
-        
-        metrics['fcf_margin'] = round((free_cash_flow / revenue * 100) if revenue > 0 else 0, 1)
-        metrics['capex_ratio'] = round((capex / revenue * 100) if revenue > 0 else 0, 1)
-        metrics['retained_earnings'] = balance_sheet.iloc[:, 0].get('Retained Earnings', 0)
-        
-        metrics['pe_ratio'] = info.get('trailingPE', 0) or 0
-        metrics['pb_ratio'] = info.get('priceToBook', 0) or 0
-        
-        # Calculate Buffett Score
-        score = 0
-        if metrics['gross_margin'] > 40: score += 10
-        if metrics['net_margin'] > 15: score += 10
-        if metrics['sga_ratio'] > 0 and metrics['sga_ratio'] < 30: score += 10
-        if metrics['roe'] > 15: score += 10
-        if metrics['roic'] > 12: score += 10
-        if metrics['roa'] > 7: score += 5
-        if metrics['debt_to_equity'] < 0.5: 
-            score += 15
-        elif metrics['debt_to_equity'] < 1.0: 
-            score += 10
-        if metrics['current_ratio'] > 1.5: score += 5
-        if metrics['fcf_margin'] > 15: score += 10
-        if metrics['capex_ratio'] > 0 and metrics['capex_ratio'] < 5: score += 5
-        
-        if len(historical['gross_margin']) >= 3:
-            gm_stable = max(historical['gross_margin']) - min(historical['gross_margin']) < 10
-            if gm_stable: score += 5
-        if len(historical['roe']) >= 3:
-            roe_positive = all(x > 0 for x in historical['roe'])
-            if roe_positive: score += 5
-        
-        metrics['buffett_score'] = min(score, 100)
-        
-        return {
-            'metrics': metrics,
-            'historical': historical
-        }
-        
-    except Exception as e:
-        print(f"    → Error: {str(e)[:60]}")
-        return None
-
-# Main execution
-print("=" * 70)
-print("BUFFETT STOCK ANALYZER - Yahoo Finance Real-Time Data")
-print("=" * 70)
-
-# Test connection first
-if not test_connection():
-    print("\n⚠️  WARNING: Yahoo Finance connection issues detected")
-    print("Script will continue but may have limited results...")
-    time.sleep(2)
-
-print("\n[1/4] Building Watchlist...")
-tickers = SP500_TOP[:50] + DAX_STOCKS[:10]
-print(f"Target: {len(tickers)} stocks (50 S&P 500 + 10 DAX)")
-
-nodes = []
-price_data = {}
-failed_tickers = []
-
-print("\n[2/4] Fetching Financial Data from Yahoo Finance...")
-print("=" * 70)
-
-for i, symbol in enumerate(tickers):
-    try:
-        # Progress indicator
-        progress = f"[{i+1}/{len(tickers)}]"
-        print(f"\n{progress} Processing {symbol}...", end="")
-        sys.stdout.flush()
-        
-        # Rate limiting
-        if i > 0 and i % 10 == 0:
-            time.sleep(1)
-        
-        stock = yf.Ticker(symbol)
-        info = stock.info
-        
-        # Check if valid
-        if 'marketCap' not in info or info.get('marketCap', 0) == 0:
-            print(" ❌ No market cap")
-            failed_tickers.append(symbol)
-            continue
-        
-        result = calculate_buffett_metrics(stock, symbol)
-        if not result:
-            print(" ❌ No financial data")
-            failed_tickers.append(symbol)
-            continue
-        
-        node = {
-            "id": symbol,
-            "name": info.get('shortName', symbol),
-            "sector": info.get("sector", "Unknown"),
-            "industry": info.get("industry", "Unknown"),
-            "marketCap": info.get("marketCap", 0),
-            "buffettScore": result['metrics']['buffett_score'],
-            "metrics": result['metrics'],
-            "historical": result['historical']
-        }
-        
-        nodes.append(node)
-        print(f" ✅ Score: {node['buffettScore']}/100")
-        
-        # Fetch price history
-        try:
-            hist = stock.history(period="5y")
-            if not hist.empty and len(hist) > 100:
-                price_data[symbol] = hist["Close"]
-        except:
-            pass
-            
-    except Exception as e:
-        print(f" ❌ Error: {str(e)[:40]}")
-        failed_tickers.append(symbol)
-        continue
-
-print("\n" + "=" * 70)
-print(f"✅ Successfully fetched: {len(nodes)} stocks")
-print(f"❌ Failed: {len(failed_tickers)} stocks")
-
-if len(nodes) == 0:
-    print("\n" + "!" * 70)
-    print("ERROR: No data could be fetched!")
-    print("!" * 70)
-    print("\nPossible causes:")
-    print("  1. Yahoo Finance API is down or blocking requests")
-    print("  2. Network connectivity issues")
-    print("  3. All ticker symbols are invalid")
-    print("\nThe data file will be empty. Check the logs above for details.")
-    print("!" * 70)
-
-print(f"\n[3/4] Building Correlation Network...")
-if len(price_data) > 1:
-    df_prices = pd.DataFrame(price_data)
-    df_prices = df_prices.dropna(axis=1, thresh=len(df_prices)*0.8)
-    
-    if len(df_prices.columns) > 1:
-        corr_matrix = df_prices.corr()
-        
-        links = []
-        tickers_list = df_prices.columns.tolist()
-        threshold = 0.70
-        
-        for i in range(len(tickers_list)):
-            for j in range(i + 1, len(tickers_list)):
-                t1 = tickers_list[i]
-                t2 = tickers_list[j]
-                
-                if t1 in corr_matrix.index and t2 in corr_matrix.columns:
-                    val = corr_matrix.loc[t1, t2]
-                    
-                    if not np.isnan(val) and val > threshold:
-                        links.append({
-                            "source": t1,
-                            "target": t2,
-                            "value": round(val, 2)
-                        })
-        
-        print(f"  ✓ Generated {len(links)} connections")
-    else:
-        links = []
-        print("  ⚠️  Not enough price data for correlations")
-else:
-    links = []
-    print("  ⚠️  No price data available for correlations")
-
-# Calculate industry statistics
-print(f"\n[4/4] Calculating Industry Benchmarks...")
-industry_stats = {}
-for node in nodes:
-    industry = node['industry']
-    if industry not in industry_stats:
-        industry_stats[industry] = {
-            'gross_margin': [],
-            'net_margin': [],
-            'roe': [],
-            'debt_to_equity': []
-        }
-    
-    industry_stats[industry]['gross_margin'].append(node['metrics']['gross_margin'])
-    industry_stats[industry]['net_margin'].append(node['metrics']['net_margin'])
-    industry_stats[industry]['roe'].append(node['metrics']['roe'])
-    industry_stats[industry]['debt_to_equity'].append(node['metrics']['debt_to_equity'])
-
-industry_averages = {}
-for industry, stats in industry_stats.items():
-    industry_averages[industry] = {
-        'gross_margin': round(np.mean(stats['gross_margin']), 1),
-        'net_margin': round(np.mean(stats['net_margin']), 1),
-        'roe': round(np.mean(stats['roe']), 1),
-        'debt_to_equity': round(np.mean(stats['debt_to_equity']), 2)
-    }
-
-print(f"  ✓ Calculated averages for {len(industry_averages)} industries")
-
-# Save data
-print(f"\n[5/5] Saving Data...")
-output = {
-    "nodes": nodes,
-    "links": links,
-    "industry_averages": industry_averages,
-    "metadata": {
-        "generated": datetime.now().isoformat(),
-        "total_stocks": len(nodes),
-        "total_links": len(links),
-        "failed_tickers": failed_tickers,
-        "target_count": len(tickers)
-    }
+# Magic Numbers for Buffett Score
+SCORING = {
+    'gross_margin': {'thresh': 40, 'pts': 10},
+    'net_margin': {'thresh': 15, 'pts': 10},
+    'roe': {'thresh': 15, 'pts': 15},
+    'roic': {'thresh': 12, 'pts': 15},
+    'debt_to_equity': {'thresh': 0.5, 'pts': 15, 'inverse': True}, # Lower is better
+    'fcf_margin': {'thresh': 15, 'pts': 10},
+    'sga_ratio': {'thresh': 30, 'pts': 10, 'inverse': True},
+    'hist_consistency': {'pts': 15} # Bonus for stable history
 }
 
-os.makedirs("data", exist_ok=True)
-output_path = "data/graph_data.json"
+def get_safe_val(df, key, row=0, default=0):
+    try:
+        val = df.iloc[:, row].get(key, default)
+        return float(val) if val is not None else default
+    except:
+        return default
 
-with open(output_path, "w") as f:
-    json.dump(output, f, indent=2)
+def analyze_stock(ticker):
+    try:
+        stock = yf.Ticker(ticker)
+        info = stock.info
+        
+        # Basic check
+        if 'marketCap' not in info or info['marketCap'] == 0:
+            return None
 
-file_size = os.path.getsize(output_path)
-print(f"  ✓ Saved to: {output_path}")
-print(f"  ✓ File size: {file_size/1024:.1f} KB")
+        # Fetch Financials
+        inc = stock.financials
+        bal = stock.balance_sheet
+        cash = stock.cashflow
+        
+        if inc.empty or bal.empty:
+            return None
 
-print("\n" + "=" * 70)
-print("📊 SUMMARY")
-print("=" * 70)
-print(f"  Stocks analyzed:    {len(nodes)}")
-print(f"  Correlations found: {len(links)}")
-print(f"  Industries covered: {len(industry_averages)}")
-print(f"  Failed tickers:     {len(failed_tickers)}")
-print("=" * 70)
+        # 1. Current Year Metrics
+        rev = get_safe_val(inc, 'Total Revenue')
+        if rev == 0: rev = get_safe_val(inc, 'Total Revenues', default=1)
+        
+        gross = get_safe_val(inc, 'Gross Profit')
+        net = get_safe_val(inc, 'Net Income')
+        op_inc = get_safe_val(inc, 'Operating Income')
+        sga = get_safe_val(inc, 'Selling General Administrative')
+        
+        equity = get_safe_val(bal, 'Stockholders Equity', default=1)
+        debt = get_safe_val(bal, 'Total Debt')
+        assets = get_safe_val(bal, 'Total Assets', default=1)
+        
+        fcf = get_safe_val(cash, 'Free Cash Flow')
+        capex = abs(get_safe_val(cash, 'Capital Expenditure'))
 
-if len(nodes) > 0:
-    print("\n🏆 TOP 10 BUFFETT SCORES:")
-    top_stocks = sorted(nodes, key=lambda x: x['buffettScore'], reverse=True)[:10]
-    for i, stock in enumerate(top_stocks, 1):
-        print(f"  {i:2d}. {stock['id']:8s} {stock['buffettScore']:3d}/100  {stock['name'][:45]}")
+        metrics = {
+            'gross_margin': (gross / rev) * 100,
+            'net_margin': (net / rev) * 100,
+            'operating_margin': (op_inc / rev) * 100,
+            'sga_ratio': (sga / gross) * 100 if gross > 0 else 0,
+            'roe': (net / equity) * 100,
+            'roic': (op_inc / (equity + debt)) * 100 if (equity+debt) > 0 else 0,
+            'roa': (net / assets) * 100,
+            'debt_to_equity': debt / equity if equity > 0 else 0,
+            'fcf_margin': (fcf / rev) * 100,
+            'capex_ratio': (capex / rev) * 100,
+            'pe_ratio': info.get('trailingPE', 0),
+            'pb_ratio': info.get('priceToBook', 0)
+        }
+
+        # 2. Historical Consistency (Last 3 years)
+        consistency_bonus = 0
+        try:
+            years = min(3, len(inc.columns))
+            margins = []
+            for i in range(years):
+                r = get_safe_val(inc, 'Total Revenue', i)
+                g = get_safe_val(inc, 'Gross Profit', i)
+                if r > 0: margins.append(g/r)
+            
+            # Bonus if margins are stable (variance < 5%)
+            if len(margins) >= 3 and (max(margins) - min(margins)) < 0.05:
+                consistency_bonus = SCORING['hist_consistency']['pts']
+        except:
+            pass
+
+        # 3. Calculate Score
+        score = 0
+        score += SCORING['gross_margin']['pts'] if metrics['gross_margin'] > SCORING['gross_margin']['thresh'] else 0
+        score += SCORING['net_margin']['pts'] if metrics['net_margin'] > SCORING['net_margin']['thresh'] else 0
+        score += SCORING['roe']['pts'] if metrics['roe'] > SCORING['roe']['thresh'] else 0
+        score += SCORING['roic']['pts'] if metrics['roic'] > SCORING['roic']['thresh'] else 0
+        score += SCORING['fcf_margin']['pts'] if metrics['fcf_margin'] > SCORING['fcf_margin']['thresh'] else 0
+        
+        # Inverse metrics (Lower is better)
+        score += SCORING['debt_to_equity']['pts'] if metrics['debt_to_equity'] < SCORING['debt_to_equity']['thresh'] else 0
+        score += SCORING['sga_ratio']['pts'] if metrics['sga_ratio'] < SCORING['sga_ratio']['thresh'] else 0
+        
+        score += consistency_bonus
+        metrics['buffett_score'] = min(score, 100)
+
+        return {
+            "id": ticker,
+            "name": info.get('shortName', ticker),
+            "sector": info.get('sector', 'Unknown'),
+            "industry": info.get('industry', 'Unknown'),
+            "marketCap": info.get('marketCap', 0),
+            "buffettScore": int(score),
+            "metrics": {k: round(v, 2) for k, v in metrics.items() if v is not None}
+        }
+
+    except Exception as e:
+        print(f"Error {ticker}: {str(e)[:50]}")
+        return None
+
+def build_similarity_links(nodes, threshold=0.85):
+    """
+    Links stocks based on fundamental similarity using Cosine Similarity.
+    Features: Margins, ROE, Debt, FCF.
+    """
+    if len(nodes) < 2: return []
     
-    print(f"\n✅ SUCCESS! Data saved to {output_path}")
-else:
-    print("\n⚠️  WARNING: No stocks were successfully fetched!")
-    print("Check the error messages above for details.")
-    sys.exit(1)
+    # Extract feature vectors
+    features = []
+    for n in nodes:
+        m = n['metrics']
+        # Vector: [Gross Margin, Net Margin, ROE, Debt/Eq, FCF %]
+        vec = [
+            m.get('gross_margin', 0),
+            m.get('net_margin', 0),
+            m.get('roe', 0),
+            -1 * m.get('debt_to_equity', 0), # Invert debt so lower is "better/similar" to high quality
+            m.get('fcf_margin', 0)
+        ]
+        features.append(vec)
+    
+    # Normalize
+    scaler = MinMaxScaler()
+    features_norm = scaler.fit_transform(features)
+    
+    # Calculate Similarity
+    sim_matrix = cosine_similarity(features_norm)
+    
+    links = []
+    for i in range(len(nodes)):
+        # Get top 3 similar stocks (excluding self)
+        # argsort returns indices of sorted values (low to high), we take last 4 (self is 1)
+        similar_indices = sim_matrix[i].argsort()[-4:-1]
+        
+        for idx in similar_indices:
+            sim_score = sim_matrix[i][idx]
+            if sim_score > threshold:
+                links.append({
+                    "source": nodes[i]['id'],
+                    "target": nodes[idx]['id'],
+                    "value": float(sim_score),
+                    "type": "fundamental" # Mark this as a fundamental link
+                })
+    return links
+
+def main():
+    print("="*60)
+    print("BUFFETT SCANNER v2.0 (Consolidated)")
+    print("="*60)
+    
+    nodes = []
+    
+    # 1. Fetch Data
+    print(f"Fetching data for {len(TARGET_TICKERS)} tickers...")
+    for i, ticker in enumerate(TARGET_TICKERS):
+        print(f"[{i+1}/{len(TARGET_TICKERS)}] {ticker}...", end=" ")
+        sys.stdout.flush()
+        
+        data = analyze_stock(ticker)
+        if data:
+            nodes.append(data)
+            print(f"✅ Score: {data['buffettScore']}")
+        else:
+            print("❌ Failed/Skipped")
+            
+        # Rate limiting prevents IP bans
+        if i % 5 == 0: time.sleep(0.5)
+
+    # 2. Safety Check
+    if len(nodes) == 0:
+        print("\n❌ CRITICAL: No data fetched. Aborting save to protect existing data.")
+        sys.exit(1)
+
+    # 3. Build Links (Fundamental Similarity)
+    print("\nCalculating fundamental similarities...")
+    links = build_similarity_links(nodes)
+    print(f"Generated {len(links)} links based on financial metrics.")
+
+    # 4. Calculate Industry Averages
+    print("Calculating industry benchmarks...")
+    ind_stats = {}
+    for n in nodes:
+        ind = n['industry']
+        if ind not in ind_stats: ind_stats[ind] = {'gross_margin': [], 'roe': [], 'debt_to_equity': []}
+        ind_stats[ind]['gross_margin'].append(n['metrics'].get('gross_margin', 0))
+        ind_stats[ind]['roe'].append(n['metrics'].get('roe', 0))
+        ind_stats[ind]['debt_to_equity'].append(n['metrics'].get('debt_to_equity', 0))
+    
+    ind_avgs = {}
+    for ind, stats in ind_stats.items():
+        ind_avgs[ind] = {k: round(np.mean(v), 2) for k, v in stats.items()}
+
+    # 5. Save
+    output = {
+        "nodes": nodes,
+        "links": links,
+        "industry_averages": ind_avgs,
+        "metadata": {"generated_at": datetime.now().isoformat()}
+    }
+    
+    os.makedirs("data", exist_ok=True)
+    with open("data/graph_data.json", "w") as f:
+        json.dump(output, f, indent=2)
+        
+    print(f"\n✅ SUCCESS: Saved {len(nodes)} nodes and {len(links)} links to data/graph_data.json")
+
+if __name__ == "__main__":
+    main()
