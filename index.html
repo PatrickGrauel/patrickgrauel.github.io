@@ -1,538 +1,98 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buffett Focus - Stock Network Analyzer</title>
+    <title>Buffett Focus | Market Network</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        :root {
-            --bg: #0b0c10;
-            --surface: #15171e;
-            --surface-h: #1e212b;
-            --text: #f7f7fa;
-            --muted: #8b949e;
-            --border: rgba(255,255,255,0.1);
-            --primary: #0079fd;
-            --success: #00c853;
-            --warning: #ffd700;
-            --danger: #ff3d00;
-            --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
+        :root { --bg: #0d1117; --sidebar: #161b22; --text: #c9d1d9; --accent: #0079fd; --border: #30363d; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
         
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        /* LAYOUT */
+        #app { display: flex; width: 100vw; height: 100vh; }
+        #graph-container { flex-grow: 1; position: relative; cursor: grab; }
+        #graph-container:active { cursor: grabbing; }
         
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: var(--font);
-            overflow: hidden;
-            height: 100vh;
-        }
-
-        /* GRAPH LAYER */
-        #graph-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: radial-gradient(circle at center, #15171e 0%, #0b0c10 100%);
-        }
-        
-        #main-svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-        
-        /* ZOOM CONTROLS */
-        .zoom-controls {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-            z-index: 20;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .zoom-btn {
-            width: 40px;
-            height: 40px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            color: var(--text);
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: bold;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        
-        .zoom-btn:hover {
-            background: var(--surface-h);
-            border-color: var(--primary);
-            transform: scale(1.05);
-        }
-
-        /* LEGEND */
-        .legend-panel {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(21, 23, 30, 0.95);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            backdrop-filter: blur(12px);
-            z-index: 20;
-            max-width: 300px;
-        }
-        
-        .legend-title {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--muted);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-        
-        .legend-items {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            font-size: 11px;
-        }
-        
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 3px;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
         /* SIDEBAR */
-        #sidebar {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            bottom: 20px;
-            width: 450px;
-            background: rgba(21, 23, 30, 0.98);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            backdrop-filter: blur(16px);
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            box-shadow: -10px 0 40px rgba(0,0,0,0.6);
-            transform: translateX(0);
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
+        #sidebar { width: 350px; background: var(--sidebar); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; z-index: 10; padding: 20px; box-shadow: -4px 0 20px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
+        #sidebar.hidden { transform: translateX(100%); width: 0; padding: 0; }
         
-        #sidebar.hidden {
-            transform: translateX(110%);
-        }
-
-        /* HEADER */
-        .panel-header {
-            padding: 20px;
-            border-bottom: 1px solid var(--border);
-            background: rgba(11, 12, 16, 0.4);
-        }
+        /* CONTROLS (Top Left) */
+        #controls { position: absolute; top: 20px; left: 20px; z-index: 5; display: flex; gap: 10px; }
+        input#search-input { background: var(--sidebar); border: 1px solid var(--border); color: #fff; padding: 8px 12px; border-radius: 6px; width: 200px; outline: none; }
+        input#search-input:focus { border-color: var(--accent); }
         
-        #search-input {
-            width: 100%;
-            padding: 14px 16px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            color: white;
-            border-radius: 10px;
-            outline: none;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
+        /* SIDEBAR COMPONENTS */
+        .header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        h2#det-ticker { margin: 0; font-size: 2em; color: #fff; }
+        #det-name { font-size: 0.9em; color: #8b949e; margin-top: 4px; }
         
-        #search-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 121, 253, 0.1);
-        }
-
-        /* CONTENT */
-        .panel-content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
+        /* Score Badge */
+        .score-lg { font-size: 24px; font-weight: bold; padding: 5px 12px; border-radius: 8px; }
+        .score-lg.good { color: #00c853; border: 1px solid #00c853; background: rgba(0,200,83,0.1); }
+        .score-lg.mid { color: #ffd600; border: 1px solid #ffd600; background: rgba(255,214,0,0.1); }
+        .score-lg.bad { color: #ff3d00; border: 1px solid #ff3d00; background: rgba(255,61,0,0.1); }
         
-        /* EMPTY STATE */
-        #state-empty {
-            text-align: center;
-            margin-top: 80px;
-            color: var(--muted);
-        }
+        /* Radar & Metrics */
+        #radar-container { display: flex; justify-content: center; margin: 20px 0; }
+        .section-header { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #8b949e; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
         
-        #state-empty p {
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
+        .metric-card { background: #21262d; border: 1px solid var(--border); border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+        .m-header { display: flex; justify-content: space-between; font-size: 12px; color: #8b949e; }
+        .m-value { font-size: 16px; font-weight: 600; color: #fff; margin-top: 4px; }
         
-        .score-legend {
-            display: inline-flex;
-            gap: 16px;
-            font-size: 12px;
-            padding: 12px 20px;
-            background: var(--surface);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-        
-        .score-legend span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .score-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-        }
-
-        /* STOCK HEADER */
-        .stock-header {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .ticker-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-        
-        .ticker-lg {
-            font-size: 36px;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-        
-        .stock-name {
-            font-size: 14px;
-            color: var(--muted);
-            margin-top: 4px;
-        }
-        
-        .score-lg {
-            font-size: 48px;
-            font-weight: 800;
-            line-height: 1;
-        }
-        
-        .score-lg.good { color: var(--success); }
-        .score-lg.mid { color: var(--warning); }
-        .score-lg.bad { color: var(--danger); }
-        
-        .score-label {
-            font-size: 10px;
-            color: var(--muted);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-top: 4px;
-        }
-        
-        .tag-row {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        
-        .tag {
-            font-size: 11px;
-            padding: 4px 10px;
-            border-radius: 6px;
-            background: var(--surface-h);
-            border: 1px solid var(--border);
-            color: var(--muted);
-            font-weight: 500;
-        }
-
-        /* SECTION HEADERS */
-        .section-header {
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--muted);
-            margin: 24px 0 12px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .section-header:first-of-type {
-            margin-top: 0;
-        }
-
-        /* RADAR CHART */
-        #radar-container {
-            height: 200px;
-            margin-bottom: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--surface);
-            border-radius: 10px;
-            padding: 10px;
-        }
-
-        /* METRICS GRID - COMPACT */
-        #metrics-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-        
-        .metric-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 10px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.2s;
-        }
-        
-        .metric-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-        
-        .m-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        
-        .m-title {
-            font-size: 10px;
-            text-transform: uppercase;
-            color: var(--muted);
-            font-weight: 700;
-            letter-spacing: 0.3px;
-        }
-        
-        .m-value {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--text);
-        }
-        
-        /* COMPARISON BAR */
-        .comp-bar-container {
-            height: 4px;
-            background: #1a1d27;
-            border-radius: 2px;
-            margin-top: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .comp-bar {
-            height: 100%;
-            border-radius: 2px;
-            position: absolute;
-            left: 0;
-            top: 0;
-            transition: width 0.3s;
-        }
-        
-        .comp-marker {
-            position: absolute;
-            top: -4px;
-            width: 2px;
-            height: 12px;
-            background: #fff;
-            z-index: 2;
-            border-radius: 1px;
-        }
-        
-        .comp-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 9px;
-            color: var(--muted);
-            margin-top: 6px;
-        }
-
-        /* SCROLLBAR */
-        .panel-content::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        .panel-content::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        
-        .panel-content::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 3px;
-        }
-        
-        .panel-content::-webkit-scrollbar-thumb:hover {
-            background: var(--muted);
-        }
-
-        /* TOGGLE BUTTON */
-        #toggle-sidebar {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            z-index: 5;
-            background: var(--surface);
-            color: var(--text);
-            border: 1px solid var(--border);
-            padding: 12px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            display: none;
-            font-weight: 600;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-        
-        #toggle-sidebar:hover {
-            background: var(--surface-h);
-            border-color: var(--primary);
-        }
-        
-        #sidebar.hidden ~ #toggle-sidebar {
-            display: block;
-        }
+        /* Comparison Bar */
+        .comp-bar-container { height: 4px; background: #30363d; margin-top: 8px; position: relative; border-radius: 2px; }
+        .comp-bar { height: 100%; border-radius: 2px; transition: width 0.5s; }
+        .comp-marker { position: absolute; top: -2px; width: 2px; height: 8px; background: #fff; opacity: 0.7; }
+        .comp-label { display: flex; justify-content: space-between; font-size: 10px; color: #484f58; margin-top: 2px; }
 
         /* TOOLTIP */
-        #tooltip {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-            background: rgba(21, 23, 30, 0.98);
-            padding: 10px 14px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 12px;
-            color: #fff;
-            z-index: 100;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            transition: opacity 0.2s;
-        }
+        #tooltip { position: absolute; pointer-events: none; background: rgba(22, 27, 34, 0.95); border: 1px solid var(--border); padding: 10px; border-radius: 6px; font-size: 12px; opacity: 0; transition: opacity 0.2s; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.5); }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            #sidebar {
-                width: 100%;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                border-radius: 0;
-            }
-            
-            #metrics-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .legend-panel {
-                display: none;
-            }
-        }
+        /* STATES */
+        #state-empty { text-align: center; color: #484f58; margin-top: 100px; }
+        #state-details { display: none; }
     </style>
 </head>
 <body>
 
-    <div id="graph-container">
-        <svg id="main-svg"></svg>
-    </div>
-
-    <div class="zoom-controls">
-        <div class="zoom-btn" onclick="app.zoomIn()" title="Zoom In">+</div>
-        <div class="zoom-btn" onclick="app.zoomOut()" title="Zoom Out">−</div>
-        <div class="zoom-btn" onclick="app.resetZoom()" title="Reset View">⟲</div>
-    </div>
-
-
-    <div id="sidebar">
-        <div class="panel-header">
-            <input type="text" id="search-input" placeholder="Search ticker (e.g. AAPL, MSFT)..." list="tickers">
-            <datalist id="tickers"></datalist>
+    <div id="app">
+        <div id="graph-container">
+            <div id="controls">
+                <input list="tickers" id="search-input" placeholder="Search Ticker (e.g. AAPL)...">
+                <datalist id="tickers"></datalist>
+            </div>
+            
+            <div id="tooltip"></div>
+            
+            <svg id="main-svg" width="100%" height="100%"></svg>
         </div>
 
-        <div class="panel-content">
+        <div id="sidebar">
             <div id="state-empty">
-                <p>Click any bubble on the network<br>to analyze with Buffett's criteria</p>
-                <div class="score-legend">
-                    <span>
-                        <div class="score-dot" style="background: var(--success);"></div>
-                        Wide Moat
-                    </span>
-                    <span>
-                        <div class="score-dot" style="background: var(--warning);"></div>
-                        Narrow Moat
-                    </span>
-                    <span>
-                        <div class="score-dot" style="background: var(--danger);"></div>
-                        No Moat
-                    </span>
-                </div>
+                <p>Select a stock node<br>to view Buffett Metrics</p>
             </div>
 
-            <div id="state-details" style="display: none;">
-                <div class="stock-header">
-                    <div class="ticker-row">
-                        <div>
-                            <div class="ticker-lg" id="det-ticker">--</div>
-                            <div class="stock-name" id="det-name">--</div>
-                        </div>
-                        <div style="text-align: right;">
-                            <div class="score-lg" id="det-score">--</div>
-                            <div class="score-label">Score</div>
+            <div id="state-details">
+                <div class="header-row">
+                    <div>
+                        <h2 id="det-ticker">AAPL</h2>
+                        <div id="det-name">Apple Inc.</div>
+                        <div style="font-size: 12px; color: #8b949e; margin-top: 4px;">
+                            <span id="det-sector">Tech</span> • <span id="det-industry">Consumer Electronics</span>
                         </div>
                     </div>
-                    <div class="tag-row">
-                        <span class="tag" id="det-sector">--</span>
-                        <span class="tag" id="det-industry">--</span>
-                    </div>
+                    <div id="det-score" class="score-lg">--</div>
                 </div>
 
-                <div class="section-header">Moat Composite</div>
                 <div id="radar-container"></div>
-
-                <div class="section-header">Buffett Metrics vs. Industry</div>
                 <div id="metrics-list"></div>
             </div>
         </div>
     </div>
 
-    <button id="toggle-sidebar" onclick="app.toggleSidebar()">📊 Open Analysis</button>
-
-    <div id="tooltip"></div>
-
-    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="js/graph.js"></script>
 </body>
 </html>
