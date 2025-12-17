@@ -2,211 +2,212 @@ async function initGraph() {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
+    // LAYERS
     const canvas = d3.select("#edges-canvas").attr("width", width).attr("height", height);
     const ctx = canvas.node().getContext("2d");
     const svg = d3.select("#nodes-svg").attr("width", width).attr("height", height);
+    const tooltip = d3.select("#tooltip");
 
+    // DATA
     let data;
-    try { data = await d3.json("data/graph_data.json"); } catch (e) { return; }
+    try { data = await d3.json("data/graph_data.json"); } catch (e) { console.error(e); return; }
 
-    const sizeScale = d3.scaleLog().domain([1e8, d3.max(data.nodes, d => d.owner_earnings)]).range([15, 50]).clamp(true);
-    const colorScale = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100]);
+    // SCALES
+    const sizeScale = d3.scaleSqrt().domain([0, d3.max(data.nodes, d => d.owner_earnings)]).range([5, 30]);
+    // Color by Sector (Categorical)
+    const sectors = [...new Set(data.nodes.map(d => d.sector))].sort();
+    const colorScale = d3.scaleOrdinal(d3.schemeTableau10).domain(sectors);
 
-    // Populate Datalist & Sector Dropdown
-    const tickList = document.getElementById("tickers-list");
-    const sectorSelect = document.getElementById("sector-select");
-    const sectors = new Set();
-    
+    // SETUP UI
+    const tickList = document.getElementById("tickers");
     data.nodes.forEach(n => {
-        sectors.add(n.sector);
-        const opt = document.createElement("option");
+        let opt = document.createElement("option");
         opt.value = n.id;
         tickList.appendChild(opt);
     });
-    
-    [...sectors].sort().forEach(s => {
-        if(s && s !== "Unknown") {
-            const opt = document.createElement("option");
-            opt.value = s; opt.innerText = s;
-            sectorSelect.appendChild(opt);
-        }
+
+    // Sector Legend
+    const legend = document.getElementById("sector-legend");
+    sectors.forEach(s => {
+        if(s === "Unknown") return;
+        let chip = document.createElement("div");
+        chip.className = "sector-chip";
+        chip.innerHTML = `<div class="dot" style="background:${colorScale(s)}"></div> ${s}`;
+        chip.onclick = () => filterSector(s);
+        legend.appendChild(chip);
     });
 
-    // SIMULATION
+    // FORCE SIMULATION
     let simulation = d3.forceSimulation(data.nodes)
-        .force("link", d3.forceLink(data.links).id(d => d.id).distance(100).strength(0.1))
-        .force("charge", d3.forceManyBody().strength(-200))
+        .force("link", d3.forceLink(data.links).id(d => d.id).distance(80).strength(0.2))
+        .force("charge", d3.forceManyBody().strength(-150))
         .force("center", d3.forceCenter(width / 2, height / 2))
-        .force("collide", d3.forceCollide().radius(d => sizeScale(d.owner_earnings) + 5).iterations(2));
+        .force("collide", d3.forceCollide().radius(d => sizeScale(d.owner_earnings) + 2));
 
-    const nodeGroup = svg.append("g").selectAll("g")
-        .data(data.nodes).join("g").call(drag(simulation));
+    // RENDER
+    const link = canvas.select(function() { return this; }); // Placeholder for canvas draw
 
-    nodeGroup.append("circle")
+    const node = svg.append("g")
+        .selectAll("circle")
+        .data(data.nodes)
+        .join("circle")
         .attr("r", d => sizeScale(d.owner_earnings))
-        .attr("fill", d => colorScale(d.buffettScore))
-        .attr("stroke", "#fff").attr("stroke-width", 1.5).style("cursor", "pointer");
+        .attr("fill", d => colorScale(d.sector))
+        .attr("stroke", "#fff")
+        .attr("stroke-width", 1)
+        .style("cursor", "pointer")
+        .call(d3.drag()
+            .on("start", (e, d) => { if(!e.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+            .on("drag", (e, d) => { d.fx = e.x; d.fy = e.y; })
+            .on("end", (e, d) => { if(!e.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
+        );
 
-    nodeGroup.append("text")
-        .text(d => d.id).attr("text-anchor", "middle").attr("dy", ".35em")
-        .style("font-size", d => Math.min(12, sizeScale(d.owner_earnings)/2.5)+"px")
-        .style("font-weight","800").style("fill","#0f111a").style("pointer-events","none");
+    // INTERACTIONS
+    let activeSector = null;
 
-    // --- MULTI-SELECT LOGIC ---
-    let selectedIds = new Set();
-
-    function toggleSelection(d) {
-        if (selectedIds.has(d.id)) {
-            selectedIds.delete(d.id);
+    function filterSector(s) {
+        if (activeSector === s) {
+            activeSector = null;
+            node.transition().style("opacity", 1);
+            document.querySelectorAll('.sector-chip').forEach(c => c.classList.remove('active'));
         } else {
-            if (selectedIds.size >= 10) alert("Max 10 items for comparison.");
-            else selectedIds.add(d.id);
+            activeSector = s;
+            node.transition().style("opacity", d => d.sector === s ? 1 : 0.1);
+            document.querySelectorAll('.sector-chip').forEach(c => {
+                c.classList.toggle('active', c.innerText.includes(s));
+            });
         }
-        renderSelection();
     }
 
-    function renderSelection() {
-        // Visual Highlight
-        nodeGroup.select("circle").attr("stroke", d => selectedIds.has(d.id) ? "#3b82f6" : "#fff")
-                                  .attr("stroke-width", d => selectedIds.has(d.id) ? 4 : 1.5);
+    node.on("click", (e, d) => {
+        document.getElementById("sidebar").classList.remove("collapsed");
+        updateSidebar(d);
+    });
 
-        // Sidebar List
-        const bar = document.getElementById("selection-bar");
-        bar.innerHTML = "";
+    node.on("mouseover", (e, d) => {
+        tooltip.style("opacity", 1)
+            .html(`<b>${d.id}</b><br>${d.name}<br>${d.industry}`)
+            .style("left", (e.pageX + 15) + "px")
+            .style("top", (e.pageY - 15) + "px");
         
-        if (selectedIds.size === 0) {
-            bar.innerHTML = '<span style="color:#64748b; font-size:12px; padding:4px;">Select companies to compare...</span>';
-            document.getElementById("metrics-table").innerHTML = "";
-            drawRadar(null);
+        // Highlight Peers
+        node.style("stroke", n => n.id === d.id ? "#fff" : "none").style("stroke-width", 2);
+    }).on("mouseout", () => {
+        tooltip.style("opacity", 0);
+        node.style("stroke", "#fff").style("stroke-width", 1);
+    });
+
+    simulation.on("tick", () => {
+        ctx.clearRect(0, 0, width, height);
+        
+        ctx.strokeStyle = "rgba(255,255,255,0.1)";
+        ctx.beginPath();
+        data.links.forEach(l => {
+            // Only draw if both nodes visible
+            if (activeSector && (l.source.sector !== activeSector || l.target.sector !== activeSector)) return;
+            ctx.moveTo(l.source.x, l.source.y);
+            ctx.lineTo(l.target.x, l.target.y);
+        });
+        ctx.stroke();
+
+        node.attr("cx", d => d.x).attr("cy", d => d.y);
+    });
+
+    // --- SIDEBAR UPDATES ---
+    function updateSidebar(d) {
+        document.getElementById("detail-ticker").innerText = `${d.name} (${d.id})`;
+        document.getElementById("detail-industry").innerText = `${d.sector} > ${d.industry}`;
+        
+        document.getElementById("val-score").innerText = d.buffettScore + "/100";
+        document.getElementById("val-fcf").innerText = "$" + (d.owner_earnings/1e9).toFixed(2) + "B";
+        document.getElementById("val-roic").innerText = (d.metrics.roic * 100).toFixed(1) + "%";
+
+        // Draw Charts
+        drawChart("#chart-gm", d.history.gross_margin, "Gross Margin", "%");
+        drawChart("#chart-roic", d.history.roic, "ROIC", "%");
+        drawChart("#chart-debt", d.history.debt_to_equity, "Debt/Equity", "x");
+    }
+
+    function drawChart(containerId, dataSeries, title, suffix) {
+        const container = d3.select(containerId);
+        container.html(""); // Clear
+
+        if (!dataSeries || dataSeries.length === 0) {
+            container.append("div").text("No Data").style("color","#666").style("text-align","center").style("padding","20px");
             return;
         }
 
-        const selectedNodes = data.nodes.filter(n => selectedIds.has(n.id));
-        
-        // Draw Chips
-        selectedNodes.forEach(n => {
-            const chip = document.createElement("div");
-            chip.className = "chip";
-            chip.innerHTML = `${n.id} <span onclick="event.stopPropagation(); window.removeSel('${n.id}')">✕</span>`;
-            chip.onclick = () => window.focusNode(n.id);
-            bar.appendChild(chip);
-        });
+        container.append("div").className = "chart-title";
+        container.select("div").html(`<span>${title}</span>`);
 
-        // Draw Comparison Table
-        buildTable(selectedNodes);
+        const margin = {top: 10, right: 10, bottom: 20, left: 30};
+        const w = 340 - margin.left - margin.right;
+        const h = 130 - margin.top - margin.bottom;
+
+        const svg = container.append("svg")
+            .attr("width", w + margin.left + margin.right)
+            .attr("height", h + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // X Axis
+        const x = d3.scalePoint()
+            .domain(dataSeries.map(d => d.year))
+            .range([0, w]);
         
-        // Draw Radar (Use Average or Most Recent? Let's use Most Recent for clarity, or overlay?)
-        // For simplicity: Draw the LAST selected node's radar
-        const lastNode = selectedNodes[selectedNodes.length - 1];
-        drawRadar(lastNode.pillars);
+        svg.append("g")
+            .attr("transform", `translate(0,${h})`)
+            .call(d3.axisBottom(x).tickSize(0).tickPadding(8))
+            .select(".domain").remove();
+        
+        svg.selectAll(".tick text").style("fill", "#64748b");
+
+        // Y Axis
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(dataSeries, d => d.value) * 1.1])
+            .range([h, 0]);
+
+        svg.append("g").call(d3.axisLeft(y).ticks(4).tickSize(-w))
+            .select(".domain").remove();
+        
+        svg.selectAll(".tick line").style("stroke", "#334155").style("stroke-dasharray", "2").style("opacity", 0.3);
+        svg.selectAll(".tick text").style("fill", "#64748b");
+
+        // Line
+        svg.append("path")
+            .datum(dataSeries)
+            .attr("fill", "none")
+            .attr("stroke", "#3b82f6")
+            .attr("stroke-width", 2)
+            .attr("d", d3.line()
+                .x(d => x(d.year))
+                .y(d => y(d.value))
+            );
+
+        // Dots
+        svg.selectAll("dot")
+            .data(dataSeries)
+            .enter()
+            .append("circle")
+            .attr("cx", d => x(d.year))
+            .attr("cy", d => y(d.value))
+            .attr("r", 3)
+            .attr("fill", "#0f111a")
+            .attr("stroke", "#3b82f6")
+            .attr("stroke-width", 2);
     }
 
-    // Expose remove function to window for the "X" button
-    window.removeSel = (id) => {
-        const node = data.nodes.find(n => n.id === id);
-        if(node) toggleSelection(node);
-    };
-
-    window.focusNode = (id) => {
-        // Center view logic if needed
-    };
-
-    function buildTable(nodes) {
-        const container = document.getElementById("metrics-table");
-        container.innerHTML = "";
-        
-        // Header Row (Tickers)
-        let html = `<div class="comp-row" style="border-bottom: 2px solid #444;">
-                        <span class="comp-label">METRIC</span>
-                        ${nodes.map(n => `<span class="comp-val" style="color:${colorScale(n.buffettScore)}">${n.id}</span>`).join("")}
-                    </div>`;
-
-        // Data Rows
-        // Get all raw keys from first node
-        const keys = Object.keys(nodes[0].raw);
-        
-        keys.forEach(key => {
-            html += `<div class="comp-row">
-                        <span class="comp-label">${key}</span>
-                        ${nodes.map(n => `<span class="comp-val">${n.raw[key] || '--'}</span>`).join("")}
-                     </div>`;
-        });
-        
-        container.innerHTML = html;
-    }
-
-    // CLICK HANDLER
-    nodeGroup.on("click", (e, d) => {
-        document.getElementById("sidebar").classList.remove("collapsed");
-        toggleSelection(d);
-    });
-
-    // SEARCH HANDLER
-    const searchBox = document.getElementById("search-box");
-    searchBox.addEventListener("change", (e) => {
+    // SEARCH LISTENER
+    document.getElementById("search-input").addEventListener("change", (e) => {
         const val = e.target.value.toUpperCase();
-        const node = data.nodes.find(n => n.id === val);
-        if (node) {
-            if(!selectedIds.has(node.id)) toggleSelection(node);
-            e.target.value = ""; // Clear box
+        const found = data.nodes.find(n => n.id === val);
+        if (found) {
+            document.getElementById("sidebar").classList.remove("collapsed");
+            updateSidebar(found);
+            // Center View
+            simulation.alpha(1).restart();
         }
-    });
-
-    // HOVER
-    nodeGroup.on("mouseover", (e, d) => {
-        const tooltip = d3.select("#tooltip");
-        tooltip.style("opacity", 1).html(`<strong>${d.name}</strong><br/>Score: ${d.buffettScore}`)
-               .style("left", (e.pageX+15)+"px").style("top", (e.pageY-15)+"px");
-    }).on("mouseout", () => d3.select("#tooltip").style("opacity", 0));
-
-    // ANIMATION LOOP
-    simulation.on("tick", () => {
-        ctx.clearRect(0, 0, width, height);
-        ctx.save(); ctx.strokeStyle = "rgba(255,255,255,0.05)"; ctx.beginPath();
-        data.links.forEach(l => { ctx.moveTo(l.source.x, l.source.y); ctx.lineTo(l.target.x, l.target.y); });
-        ctx.stroke(); ctx.restore();
-        nodeGroup.attr("transform", d => `translate(${d.x},${d.y})`);
-    });
-
-    function drag(sim) {
-        return d3.drag().on("start", (e,d)=>{ if(!e.active)sim.alphaTarget(0.3).restart(); d.fx=d.x;d.fy=d.y; })
-                        .on("drag", (e,d)=>{ d.fx=e.x;d.fy=e.y; })
-                        .on("end", (e,d)=>{ if(!e.active)sim.alphaTarget(0); d.fx=null;d.fy=null; });
-    }
-}
-
-// RADAR
-function drawRadar(pillars) {
-    const svg = d3.select("#radar-viz");
-    svg.selectAll("*").remove();
-    if(!pillars) return;
-
-    const keys = Object.keys(pillars);
-    const radius = 70; const center = {x: 110, y: 100};
-    const rScale = d3.scaleLinear().range([0, radius]).domain([0, 100]);
-    const angleSlice = Math.PI * 2 / keys.length;
-
-    // Grid
-    [25,50,75,100].forEach(l => {
-        svg.append("circle").attr("cx", center.x).attr("cy", center.y).attr("r", rScale(l))
-           .style("fill","none").style("stroke","#444").style("stroke-dasharray","2,4");
-    });
-
-    // Shape
-    const points = keys.map((k, i) => {
-        const angle = i * angleSlice - Math.PI/2;
-        return [center.x + rScale(pillars[k]) * Math.cos(angle), center.y + rScale(pillars[k]) * Math.sin(angle)];
-    });
-
-    svg.append("polygon").attr("points", points.map(p=>p.join(",")).join(" "))
-       .style("fill","rgba(59,130,246,0.5)").style("stroke","#3b82f6").style("stroke-width",2);
-       
-    // Labels
-    keys.forEach((k, i) => {
-        const angle = i * angleSlice - Math.PI/2;
-        const x = center.x + (radius+15)*Math.cos(angle);
-        const y = center.y + (radius+15)*Math.sin(angle);
-        svg.append("text").attr("x",x).attr("y",y).text(k).attr("text-anchor","middle").style("font-size","10px").style("fill","#888");
+        e.target.value = "";
     });
 }
 
