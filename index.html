@@ -23,17 +23,26 @@
         .btn { background: var(--sidebar); border: 1px solid var(--border); color: #fff; padding: 8px 16px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
         .btn:hover, .btn.active { border-color: var(--accent); color: var(--accent); }
 
+        /* LOADING SPINNER */
+        #loader { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 200; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.5s; }
+        .spinner { width: 40px; height: 40px; border: 4px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        #loader.done { opacity: 0; pointer-events: none; }
+
         /* LEADERBOARD OVERLAY */
         #leaderboard { 
-            position: absolute; top: 80px; left: 20px; bottom: 20px; width: 400px; 
-            background: rgba(22, 27, 34, 0.95); backdrop-filter: blur(10px);
+            position: absolute; top: 80px; left: 20px; bottom: 20px; width: 450px; 
+            background: rgba(22, 27, 34, 0.98); backdrop-filter: blur(10px);
             border: 1px solid var(--border); border-radius: 8px; 
             z-index: 20; display: none; flex-direction: column;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         #leaderboard.visible { display: flex; }
-        .lb-header { padding: 15px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-        .lb-header h3 { margin: 0; font-size: 16px; }
+        .lb-header { padding: 15px; border-bottom: 1px solid var(--border); }
+        .lb-filters { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
+        .filter-btn { font-size: 10px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 20px; background: transparent; color: #8b949e; cursor: pointer; }
+        .filter-btn:hover, .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+        
         .lb-content { overflow-y: auto; flex-grow: 1; }
         .lb-row { display: flex; padding: 12px 15px; border-bottom: 1px solid #21262d; align-items: center; cursor: pointer; transition: background 0.2s; }
         .lb-row:hover { background: #21262d; }
@@ -51,18 +60,24 @@
         .score-lg.mid { color: #ffd600; border: 1px solid #ffd600; background: rgba(255,214,0,0.1); }
         .score-lg.bad { color: var(--red); border: 1px solid var(--red); background: rgba(255,61,0,0.1); }
 
-        /* CHARTS */
-        .chart-container { margin-bottom: 20px; height: 120px; width: 100%; }
-        .chart-label { font-size: 12px; color: #8b949e; margin-bottom: 5px; display: flex; justify-content: space-between; }
-        .axis line, .axis path { stroke: #30363d; }
-        .axis text { fill: #8b949e; font-size: 10px; }
+        /* METRICS & CHARTS */
+        .metric-block { background: #21262d; border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 10px; }
+        .mb-head { display: flex; justify-content: space-between; font-size: 12px; color: #8b949e; margin-bottom: 5px; }
+        .mb-val { font-size: 20px; font-weight: bold; color: #fff; }
+        
+        .mini-chart { height: 80px; width: 100%; margin-top: 10px; }
         .line-stock { fill: none; stroke: var(--accent); stroke-width: 2px; }
-        .line-industry { fill: none; stroke: #8b949e; stroke-width: 1.5px; stroke-dasharray: 4; opacity: 0.6; }
+        .line-industry { fill: none; stroke: #8b949e; stroke-width: 1px; stroke-dasharray: 4; opacity: 0.5; }
 
         #tooltip { position: absolute; pointer-events: none; background: rgba(22, 27, 34, 0.95); border: 1px solid var(--border); padding: 10px; border-radius: 6px; font-size: 12px; opacity: 0; z-index: 100; }
     </style>
 </head>
 <body>
+    <div id="loader">
+        <div class="spinner"></div>
+        <div style="margin-top: 20px; color: #8b949e;">Analyzing Market Data...</div>
+    </div>
+
     <div id="app">
         <div id="graph-container">
             <div id="controls">
@@ -73,8 +88,13 @@
             
             <div id="leaderboard">
                 <div class="lb-header">
-                    <h3>Buffett Score Ranking</h3>
-                    <span style="font-size: 12px; color: #8b949e">Top 50</span>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <h3 style="margin:0">Buffett Score Ranking</h3>
+                        <button id="lb-close" class="filter-btn">✕</button>
+                    </div>
+                    <div class="lb-filters" id="lb-filters">
+                        <button class="filter-btn active" data-sector="all">All</button>
+                        </div>
                 </div>
                 <div class="lb-content" id="lb-list"></div>
             </div>
@@ -97,7 +117,7 @@
                 </div>
 
                 <div id="radar-container"></div>
-                <div id="charts-container"></div>
+                <div id="metrics-container"></div>
             </div>
         </div>
     </div>
