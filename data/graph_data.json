@@ -5,7 +5,7 @@
       "name": "Apple Inc.",
       "sector": "Technology",
       "industry": "Consumer Electronics",
-      "marketCap": 4049051844608,
+      "marketCap": 4052020101120,
       "buffettScore": 65,
       "metrics": {
         "gross_margin": 46.9,
@@ -21,8 +21,8 @@
         "fcf_margin": 23.7,
         "capex_ratio": 3.1,
         "retained_earnings": -14264000000.0,
-        "pe_ratio": 36.524765,
-        "pb_ratio": 54.666397,
+        "pe_ratio": 36.55154,
+        "pb_ratio": 54.70647,
         "buffett_score": 65
       },
       "historical": {
@@ -105,7 +105,7 @@
       "name": "Microsoft Corporation",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "marketCap": 3556658380800,
+      "marketCap": 3558331121664,
       "buffettScore": 75,
       "metrics": {
         "gross_margin": 68.8,
@@ -121,8 +121,8 @@
         "fcf_margin": 25.4,
         "capex_ratio": 22.9,
         "retained_earnings": 237731000000.0,
-        "pe_ratio": 34.05587,
-        "pb_ratio": 9.796989,
+        "pe_ratio": 34.071884,
+        "pb_ratio": 9.801597,
         "buffett_score": 75
       },
       "historical": {
@@ -205,7 +205,7 @@
       "name": "Alphabet Inc.",
       "sector": "Communication Services",
       "industry": "Internet Content & Information",
-      "marketCap": 3623220412416,
+      "marketCap": 3612561637376,
       "buffettScore": 80,
       "metrics": {
         "gross_margin": 58.2,
@@ -221,8 +221,8 @@
         "fcf_margin": 20.8,
         "capex_ratio": 15.0,
         "retained_earnings": 245084000000.0,
-        "pe_ratio": 29.55929,
-        "pb_ratio": 9.338495,
+        "pe_ratio": 29.472334,
+        "pb_ratio": 9.311023,
         "buffett_score": 80
       },
       "historical": {
@@ -305,7 +305,7 @@
       "name": "Amazon.com, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Internet Retail",
-      "marketCap": 2390332276736,
+      "marketCap": 2385094115328,
       "buffettScore": 55,
       "metrics": {
         "gross_margin": 48.9,
@@ -321,8 +321,8 @@
         "fcf_margin": 5.2,
         "capex_ratio": 13.0,
         "retained_earnings": 172866000000.0,
-        "pe_ratio": 31.581923,
-        "pb_ratio": 6.4648566,
+        "pe_ratio": 31.512712,
+        "pb_ratio": 6.4506893,
         "buffett_score": 55
       },
       "historical": {
@@ -405,7 +405,7 @@
       "name": "NVIDIA Corporation",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 4189997236224,
+      "marketCap": 4177945427968,
       "buffettScore": 80,
       "metrics": {
         "gross_margin": 75.0,
@@ -421,8 +421,8 @@
         "fcf_margin": 46.6,
         "capex_ratio": 2.5,
         "retained_earnings": 68038000000.0,
-        "pe_ratio": 42.703472,
-        "pb_ratio": 35.178864,
+        "pe_ratio": 42.580643,
+        "pb_ratio": 35.07768,
         "buffett_score": 80
       },
       "historical": {
@@ -505,7 +505,7 @@
       "name": "Meta Platforms, Inc.",
       "sector": "Communication Services",
       "industry": "Internet Content & Information",
-      "marketCap": 1656969625600,
+      "marketCap": 1646874984448,
       "buffettScore": 80,
       "metrics": {
         "gross_margin": 81.7,
@@ -521,8 +521,8 @@
         "fcf_margin": 32.9,
         "capex_ratio": 22.6,
         "retained_earnings": 102506000000.0,
-        "pe_ratio": 29.075188,
-        "pb_ratio": 8.53975,
+        "pe_ratio": 28.898054,
+        "pb_ratio": 8.487724,
         "buffett_score": 80
       },
       "historical": {
@@ -605,7 +605,7 @@
       "name": "Berkshire Hathaway Inc. New",
       "sector": "Financial Services",
       "industry": "Insurance - Diversified",
-      "marketCap": 1086045487104,
+      "marketCap": 1087087706112,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 0.0,
@@ -621,8 +621,8 @@
         "fcf_margin": 2.7,
         "capex_ratio": 4.5,
         "retained_earnings": 696218000000.0,
-        "pe_ratio": 16.088846,
-        "pb_ratio": 0.0010373926,
+        "pe_ratio": 16.104286,
+        "pb_ratio": 0.0010383881,
         "buffett_score": 40
       },
       "historical": {
@@ -705,7 +705,7 @@
       "name": "Eli Lilly and Company",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
-      "marketCap": 939746721792,
+      "marketCap": 933166645248,
       "buffettScore": 50,
       "metrics": {
         "gross_margin": 81.3,
@@ -721,8 +721,8 @@
         "fcf_margin": 0.9,
         "capex_ratio": 18.7,
         "retained_earnings": 13545000000.0,
-        "pe_ratio": 51.261124,
-        "pb_ratio": 39.468754,
+        "pe_ratio": 50.902195,
+        "pb_ratio": 39.192394,
         "buffett_score": 50
       },
       "historical": {
@@ -805,7 +805,7 @@
       "name": "Broadcom Inc.",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 1524709982208,
+      "marketCap": 1525512798208,
       "buffettScore": 30,
       "metrics": {
         "gross_margin": 63.0,
@@ -821,8 +821,8 @@
         "fcf_margin": 37.6,
         "capex_ratio": 1.1,
         "retained_earnings": 0.0,
-        "pe_ratio": 67.54602,
-        "pb_ratio": 5.451951,
+        "pe_ratio": 67.58159,
+        "pb_ratio": 5.454822,
         "buffett_score": 30
       },
       "historical": {
@@ -905,7 +905,7 @@
       "name": "Tesla, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Auto Manufacturers",
-      "marketCap": 1575473774592,
+      "marketCap": 1556134100992,
       "buffettScore": 25,
       "metrics": {
         "gross_margin": 17.9,
@@ -921,8 +921,8 @@
         "fcf_margin": 3.7,
         "capex_ratio": 11.6,
         "retained_earnings": 35209000000.0,
-        "pe_ratio": 322.25168,
-        "pb_ratio": 19.69033,
+        "pe_ratio": 318.2959,
+        "pb_ratio": 19.448624,
         "buffett_score": 25
       },
       "historical": {
@@ -1005,7 +1005,7 @@
       "name": "JP Morgan Chase & Co.",
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
-      "marketCap": 867519823872,
+      "marketCap": 867148627968,
       "buffettScore": 25,
       "metrics": {
         "gross_margin": 0.0,
@@ -1021,8 +1021,8 @@
         "fcf_margin": -24.8,
         "capex_ratio": 0.0,
         "retained_earnings": 376166000000.0,
-        "pe_ratio": 15.618316,
-        "pb_ratio": 2.5247884,
+        "pe_ratio": 15.611633,
+        "pb_ratio": 2.5237083,
         "buffett_score": 25
       },
       "historical": {
@@ -1105,7 +1105,7 @@
       "name": "Visa Inc.",
       "sector": "Financial Services",
       "industry": "Credit Services",
-      "marketCap": 664917114880,
+      "marketCap": 664772345856,
       "buffettScore": 75,
       "metrics": {
         "gross_margin": 80.4,
@@ -1121,8 +1121,8 @@
         "fcf_margin": 53.9,
         "capex_ratio": 3.7,
         "retained_earnings": 15106000000.0,
-        "pe_ratio": 33.711838,
-        "pb_ratio": 17.77603,
+        "pe_ratio": 33.7045,
+        "pb_ratio": 17.77216,
         "buffett_score": 75
       },
       "historical": {
@@ -1205,7 +1205,7 @@
       "name": "UnitedHealth Group Incorporated",
       "sector": "Healthcare",
       "industry": "Healthcare Plans",
-      "marketCap": 299800854528,
+      "marketCap": 300602458112,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 22.3,
@@ -1221,8 +1221,8 @@
         "fcf_margin": 5.2,
         "capex_ratio": 0.9,
         "retained_earnings": 96036000000.0,
-        "pe_ratio": 17.255735,
-        "pb_ratio": 3.1304328,
+        "pe_ratio": 17.301872,
+        "pb_ratio": 3.1388028,
         "buffett_score": 40
       },
       "historical": {
@@ -1305,7 +1305,7 @@
       "name": "Exxon Mobil Corporation",
       "sector": "Energy",
       "industry": "Oil & Gas Integrated",
-      "marketCap": 496476454912,
+      "marketCap": 496689577984,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 22.6,
@@ -1321,8 +1321,8 @@
         "fcf_margin": 9.1,
         "capex_ratio": 7.2,
         "retained_earnings": 470903000000.0,
-        "pe_ratio": 16.9266,
-        "pb_ratio": 1.8848121,
+        "pe_ratio": 16.933867,
+        "pb_ratio": 1.8856213,
         "buffett_score": 35
       },
       "historical": {
@@ -1405,7 +1405,7 @@
       "name": "Walmart Inc.",
       "sector": "Consumer Defensive",
       "industry": "Discount Stores",
-      "marketCap": 925010165760,
+      "marketCap": 923893956608,
       "buffettScore": 45,
       "metrics": {
         "gross_margin": 24.9,
@@ -1421,8 +1421,8 @@
         "fcf_margin": 1.9,
         "capex_ratio": 3.5,
         "retained_earnings": 98313000000.0,
-        "pe_ratio": 40.566433,
-        "pb_ratio": 9.625021,
+        "pe_ratio": 40.517483,
+        "pb_ratio": 9.613406,
         "buffett_score": 45
       },
       "historical": {
@@ -1505,7 +1505,7 @@
       "name": "Mastercard Incorporated",
       "sector": "Financial Services",
       "industry": "Credit Services",
-      "marketCap": 514005336064,
+      "marketCap": 513908113408,
       "buffettScore": 65,
       "metrics": {
         "gross_margin": 76.3,
@@ -1521,8 +1521,8 @@
         "fcf_margin": 48.2,
         "capex_ratio": 4.2,
         "retained_earnings": 72907000000.0,
-        "pe_ratio": 36.40093,
-        "pb_ratio": 64.75145,
+        "pe_ratio": 36.394043,
+        "pb_ratio": 64.739204,
         "buffett_score": 65
       },
       "historical": {
@@ -1605,7 +1605,7 @@
       "name": "Johnson & Johnson",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
-      "marketCap": 506063978496,
+      "marketCap": 506566344704,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 69.1,
@@ -1621,8 +1621,8 @@
         "fcf_margin": 20.3,
         "capex_ratio": 7.0,
         "retained_earnings": null,
-        "pe_ratio": 20.27476,
-        "pb_ratio": 6.3752847,
+        "pe_ratio": 20.294886,
+        "pb_ratio": 6.3816133,
         "buffett_score": 70
       },
       "historical": {
@@ -1705,7 +1705,7 @@
       "name": "Procter & Gamble Company (The)",
       "sector": "Consumer Defensive",
       "industry": "Household & Personal Products",
-      "marketCap": 345783336960,
+      "marketCap": 345978732544,
       "buffettScore": 75,
       "metrics": {
         "gross_margin": 51.2,
@@ -1721,8 +1721,8 @@
         "fcf_margin": 16.7,
         "capex_ratio": 4.5,
         "retained_earnings": 129973000000.0,
-        "pe_ratio": 21.567884,
-        "pb_ratio": 6.575867,
+        "pe_ratio": 21.580074,
+        "pb_ratio": 6.5795836,
         "buffett_score": 75
       },
       "historical": {
@@ -1805,7 +1805,7 @@
       "name": "Oracle Corporation",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "marketCap": 517508169728,
+      "marketCap": 514577596416,
       "buffettScore": 50,
       "metrics": {
         "gross_margin": 70.5,
@@ -1821,8 +1821,8 @@
         "fcf_margin": -0.7,
         "capex_ratio": 37.0,
         "retained_earnings": -15481000000.0,
-        "pe_ratio": 33.85714,
-        "pb_ratio": 17.277697,
+        "pe_ratio": 33.665413,
+        "pb_ratio": 17.179857,
         "buffett_score": 50
       },
       "historical": {
@@ -1885,7 +1885,7 @@
       "name": "Home Depot, Inc. (The)",
       "sector": "Consumer Cyclical",
       "industry": "Home Improvement Retail",
-      "marketCap": 354521546752,
+      "marketCap": 354240299008,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 33.4,
@@ -1901,8 +1901,8 @@
         "fcf_margin": 10.2,
         "capex_ratio": 2.2,
         "retained_earnings": 89533000000.0,
-        "pe_ratio": 24.27539,
-        "pb_ratio": 29.245298,
+        "pe_ratio": 24.256134,
+        "pb_ratio": 29.2221,
         "buffett_score": 35
       },
       "historical": {
@@ -1961,7 +1961,7 @@
       "name": "Costco Wholesale Corporation",
       "sector": "Consumer Defensive",
       "industry": "Discount Stores",
-      "marketCap": 382667063296,
+      "marketCap": 382365204480,
       "buffettScore": 50,
       "metrics": {
         "gross_margin": 12.8,
@@ -1977,8 +1977,8 @@
         "fcf_margin": 2.8,
         "capex_ratio": 2.0,
         "retained_earnings": 22650000000.0,
-        "pe_ratio": 46.1714,
-        "pb_ratio": 12.628109,
+        "pe_ratio": 46.134975,
+        "pb_ratio": 12.618148,
         "buffett_score": 50
       },
       "historical": {
@@ -2061,7 +2061,7 @@
       "name": "Netflix, Inc.",
       "sector": "Communication Services",
       "industry": "Entertainment",
-      "marketCap": 405490663424,
+      "marketCap": 403732168704,
       "buffettScore": 75,
       "metrics": {
         "gross_margin": 46.1,
@@ -2077,8 +2077,8 @@
         "fcf_margin": 17.7,
         "capex_ratio": 1.1,
         "retained_earnings": 31300917000.0,
-        "pe_ratio": 40.039745,
-        "pb_ratio": 15.623673,
+        "pe_ratio": 39.866108,
+        "pb_ratio": 15.555918,
         "buffett_score": 75
       },
       "historical": {
@@ -2161,7 +2161,7 @@
       "name": "Bank of America Corporation",
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
-      "marketCap": 404604485632,
+      "marketCap": 403794165760,
       "buffettScore": 15,
       "metrics": {
         "gross_margin": 0.0,
@@ -2177,8 +2177,8 @@
         "fcf_margin": -8.6,
         "capex_ratio": 0.0,
         "retained_earnings": 242349000000.0,
-        "pe_ratio": 14.924863,
-        "pb_ratio": 1.439356,
+        "pe_ratio": 14.894972,
+        "pb_ratio": 1.4364733,
         "buffett_score": 15
       },
       "historical": {
@@ -2261,7 +2261,7 @@
       "name": "AbbVie Inc.",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
-      "marketCap": 397484785664,
+      "marketCap": 397900120064,
       "buffettScore": 50,
       "metrics": {
         "gross_margin": 70.0,
@@ -2277,8 +2277,8 @@
         "fcf_margin": 31.7,
         "capex_ratio": 1.7,
         "retained_earnings": -7900000000.0,
-        "pe_ratio": 170.37877,
-        "pb_ratio": -150.43478,
+        "pe_ratio": 170.55681,
+        "pb_ratio": -150.59196,
         "buffett_score": 50
       },
       "historical": {
@@ -2357,7 +2357,7 @@
       "name": "Salesforce, Inc.",
       "sector": "Technology",
       "industry": "Software - Application",
-      "marketCap": 247824646144,
+      "marketCap": 247396237312,
       "buffettScore": 55,
       "metrics": {
         "gross_margin": 77.2,
@@ -2373,8 +2373,8 @@
         "fcf_margin": 32.8,
         "capex_ratio": 1.7,
         "retained_earnings": 16369000000.0,
-        "pe_ratio": 34.755676,
-        "pb_ratio": 4.085566,
+        "pe_ratio": 34.695595,
+        "pb_ratio": 4.078503,
         "buffett_score": 55
       },
       "historical": {
@@ -2557,7 +2557,7 @@
       "name": "Merck & Company, Inc.",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
-      "marketCap": 246606151680,
+      "marketCap": 245894529024,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 76.3,
@@ -2573,8 +2573,8 @@
         "fcf_margin": 28.2,
         "capex_ratio": 5.3,
         "retained_earnings": 63069000000.0,
-        "pe_ratio": 13.059525,
-        "pb_ratio": 4.7363877,
+        "pe_ratio": 13.021838,
+        "pb_ratio": 4.72272,
         "buffett_score": 70
       },
       "historical": {
@@ -2657,7 +2657,7 @@
       "name": "Coca-Cola Company (The)",
       "sector": "Consumer Defensive",
       "industry": "Beverages - Non-Alcoholic",
-      "marketCap": 304011051008,
+      "marketCap": 304312320000,
       "buffettScore": 55,
       "metrics": {
         "gross_margin": 61.1,
@@ -2673,8 +2673,8 @@
         "fcf_margin": 10.1,
         "capex_ratio": 4.4,
         "retained_earnings": 76054000000.0,
-        "pe_ratio": 23.390728,
-        "pb_ratio": 9.726008,
+        "pe_ratio": 23.413908,
+        "pb_ratio": 9.735646,
         "buffett_score": 55
       },
       "historical": {
@@ -2757,7 +2757,7 @@
       "name": "Pepsico, Inc.",
       "sector": "Consumer Defensive",
       "industry": "Beverages - Non-Alcoholic",
-      "marketCap": 204944031744,
+      "marketCap": 205375275008,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 54.6,
@@ -2773,8 +2773,8 @@
         "fcf_margin": 7.8,
         "capex_ratio": 5.8,
         "retained_earnings": 72266000000.0,
-        "pe_ratio": 28.459126,
-        "pb_ratio": 10.5701885,
+        "pe_ratio": 28.519009,
+        "pb_ratio": 10.59243,
         "buffett_score": 40
       },
       "historical": {
@@ -2857,7 +2857,7 @@
       "name": "Advanced Micro Devices, Inc.",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 326056017920,
+      "marketCap": 324118511616,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 49.4,
@@ -2873,8 +2873,8 @@
         "fcf_margin": 9.3,
         "capex_ratio": 2.5,
         "retained_earnings": 2364000000.0,
-        "pe_ratio": 105.40789,
-        "pb_ratio": 5.363551,
+        "pe_ratio": 104.781525,
+        "pb_ratio": 5.3316793,
         "buffett_score": 40
       },
       "historical": {
@@ -2957,7 +2957,7 @@
       "name": "Adobe Inc.",
       "sector": "Technology",
       "industry": "Software - Application",
-      "marketCap": 149738405888,
+      "marketCap": 150094774272,
       "buffettScore": 80,
       "metrics": {
         "gross_margin": 89.0,
@@ -2973,8 +2973,8 @@
         "fcf_margin": 36.6,
         "capex_ratio": 0.9,
         "retained_earnings": 38470000000.0,
-        "pe_ratio": 21.13713,
-        "pb_ratio": 12.664231,
+        "pe_ratio": 21.187437,
+        "pb_ratio": 12.694371,
         "buffett_score": 80
       },
       "historical": {
@@ -3057,7 +3057,7 @@
       "name": "Thermo Fisher Scientific Inc",
       "sector": "Healthcare",
       "industry": "Diagnostics & Research",
-      "marketCap": 213124153344,
+      "marketCap": 213000552448,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 41.3,
@@ -3073,8 +3073,8 @@
         "fcf_margin": 16.9,
         "capex_ratio": 3.3,
         "retained_earnings": 53102000000.0,
-        "pe_ratio": 32.732834,
-        "pb_ratio": 4.177418,
+        "pe_ratio": 32.713852,
+        "pb_ratio": 4.1749954,
         "buffett_score": 40
       },
       "historical": {
@@ -3157,7 +3157,7 @@
       "name": "Accenture plc",
       "sector": "Technology",
       "industry": "Information Technology Services",
-      "marketCap": 181081964544,
+      "marketCap": 181412151296,
       "buffettScore": 60,
       "metrics": {
         "gross_margin": 31.9,
@@ -3173,8 +3173,8 @@
         "fcf_margin": 15.6,
         "capex_ratio": 0.9,
         "retained_earnings": 21018731000.0,
-        "pe_ratio": 22.550987,
-        "pb_ratio": 5.466361,
+        "pe_ratio": 22.592106,
+        "pb_ratio": 5.476328,
         "buffett_score": 60
       },
       "historical": {
@@ -3257,7 +3257,7 @@
       "name": "McDonald's Corporation",
       "sector": "Consumer Cyclical",
       "industry": "Restaurants",
-      "marketCap": 226287534080,
+      "marketCap": 226812018688,
       "buffettScore": 65,
       "metrics": {
         "gross_margin": 56.8,
@@ -3273,8 +3273,8 @@
         "fcf_margin": 25.7,
         "capex_ratio": 10.7,
         "retained_earnings": 66834000000.0,
-        "pe_ratio": 27.033676,
-        "pb_ratio": -104.4139,
+        "pe_ratio": 27.096334,
+        "pb_ratio": -104.655914,
         "buffett_score": 65
       },
       "historical": {
@@ -3323,7 +3323,7 @@
       "name": "Cisco Systems, Inc.",
       "sector": "Technology",
       "industry": "Communication Equipment",
-      "marketCap": 301548306432,
+      "marketCap": 301152436224,
       "buffettScore": 75,
       "metrics": {
         "gross_margin": 64.9,
@@ -3339,8 +3339,8 @@
         "fcf_margin": 23.5,
         "capex_ratio": 1.6,
         "retained_earnings": 50000000.0,
-        "pe_ratio": 29.467258,
-        "pb_ratio": 6.4118457,
+        "pe_ratio": 29.428574,
+        "pb_ratio": 6.403428,
         "buffett_score": 75
       },
       "historical": {
@@ -3423,7 +3423,7 @@
       "name": "Abbott Laboratories",
       "sector": "Healthcare",
       "industry": "Medical Devices",
-      "marketCap": 219506688000,
+      "marketCap": 219315240960,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 55.4,
@@ -3439,8 +3439,8 @@
         "fcf_margin": 15.1,
         "capex_ratio": 5.3,
         "retained_earnings": 47261000000.0,
-        "pe_ratio": 15.864152,
-        "pb_ratio": 4.3039966,
+        "pe_ratio": 15.850315,
+        "pb_ratio": 4.3002424,
         "buffett_score": 70
       },
       "historical": {
@@ -3523,7 +3523,7 @@
       "name": "Walt Disney Company (The)",
       "sector": "Communication Services",
       "industry": "Entertainment",
-      "marketCap": 199777419264,
+      "marketCap": 199687520256,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": 37.8,
@@ -3539,8 +3539,8 @@
         "fcf_margin": 10.7,
         "capex_ratio": 8.5,
         "retained_earnings": 60410000000.0,
-        "pe_ratio": 16.221169,
-        "pb_ratio": 1.811313,
+        "pe_ratio": 16.21387,
+        "pb_ratio": 1.810498,
         "buffett_score": 20
       },
       "historical": {
@@ -3623,7 +3623,7 @@
       "name": "Wells Fargo & Company",
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
-      "marketCap": 297567649792,
+      "marketCap": 297087139840,
       "buffettScore": 15,
       "metrics": {
         "gross_margin": 0.0,
@@ -3639,8 +3639,8 @@
         "fcf_margin": 3.7,
         "capex_ratio": 0.0,
         "retained_earnings": 214198000000.0,
-        "pe_ratio": 15.303129,
-        "pb_ratio": 1.7776629,
+        "pe_ratio": 15.278418,
+        "pb_ratio": 1.7747923,
         "buffett_score": 15
       },
       "historical": {
@@ -3723,7 +3723,7 @@
       "name": "Danaher Corporation",
       "sector": "Healthcare",
       "industry": "Diagnostics & Research",
-      "marketCap": 159912214528,
+      "marketCap": 160008896512,
       "buffettScore": 50,
       "metrics": {
         "gross_margin": 59.5,
@@ -3739,8 +3739,8 @@
         "fcf_margin": 22.2,
         "capex_ratio": 5.8,
         "retained_earnings": 44188000000.0,
-        "pe_ratio": 46.04639,
-        "pb_ratio": 3.088524,
+        "pe_ratio": 46.07423,
+        "pb_ratio": 3.0903912,
         "buffett_score": 50
       },
       "historical": {
@@ -3823,7 +3823,7 @@
       "name": "Verizon Communications Inc.",
       "sector": "Communication Services",
       "industry": "Telecom Services",
-      "marketCap": 171460952064,
+      "marketCap": 171798249472,
       "buffettScore": 25,
       "metrics": {
         "gross_margin": 59.9,
@@ -3839,8 +3839,8 @@
         "fcf_margin": 14.0,
         "capex_ratio": 13.3,
         "retained_earnings": 89110000000.0,
-        "pe_ratio": 8.670576,
-        "pb_ratio": 1.6322803,
+        "pe_ratio": 8.687633,
+        "pb_ratio": 1.6354915,
         "buffett_score": 25
       },
       "historical": {
@@ -3923,7 +3923,7 @@
       "name": "Intel Corporation",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 174844346368,
+      "marketCap": 174081605632,
       "buffettScore": 10,
       "metrics": {
         "gross_margin": 32.7,
@@ -3939,8 +3939,8 @@
         "fcf_margin": -29.5,
         "capex_ratio": 45.1,
         "retained_earnings": 49032000000.0,
-        "pe_ratio": 610.9167,
-        "pb_ratio": 1.6422491,
+        "pe_ratio": 608.25165,
+        "pb_ratio": 1.6350851,
         "buffett_score": 10
       },
       "historical": {
@@ -4023,7 +4023,7 @@
       "name": "Comcast Corporation",
       "sector": "Communication Services",
       "industry": "Telecom Services",
-      "marketCap": 111264645120,
+      "marketCap": 111689252864,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 70.1,
@@ -4039,8 +4039,8 @@
         "fcf_margin": 10.1,
         "capex_ratio": 12.2,
         "retained_earnings": 56972000000.0,
-        "pe_ratio": 5.005814,
-        "pb_ratio": 1.1343874,
+        "pe_ratio": 5.024917,
+        "pb_ratio": 1.1387163,
         "buffett_score": 35
       },
       "historical": {
@@ -4123,7 +4123,7 @@
       "name": "QUALCOMM Incorporated",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 186720960512,
+      "marketCap": 186807287808,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 55.4,
@@ -4139,8 +4139,8 @@
         "fcf_margin": 28.9,
         "capex_ratio": 2.7,
         "retained_earnings": 20646000000.0,
-        "pe_ratio": 34.61,
-        "pb_ratio": 8.764244,
+        "pe_ratio": 34.626,
+        "pb_ratio": 8.768295,
         "buffett_score": 70
       },
       "historical": {
@@ -4223,7 +4223,7 @@
       "name": "Texas Instruments Incorporated",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "marketCap": 158580785152,
+      "marketCap": 158321688576,
       "buffettScore": 60,
       "metrics": {
         "gross_margin": 58.1,
@@ -4239,8 +4239,8 @@
         "fcf_margin": 9.6,
         "capex_ratio": 30.8,
         "retained_earnings": 52262000000.0,
-        "pe_ratio": 31.772314,
-        "pb_ratio": 9.535862,
+        "pe_ratio": 31.720404,
+        "pb_ratio": 9.520283,
         "buffett_score": 60
       },
       "historical": {
@@ -4323,7 +4323,7 @@
       "name": "Philip Morris International Inc",
       "sector": "Consumer Defensive",
       "industry": "Tobacco",
-      "marketCap": 244952842240,
+      "marketCap": 244867039232,
       "buffettScore": 70,
       "metrics": {
         "gross_margin": 64.8,
@@ -4339,8 +4339,8 @@
         "fcf_margin": 28.4,
         "capex_ratio": 3.8,
         "retained_earnings": 32869000000.0,
-        "pe_ratio": 22.447947,
-        "pb_ratio": -22.444744,
+        "pe_ratio": 22.440084,
+        "pb_ratio": -22.436884,
         "buffett_score": 70
       },
       "historical": {
@@ -4389,7 +4389,7 @@
       "name": "Caterpillar, Inc.",
       "sector": "Industrials",
       "industry": "Farm & Heavy Construction Machinery",
-      "marketCap": 263424737280,
+      "marketCap": 262830735360,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 36.0,
@@ -4405,8 +4405,8 @@
         "fcf_margin": 13.6,
         "capex_ratio": 5.0,
         "retained_earnings": 59352000000.0,
-        "pe_ratio": 28.85059,
-        "pb_ratio": 12.7381,
+        "pe_ratio": 28.785532,
+        "pb_ratio": 12.709376,
         "buffett_score": 40
       },
       "historical": {
@@ -4489,7 +4489,7 @@
       "name": "NextEra Energy, Inc.",
       "sector": "Utilities",
       "industry": "Utilities - Regulated Electric",
-      "marketCap": 166366347264,
+      "marketCap": 166184960000,
       "buffettScore": 30,
       "metrics": {
         "gross_margin": 60.1,
@@ -4505,8 +4505,8 @@
         "fcf_margin": 19.2,
         "capex_ratio": 34.4,
         "retained_earnings": 32946000000.0,
-        "pe_ratio": 25.35987,
-        "pb_ratio": 3.0705564,
+        "pe_ratio": 25.332222,
+        "pb_ratio": 3.0672085,
         "buffett_score": 30
       },
       "historical": {
@@ -4589,7 +4589,7 @@
       "name": "International Business Machines",
       "sector": "Technology",
       "industry": "Information Technology Services",
-      "marketCap": 285309239296,
+      "marketCap": 285365338112,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 56.7,
@@ -4605,8 +4605,8 @@
         "fcf_margin": 18.7,
         "capex_ratio": 2.7,
         "retained_earnings": 151163000000.0,
-        "pe_ratio": 36.336906,
-        "pb_ratio": 10.224433,
+        "pe_ratio": 36.34405,
+        "pb_ratio": 10.226443,
         "buffett_score": 40
       },
       "historical": {
@@ -4689,7 +4689,7 @@
       "name": "Amgen Inc.",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - General",
-      "marketCap": 175614689280,
+      "marketCap": 175496232960,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 61.5,
@@ -4705,8 +4705,8 @@
         "fcf_margin": 31.1,
         "capex_ratio": 3.3,
         "retained_earnings": -27590000000.0,
-        "pe_ratio": 25.203247,
-        "pb_ratio": 18.257292,
+        "pe_ratio": 25.186245,
+        "pb_ratio": 18.244974,
         "buffett_score": 35
       },
       "historical": {
@@ -4777,7 +4777,7 @@
       "name": "Union Pacific Corporation",
       "sector": "Industrials",
       "industry": "Railroads",
-      "marketCap": 140211372032,
+      "marketCap": 140439732224,
       "buffettScore": 60,
       "metrics": {
         "gross_margin": 45.5,
@@ -4793,8 +4793,8 @@
         "fcf_margin": 24.3,
         "capex_ratio": 14.2,
         "retained_earnings": 65628000000.0,
-        "pe_ratio": 20.083261,
-        "pb_ratio": 8.10242,
+        "pe_ratio": 20.115973,
+        "pb_ratio": 8.115617,
         "buffett_score": 60
       },
       "historical": {
@@ -4877,7 +4877,7 @@
       "name": "Honeywell International Inc.",
       "sector": "Industrials",
       "industry": "Conglomerates",
-      "marketCap": 136104837120,
+      "marketCap": 135639867392,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 38.1,
@@ -4893,8 +4893,8 @@
         "fcf_margin": 12.8,
         "capex_ratio": 3.0,
         "retained_earnings": 50835000000.0,
-        "pe_ratio": 21.305382,
-        "pb_ratio": 7.641017,
+        "pe_ratio": 21.232595,
+        "pb_ratio": 7.614913,
         "buffett_score": 35
       },
       "historical": {
@@ -4977,7 +4977,7 @@
       "name": "Lowe's Companies, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Home Improvement Retail",
-      "marketCap": 139324080128,
+      "marketCap": 139379621888,
       "buffettScore": 40,
       "metrics": {
         "gross_margin": 33.3,
@@ -4993,8 +4993,8 @@
         "fcf_margin": 9.2,
         "capex_ratio": 2.3,
         "retained_earnings": -14799000000.0,
-        "pe_ratio": 20.560514,
-        "pb_ratio": -13.421106,
+        "pe_ratio": 20.568708,
+        "pb_ratio": -13.4264555,
         "buffett_score": 40
       },
       "historical": {
@@ -5043,7 +5043,7 @@
       "name": "RTX Corporation",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
-      "marketCap": 239113273344,
+      "marketCap": 238134509568,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": 19.1,
@@ -5059,8 +5059,8 @@
         "fcf_margin": 4.9,
         "capex_ratio": 4.0,
         "retained_earnings": 53589000000.0,
-        "pe_ratio": 36.545082,
-        "pb_ratio": 3.7063823,
+        "pe_ratio": 36.395493,
+        "pb_ratio": 3.691211,
         "buffett_score": 20
       },
       "historical": {
@@ -5143,7 +5143,7 @@
       "name": "Nike, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Footwear & Accessories",
-      "marketCap": 97420861440,
+      "marketCap": 97613029376,
       "buffettScore": 60,
       "metrics": {
         "gross_margin": 42.7,
@@ -5159,8 +5159,8 @@
         "fcf_margin": 7.1,
         "capex_ratio": 0.9,
         "retained_earnings": -727000000.0,
-        "pe_ratio": 33.797436,
-        "pb_ratio": 7.22801,
+        "pe_ratio": 33.864105,
+        "pb_ratio": 7.2422686,
         "buffett_score": 60
       },
       "historical": {
@@ -5243,7 +5243,7 @@
       "name": "GE Aerospace",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
-      "marketCap": 311546478592,
+      "marketCap": 309902802944,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 37.2,
@@ -5259,8 +5259,8 @@
         "fcf_margin": 9.5,
         "capex_ratio": 2.7,
         "retained_earnings": 80488000000.0,
-        "pe_ratio": 39.32932,
-        "pb_ratio": 16.47359,
+        "pe_ratio": 39.12182,
+        "pb_ratio": 16.386677,
         "buffett_score": 35
       },
       "historical": {
@@ -5343,7 +5343,7 @@
       "name": "S&P Global Inc.",
       "sector": "Financial Services",
       "industry": "Financial Data & Stock Exchanges",
-      "marketCap": 155516764160,
+      "marketCap": 155553398784,
       "buffettScore": 65,
       "metrics": {
         "gross_margin": 69.1,
@@ -5359,8 +5359,8 @@
         "fcf_margin": 39.2,
         "capex_ratio": 0.9,
         "retained_earnings": 20977000000.0,
-        "pe_ratio": 37.046547,
-        "pb_ratio": 4.6644874,
+        "pe_ratio": 37.055275,
+        "pb_ratio": 4.665586,
         "buffett_score": 65
       },
       "historical": {
@@ -5443,7 +5443,7 @@
       "name": "Boeing Company (The)",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
-      "marketCap": 163309502464,
+      "marketCap": 162397224960,
       "buffettScore": 20,
       "metrics": {
         "gross_margin": -3.0,
@@ -5460,7 +5460,7 @@
         "capex_ratio": 3.5,
         "retained_earnings": 15362000000.0,
         "pe_ratio": 0,
-        "pb_ratio": -19.189363,
+        "pb_ratio": -19.082167,
         "buffett_score": 20
       },
       "historical": {
@@ -5509,7 +5509,7 @@
       "name": "Lockheed Martin Corporation",
       "sector": "Industrials",
       "industry": "Aerospace & Defense",
-      "marketCap": 110579556352,
+      "marketCap": 110351933440,
       "buffettScore": 35,
       "metrics": {
         "gross_margin": 9.8,
@@ -5525,8 +5525,8 @@
         "fcf_margin": 7.4,
         "capex_ratio": 2.4,
         "retained_earnings": 14551000000.0,
-        "pe_ratio": 26.401615,
-        "pb_ratio": 17.624655,
+        "pe_ratio": 26.34727,
+        "pb_ratio": 17.588375,
         "buffett_score": 35
       },
       "historical": {
@@ -5609,7 +5609,7 @@
       "name": "Starbucks Corporation",
       "sector": "Consumer Cyclical",
       "industry": "Restaurants",
-      "marketCap": 97006002176,
+      "marketCap": 96824066048,
       "buffettScore": 30,
       "metrics": {
         "gross_margin": 22.8,
@@ -5625,8 +5625,8 @@
         "fcf_margin": 6.6,
         "capex_ratio": 6.2,
         "retained_earnings": -8272500000.0,
-        "pe_ratio": 52.33742,
-        "pb_ratio": -11.978376,
+        "pe_ratio": 52.239265,
+        "pb_ratio": -11.955911,
         "buffett_score": 30
       },
       "historical": {
@@ -5675,7 +5675,7 @@
       "name": "AT&T Inc.",
       "sector": "Communication Services",
       "industry": "Telecom Services",
-      "marketCap": 174219149312,
+      "marketCap": 174612414464,
       "buffettScore": 25,
       "metrics": {
         "gross_margin": 59.8,
@@ -5691,8 +5691,8 @@
         "fcf_margin": 15.1,
         "capex_ratio": 16.6,
         "retained_earnings": 1871000000.0,
-        "pe_ratio": 7.936482,
-        "pb_ratio": 1.5645669,
+        "pe_ratio": 7.9543977,
+        "pb_ratio": 1.5680987,
         "buffett_score": 25
       },
       "historical": {
@@ -5775,7 +5775,7 @@
       "name": "SAP  SE",
       "sector": "Technology",
       "industry": "Software - Application",
-      "marketCap": 282521763840,
+      "marketCap": 282265059328,
       "buffettScore": 45,
       "metrics": {
         "gross_margin": 73.0,
@@ -5791,8 +5791,8 @@
         "fcf_margin": 12.9,
         "capex_ratio": 2.3,
         "retained_earnings": 42907000000.0,
-        "pe_ratio": 34.24823,
-        "pb_ratio": 5.6016345,
+        "pe_ratio": 34.217113,
+        "pb_ratio": 5.5965447,
         "buffett_score": 45
       },
       "historical": {
@@ -7403,7 +7403,7 @@
     }
   },
   "metadata": {
-    "generated": "2025-12-17T18:37:28.391784",
+    "generated": "2025-12-17T19:01:17.717789",
     "total_stocks": 74,
     "total_links": 0,
     "failed_tickers": [
