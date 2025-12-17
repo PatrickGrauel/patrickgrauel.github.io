@@ -5,7 +5,9 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 import time
-
+- name: Test Yahoo Finance Access
+  run: |
+    python -c "import yfinance as yf; stock = yf.Ticker('AAPL'); print(stock.info.get('marketCap', 'NO DATA'))"
 # Predefined ticker lists (no Wikipedia scraping needed)
 SP500_TOP = [
     "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "BRK-B", "LLY", "AVGO", "TSLA",
