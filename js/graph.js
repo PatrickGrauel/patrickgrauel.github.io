@@ -10,33 +10,35 @@ async function initGraph() {
     try {
         data = await d3.json("data/graph_data.json");
     } catch (e) {
-        console.error("Data missing.");
+        console.error("Data missing. Run the Python action.");
         return;
     }
 
     // SCALES
-    const sizeScale = d3.scaleSqrt()
-        .domain([0, d3.max(data.nodes, d => d.owner_earnings)])
-        .range([15, 55]); // Slightly larger bubbles to fit text
+    // Log scale for size so massive companies don't swallow the screen
+    const sizeScale = d3.scaleLog()
+        .domain([1e8, d3.max(data.nodes, d => d.owner_earnings)])
+        .range([18, 55]) // Min size 18px to fit text
+        .clamp(true);
 
     const colorScale = d3.scaleSequential(d3.interpolateRdYlGn).domain([0, 100]);
 
-    // FORCE SIMULATION
+    // PHYSICS ENGINE
     const simulation = d3.forceSimulation(data.nodes)
-        .force("link", d3.forceLink(data.links).id(d => d.id).distance(d => 100 * (1 - d.similarity)))
-        .force("charge", d3.forceManyBody().strength(-300))
+        .force("link", d3.forceLink(data.links).id(d => d.id).distance(d => 120 * (1 - d.similarity)))
+        .force("charge", d3.forceManyBody().strength(-350))
         .force("center", d3.forceCenter(width / 2, height / 2))
-        .force("collide", d3.forceCollide().radius(d => sizeScale(d.owner_earnings) + 2).iterations(2));
+        .force("collide", d3.forceCollide().radius(d => sizeScale(d.owner_earnings) + 4).iterations(2));
 
-    // --- RENDER NODES (Groups) ---
-    // We use a <g> (group) so the Circle and Text move together
+    // --- RENDER NODES ---
+    // Using a group <g> to keep Circle and Text together
     const nodeGroup = svg.append("g")
         .selectAll("g")
         .data(data.nodes)
         .join("g")
         .call(drag(simulation));
 
-    // 1. The Circle
+    // 1. The Bubble (Circle)
     nodeGroup.append("circle")
         .attr("r", d => sizeScale(d.owner_earnings))
         .attr("fill", d => colorScale(d.buffettScore))
@@ -44,44 +46,47 @@ async function initGraph() {
         .attr("stroke-width", 1.5)
         .style("cursor", "pointer");
 
-    // 2. The Symbol Text (New!)
+    // 2. The Symbol (Text)
     nodeGroup.append("text")
         .text(d => d.id)
         .attr("text-anchor", "middle")
-        .attr("dy", ".35em") // Center vertically
-        .attr("fill", "#000") // Black text works best on most RdYlGn colors
-        .style("font-size", d => Math.min(12, sizeScale(d.owner_earnings) / 2) + "px") // Scale font slightly
+        .attr("dy", ".35em") // Vertically center
+        .attr("fill", "#0f111a") // Dark text for contrast
+        .style("font-family", "sans-serif")
         .style("font-weight", "bold")
-        .style("pointer-events", "none"); // Let clicks pass through to the circle
+        .style("font-size", d => Math.min(14, sizeScale(d.owner_earnings) / 2.5) + "px") // Scale font to bubble
+        .style("pointer-events", "none"); // Clicks pass through to circle
 
-    // --- HOVER LOGIC (The Report Card) ---
+    // --- HOVER: BUFFETT INDICATOR DEEP DIVE ---
     const tooltip = d3.select("#tooltip") || d3.select("body").append("div").attr("id", "tooltip");
-    
+
     nodeGroup.on("mouseover", (event, d) => {
-        // Helper for Report Card Status
-        const status = (val, threshold, reverse=false) => {
-            const good = reverse ? val < threshold : val > threshold;
-            return good ? "✅" : "⚠️";
+        // Status Helper: Returns Symbol based on Buffett Thresholds
+        const check = (val, threshold, reverse=false) => {
+            const isGood = reverse ? val < threshold : val > threshold;
+            return isGood ? "✅" : "⚠️";
         };
 
         const m = d.metrics;
         
-        // Build the HTML Report Card
+        // Tooltip Content
         const html = `
-            <div style="min-width: 200px;">
-                <h3 style="margin:0; color:#fff;">${d.name} (${d.id})</h3>
-                <div style="font-size:12px; color:#ccc; margin-bottom:8px;">${d.sector}</div>
+            <div style="min-width: 220px; font-family: sans-serif;">
+                <div style="border-bottom: 1px solid #444; padding-bottom: 8px; margin-bottom: 8px;">
+                    <strong style="font-size: 16px; color: white;">${d.name}</strong>
+                    <div style="color: #888; font-size: 12px;">${d.sector}</div>
+                </div>
                 
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; background:rgba(255,255,255,0.1); padding:5px; border-radius:4px;">
-                    <span>Buffett Score:</span>
-                    <strong style="font-size:16px; color:${colorScale(d.buffettScore)}">${d.buffettScore}</strong>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px;">
+                    <span style="color: #ccc;">Buffett Score:</span>
+                    <strong style="color: ${colorScale(d.buffettScore)}; font-size: 16px;">${d.buffettScore}/100</strong>
                 </div>
 
-                <div style="font-size:13px; line-height:1.6;">
-                    <div>${status(m.gm, 0.40)} <b>Gross Margin:</b> ${(m.gm * 100).toFixed(1)}%</div>
-                    <div>${status(m.sga_ratio, 0.30, true)} <b>SG&A / GP:</b> ${(m.sga_ratio * 100).toFixed(1)}%</div>
-                    <div>${status(m.capex_ratio, 0.25, true)} <b>CapEx Intensity:</b> ${(m.capex_ratio * 100).toFixed(1)}%</div>
-                    <div>${status(m.debt_years, 3.0, true)} <b>Debt Payoff:</b> ${m.debt_years.toFixed(1)} yrs</div>
+                <div style="font-size: 13px; line-height: 1.8; color: #ddd;">
+                    <div>${check(m.gm, 0.40)} <b>Gross Margin:</b> ${(m.gm * 100).toFixed(1)}%</div>
+                    <div>${check(m.sga_ratio, 0.30, true)} <b>SG&A / GP:</b> ${(m.sga_ratio * 100).toFixed(1)}%</div>
+                    <div>${check(m.capex_ratio, 0.25, true)} <b>CapEx Intensity:</b> ${(m.capex_ratio * 100).toFixed(1)}%</div>
+                    <div>${check(m.debt_years, 3.0, true)} <b>Debt Payoff:</b> ${m.debt_years.toFixed(1)} yrs</div>
                 </div>
             </div>
         `;
@@ -93,22 +98,11 @@ async function initGraph() {
     })
     .on("mouseout", () => tooltip.style("opacity", 0));
 
-    // Interaction: Click to populate Sidebar (Keep existing sidebar logic if present)
-    nodeGroup.on("click", (event, d) => {
-        const sidebar = document.getElementById("sidebar");
-        if(sidebar) {
-            sidebar.classList.remove("collapsed");
-            // Populate your existing sidebar IDs here...
-            document.getElementById("detail-ticker").innerText = d.name;
-            // (You can map the rest of the d.metrics to the sidebar as needed)
-        }
-    });
-
-    // TICK FUNCTION
+    // --- ANIMATION LOOP ---
     simulation.on("tick", () => {
         ctx.clearRect(0, 0, width, height);
         
-        // Draw Links
+        // Draw Links (Canvas)
         ctx.save();
         ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
         ctx.beginPath();
@@ -119,11 +113,11 @@ async function initGraph() {
         ctx.stroke();
         ctx.restore();
 
-        // Move Groups (Circle + Text)
+        // Move Nodes (SVG Group)
         nodeGroup.attr("transform", d => `translate(${d.x},${d.y})`);
     });
 
-    // DRAG
+    // DRAG BEHAVIOR
     function drag(sim) {
         function dragstarted(event, d) {
             if (!event.active) sim.alphaTarget(0.3).restart();
