@@ -6,94 +6,109 @@
     <title>Buffett Focus | Market Network</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        :root { --bg: #0d1117; --sidebar: #161b22; --text: #c9d1d9; --accent: #0079fd; --border: #30363d; --green: #00c853; --red: #ff3d00; }
-        body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow: hidden; }
+        :root { --bg: #0b0e11; --sidebar: #15191e; --text: #e6edf3; --text-dim: #8b949e; --accent: #0079fd; --border: #30363d; --green: #00c853; --red: #ff3d00; --yellow: #ffd600; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; overflow: hidden; }
         
         #app { display: flex; width: 100vw; height: 100vh; }
-        #graph-container { flex-grow: 1; position: relative; cursor: grab; }
+        #graph-container { flex-grow: 1; position: relative; cursor: grab; background: radial-gradient(circle at center, #161b22 0%, #0b0e11 100%); }
         #graph-container:active { cursor: grabbing; }
         
         /* SIDEBAR */
-        #sidebar { width: 380px; background: var(--sidebar); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; z-index: 10; padding: 20px; box-shadow: -4px 0 20px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
+        #sidebar { width: 400px; background: var(--sidebar); border-left: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; z-index: 20; padding: 24px; box-shadow: -10px 0 30px rgba(0,0,0,0.5); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         #sidebar.hidden { transform: translateX(100%); width: 0; padding: 0; }
         
         /* CONTROLS */
-        #controls { position: absolute; top: 20px; left: 20px; z-index: 5; display: flex; gap: 10px; }
-        input#search-input { background: var(--sidebar); border: 1px solid var(--border); color: #fff; padding: 8px 12px; border-radius: 6px; width: 200px; outline: none; }
-        .btn { background: var(--sidebar); border: 1px solid var(--border); color: #fff; padding: 8px 16px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
-        .btn:hover, .btn.active { border-color: var(--accent); color: var(--accent); }
+        #controls { position: absolute; top: 24px; left: 24px; z-index: 10; display: flex; gap: 12px; }
+        input#search-input { background: rgba(0,0,0,0.3); border: 1px solid var(--border); color: #fff; padding: 10px 16px; border-radius: 8px; width: 220px; outline: none; transition: 0.2s; font-size: 14px; backdrop-filter: blur(4px); }
+        input#search-input:focus { border-color: var(--accent); background: rgba(0,0,0,0.5); }
+        .btn { background: var(--accent); border: none; color: #fff; padding: 0 20px; height: 40px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 14px; transition: 0.2s; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,121,253,0.3); }
+        .btn:hover { background: #1e8aff; transform: translateY(-1px); }
 
         /* LOADING SPINNER */
         #loader { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 200; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: opacity 0.5s; }
-        .spinner { width: 40px; height: 40px; border: 4px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
+        .spinner { width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
         #loader.done { opacity: 0; pointer-events: none; }
 
-        /* LEADERBOARD OVERLAY */
+        /* LEADERBOARD (Dark Table Style) */
         #leaderboard { 
-            position: absolute; top: 80px; left: 20px; bottom: 20px; width: 450px; 
-            background: rgba(22, 27, 34, 0.98); backdrop-filter: blur(10px);
-            border: 1px solid var(--border); border-radius: 8px; 
-            z-index: 20; display: none; flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: absolute; top: 80px; left: 24px; bottom: 40px; width: 500px; 
+            background: #161b22; border: 1px solid var(--border); border-radius: 12px; 
+            z-index: 30; display: none; flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7); overflow: hidden;
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         #leaderboard.visible { display: flex; }
-        .lb-header { padding: 15px; border-bottom: 1px solid var(--border); }
-        .lb-filters { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
-        .filter-btn { font-size: 10px; padding: 4px 8px; border: 1px solid var(--border); border-radius: 20px; background: transparent; color: #8b949e; cursor: pointer; }
-        .filter-btn:hover, .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
         
-        .lb-content { overflow-y: auto; flex-grow: 1; }
-        .lb-row { display: flex; padding: 12px 15px; border-bottom: 1px solid #21262d; align-items: center; cursor: pointer; transition: background 0.2s; }
-        .lb-row:hover { background: #21262d; }
-        .lb-rank { width: 30px; font-weight: bold; color: #8b949e; font-size: 14px; }
-        .lb-info { flex-grow: 1; }
-        .lb-ticker { font-weight: bold; color: #fff; display: block; }
-        .lb-name { font-size: 12px; color: #8b949e; }
-        .lb-score { font-weight: bold; font-size: 14px; padding: 4px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); }
+        .lb-header { padding: 20px; border-bottom: 1px solid var(--border); background: #0d1117; }
+        .lb-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .lb-title h3 { margin: 0; font-size: 18px; color: #fff; }
+        
+        .lb-filters { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+        .filter-btn { font-size: 12px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 20px; background: transparent; color: var(--text-dim); cursor: pointer; white-space: nowrap; transition: 0.2s; }
+        .filter-btn:hover { border-color: var(--text); color: var(--text); }
+        .filter-btn.active { background: rgba(255,255,255,0.1); border-color: #fff; color: #fff; }
+
+        /* Table Rows */
+        .lb-content { overflow-y: auto; flex-grow: 1; background: #0d1117; }
+        .lb-row { display: flex; padding: 16px 20px; border-bottom: 1px solid #21262d; align-items: center; cursor: pointer; transition: background 0.15s; }
+        .lb-row:hover { background: #1c2128; }
+        .lb-rank { width: 30px; font-family: monospace; color: var(--text-dim); font-size: 14px; opacity: 0.7; }
+        .lb-info { flex-grow: 1; display: flex; flex-direction: column; }
+        .lb-ticker { font-weight: 700; color: #fff; font-size: 15px; }
+        .lb-sector { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+        .lb-score { font-family: monospace; font-weight: 700; font-size: 15px; color: var(--accent); }
 
         /* SIDEBAR DETAILS */
-        .header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
-        h2#det-ticker { margin: 0; font-size: 2em; color: #fff; }
-        .score-lg { font-size: 24px; font-weight: bold; padding: 5px 12px; border-radius: 8px; }
-        .score-lg.good { color: var(--green); border: 1px solid var(--green); background: rgba(0,200,83,0.1); }
-        .score-lg.mid { color: #ffd600; border: 1px solid #ffd600; background: rgba(255,214,0,0.1); }
-        .score-lg.bad { color: var(--red); border: 1px solid var(--red); background: rgba(255,61,0,0.1); }
+        h2#det-ticker { margin: 0; font-size: 32px; color: #fff; letter-spacing: -0.5px; }
+        #det-name { font-size: 14px; color: var(--text-dim); margin-top: 4px; margin-bottom: 20px; }
+        
+        .score-box { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border: 1px solid var(--border); }
+        .score-val { font-size: 28px; font-weight: 800; }
+        .score-val.good { color: var(--green); }
+        .score-val.mid { color: var(--yellow); }
+        .score-val.bad { color: var(--red); }
 
         /* METRICS & CHARTS */
-        .metric-block { background: #21262d; border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 10px; }
-        .mb-head { display: flex; justify-content: space-between; font-size: 12px; color: #8b949e; margin-bottom: 5px; }
-        .mb-val { font-size: 20px; font-weight: bold; color: #fff; }
+        .metric-block { margin-bottom: 24px; }
+        .mb-head { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-dim); margin-bottom: 8px; font-weight: 500; }
+        .mb-val { font-size: 20px; font-weight: 600; color: #fff; font-family: monospace; }
         
-        .mini-chart { height: 80px; width: 100%; margin-top: 10px; }
-        .line-stock { fill: none; stroke: var(--accent); stroke-width: 2px; }
-        .line-industry { fill: none; stroke: #8b949e; stroke-width: 1px; stroke-dasharray: 4; opacity: 0.5; }
+        .mini-chart { height: 60px; width: 100%; margin-top: 8px; position: relative; }
+        .line-stock { fill: none; stroke: var(--accent); stroke-width: 2px; vector-effect: non-scaling-stroke; }
+        .line-industry { fill: none; stroke: var(--text-dim); stroke-width: 1px; stroke-dasharray: 4; opacity: 0.3; }
+        .chart-bg { fill: rgba(0,121,253,0.1); }
 
-        #tooltip { position: absolute; pointer-events: none; background: rgba(22, 27, 34, 0.95); border: 1px solid var(--border); padding: 10px; border-radius: 6px; font-size: 12px; opacity: 0; z-index: 100; }
+        #tooltip { position: absolute; pointer-events: none; background: #161b22; border: 1px solid var(--border); padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; opacity: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.5); transform: translateY(-100%); margin-top: -10px; }
+        
+        .footer-status { position: absolute; bottom: 20px; left: 20px; font-size: 11px; color: var(--text-dim); z-index: 5; opacity: 0.6; }
     </style>
 </head>
 <body>
     <div id="loader">
         <div class="spinner"></div>
-        <div style="margin-top: 20px; color: #8b949e;">Analyzing Market Data...</div>
+        <div style="margin-top: 20px; color: #8b949e; font-size: 14px; letter-spacing: 0.5px;">INITIALIZING NETWORK</div>
     </div>
 
     <div id="app">
         <div id="graph-container">
             <div id="controls">
-                <input list="tickers" id="search-input" placeholder="Search Ticker...">
-                <button class="btn" id="btn-leaderboard">🏆 Leaderboard</button>
+                <input list="tickers" id="search-input" placeholder="Search Ticker (e.g. AAPL)...">
+                <button class="btn" id="btn-leaderboard">
+                    <span>🏆</span> Leaderboard
+                </button>
                 <datalist id="tickers"></datalist>
             </div>
             
             <div id="leaderboard">
                 <div class="lb-header">
-                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <h3 style="margin:0">Buffett Score Ranking</h3>
-                        <button id="lb-close" class="filter-btn">✕</button>
+                    <div class="lb-title">
+                        <h3>Buffett Score Ranking</h3>
+                        <button id="lb-close" class="filter-btn">Close ✕</button>
                     </div>
                     <div class="lb-filters" id="lb-filters">
-                        <button class="filter-btn active" data-sector="all">All</button>
+                        <button class="filter-btn active" data-sector="all">All Sectors</button>
                         </div>
                 </div>
                 <div class="lb-content" id="lb-list"></div>
@@ -101,23 +116,21 @@
 
             <div id="tooltip"></div>
             <svg id="main-svg" width="100%" height="100%"></svg>
+            <div class="footer-status">Data updated: Live via GitHub Actions</div>
         </div>
 
         <div id="sidebar" class="hidden">
             <div id="state-details">
-                <div class="header-row">
-                    <div>
-                        <h2 id="det-ticker">--</h2>
-                        <div id="det-name">--</div>
-                        <div style="font-size: 12px; color: #8b949e; margin-top: 4px;">
-                            <span id="det-sector">--</span>
-                        </div>
-                    </div>
-                    <div id="det-score" class="score-lg">--</div>
+                <h2 id="det-ticker">--</h2>
+                <div id="det-name">--</div>
+                
+                <div class="score-box">
+                    <div style="font-size: 13px; color: #8b949e; font-weight: 600;">BUFFETT SCORE</div>
+                    <div id="det-score" class="score-val">--</div>
                 </div>
 
-                <div id="radar-container"></div>
-                <div id="metrics-container"></div>
+                <div id="metrics-container">
+                    </div>
             </div>
         </div>
     </div>
