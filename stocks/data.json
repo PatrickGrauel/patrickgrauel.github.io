@@ -1,0 +1,182 @@
+[
+  {
+    "ticker": "AAPL",
+    "sector": "Technology",
+    "marketCap": 4075319197696,
+    "grossMargin": 0.47,
+    "debtToEquity": 1.34,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "MSFT",
+    "sector": "Technology",
+    "marketCap": 3541086240768,
+    "grossMargin": 0.69,
+    "debtToEquity": 0.18,
+    "score": 2,
+    "color": "#00ff41"
+  },
+  {
+    "ticker": "GOOGL",
+    "sector": "Communication Services",
+    "marketCap": 3713213399040,
+    "grossMargin": 0.58,
+    "debtToEquity": 0.08,
+    "score": 2,
+    "color": "#00ff41"
+  },
+  {
+    "ticker": "AMZN",
+    "sector": "Consumer Cyclical",
+    "marketCap": 2379214487552,
+    "grossMargin": 0.49,
+    "debtToEquity": 0.46,
+    "score": 2,
+    "color": "#00ff41"
+  },
+  {
+    "ticker": "TSLA",
+    "sector": "Consumer Cyclical",
+    "marketCap": 1629252354048,
+    "grossMargin": 0.18,
+    "debtToEquity": 0.19,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "XOM",
+    "sector": "Energy",
+    "marketCap": 488909176832,
+    "grossMargin": 0.23,
+    "debtToEquity": 0.16,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "CVX",
+    "sector": "Energy",
+    "marketCap": 295675199488,
+    "grossMargin": 0.29,
+    "debtToEquity": 0.16,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "SHEL",
+    "sector": "Energy",
+    "marketCap": 200924446720,
+    "grossMargin": 0.16,
+    "debtToEquity": 0.43,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "JPM",
+    "sector": "Financial Services",
+    "marketCap": 867684777984,
+    "grossMargin": 0,
+    "debtToEquity": 1.32,
+    "score": 0,
+    "color": "#ff3333"
+  },
+  {
+    "ticker": "BAC",
+    "sector": "Financial Services",
+    "marketCap": 405974777856,
+    "grossMargin": 0,
+    "debtToEquity": 1.11,
+    "score": 0,
+    "color": "#ff3333"
+  },
+  {
+    "ticker": "WFC",
+    "sector": "Financial Services",
+    "marketCap": 295325237248,
+    "grossMargin": 0,
+    "debtToEquity": 1.04,
+    "score": 0,
+    "color": "#ff3333"
+  },
+  {
+    "ticker": "KO",
+    "sector": "Consumer Defensive",
+    "marketCap": 302849064960,
+    "grossMargin": 0.61,
+    "debtToEquity": 1.79,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "PEP",
+    "sector": "Consumer Defensive",
+    "marketCap": 205868138496,
+    "grossMargin": 0.55,
+    "debtToEquity": 2.49,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "MCD",
+    "sector": "Consumer Cyclical",
+    "marketCap": 224428589056,
+    "grossMargin": 0.57,
+    "debtToEquity": -13.68,
+    "score": 2,
+    "color": "#00ff41"
+  },
+  {
+    "ticker": "PFE",
+    "sector": "Healthcare",
+    "marketCap": 145156128768,
+    "grossMargin": 0.72,
+    "debtToEquity": 0.72,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "JNJ",
+    "sector": "Healthcare",
+    "marketCap": 504265474048,
+    "grossMargin": 0.69,
+    "debtToEquity": 0.51,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "MRK",
+    "sector": "Healthcare",
+    "marketCap": 245457158144,
+    "grossMargin": 0.76,
+    "debtToEquity": 0.8,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "BA",
+    "sector": "Industrials",
+    "marketCap": 161868660736,
+    "grossMargin": -0.03,
+    "debtToEquity": -13.87,
+    "score": 1,
+    "color": "#ffcc00"
+  },
+  {
+    "ticker": "LMT",
+    "sector": "Industrials",
+    "marketCap": 111376842752,
+    "grossMargin": 0.1,
+    "debtToEquity": 3.2,
+    "score": 0,
+    "color": "#ff3333"
+  },
+  {
+    "ticker": "GE",
+    "sector": "Industrials",
+    "marketCap": 316785065984,
+    "grossMargin": 0.37,
+    "debtToEquity": 1.0,
+    "score": 0,
+    "color": "#ff3333"
+  }
+]
