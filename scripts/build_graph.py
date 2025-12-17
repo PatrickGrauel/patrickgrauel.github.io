@@ -91,9 +91,43 @@ def get_data(ticker):
 def build_graph(df):
     # 1. CALCULATE INDUSTRY AVERAGES
     if 'sector' in df.columns:
-        sector_avgs = df.groupby('sector')['metrics'].apply(lambda x: pd.DataFrame(x.tolist()).mean()).to_dict('index')
+        # Fix: Use orient='index' explicitly to avoid TypeError in newer pandas
+        sector_avgs = df.groupby('sector')['metrics'].apply(
+            lambda x: pd.DataFrame(x.tolist()).mean()
+        ).to_dict() # Default behavior for series is correct, or use to_dict() directly on the series result
     else:
         sector_avgs = {}
+
+    # 2. INJECT AVERAGES
+    def inject_avg(row):
+        sec = row.get('sector')
+        if sec and sec in sector_avgs:
+            # sector_avgs[sec] is already a Series/Dict of averages
+            row['sector_avg'] = sector_avgs[sec]
+        else:
+            row['sector_avg'] = row['metrics']
+        return row
+    
+    df = df.apply(inject_avg, axis=1)
+
+    # 3. BUILD LINKS
+    features = pd.DataFrame(df['metrics'].tolist()).fillna(0)
+    scaler = MinMaxScaler()
+    features_norm = scaler.fit_transform(features)
+    sim_matrix = cosine_similarity(features_norm)
+    
+    links = []
+    for i in range(len(df)):
+        similar_indices = sim_matrix[i].argsort()[-4:-1]
+        for idx in similar_indices:
+            sim_score = sim_matrix[i][idx]
+            if sim_score > 0.8:
+                links.append({
+                    "source": df.iloc[i]['id'],
+                    "target": df.iloc[idx]['id'],
+                    "similarity": float(sim_score)
+                })
+    return links
 
     # 2. INJECT AVERAGES
     def inject_avg(row):
