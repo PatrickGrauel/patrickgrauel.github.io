@@ -1,165 +1,316 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="system">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buffett Moat Engine</title>
+    <title>Buffett Focus</title>
     <style>
-        :root { --bg: #0f111a; --panel: #1a1d29; --text: #e2e8f0; --accent: #3b82f6; --border: #334155; }
-        body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; overflow: hidden; }
+        :root {
+            /* LIGHT THEME (Default) */
+            --bg: #f7f7fa;
+            --surface: #ffffff;
+            --text: #0d0e11;
+            --muted: #606061;
+            --muted2: #a2a2a5;
+            --border: rgba(13,14,17,0.08);
+            --primary: #0079fd;
+            --primary-rgb: 0, 121, 253;
+            --primary2: #2488f2;
+            --primaryTint: #a8cef4;
+            --accent: #fecc05;
+            --accent-text: #0d0e11;
+            --shadow: 0 8px 24px rgba(13,14,17,0.08);
+            
+            --radius: 16px;
+            --radius-sm: 8px;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: "SF Mono", "Monaco", "Inconsolata", "Fira Mono", monospace;
+        }
+
+        [data-theme="dark"] {
+            /* DARK THEME */
+            --bg: #0b0c10;
+            --surface: #12141a;
+            --text: #f7f7fa;
+            --muted: rgba(247,247,250,0.65);
+            --muted2: rgba(247,247,250,0.4);
+            --border: rgba(247,247,250,0.10);
+            --primary: #4da3ff;
+            --primary-rgb: 77, 163, 255;
+            --primary2: #6fb3ff;
+            --primaryTint: rgba(77, 163, 255, 0.2);
+            --accent: #fecc05;
+            --accent-text: #000000;
+            --shadow: 0 10px 30px rgba(0,0,0,0.45);
+        }
+
+        /* RESET & BASE */
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font-main); transition: background 0.3s ease, color 0.3s ease; overflow: hidden; height: 100vh; display: flex; flex-direction: column; }
         
-        #graph-container { position: absolute; width: 100vw; height: 100vh; z-index: 1; }
-        canvas, svg { position: absolute; width: 100%; height: 100%; }
-
-        /* SIDEBAR */
-        #sidebar {
-            position: absolute; width: 380px; height: 100vh; background: var(--panel); 
-            border-right: 1px solid var(--border); z-index: 10; display: flex; flex-direction: column;
-            transform: translateX(0); transition: transform 0.3s ease; box-shadow: 5px 0 20px rgba(0,0,0,0.5);
+        /* HEADER */
+        header {
+            padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;
+            background: var(--bg); z-index: 50; flex-shrink: 0;
         }
-        #sidebar.collapsed { transform: translateX(-100%); }
-
-        .header { padding: 20px; border-bottom: 1px solid var(--border); }
-        .search-wrapper { position: relative; margin-top: 10px; }
-        #search-input {
-            width: 100%; padding: 10px; background: var(--bg); border: 1px solid var(--border);
-            color: white; border-radius: 6px; outline: none; box-sizing: border-box;
+        .app-title { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px; }
+        .app-title span { color: var(--primary); }
+        
+        /* THEME TOGGLE */
+        .theme-toggle {
+            background: var(--surface); border: 1px solid var(--border);
+            width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: var(--text); box-shadow: var(--shadow);
         }
         
-        .tabs { display: flex; border-bottom: 1px solid var(--border); }
-        .tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; color: #64748b; font-size: 13px; font-weight: 600; }
-        .tab.active { color: var(--accent); border-bottom: 2px solid var(--accent); background: rgba(59,130,246,0.05); }
-
-        .content { flex: 1; overflow-y: auto; padding: 20px; }
-        .view-section { display: none; }
-        .view-section.active { display: block; }
-
-        /* METRIC CARDS WITH BENCHMARK */
-        .metric-card {
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
-            padding: 12px; border-radius: 6px; margin-bottom: 10px;
-            display: flex; justify-content: space-between; align-items: center;
+        /* NAV PILL BAR */
+        .nav-container { display: flex; justify-content: center; width: 100%; margin-top: -10px; }
+        .nav-pills {
+            background: var(--surface); padding: 4px; border-radius: 999px;
+            display: flex; gap: 4px; box-shadow: var(--shadow); border: 1px solid var(--border);
         }
-        .metric-info h4 { margin: 0 0 4px 0; font-size: 11px; color: #94a3b8; text-transform: uppercase; }
-        .metric-info .val { font-size: 18px; font-weight: 700; color: #fff; }
-        .metric-bench { text-align: right; font-size: 11px; color: #64748b; }
-        .metric-bench .b-val { display: block; font-weight: 600; color: #ccc; margin-bottom: 2px; }
+        .nav-item {
+            padding: 8px 24px; border-radius: 999px; font-size: 14px; font-weight: 600;
+            cursor: pointer; color: var(--muted); transition: 0.2s; user-select: none;
+        }
+        .nav-item:hover { color: var(--text); }
+        .nav-item.active {
+            background: var(--accent); color: var(--accent-text); box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        [data-theme="dark"] .nav-item.active { background: var(--primary); color: #fff; }
 
-        /* CHARTS & LEGEND */
-        .chart-container { height: 150px; margin-bottom: 20px; }
+        /* SEARCH BAR (Floating) */
+        .search-bar {
+            position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+            width: 320px; z-index: 60; display: none; /* Shown in specific views */
+        }
+        .search-input {
+            width: 100%; padding: 12px 20px; border-radius: 999px; border: 1px solid var(--border);
+            background: var(--surface); color: var(--text); font-size: 14px;
+            box-shadow: var(--shadow); outline: none; transition: 0.2s;
+        }
+        .search-input:focus { border-color: var(--primary); }
+
+        /* MAIN CONTENT AREA */
+        main { flex: 1; position: relative; overflow: hidden; padding: 20px; }
+        .view-panel {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            padding: 0 20px 20px 20px; opacity: 0; pointer-events: none;
+            transform: translateY(10px); transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            overflow-y: auto; display: flex; flex-direction: column; gap: 20px;
+        }
+        .view-panel.active { opacity: 1; pointer-events: all; transform: translateY(0); }
+
+        /* --- VIEW: OVERVIEW (Grid Layout) --- */
+        .overview-grid {
+            display: grid; grid-template-columns: 320px 1fr; gap: 24px; height: 100%;
+            max-width: 1400px; margin: 0 auto; width: 100%;
+        }
+        .side-col { display: flex; flex-direction: column; gap: 24px; }
+        .main-col { display: flex; flex-direction: column; gap: 24px; overflow-y: auto; padding-bottom: 40px; }
+
+        /* CARDS */
+        .card {
+            background: var(--surface); border-radius: var(--radius);
+            box-shadow: var(--shadow); border: 1px solid var(--border);
+            padding: 20px; position: relative;
+        }
+        .card-header {
+            display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;
+        }
+        .card-title {
+            font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted2); font-weight: 700;
+        }
+
+        /* METRIC INSTRUMENT */
+        .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+        .metric-instrument {
+            background: var(--bg); border-radius: 12px; padding: 16px; border: 1px solid var(--border);
+            display: flex; flex-direction: column; justify-content: space-between; min-height: 110px;
+        }
+        .mi-top { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+        .mi-val { font-size: 24px; font-weight: 700; color: var(--text); font-feature-settings: "tnum"; margin: 8px 0; }
+        .mi-bot { font-size: 11px; color: var(--muted2); display: flex; align-items: center; gap: 6px; }
+        .badge {
+            padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 700;
+        }
+        .badge.good { background: rgba(0, 200, 83, 0.15); color: #00c853; }
+        .badge.bad { background: rgba(255, 61, 0, 0.15); color: #ff3d00; }
+        .badge.neutral { background: rgba(120, 120, 120, 0.15); color: var(--muted); }
+
+        /* --- VIEW: NETWORK (Canvas Card) --- */
+        .network-container {
+            width: 100%; height: 100%; border-radius: var(--radius); overflow: hidden;
+            background: var(--surface); border: 1px solid var(--border); position: relative;
+            box-shadow: var(--shadow);
+        }
+        .network-overlay {
+            position: absolute; top: 20px; left: 20px; z-index: 10;
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .pill-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .filter-chip {
+            background: var(--surface); border: 1px solid var(--border); padding: 6px 12px;
+            border-radius: 99px; font-size: 12px; font-weight: 600; color: var(--muted); cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: 0.2s;
+        }
+        .filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
         
-        #sector-legend {
-            position: absolute; bottom: 20px; right: 20px; z-index: 5;
-            display: flex; flex-direction: column; align-items: flex-end; gap: 5px; pointer-events: none;
+        .network-details {
+            position: absolute; top: 20px; right: 20px; width: 280px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow);
+            transform: translateX(120%); transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
-        .sector-chip {
-            background: var(--panel); padding: 5px 10px; border-radius: 12px; border: 1px solid var(--border);
-            font-size: 11px; color: #ccc; cursor: pointer; pointer-events: auto;
-            display: flex; align-items: center; gap: 6px;
-        }
-        .dot { width: 8px; height: 8px; border-radius: 50%; }
+        .network-details.visible { transform: translateX(0); }
 
-        #toggle-btn {
-            position: absolute; top: 20px; left: 400px; z-index: 20;
-            background: var(--panel); border: 1px solid var(--border); color: #fff;
-            padding: 8px; border-radius: 6px; cursor: pointer; transition: left 0.3s ease;
+        /* --- VIEW: HISTORY --- */
+        .history-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .time-range { display: flex; background: var(--surface); border-radius: 99px; padding: 4px; border: 1px solid var(--border); }
+        .tr-btn {
+            padding: 6px 16px; border-radius: 99px; font-size: 12px; font-weight: 600;
+            color: var(--muted); cursor: pointer; transition: 0.2s;
         }
-        #sidebar.collapsed + #toggle-btn { left: 20px; }
+        .tr-btn.active { background: var(--text); color: var(--bg); }
+
+        /* D3 TOOLTIP */
+        #tooltip {
+            position: absolute; opacity: 0; pointer-events: none;
+            background: var(--surface); color: var(--text);
+            padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 100; font-size: 12px;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
 
-    <div id="sidebar">
-        <div class="header">
-            <h1 style="color:var(--accent); font-size:14px; margin:0;">BUFFETT ENGINE</h1>
-            <div class="search-wrapper">
-                <input type="text" id="search-input" placeholder="Search Ticker..." list="tickers">
-                <datalist id="tickers"></datalist>
+    <header>
+        <div class="app-title">
+            BUFFETT<span>FOCUS</span>
+        </div>
+        
+        <div class="nav-container">
+            <div class="nav-pills">
+                <div class="nav-item active" onclick="app.switchView('overview')">Overview</div>
+                <div class="nav-item" onclick="app.switchView('history')">History</div>
+                <div class="nav-item" onclick="app.switchView('network')">Network</div>
+                <div class="nav-item" onclick="app.switchView('compare')">Compare</div>
             </div>
         </div>
 
-        <div class="tabs">
-            <div class="tab active" onclick="switchTab('snapshot')">SNAPSHOT</div>
-            <div class="tab" onclick="switchTab('history')">HISTORY</div>
-        </div>
+        <button class="theme-toggle" onclick="app.toggleTheme()">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"></circle>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+            </svg>
+        </button>
+    </header>
 
-        <div class="content">
-            <div id="view-snapshot" class="view-section active">
-                <h2 id="detail-ticker" style="margin:0 0 5px 0;">Select Ticker</h2>
-                <div id="detail-industry" style="font-size:12px; color:#64748b; margin-bottom:15px;">--</div>
-                
-                <div id="radar-viz"></div> 
-                
-                <div style="margin-top:20px;">
-                    <div class="metric-card">
-                        <div class="metric-info">
-                            <h4>Buffett Score</h4>
-                            <div class="val" id="val-score" style="color:var(--accent)">--</div>
-                        </div>
+    <div class="search-bar" id="global-search">
+        <input type="text" class="search-input" placeholder="Search Ticker (e.g., AAPL)..." list="tickers">
+        <datalist id="tickers"></datalist>
+    </div>
+
+    <main>
+        
+        <div id="view-overview" class="view-panel active">
+            <div class="overview-grid">
+                <div class="side-col">
+                    <div class="card" style="text-align: center;">
+                        <h2 id="ov-ticker" style="font-size: 32px; font-weight: 800; margin: 0;">--</h2>
+                        <div id="ov-name" style="color: var(--muted); font-size: 14px; margin-bottom: 10px;">Select a company</div>
+                        <div id="ov-score" class="badge neutral" style="display: inline-block; font-size: 14px; padding: 6px 12px;">Score: --</div>
+                        <div id="radar-container" style="height: 220px; margin-top: 20px;"></div>
                     </div>
-
-                    <div class="metric-card">
-                        <div class="metric-info">
-                            <h4>Gross Margin</h4>
-                            <div class="val" id="val-gm">--</div>
-                        </div>
-                        <div class="metric-bench">
-                            <span class="b-val" id="bench-gm">--</span>
-                            Sector Avg
-                        </div>
-                    </div>
-
-                    <div class="metric-card">
-                        <div class="metric-info">
-                            <h4>R&D / Gross Profit</h4>
-                            <div class="val" id="val-rd">--</div>
-                        </div>
-                        <div class="metric-bench">
-                            <span class="b-val" id="bench-rd">--</span>
-                            Sector Avg
-                        </div>
-                    </div>
-
-                    <div class="metric-card">
-                        <div class="metric-info">
-                            <h4>ROIC (Avg)</h4>
-                            <div class="val" id="val-roic">--</div>
-                        </div>
-                        <div class="metric-bench">
-                            <span class="b-val" id="bench-roic">--</span>
-                            Sector Avg
+                    
+                    <div class="card">
+                        <div class="card-header"><span class="card-title">Profile</span></div>
+                        <div style="font-size: 13px; line-height: 1.6; color: var(--muted);">
+                            <div id="ov-sector">--</div>
+                            <div id="ov-industry" style="color: var(--text); font-weight: 600;">--</div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="view-history" class="view-section">
-                <div class="chart-container" id="chart-gm"></div>
-                <div class="chart-container" id="chart-roic"></div>
-                <div class="chart-container" id="chart-rd"></div>
+                <div class="main-col">
+                    <div class="card">
+                        <div class="card-header">
+                            <span class="card-title">Moat Indicators</span>
+                            <span class="card-title" style="cursor:help">ⓘ</span>
+                        </div>
+                        <div class="metric-grid" id="moat-metrics">
+                            </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header"><span class="card-title">Financial Strength</span></div>
+                        <div class="metric-grid" id="strength-metrics"></div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <button id="toggle-btn" onclick="document.querySelector('#sidebar').classList.toggle('collapsed')">☰</button>
+        <div id="view-history" class="view-panel">
+            <div class="card" style="min-height: 100%;">
+                <div class="history-controls">
+                    <div>
+                        <h2 id="hist-title" style="margin:0; font-size: 20px;">Historical Performance</h2>
+                        <span id="hist-ticker" style="color: var(--primary); font-weight: 700;">--</span>
+                    </div>
+                    <div class="time-range">
+                        <div class="tr-btn" onclick="app.setRange('1Y')">1Y</div>
+                        <div class="tr-btn active" onclick="app.setRange('5Y')">5Y</div>
+                        <div class="tr-btn" onclick="app.setRange('10Y')">10Y</div>
+                    </div>
+                </div>
+                <div id="history-charts-container" style="display: flex; flex-direction: column; gap: 24px; padding-bottom: 40px;">
+                    </div>
+            </div>
+        </div>
 
-    <div id="sector-legend"></div>
+        <div id="view-network" class="view-panel" style="padding: 0;">
+            <div class="network-container">
+                <div class="network-overlay">
+                    <div class="pill-group">
+                        <div class="filter-chip active" onclick="app.graphFilter('sector')">By Sector</div>
+                        <div class="filter-chip" onclick="app.graphFilter('moat')">By Moat Score</div>
+                    </div>
+                    <div id="sector-legend" style="margin-top: 10px; display: flex; flex-direction: column; gap: 4px;"></div>
+                </div>
 
-    <div id="graph-container">
-        <canvas id="edges-canvas"></canvas>
-        <svg id="nodes-svg"></svg>
-        <div id="tooltip" style="position: absolute; opacity: 0; pointer-events: none; background: rgba(0,0,0,0.9); padding: 8px; border-radius: 4px; border: 1px solid #444; z-index: 100; font-size: 12px; color:white;"></div>
-    </div>
+                <div class="network-details" id="net-details">
+                    <h3 id="net-ticker" style="margin: 0;">--</h3>
+                    <p id="net-name" style="color: var(--muted); font-size: 12px; margin-top: 4px;">--</p>
+                    <hr style="border: 0; border-top: 1px solid var(--border); margin: 15px 0;">
+                    <div class="metric-instrument" style="background: var(--bg);">
+                        <div class="mi-top">Score</div>
+                        <div class="mi-val" id="net-score">--</div>
+                    </div>
+                    <button style="width: 100%; margin-top: 15px; padding: 10px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;" onclick="app.switchView('history')">
+                        View History
+                    </button>
+                </div>
+
+                <canvas id="edges-canvas" style="position: absolute; top:0; left:0; pointer-events:none;"></canvas>
+                <svg id="nodes-svg" style="position: absolute; top:0; left:0; width:100%; height:100%;"></svg>
+            </div>
+        </div>
+
+        <div id="view-compare" class="view-panel">
+            <div class="card">
+                <div class="card-header"><span class="card-title">Comparison Table</span></div>
+                <div style="text-align: center; padding: 40px; color: var(--muted);">
+                    Select multiple companies from the Network view to compare.
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="tooltip"></div>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="js/graph.js"></script>
-    <script>
-        function switchTab(tab) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
-            event.target.classList.add('active');
-            document.getElementById('view-' + tab).classList.add('active');
-        }
-    </script>
 </body>
 </html>
