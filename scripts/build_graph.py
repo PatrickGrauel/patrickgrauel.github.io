@@ -8,118 +8,139 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics.pairwise import cosine_similarity
 from tqdm import tqdm
 
-# EXPANDED LIST (For testing robustness)
-# In production, load this from a csv like 'sp500.csv'
+# EXPANDED LIST (30 Tickers for testing)
 TICKERS = [
     "AAPL", "MSFT", "GOOGL", "AMZN", "BRK-B", "JNJ", "V", "PG", "KO", "PEP", 
     "COST", "MCD", "NVDA", "TSLA", "XOM", "META", "LLY", "AVGO", "JPM", "UNH",
     "DIS", "NKE", "INTC", "AMD", "NFLX", "ADBE", "CRM", "CMCSA", "VZ", "T"
 ]
 
-def fetch_history(ticker):
+def get_buffett_analysis(ticker):
     """
-    Fetches 4 years of history to check STABILITY.
-    Returns a dict of aggregated metrics.
+    Extracts deep 'Old School Value' metrics:
+    - SG&A Efficiency (<30% is best)
+    - CapEx Intensity (<25% is best)
+    - Interest Coverage (Interest < 15% of Op Income)
     """
     try:
         stock = yf.Ticker(ticker)
         
-        # 1. Fetch Financials (Income Statement)
-        # We need history to prove consistency (The "Moat")
-        income = stock.financials
-        balance = stock.balance_sheet
+        # 1. Fetch Financials
+        inc = stock.financials.T.sort_index()     # Income Statement
+        bal = stock.balance_sheet.T.sort_index()  # Balance Sheet
+        cash = stock.cashflow.T.sort_index()      # Cash Flow
         
-        if income.empty or balance.empty:
+        if inc.empty or bal.empty or cash.empty:
             return None
 
-        # 2. Extract Key Series (Last 4 Years)
-        # Transpose so rows = years, cols = metrics
-        inc_T = income.T.sort_index(ascending=True).tail(4)
-        bal_T = balance.T.sort_index(ascending=True).tail(4)
+        # Helper to get latest value or 0
+        def get_latest(df, key):
+            if key in df:
+                val = df[key].iloc[-1]
+                return 0 if pd.isna(val) else float(val)
+            return 0
 
-        # 3. Calculate "Moat" Stability (Gross Margin Consistency)
-        # Gross Margin = Gross Profit / Total Revenue
-        if 'Gross Profit' in inc_T and 'Total Revenue' in inc_T:
-            margins = inc_T['Gross Profit'] / inc_T['Total Revenue']
-            avg_margin = margins.mean()
-            # Stability = Lower Standard Deviation is better
-            margin_volatility = margins.std() 
-        else:
-            avg_margin = 0
-            margin_volatility = 1.0 # High volatility penalty
+        # --- EXTRACT METRICS (Latest Year) ---
+        revenue = get_latest(inc, 'Total Revenue')
+        gross_profit = get_latest(inc, 'Gross Profit')
+        op_income = get_latest(inc, 'Operating Income')
+        net_income = get_latest(inc, 'Net Income')
+        
+        sga = get_latest(inc, 'Selling General And Administration')
+        interest = get_latest(inc, 'Interest Expense')
+        
+        # Note: CapEx is usually negative in cashflow, so we flip it
+        capex = abs(get_latest(cash, 'Capital Expenditure'))
+        
+        total_debt = get_latest(bal, 'Total Debt')
+        equity = get_latest(bal, 'Stockholders Equity')
 
-        # 4. Calculate "Safety" (Debt to Equity)
-        # Taking the most recent year
-        recent_debt = bal_T['Total Debt'].iloc[-1] if 'Total Debt' in bal_T else 0
-        recent_equity = bal_T['Stockholders Equity'].iloc[-1] if 'Stockholders Equity' in bal_T else 1
-        debt_to_equity = recent_debt / recent_equity
+        # --- CALCULATE RATIOS ---
+        
+        # 1. Gross Margin (>40% = Moat)
+        gm = (gross_profit / revenue) if revenue > 0 else 0
+        
+        # 2. SG&A Efficiency (<30% of Gross Profit is fantastic)
+        sga_ratio = (sga / gross_profit) if gross_profit > 0 else 1.0
+        
+        # 3. CapEx Intensity (<25% of Net Income = Moat)
+        capex_ratio = (capex / net_income) if net_income > 0 else 1.0
+        
+        # 4. Interest Coverage (Interest < 15% of Op Income)
+        # Some companies report interest as negative numbers, some positive. use abs().
+        interest_ratio = (abs(interest) / op_income) if op_income > 0 else 0.5
+        
+        # 5. Debt Payoff Years (Total Debt / Net Income < 3 years is great)
+        debt_payoff_years = (total_debt / net_income) if net_income > 0 else 10.0
 
-        # 5. Owner Earnings Proxy (Latest FCF)
-        # FCF data often lives in the 'info' or cashflow statement. 
-        # For speed/reliability, we stick to 'info' for the absolute latest snapshot.
+        # 6. Debt to Equity (< 0.8 is great)
+        de_ratio = (total_debt / equity) if equity > 0 else 10.0
+
+        # --- SCORING (The "Report Card") ---
+        score = 0
+        
+        # Gross Margin
+        if gm > 0.40: score += 20
+        elif gm > 0.20: score += 10
+        
+        # SG&A (Lower is better)
+        if sga_ratio < 0.30: score += 20
+        elif sga_ratio < 0.50: score += 10
+        elif sga_ratio > 0.80: score -= 10
+        
+        # CapEx (Lower is better)
+        if capex_ratio < 0.25: score += 20
+        elif capex_ratio < 0.50: score += 10
+        
+        # Interest Coverage
+        if interest_ratio < 0.15: score += 10
+        
+        # Debt Payoff
+        if debt_payoff_years < 3.0: score += 15
+        elif debt_payoff_years < 5.0: score += 5
+        
+        # Debt/Equity
+        if de_ratio < 0.8: score += 15
+
+        # Final Cap
+        score = min(max(round(score), 0), 100)
+        
         info = stock.info
-        fcf = info.get('freeCashflow', 0)
-        roe = info.get('returnOnEquity', 0)
-
+        
         return {
             "id": ticker,
             "name": info.get('shortName', ticker),
             "sector": info.get('sector', 'Unknown'),
-            # DEEP METRICS
-            "avg_gross_margin": float(avg_margin),
-            "margin_volatility": float(0 if np.isnan(margin_volatility) else margin_volatility),
-            "debt_to_equity": float(debt_to_equity),
-            "roe": float(roe),
-            "owner_earnings": fcf if fcf is not None else 0
+            "buffettScore": score,
+            "owner_earnings": info.get('freeCashflow', 0) or 0,
+            # DETAILED METRICS FOR FRONTEND
+            "metrics": {
+                "gm": gm,
+                "sga_ratio": sga_ratio,
+                "capex_ratio": capex_ratio,
+                "interest_ratio": interest_ratio,
+                "debt_years": debt_payoff_years,
+                "de_ratio": de_ratio
+            }
         }
 
     except Exception as e:
-        # Don't crash the whole script if one ticker fails
         print(f"⚠️ Error fetching {ticker}: {e}")
         return None
 
-def calculate_advanced_score(df):
-    """
-    Scores (0-100) based on Consistency + Quality.
-    """
-    scores = []
-    for _, row in df.iterrows():
-        score = 0
-        
-        # 1. MOAT STRENGTH (40 pts)
-        # Reward High Margins AND Low Volatility
-        gm = row['avg_gross_margin']
-        vol = row['margin_volatility']
-        
-        if gm > 0.40: score += 30
-        elif gm > 0.20: score += 15
-        
-        # Stability Bonus (If margins barely moved in 4 years)
-        if vol < 0.02: score += 10 # Rock solid
-        elif vol < 0.05: score += 5
-        
-        # 2. FORTRESS BALANCE SHEET (30 pts)
-        de = row['debt_to_equity']
-        if de < 0.5: score += 30
-        elif de < 1.0: score += 15
-        
-        # 3. CAPITAL EFFICIENCY (30 pts)
-        roe = row['roe']
-        if roe > 0.20: score += 30
-        elif roe > 0.12: score += 15
-        
-        scores.append(round(score))
-    return scores
-
 def build_similarity_links(df):
-    # Cluster by: Margins, Debt, ROE, AND Volatility
-    features = df[['avg_gross_margin', 'debt_to_equity', 'roe', 'margin_volatility']].fillna(0)
+    # Cluster by Fundamental DNA (Margins, CapEx, Debt Structure)
+    # We flatten the metrics dict into the main df for clustering
+    metrics_df = pd.json_normalize(df['metrics'])
+    
+    # Normalize
     scaler = MinMaxScaler()
-    features_norm = scaler.fit_transform(features)
+    features_norm = scaler.fit_transform(metrics_df.fillna(0))
     sim_matrix = cosine_similarity(features_norm)
     
     links = []
     for i in range(len(df)):
+        # Connect to top 3 most similar peers
         similar_indices = sim_matrix[i].argsort()[-4:-1]
         for neighbor_idx in similar_indices:
             sim_score = sim_matrix[i][neighbor_idx]
@@ -132,26 +153,21 @@ def build_similarity_links(df):
     return links
 
 if __name__ == "__main__":
-    print(f"🚀 Starting Deep Scan on {len(TICKERS)} tickers...")
+    print(f"🚀 Analyzing {len(TICKERS)} companies using Old School Value rules...")
     
     data = []
-    # Using TQDM for progress bar
     for t in tqdm(TICKERS):
-        res = fetch_history(t)
+        res = get_buffett_analysis(t)
         if res: 
             data.append(res)
-        # RATE LIMIT PROTECTION: Sleep 0.5s between requests
-        time.sleep(0.5)
+        time.sleep(0.25) # Be nice to API
         
     if not data:
-        print("❌ Critical: No data fetched.")
+        print("❌ No data fetched.")
         exit(1)
 
     df = pd.DataFrame(data)
-    print("📊 Calculating Buffett Scores...")
-    df['buffettScore'] = calculate_advanced_score(df)
-    
-    print("🕸️ Building Network Connections...")
+    print("🕸️ Building Network...")
     links = build_similarity_links(df)
     
     output = {
@@ -163,4 +179,4 @@ if __name__ == "__main__":
     with open('data/graph_data.json', 'w') as f:
         json.dump(output, f, indent=2)
         
-    print(f"✅ Success! Generated {len(df)} nodes and {len(links)} connections.")
+    print(f"✅ Data generated: {len(df)} nodes, {len(links)} links.")
