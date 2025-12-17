@@ -14,8 +14,22 @@
         * { box-sizing: border-box; }
         body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--font); overflow: hidden; height: 100vh; }
 
-        /* GRAPH LAYER */
-        #graph-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: radial-gradient(circle at center, #15171e 0%, #0b0c10 100%); }
+        /* GRAPH LAYER - Full viewport */
+        #graph-container { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: 0; 
+            background: radial-gradient(circle at center, #15171e 0%, #0b0c10 100%); 
+        }
+        
+        #main-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
         
         /* ZOOM CONTROLS */
         .zoom-controls {
@@ -72,7 +86,13 @@
         }
 
         /* RADAR & HISTOGRAM */
-        #radar-container { height: 200px; margin-bottom: 20px; }
+        #radar-container { 
+            height: 200px; 
+            margin-bottom: 20px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         
         /* TAGS */
         .tag { font-size: 10px; padding: 2px 6px; border-radius: 4px; background: var(--surface-h); border: 1px solid var(--border); color: var(--muted); }
@@ -92,7 +112,19 @@
             background: var(--surface); color: var(--text); border: 1px solid var(--border);
             padding: 8px 12px; border-radius: 8px; cursor: pointer; display: none;
         }
-        #sidebar.hidden + #toggle-sidebar { display: block; }
+        #sidebar.hidden ~ #toggle-sidebar { display: block; }
+        
+        /* Scrollbar styling */
+        .panel-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .panel-content::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        .panel-content::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
@@ -144,8 +176,7 @@
                 <div id="radar-container"></div>
 
                 <div style="font-size:11px; font-weight:700; color:var(--muted); margin:20px 0 10px 0;">BUFFETT METRICS & BENCHMARKS</div>
-                <div id="metrics-list">
-                    </div>
+                <div id="metrics-list"></div>
             </div>
         </div>
     </div>
