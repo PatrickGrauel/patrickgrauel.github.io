@@ -3,202 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Radar | Buffett Analysis</title>
+    <title>Buffett Network Graph</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        body {
-            background-color: #0d1117; /* Deep Radar Black */
-            color: #00ff41; /* CRT Green */
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* --- UI OVERLAY --- */
-        #ui-layer {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 10;
-            background: rgba(0, 20, 0, 0.8);
-            padding: 15px;
-            border: 1px solid #004400;
-            border-radius: 5px;
-        }
-
-        h1 { margin: 0 0 10px 0; font-size: 1.2rem; text-shadow: 0 0 5px #00ff41; }
-        p { margin: 5px 0; font-size: 0.8rem; color: #88cc88; }
+        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; overflow: hidden; }
         
-        .legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
-        .green { background: #00ff41; box-shadow: 0 0 5px #00ff41; }
-        .red { background: #ff3333; box-shadow: 0 0 5px #ff3333; }
-
-        /* --- RADAR BACKGROUND ANIMATION --- */
-        .radar-sweep {
+        /* UI CONTROL PANEL */
+        #controls {
             position: absolute;
-            top: 50%; left: 50%;
-            width: 100vmax; height: 100vmax;
-            transform: translate(-50%, -50%);
-            background: conic-gradient(from 0deg, transparent 0deg, rgba(0, 255, 65, 0.1) 60deg, transparent 61deg);
-            border-radius: 50%;
-            animation: radar-spin 4s linear infinite;
-            pointer-events: none; /* Let clicks pass through */
-            z-index: 0;
+            top: 20px; left: 20px;
+            background: rgba(30,30,30,0.9);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            z-index: 100;
         }
+        select { background: #222; color: #0f0; border: 1px solid #0f0; padding: 5px; margin-top: 5px; }
+        .legend { font-size: 12px; color: #ccc; margin-top: 10px; }
         
-        @keyframes radar-spin { 
-            from { transform: translate(-50%, -50%) rotate(0deg); } 
-            to { transform: translate(-50%, -50%) rotate(360deg); } 
-        }
-
-        /* --- TOOLTIP --- */
+        /* GRAPH STYLES */
+        .link { stroke: #333; stroke-opacity: 0.6; }
+        .node { stroke: #fff; stroke-width: 1.5px; cursor: pointer; }
+        text { font-size: 10px; fill: #eee; pointer-events: none; }
+        
+        /* TOOLTIP */
         #tooltip {
-            position: absolute;
-            visibility: hidden;
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #00ff41;
-            padding: 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            pointer-events: none;
-            z-index: 20;
-            white-space: pre-line;
+            position: absolute; visibility: hidden;
+            background: rgba(0,0,0,0.9); border: 1px solid #fff;
+            padding: 10px; border-radius: 5px; font-size: 12px; pointer-events: none;
         }
-
-        /* Back Button */
-        .back-btn {
-            position: absolute;
-            top: 20px; right: 20px;
-            color: #00ff41;
-            text-decoration: none;
-            border: 1px solid #00ff41;
-            padding: 5px 15px;
-            z-index: 10;
-        }
-        .back-btn:hover { background: #00ff41; color: black; }
-
+        
+        /* BACK BUTTON */
+        .back { position: absolute; bottom: 20px; left: 20px; color: #666; text-decoration: none; }
+        .back:hover { color: #fff; }
     </style>
 </head>
 <body>
 
-    <div class="radar-sweep"></div>
-
-    <a href="/" class="back-btn">← Return to Cockpit</a>
-
-    <div id="ui-layer">
-        <h1>WARREN BUFFETT RADAR</h1>
-        <p>Targeting: S&P 500 Selection</p>
-        <p><span class="legend-dot green"></span>Approved (High Margin, Low Debt)</p>
-        <p><span class="legend-dot red"></span>Rejected (Risky Financials)</p>
+<div id="controls">
+    <h3>Buffett Market Network</h3>
+    <label>Color By Metric:</label><br>
+    <select id="metricSelect">
+        <option value="score">Aggregate Score (0-5)</option>
+        <option value="grossMargin">Gross Margin (>40%)</option>
+        <option value="debtToEquity">Debt/Equity (<0.5)</option>
+        <option value="sgaRatio">SG&A Efficiency (<30%)</option>
+    </select>
+    <div class="legend">
+        Lines connect stocks with<br>similar price movement.
     </div>
+</div>
 
-    <div id="tooltip"></div>
-    <div id="chart"></div>
+<div id="tooltip"></div>
+<a href="/" class="back">← Exit to Cockpit</a>
 
-    <script>
-        // 1. SETUP CANVAS
-        const width = window.innerWidth;
-        const height = window.innerHeight;
+<script>
+    const width = window.innerWidth, height = window.innerHeight;
 
-        const svg = d3.select("#chart")
-            .append("svg")
-            .attr("width", width)
-            .attr("height", height)
-            .style("z-index", "1"); // Above background, below UI
+    // Zoomable Canvas
+    const svg = d3.select("body").append("svg")
+        .attr("width", width).attr("height", height)
+        .call(d3.zoom().on("zoom", (event) => g.attr("transform", event.transform)))
+        .append("g");
+    
+    const g = svg.append("g");
 
-        // 2. FETCH DATA
-        d3.json("data.json").then(data => {
-            
-            // 3. SCALE FOR BUBBLE SIZES
-            // We map Market Cap (billions) to Radius (pixels)
-            const sizeScale = d3.scaleSqrt()
-                .domain([0, 3000000000000]) // 0 to 3 Trillion
-                .range([5, 80]); // Radius between 5px and 80px
+    d3.json("data.json").then(graph => {
+        
+        // SCALES
+        const sizeScale = d3.scaleSqrt()
+            .domain([0, 3000000000000])
+            .range([5, 30]); // Smaller nodes for network look
 
-            // 4. CREATE FORCES (The Physics)
-            const simulation = d3.forceSimulation(data)
-                .force("charge", d3.forceManyBody().strength(5)) // Slight attraction
-                .force("center", d3.forceCenter(width / 2, height / 2)) // Pull to middle
-                .force("collide", d3.forceCollide().radius(d => sizeScale(d.marketCap) + 2).strength(0.7)); // Don't overlap
+        // FORCE SIMULATION
+        const simulation = d3.forceSimulation(graph.nodes)
+            .force("link", d3.forceLink(graph.links).id(d => d.id).distance(100)) // Connect correlated stocks
+            .force("charge", d3.forceManyBody().strength(-300)) // Repel each other
+            .force("center", d3.forceCenter(width / 2, height / 2));
 
-            // 5. DRAW BUBBLES
-            const nodes = svg.selectAll("circle")
-                .data(data)
-                .enter()
-                .append("circle")
-                .attr("r", d => sizeScale(d.marketCap))
-                .attr("fill", d => d.color)
-                .attr("stroke", "#fff")
-                .attr("stroke-width", 1)
-                .attr("opacity", 0.8)
-                .style("cursor", "pointer")
-                .call(d3.drag() // Enable dragging
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended));
+        // DRAW LINKS (The Web)
+        const link = g.append("g")
+            .attr("class", "links")
+            .selectAll("line")
+            .data(graph.links)
+            .enter().append("line")
+            .attr("class", "link")
+            .attr("stroke-width", d => d.value * 2); // Thicker line = higher correlation
 
-            // 6. ADD LABELS (Tickers)
-            const labels = svg.selectAll("text")
-                .data(data)
-                .enter()
-                .append("text")
-                .text(d => d.ticker)
-                .attr("text-anchor", "middle")
-                .attr("dy", ".3em") // Center vertically
-                .attr("fill", "white")
-                .attr("font-size", d => Math.min(sizeScale(d.marketCap) / 2, 12) + "px") // Scale font
-                .style("pointer-events", "none");
+        // DRAW NODES (The Stocks)
+        const node = g.append("g")
+            .attr("class", "nodes")
+            .selectAll("circle")
+            .data(graph.nodes)
+            .enter().append("circle")
+            .attr("class", "node")
+            .attr("r", d => sizeScale(d.marketCap))
+            .attr("fill", d => getColor(d, "score"))
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
 
-            // 7. TICK FUNCTION (Animation Loop)
-            simulation.on("tick", () => {
-                nodes
-                    .attr("cx", d => d.x)
-                    .attr("cy", d => d.y);
+        // LABELS
+        const labels = g.append("g")
+            .selectAll("text")
+            .data(graph.nodes)
+            .enter().append("text")
+            .text(d => d.id)
+            .attr("dx", 12)
+            .attr("dy", ".35em");
 
-                labels
-                    .attr("x", d => d.x)
-                    .attr("y", d => d.y);
-            });
+        // UPDATE LOOP
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
 
-            // 8. TOOLTIP INTERACTION
-            const tooltip = d3.select("#tooltip");
-            
-            nodes.on("mouseover", (event, d) => {
-                tooltip.style("visibility", "visible")
-                       .html(`<strong>${d.ticker}</strong> (${d.sector})<br>
-                              Score: ${d.score}/2<br>
-                              Gross Margin: ${(d.grossMargin * 100).toFixed(1)}%<br>
-                              Debt/Equity: ${d.debtToEquity}`);
-                d3.select(event.currentTarget).attr("stroke", "yellow").attr("stroke-width", 3);
-            })
-            .on("mousemove", (event) => {
-                tooltip.style("top", (event.pageY + 10) + "px")
-                       .style("left", (event.pageX + 10) + "px");
-            })
-            .on("mouseout", (event) => {
-                tooltip.style("visibility", "hidden");
-                d3.select(event.currentTarget).attr("stroke", "#fff").attr("stroke-width", 1);
-            });
+            node
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y);
 
-            // DRAG FUNCTIONS
-            function dragstarted(event, d) {
-                if (!event.active) simulation.alphaTarget(0.3).restart();
-                d.fx = d.x;
-                d.fy = d.y;
-            }
-            function dragged(event, d) {
-                d.fx = event.x;
-                d.fy = event.y;
-            }
-            function dragended(event, d) {
-                if (!event.active) simulation.alphaTarget(0);
-                d.fx = null;
-                d.fy = null;
-            }
+            labels
+                .attr("x", d => d.x)
+                .attr("y", d => d.y);
         });
-    </script>
+
+        // --- INTERACTIVITY ---
+        
+        // 1. Tooltip
+        const tooltip = d3.select("#tooltip");
+        node.on("mouseover", (e, d) => {
+            tooltip.style("visibility", "visible")
+                .html(`<strong>${d.id}</strong><br>
+                       Score: ${d.buffettScore}/5<br>
+                       Margin: ${(d.metrics.grossMargin*100).toFixed(0)}%<br>
+                       Debt/Eq: ${d.metrics.debtToEquity}`);
+        }).on("mousemove", (e) => {
+            tooltip.style("top", (e.pageY+10)+"px").style("left", (e.pageX+10)+"px");
+        }).on("mouseout", () => tooltip.style("visibility", "hidden"));
+
+        // 2. Filter / Color Change Logic
+        d3.select("#metricSelect").on("change", function() {
+            const metric = this.value;
+            node.transition().duration(500).attr("fill", d => getColor(d, metric));
+        });
+
+        function getColor(d, metric) {
+            // Aggregate Score Color (Red to Green)
+            if (metric === "score") {
+                if (d.buffettScore >= 4) return "#00ff41"; // Green
+                if (d.buffettScore >= 2) return "#ffcc00"; // Yellow
+                return "#ff3333"; // Red
+            }
+            // Gross Margin Logic
+            if (metric === "grossMargin") {
+                return d.metrics.grossMargin > 0.4 ? "#00ff41" : "#555";
+            }
+            // Debt Logic
+            if (metric === "debtToEquity") {
+                return d.metrics.debtToEquity < 0.5 ? "#00ff41" : "#555";
+            }
+            return "#aaa";
+        }
+
+        // DRAG FUNCTIONS
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x; d.fy = d.y;
+        }
+        function dragged(event, d) {
+            d.fx = event.x; d.fy = event.y;
+        }
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null; d.fy = null;
+        }
+    });
+</script>
 </body>
 </html>
