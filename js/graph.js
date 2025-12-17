@@ -36,38 +36,49 @@ const app = {
         // Search
         document.getElementById('search-input').addEventListener('input', (e) => this.handleSearch(e.target.value));
         
-        // Leaderboard Toggle
+        // Leaderboard UI
         const btn = document.getElementById('btn-leaderboard');
+        const close = document.getElementById('lb-close');
         const lb = document.getElementById('leaderboard');
-        btn.addEventListener('click', () => {
-            const isVis = lb.classList.toggle('visible');
-            btn.classList.toggle('active', isVis);
-        });
+        
+        btn.addEventListener('click', () => lb.classList.add('visible'));
+        close.addEventListener('click', () => lb.classList.remove('visible'));
     },
     
     loadData() {
-        d3.json('data/graph_data.json').then(data => {
-            this.nodes = data.nodes;
-            this.links = data.links || [];
-            this.industryAverages = data.industry_averages || {};
-            this.renderGraph();
-            this.renderLeaderboard();
-            this.populateTickerList();
-        });
+        d3.json('data/graph_data.json')
+            .then(data => {
+                this.nodes = data.nodes;
+                this.links = data.links || [];
+                this.industryAverages = data.industry_averages || {};
+                
+                // Hide Loader
+                d3.select('#loader').classed('done', true);
+
+                this.renderGraph();
+                this.setupLeaderboardFilters();
+                this.renderLeaderboard('all');
+                this.populateTickerList();
+            })
+            .catch(err => {
+                console.error("Data Load Error:", err);
+                d3.select('#loader').html('<div style="color:red">Failed to load data.<br>Check console.</div>');
+            });
     },
     
     renderGraph() {
         const width = this.svg.node().clientWidth, height = this.svg.node().clientHeight;
         
+        // RELAXED FORCES to fix "Disconnected" look
         this.simulation = d3.forceSimulation(this.nodes)
-            .force('charge', d3.forceManyBody().strength(-300))
+            .force('charge', d3.forceManyBody().strength(-200))
             .force('center', d3.forceCenter(width/2, height/2))
-            .force('collide', d3.forceCollide().radius(d => this.getNodeRadius(d) + 5))
-            .force('link', d3.forceLink(this.links).id(d => d.id).distance(100));
+            .force('collide', d3.forceCollide().radius(d => this.getNodeRadius(d) + 8))
+            .force('link', d3.forceLink(this.links).id(d => d.id).distance(120).strength(0.3));
 
         const link = this.g.append('g').selectAll('line')
             .data(this.links).join('line')
-            .attr('stroke', '#30363d').attr('stroke-width', d => Math.max(0.5, (d.value||0)*2)).attr('opacity', 0.6);
+            .attr('stroke', '#30363d').attr('stroke-width', 1).attr('opacity', 0.4);
 
         const nodeGroup = this.g.append('g').selectAll('g')
             .data(this.nodes).join('g')
@@ -92,10 +103,41 @@ const app = {
     },
 
     // --- LEADERBOARD LOGIC ---
-    renderLeaderboard() {
-        const sorted = [...this.nodes].sort((a,b) => b.buffettScore - a.buffettScore);
+    setupLeaderboardFilters() {
+        const sectors = [...new Set(this.nodes.map(n => n.sector))].sort();
+        const container = d3.select('#lb-filters');
+        
+        sectors.forEach(s => {
+            container.append('button').attr('class', 'filter-btn')
+                .text(s).on('click', function() {
+                    d3.selectAll('.filter-btn').classed('active', false);
+                    d3.select(this).classed('active', true);
+                    app.renderLeaderboard(s);
+                });
+        });
+        
+        // "All" button logic handled in HTML default, but need click handler re-bind if you want
+        d3.select('.filter-btn[data-sector="all"]').on('click', function() {
+            d3.selectAll('.filter-btn').classed('active', false);
+            d3.select(this).classed('active', true);
+            app.renderLeaderboard('all');
+        });
+    },
+
+    renderLeaderboard(sectorFilter) {
+        let filtered = this.nodes;
+        if(sectorFilter !== 'all') {
+            filtered = this.nodes.filter(n => n.sector === sectorFilter);
+        }
+        const sorted = filtered.sort((a,b) => b.buffettScore - a.buffettScore);
+        
         const list = d3.select('#lb-list');
         list.html('');
+
+        if(sorted.length === 0) {
+            list.html('<div style="padding:20px; text-align:center; color:#666">No stocks found in this sector</div>');
+            return;
+        }
 
         sorted.forEach((n, i) => {
             const row = list.append('div').attr('class', 'lb-row')
@@ -108,7 +150,7 @@ const app = {
             row.append('div').attr('class', 'lb-rank').text(i + 1);
             const info = row.append('div').attr('class', 'lb-info');
             info.append('span').attr('class', 'lb-ticker').text(n.id);
-            info.append('span').attr('class', 'lb-name').text(n.name.substring(0, 20));
+            info.append('span').attr('class', 'lb-name').text(n.name.substring(0, 25));
             
             const scoreClass = n.buffettScore >= 70 ? '#00c853' : n.buffettScore >= 40 ? '#ffd600' : '#ff3d00';
             row.append('div').attr('class', 'lb-score')
@@ -117,48 +159,7 @@ const app = {
         });
     },
 
-    // --- CHARTING LOGIC ---
-    renderLineChart(containerId, data, indAvg, label, suffix='%') {
-        const container = d3.select(containerId);
-        const w = 340, h = 100, margin = {top: 5, right: 10, bottom: 20, left: 30};
-        
-        container.append('div').attr('class', 'chart-label')
-            .html(`<span>${label}</span> <span style="color:var(--accent)">Current: ${data[data.length-1]?.value.toFixed(1)}${suffix}</span>`);
-
-        const svg = container.append('svg').attr('width', w).attr('height', h);
-        const g = svg.append('g').attr('transform', `translate(${margin.left},${margin.top})`);
-        
-        const innerW = w - margin.left - margin.right;
-        const innerH = h - margin.top - margin.bottom;
-
-        // Scales
-        const x = d3.scalePoint().domain(data.map(d => d.date)).range([0, innerW]);
-        
-        // Y Domain: Include stock history AND industry average
-        const yMin = Math.min(d3.min(data, d => d.value), indAvg) * 0.9;
-        const yMax = Math.max(d3.max(data, d => d.value), indAvg) * 1.1;
-        const y = d3.scaleLinear().domain([yMin, yMax]).range([innerH, 0]);
-
-        // Industry Line (Dashed)
-        g.append('line')
-            .attr('x1', 0).attr('x2', innerW)
-            .attr('y1', y(indAvg)).attr('y2', y(indAvg))
-            .attr('class', 'line-industry');
-        
-        // Stock Line
-        const line = d3.line().x(d => x(d.date)).y(d => y(d.value));
-        g.append('path').datum(data).attr('class', 'line-stock').attr('d', line);
-
-        // Axes
-        g.append('g').attr('class', 'axis').attr('transform', `translate(0,${innerH})`).call(d3.axisBottom(x).ticks(5));
-        g.append('g').attr('class', 'axis').call(d3.axisLeft(y).ticks(4));
-        
-        // Industry Label
-        g.append('text').attr('x', innerW).attr('y', y(indAvg) - 4)
-            .attr('text-anchor', 'end').attr('fill', '#8b949e').attr('font-size', '10px')
-            .text(`Ind. Avg: ${indAvg.toFixed(1)}${suffix}`);
-    },
-
+    // --- DETAILS & CHARTING ---
     showDetails(stock) {
         d3.select('#sidebar').classed('hidden', false);
         d3.select('#det-ticker').text(stock.id);
@@ -169,54 +170,113 @@ const app = {
         sEl.text(stock.buffettScore)
            .attr('class', `score-lg ${stock.buffettScore >= 70 ? 'good' : stock.buffettScore >= 40 ? 'mid' : 'bad'}`);
 
-        // 1. Radar
         this.renderRadarChart(stock);
-
-        // 2. Charts
-        const charts = d3.select('#charts-container');
-        charts.html(''); // Clear previous
+        
+        // RENDER METRICS BLOCKS + CHARTS
+        const container = d3.select('#metrics-container');
+        container.html('');
         
         const ind = this.industryAverages[stock.industry] || {};
         const hist = stock.history || {};
 
-        if (hist.gross_margin && hist.gross_margin.length > 0) {
-            charts.append('div').attr('class', 'chart-container').attr('id', 'chart-gm');
-            this.renderLineChart('#chart-gm', hist.gross_margin, ind.gross_margin || 0, 'Gross Margin Trend');
-        }
-        
-        if (hist.net_margin && hist.net_margin.length > 0) {
-            charts.append('div').attr('class', 'chart-container').attr('id', 'chart-nm');
-            this.renderLineChart('#chart-nm', hist.net_margin, ind.net_margin || 0, 'Net Margin Trend'); // Changed from ind.gross_margin to ind.net_margin
-        }
+        // Helper to create a block
+        const addBlock = (label, key, suffix='%', histKey=null) => {
+            const val = stock.metrics[key];
+            if(val === undefined) return;
 
-        if (hist.roe && hist.roe.length > 0) {
-            charts.append('div').attr('class', 'chart-container').attr('id', 'chart-roe');
-            this.renderLineChart('#chart-roe', hist.roe, ind.roe || 0, 'ROE Trend');
-        }
+            const block = container.append('div').attr('class', 'metric-block');
+            
+            // 1. Text Value
+            const head = block.append('div').attr('class', 'mb-head');
+            head.append('span').text(label);
+            head.append('span').text(`Avg: ${(ind[key]||0).toFixed(1)}${suffix}`);
+            
+            block.append('div').attr('class', 'mb-val').text(`${val.toFixed(1)}${suffix}`);
+
+            // 2. Chart (if history exists)
+            if(histKey && hist[histKey] && hist[histKey].length > 0) {
+                const chartDiv = block.append('div').attr('class', 'mini-chart');
+                // Use a unique ID for the chart div
+                const chartId = `chart-${key}-${stock.id}`;
+                chartDiv.attr('id', chartId);
+                
+                this.renderLineChart(`#${chartId}`, hist[histKey], ind[key]||0);
+            }
+        };
+
+        addBlock('Gross Margin', 'gross_margin', '%', 'gross_margin');
+        addBlock('Net Margin', 'net_margin', '%', 'net_margin');
+        addBlock('ROE', 'roe', '%', 'roe');
+        addBlock('Debt/Equity', 'debt_to_equity', '');
+        addBlock('P/E Ratio', 'pe_ratio', '');
+    },
+
+    renderLineChart(containerId, data, indAvg) {
+        const container = d3.select(containerId);
+        const w = container.node().clientWidth, h = 80;
+        const margin = {top: 5, right: 0, bottom: 5, left: 0};
+        
+        const svg = container.append('svg').attr('width', w).attr('height', h);
+        
+        // X Scale
+        const x = d3.scalePoint().domain(data.map(d => d.date)).range([0, w]);
+        
+        // Y Scale (Include Industry Avg in domain)
+        const vals = data.map(d => d.value);
+        const yMin = Math.min(...vals, indAvg) * 0.9;
+        const yMax = Math.max(...vals, indAvg) * 1.1;
+        const y = d3.scaleLinear().domain([yMin, yMax]).range([h, 0]);
+
+        // Industry Line
+        svg.append('line')
+            .attr('x1', 0).attr('x2', w)
+            .attr('y1', y(indAvg)).attr('y2', y(indAvg))
+            .attr('class', 'line-industry');
+
+        // Stock Line
+        const line = d3.line().x(d => x(d.date)).y(d => y(d.value)).curve(d3.curveMonotoneX);
+        svg.append('path').datum(data).attr('class', 'line-stock').attr('d', line);
+        
+        // Add Dots
+        svg.selectAll('circle').data(data).enter().append('circle')
+            .attr('cx', d => x(d.date)).attr('cy', d => y(d.value))
+            .attr('r', 2).attr('fill', '#0079fd');
     },
 
     // Utilities
     getNodeRadius(d) { return Math.max(20, Math.log10(d.marketCap || 1e9) * 3); },
-    renderRadarChart(stock) { /* Keep previous simple radar logic */ }, // Truncated for brevity, use previous file's logic or simple placeholder
+    renderRadarChart(stock) {
+         // Re-using the simple radar logic
+         const container = d3.select('#radar-container');
+         container.html('');
+         const width = 200, height = 200;
+         const svg = container.append('svg').attr('width', width).attr('height', height);
+         const m = stock.metrics;
+         const data = [
+             {axis: "Margins", value: Math.min(1, m.gross_margin / 60)},
+             {axis: "Returns", value: Math.min(1, m.roe / 30)},
+             {axis: "Safety", value: Math.min(1, 1 / (m.debt_to_equity + 0.1))},
+             {axis: "Cash", value: Math.min(1, m.fcf_margin / 25)},
+             {axis: "Eff", value: Math.min(1, m.roic / 20)}
+         ];
+         const r = 80; const center = {x: width/2, y: height/2}; const angleSlice = (Math.PI*2)/data.length;
+         for(let level=1; level<=4; level++) {
+             svg.append('circle').attr('cx', center.x).attr('cy', center.y).attr('r', r*(level/4)).attr('fill', 'none').attr('stroke', '#30363d');
+         }
+         const linePath = d3.line().x((d,i)=>center.x+(r*d.value*Math.cos(angleSlice*i-Math.PI/2))).y((d,i)=>center.y+(r*d.value*Math.sin(angleSlice*i-Math.PI/2)));
+         const pathData = [...data, data[0]];
+         svg.append('path').datum(pathData).attr('d', linePath).attr('fill', 'rgba(0,121,253,0.3)').attr('stroke', '#0079fd').attr('stroke-width', 2);
+    },
     handleSearch(term) {
         if(!term) { this.resetHighlight(); return; }
         const match = this.nodes.find(n => n.id.includes(term.toUpperCase()));
-        if(match) {
-            this.highlightNode(match.id);
-            this.showDetails(match);
-            this.focusOnNode(match);
-        }
+        if(match) { this.highlightNode(match.id); this.showDetails(match); this.focusOnNode(match); }
     },
     focusOnNode(node) {
-        const t = d3.zoomIdentity.translate(
-            (this.svg.node().clientWidth/2) - node.x, 
-            (this.svg.node().clientHeight/2) - node.y
-        );
+        const t = d3.zoomIdentity.translate((this.svg.node().clientWidth/2)-node.x, (this.svg.node().clientHeight/2)-node.y);
         this.svg.transition().duration(750).call(this.currentZoom.transform, t);
     },
-    highlightNode(id) {
-        this.nodeElements.attr('opacity', d => d.id === id ? 1 : 0.2);
-    },
+    highlightNode(id) { this.nodeElements.attr('opacity', d => d.id === id ? 1 : 0.1); },
     resetHighlight() { this.nodeElements.attr('opacity', 1); },
     populateTickerList() { d3.select('#tickers').selectAll('option').data(this.nodes).enter().append('option').attr('value', d => d.id); },
     drag(sim) {
