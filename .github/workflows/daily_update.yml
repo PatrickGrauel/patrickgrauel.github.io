@@ -34,11 +34,23 @@ jobs:
           
       - name: Fetch Yahoo Finance data
         run: |
+          echo "✨ Running NEW fetch_real_data.py (not build_graph.py)"
           python fetch_real_data.py
+        
+      - name: Verify data generated
+        run: |
+          if [ -f data/graph_data.json ]; then
+            echo "✅ Data file generated successfully"
+            stocks_count=$(grep -o '"id"' data/graph_data.json | wc -l)
+            echo "Stocks analyzed: $stocks_count"
+          else
+            echo "❌ Error: data/graph_data.json not found!"
+            exit 1
+          fi
           
       - name: Commit and push if changed
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add data/graph_data.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Update stock data - $(date +'%Y-%m-%d %H:%M')" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Update stock data - $(date +'%Y-%m-%d %H:%M UTC')" && git push)
