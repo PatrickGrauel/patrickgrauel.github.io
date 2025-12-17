@@ -5,43 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buffett Moat Network</title>
     <style>
-        body { margin: 0; background: #0f111a; color: white; font-family: sans-serif; overflow: hidden; }
-        #graph-container { position: relative; width: 100vw; height: 100vh; }
-        canvas, svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        :root { --bg: #0f111a; --panel: #1a1d29; --text: #e2e8f0; --accent: #3b82f6; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow: hidden; }
+        
+        /* Layout */
+        #graph-container { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
+        canvas, svg { position: absolute; width: 100%; height: 100%; }
 
-        #ui-layer {
-            position: absolute; top: 20px; left: 20px; pointer-events: none;
+        /* Sidebar UI */
+        #sidebar {
+            position: absolute; top: 0; left: 0; width: 320px; height: 100vh;
+            background: var(--panel); border-right: 1px solid #334155;
+            z-index: 10; padding: 20px; box-sizing: border-box;
+            transform: translateX(0); transition: transform 0.3s ease;
+            display: flex; flex-direction: column; gap: 15px;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.3);
         }
-        h1 { font-size: 1.5rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
-        p { color: #888; font-size: 0.9rem; }
+        
+        #sidebar.collapsed { transform: translateX(-100%); }
+        
+        /* Typography */
+        h1 { margin: 0; font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
+        h2 { margin: 0 0 10px 0; font-size: 1.8rem; }
+        .subtitle { font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px; }
+        
+        /* Metrics Grid */
+        .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .metric-card { background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px; }
+        .metric-label { font-size: 0.75rem; color: #94a3b8; display: block; }
+        .metric-val { font-size: 1.1rem; font-weight: 600; color: #fff; }
+        
+        /* Search */
+        #search-box {
+            width: 100%; padding: 12px; background: #0f111a; border: 1px solid #334155;
+            color: white; border-radius: 6px; outline: none;
+        }
+        #search-box:focus { border-color: var(--accent); }
 
-        #tooltip {
-            position: absolute;
-            opacity: 0;
-            background: rgba(15, 17, 26, 0.95);
-            padding: 12px;
-            border-radius: 4px;
-            border: 1px solid #333;
-            font-size: 12px;
-            pointer-events: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-            transition: opacity 0.2s;
+        /* Score Badge */
+        .score-badge {
+            display: inline-block; padding: 5px 12px; border-radius: 20px;
+            font-weight: bold; font-size: 0.9rem; margin-bottom: 15px;
         }
-        .score-bad { color: #ff4d4d; }
-        .score-mid { color: #ffd700; }
-        .score-good { color: #00cc66; }
+        
+        /* Toggle Button */
+        #toggle-btn {
+            position: absolute; top: 20px; left: 340px; z-index: 10;
+            background: var(--panel); border: 1px solid #334155; color: white;
+            padding: 8px 12px; border-radius: 4px; cursor: pointer;
+            transition: left 0.3s ease;
+        }
+        #sidebar.collapsed + #toggle-btn { left: 20px; }
     </style>
 </head>
 <body>
+
+    <div id="sidebar">
+        <div>
+            <h1>Buffett Scan</h1>
+            <p class="subtitle">S&P 500 Similarity Graph</p>
+            <input type="text" id="search-box" placeholder="Search Ticker (e.g., AAPL)...">
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #334155; width: 100%;">
+
+        <div id="details-panel" style="display:none;">
+            <h2 id="detail-ticker">--</h2>
+            <div id="detail-score" class="score-badge">Score: --</div>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <span class="metric-label">Avg Gross Margin</span>
+                    <span class="metric-val" id="detail-margin">--%</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">Debt/Equity</span>
+                    <span class="metric-val" id="detail-debt">--</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">ROE</span>
+                    <span class="metric-val" id="detail-roe">--%</span>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">Owner Earnings</span>
+                    <span class="metric-val" id="detail-fcf">--</span>
+                </div>
+            </div>
+            <p style="font-size: 0.8rem; color: #64748b; margin-top: 15px;">
+                *Margins averaged over 4 years. Volatility penalty applied.
+            </p>
+        </div>
+        
+        <div id="intro-msg" style="margin-top: 20px; color: #64748b; font-size: 0.9rem;">
+            Hover over a node to preview.<br>Click to lock details.<br>Zoom to explore clusters.
+        </div>
+    </div>
+
+    <button id="toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('collapsed')">☰</button>
+
     <div id="graph-container">
         <canvas id="edges-canvas"></canvas>
         <svg id="nodes-svg"></svg>
-        <div id="tooltip"></div>
-    </div>
-
-    <div id="ui-layer">
-        <h1>Buffett Similarity Graph</h1>
-        <p>Clustering S&P 500 by Fundamental DNA</p>
     </div>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
