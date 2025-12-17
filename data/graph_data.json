@@ -852,7 +852,7 @@
         "current_ratio": 1.11,
         "fcf_margin": 20.3,
         "capex_ratio": 7.0,
-        "retained_earnings": NaN,
+        "retained_earnings": 0,
         "pe_ratio": 20.237453,
         "pb_ratio": 6.363554,
         "buffett_score": 75
