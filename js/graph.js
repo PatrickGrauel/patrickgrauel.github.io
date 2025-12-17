@@ -55,7 +55,10 @@ const app = {
             .then(data => {
                 console.log('Data loaded:', data);
                 this.nodes = data.nodes;
-                this.links = data.links || [];
+                
+                // Generate connections based on sector and industry
+                this.links = this.generateConnections(data.nodes);
+                
                 this.industryAverages = data.industry_averages || {};
                 this.renderGraph();
                 this.populateTickerList();
@@ -66,24 +69,82 @@ const app = {
             });
     },
     
+    generateConnections(nodes) {
+        const links = [];
+        
+        // Create industry-based connections (stronger)
+        const industryGroups = {};
+        nodes.forEach(node => {
+            if (!industryGroups[node.industry]) {
+                industryGroups[node.industry] = [];
+            }
+            industryGroups[node.industry].push(node);
+        });
+        
+        // Connect nodes within same industry
+        Object.values(industryGroups).forEach(group => {
+            for (let i = 0; i < group.length; i++) {
+                for (let j = i + 1; j < group.length; j++) {
+                    links.push({
+                        source: group[i].id,
+                        target: group[j].id,
+                        type: 'industry',
+                        strength: 1
+                    });
+                }
+            }
+        });
+        
+        // Create sector-based connections (weaker, only if not in same industry)
+        const sectorGroups = {};
+        nodes.forEach(node => {
+            if (!sectorGroups[node.sector]) {
+                sectorGroups[node.sector] = [];
+            }
+            sectorGroups[node.sector].push(node);
+        });
+        
+        // Connect nodes within same sector but different industries
+        Object.values(sectorGroups).forEach(group => {
+            for (let i = 0; i < group.length; i++) {
+                for (let j = i + 1; j < group.length; j++) {
+                    if (group[i].industry !== group[j].industry) {
+                        links.push({
+                            source: group[i].id,
+                            target: group[j].id,
+                            type: 'sector',
+                            strength: 0.3
+                        });
+                    }
+                }
+            }
+        });
+        
+        console.log(`Generated ${links.length} connections`);
+        return links;
+    },
+    
     renderGraph() {
         const width = this.svg.node().clientWidth;
         const height = this.svg.node().clientHeight;
         
         // Create force simulation
         this.simulation = d3.forceSimulation(this.nodes)
-            .force('charge', d3.forceManyBody().strength(-300))
+            .force('charge', d3.forceManyBody().strength(-200))
             .force('center', d3.forceCenter(width / 2, height / 2))
-            .force('collision', d3.forceCollide().radius(d => this.getNodeRadius(d) + 5))
-            .force('link', d3.forceLink(this.links).id(d => d.id).distance(100));
+            .force('collision', d3.forceCollide().radius(d => this.getNodeRadius(d) + 10))
+            .force('link', d3.forceLink(this.links)
+                .id(d => d.id)
+                .distance(d => d.type === 'industry' ? 80 : 150)
+                .strength(d => d.strength));
         
         // Draw links
         const link = this.g.append('g')
             .selectAll('line')
             .data(this.links)
             .join('line')
-            .attr('stroke', 'rgba(255,255,255,0.1)')
-            .attr('stroke-width', 1);
+            .attr('stroke', d => d.type === 'industry' ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.05)')
+            .attr('stroke-width', d => d.type === 'industry' ? 1.5 : 0.5);
         
         // Draw nodes
         const node = this.g.append('g')
@@ -101,19 +162,22 @@ const app = {
             .on('mouseover', (event, d) => this.showTooltip(event, d))
             .on('mouseout', () => this.hideTooltip());
         
-        // Draw labels
+        // Draw labels INSIDE bubbles
         const label = this.g.append('g')
             .selectAll('text')
             .data(this.nodes)
             .join('text')
             .text(d => d.id)
-            .attr('font-size', 11)
+            .attr('font-size', d => Math.max(8, this.getNodeRadius(d) / 3))
             .attr('font-weight', 'bold')
             .attr('fill', '#fff')
             .attr('text-anchor', 'middle')
-            .attr('dy', d => this.getNodeRadius(d) + 15)
+            .attr('dy', '0.35em')
             .attr('pointer-events', 'none')
-            .style('text-shadow', '0 0 3px rgba(0,0,0,0.8)');
+            .style('text-shadow', '0 0 4px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.7)');
+        
+        // Add industry labels
+        this.addIndustryLabels();
         
         // Update positions on tick
         this.simulation.on('tick', () => {
@@ -138,10 +202,44 @@ const app = {
         this.linkElements = link;
     },
     
+    addIndustryLabels() {
+        // Wait for simulation to stabilize, then add industry labels
+        setTimeout(() => {
+            const industryGroups = {};
+            this.nodes.forEach(node => {
+                if (!industryGroups[node.industry]) {
+                    industryGroups[node.industry] = [];
+                }
+                industryGroups[node.industry].push(node);
+            });
+            
+            const industryLabels = this.g.append('g').attr('class', 'industry-labels');
+            
+            Object.entries(industryGroups).forEach(([industry, nodes]) => {
+                // Calculate centroid of industry group
+                const centerX = d3.mean(nodes, n => n.x);
+                const centerY = d3.mean(nodes, n => n.y);
+                
+                // Add industry label
+                industryLabels.append('text')
+                    .attr('x', centerX)
+                    .attr('y', centerY - 60)
+                    .attr('text-anchor', 'middle')
+                    .attr('font-size', 14)
+                    .attr('font-weight', '600')
+                    .attr('fill', this.getNodeColor(nodes[0]))
+                    .attr('opacity', 0.7)
+                    .attr('pointer-events', 'none')
+                    .style('text-shadow', '0 0 8px rgba(0,0,0,0.9)')
+                    .text(`${industry} (${nodes.length})`);
+            });
+        }, 2000);
+    },
+    
     getNodeRadius(d) {
         // Scale based on market cap
-        const minRadius = 15;
-        const maxRadius = 50;
+        const minRadius = 20;
+        const maxRadius = 60;
         const minCap = d3.min(this.nodes, n => n.marketCap);
         const maxCap = d3.max(this.nodes, n => n.marketCap);
         
@@ -155,6 +253,23 @@ const app = {
     getNodeColor(d) {
         const sector = d.sector || 'Technology';
         return this.industryColors[sector] || '#888';
+    },
+    
+    calculateSharePrice(stock) {
+        // Estimate share price from market cap and P/E ratio
+        // This is approximate since we don't have shares outstanding
+        const marketCap = stock.marketCap;
+        const peRatio = stock.metrics.pe_ratio;
+        
+        if (peRatio && peRatio > 0) {
+            // Rough estimate: assume typical company has ~1B shares
+            // Adjust based on market cap size
+            const estimatedShares = marketCap / 1e9 * (marketCap < 100e9 ? 0.5 : marketCap < 1e12 ? 1 : 2);
+            return marketCap / estimatedShares;
+        }
+        
+        // Fallback: simple scaling
+        return marketCap / 1e9;
     },
     
     drag(simulation) {
@@ -182,6 +297,7 @@ const app = {
     },
     
     showTooltip(event, d) {
+        const sharePrice = this.calculateSharePrice(d);
         const tooltip = d3.select('#tooltip');
         tooltip
             .style('opacity', 1)
@@ -190,6 +306,7 @@ const app = {
             .html(`
                 <strong>${d.id}</strong><br>
                 ${d.name}<br>
+                Price: $${sharePrice.toFixed(2)}<br>
                 Score: ${d.buffettScore}
             `);
     },
@@ -203,9 +320,12 @@ const app = {
         d3.select('#state-empty').style('display', 'none');
         d3.select('#state-details').style('display', 'block');
         
+        // Calculate share price
+        const sharePrice = this.calculateSharePrice(stock);
+        
         // Populate header
         d3.select('#det-ticker').text(stock.id);
-        d3.select('#det-name').text(stock.name);
+        d3.select('#det-name').html(`${stock.name}<br><span style="font-size: 18px; color: #00c853;">$${sharePrice.toFixed(2)}</span>`);
         d3.select('#det-score')
             .text(stock.buffettScore)
             .attr('class', 'score-lg ' + this.getScoreClass(stock.buffettScore));
@@ -215,7 +335,7 @@ const app = {
         // Render radar chart
         this.renderRadarChart(stock);
         
-        // Render metrics
+        // Render metrics with historical data
         this.renderMetrics(stock);
         
         // Highlight node
@@ -322,18 +442,21 @@ const app = {
         container.html(''); // Clear previous
         
         const metrics = stock.metrics;
+        const historical = stock.historical || {};
         const industry = stock.industry;
         const industryAvg = this.industryAverages[industry] || {};
         
         const metricsToShow = [
-            { key: 'gross_margin', label: 'Gross Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.gross_margin },
-            { key: 'net_margin', label: 'Net Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.net_margin },
-            { key: 'roe', label: 'ROE', format: d => d.toFixed(1) + '%', avg: industryAvg.roe },
+            { key: 'gross_margin', label: 'Gross Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.gross_margin, hist: 'gross_margin' },
+            { key: 'net_margin', label: 'Net Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.net_margin, hist: 'net_margin' },
+            { key: 'roe', label: 'ROE', format: d => d.toFixed(1) + '%', avg: industryAvg.roe, hist: 'roe' },
             { key: 'roic', label: 'ROIC', format: d => d.toFixed(1) + '%', avg: industryAvg.roic },
-            { key: 'debt_to_equity', label: 'Debt/Equity', format: d => d.toFixed(2), avg: industryAvg.debt_to_equity, inverse: true },
+            { key: 'debt_to_equity', label: 'Debt/Equity', format: d => d.toFixed(2), avg: industryAvg.debt_to_equity, inverse: true, hist: 'debt_to_equity' },
             { key: 'fcf_margin', label: 'FCF Margin', format: d => d.toFixed(1) + '%', avg: industryAvg.fcf_margin },
-            { key: 'pe_ratio', label: 'P/E Ratio', format: d => d.toFixed(1), avg: null },
-            { key: 'pb_ratio', label: 'P/B Ratio', format: d => d.toFixed(1), avg: null }
+            { key: 'operating_margin', label: 'Op. Margin', format: d => d.toFixed(1) + '%' },
+            { key: 'current_ratio', label: 'Current Ratio', format: d => d.toFixed(2) },
+            { key: 'pe_ratio', label: 'P/E Ratio', format: d => d.toFixed(1) },
+            { key: 'pb_ratio', label: 'P/B Ratio', format: d => d.toFixed(1) }
         ];
         
         metricsToShow.forEach(metric => {
@@ -344,6 +467,17 @@ const app = {
             
             const header = card.append('div').attr('class', 'm-header');
             header.append('div').attr('class', 'm-title').text(metric.label);
+            
+            // Add trend indicator if historical data exists
+            if (metric.hist && historical[metric.hist] && historical[metric.hist].length > 1) {
+                const histData = historical[metric.hist];
+                const trend = histData[0] > histData[histData.length - 1] ? '↑' : '↓';
+                const trendColor = (metric.inverse ? histData[0] < histData[histData.length - 1] : histData[0] > histData[histData.length - 1]) ? '#00c853' : '#ff3d00';
+                header.append('span')
+                    .style('color', trendColor)
+                    .style('font-size', '14px')
+                    .text(trend);
+            }
             
             card.append('div')
                 .attr('class', 'm-value')
