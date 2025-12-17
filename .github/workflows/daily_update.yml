@@ -1,35 +1,44 @@
-name: Market Radar Update
+name: Daily Stock Data Update
 
 on:
   schedule:
-    - cron: '0 12 * * *' # Runs daily at 12:00 UTC
-  workflow_dispatch:      # Allows manual button click
+    # Run every day at 6 PM UTC (after US market close)
+    - cron: '0 18 * * *'
+  workflow_dispatch: # Allows manual trigger
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      
+    
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v3
-
+        
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-
-      - name: Install Libraries
-        run: pip install yfinance pandas
-
-      - name: Run The Scraper
-        run: python get_data.py
-
-      - name: Commit and Push Data
+          python-version: '3.10'
+          
+      - name: Cache pip packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('scripts/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            
+      - name: Install dependencies
         run: |
-          git config --global user.name 'Radar Bot'
-          git config --global user.email 'bot@noreply.github.com'
-          git add stocks/data.json
-          git commit -m "Auto-update market data" || exit 0
-          git push
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+          
+      - name: Fetch Yahoo Finance data
+        run: |
+          python fetch_real_data.py
+          
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add data/graph_data.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Update stock data - $(date +'%Y-%m-%d %H:%M')" && git push)
