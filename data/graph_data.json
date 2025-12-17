@@ -1,0 +1,501 @@
+{
+  "nodes": [
+    {
+      "id": "AAPL",
+      "name": "Apple Inc.",
+      "sector": "Technology",
+      "grossMargins": 0.46905,
+      "debtToEquity": 152.411,
+      "roe": 1.7142199,
+      "ownerEarnings": 78862254080,
+      "buffettScore": 70
+    },
+    {
+      "id": "MSFT",
+      "name": "Microsoft Corporation",
+      "sector": "Technology",
+      "grossMargins": 0.68764,
+      "debtToEquity": 33.154,
+      "roe": 0.32241002,
+      "ownerEarnings": 53327376384,
+      "buffettScore": 100
+    },
+    {
+      "id": "GOOGL",
+      "name": "Alphabet Inc.",
+      "sector": "Communication Services",
+      "grossMargins": 0.59172,
+      "debtToEquity": 11.424,
+      "roe": 0.3545,
+      "ownerEarnings": 47997751296,
+      "buffettScore": 100
+    },
+    {
+      "id": "AMZN",
+      "name": "Amazon.com, Inc.",
+      "sector": "Consumer Cyclical",
+      "grossMargins": 0.50046,
+      "debtToEquity": 43.405,
+      "roe": 0.24327,
+      "ownerEarnings": 26080000000,
+      "buffettScore": 100
+    },
+    {
+      "id": "BRK-B",
+      "name": "Berkshire Hathaway Inc. New",
+      "sector": "Financial Services",
+      "grossMargins": 0.24361,
+      "debtToEquity": 18.166,
+      "roe": 0.1017,
+      "ownerEarnings": 48615874560,
+      "buffettScore": 50
+    },
+    {
+      "id": "JNJ",
+      "name": "Johnson & Johnson",
+      "sector": "Healthcare",
+      "grossMargins": 0.68355006,
+      "debtToEquity": 57.766,
+      "roe": 0.33619,
+      "ownerEarnings": 12008999936,
+      "buffettScore": 85
+    },
+    {
+      "id": "V",
+      "name": "Visa Inc.",
+      "sector": "Financial Services",
+      "grossMargins": 0.97765,
+      "debtToEquity": 68.807,
+      "roe": 0.52068,
+      "ownerEarnings": 20072873984,
+      "buffettScore": 85
+    },
+    {
+      "id": "PG",
+      "name": "Procter & Gamble Company (The)",
+      "sector": "Consumer Defensive",
+      "grossMargins": 0.51278996,
+      "debtToEquity": 67.125,
+      "roe": 0.31902,
+      "ownerEarnings": 12200999936,
+      "buffettScore": 85
+    },
+    {
+      "id": "KO",
+      "name": "Coca-Cola Company (The)",
+      "sector": "Consumer Defensive",
+      "grossMargins": 0.61632997,
+      "debtToEquity": 144.771,
+      "roe": 0.42442,
+      "ownerEarnings": 1412875008,
+      "buffettScore": 70
+    },
+    {
+      "id": "PEP",
+      "name": "Pepsico, Inc.",
+      "sector": "Consumer Defensive",
+      "grossMargins": 0.54269004,
+      "debtToEquity": 260.19,
+      "roe": 0.37162,
+      "ownerEarnings": 7137500160,
+      "buffettScore": 70
+    },
+    {
+      "id": "COST",
+      "name": "Costco Wholesale Corporation",
+      "sector": "Consumer Defensive",
+      "grossMargins": 0.12876001,
+      "debtToEquity": 26.737,
+      "roe": 0.30325,
+      "ownerEarnings": 7240249856,
+      "buffettScore": 65
+    },
+    {
+      "id": "MCD",
+      "name": "McDonald's Corporation",
+      "sector": "Consumer Cyclical",
+      "grossMargins": 0.57425,
+      "debtToEquity": 100.0,
+      "roe": 0.0,
+      "ownerEarnings": 4394500096,
+      "buffettScore": 40
+    },
+    {
+      "id": "NVDA",
+      "name": "NVIDIA Corporation",
+      "sector": "Technology",
+      "grossMargins": 0.7005,
+      "debtToEquity": 9.102,
+      "roe": 1.07359,
+      "ownerEarnings": 53282873344,
+      "buffettScore": 100
+    },
+    {
+      "id": "TSLA",
+      "name": "Tesla, Inc.",
+      "sector": "Consumer Cyclical",
+      "grossMargins": 0.17006999,
+      "debtToEquity": 17.082,
+      "roe": 0.06791,
+      "ownerEarnings": 2979249920,
+      "buffettScore": 35
+    },
+    {
+      "id": "XOM",
+      "name": "Exxon Mobil Corporation",
+      "sector": "Energy",
+      "grossMargins": 0.31222,
+      "debtToEquity": 15.672,
+      "roe": 0.11424,
+      "ownerEarnings": 17292750848,
+      "buffettScore": 50
+    },
+    {
+      "id": "META",
+      "name": "Meta Platforms, Inc.",
+      "sector": "Communication Services",
+      "grossMargins": 0.82013,
+      "debtToEquity": 26.311,
+      "roe": 0.32643002,
+      "ownerEarnings": 18617749504,
+      "buffettScore": 100
+    },
+    {
+      "id": "LLY",
+      "name": "Eli Lilly and Company",
+      "sector": "Healthcare",
+      "grossMargins": 0.83029,
+      "debtToEquity": 178.516,
+      "roe": 0.9647,
+      "ownerEarnings": 1397924992,
+      "buffettScore": 70
+    },
+    {
+      "id": "AVGO",
+      "name": "Broadcom Inc.",
+      "sector": "Technology",
+      "grossMargins": 0.77325994,
+      "debtToEquity": 166.032,
+      "roe": 0.31048,
+      "ownerEarnings": 24535625728,
+      "buffettScore": 70
+    },
+    {
+      "id": "JPM",
+      "name": "JP Morgan Chase & Co.",
+      "sector": "Financial Services",
+      "grossMargins": 0.0,
+      "debtToEquity": 100.0,
+      "roe": 0.16437,
+      "ownerEarnings": 0,
+      "buffettScore": 20
+    },
+    {
+      "id": "UNH",
+      "name": "UnitedHealth Group Incorporated",
+      "sector": "Healthcare",
+      "grossMargins": 0.19701,
+      "debtToEquity": 75.734,
+      "roe": 0.17476,
+      "ownerEarnings": 17768749056,
+      "buffettScore": 35
+    }
+  ],
+  "links": [
+    {
+      "source": "AAPL",
+      "target": "NVDA",
+      "similarity": 0.817
+    },
+    {
+      "source": "AAPL",
+      "target": "LLY",
+      "similarity": 0.889
+    },
+    {
+      "source": "AAPL",
+      "target": "COST",
+      "similarity": 0.97
+    },
+    {
+      "source": "MSFT",
+      "target": "META",
+      "similarity": 0.998
+    },
+    {
+      "source": "MSFT",
+      "target": "TSLA",
+      "similarity": 0.998
+    },
+    {
+      "source": "MSFT",
+      "target": "BRK-B",
+      "similarity": 1.0
+    },
+    {
+      "source": "GOOGL",
+      "target": "XOM",
+      "similarity": 0.99
+    },
+    {
+      "source": "GOOGL",
+      "target": "MSFT",
+      "similarity": 0.991
+    },
+    {
+      "source": "GOOGL",
+      "target": "META",
+      "similarity": 0.992
+    },
+    {
+      "source": "AMZN",
+      "target": "TSLA",
+      "similarity": 0.996
+    },
+    {
+      "source": "AMZN",
+      "target": "V",
+      "similarity": 0.999
+    },
+    {
+      "source": "AMZN",
+      "target": "JNJ",
+      "similarity": 1.0
+    },
+    {
+      "source": "BRK-B",
+      "target": "META",
+      "similarity": 0.998
+    },
+    {
+      "source": "BRK-B",
+      "target": "TSLA",
+      "similarity": 0.999
+    },
+    {
+      "source": "BRK-B",
+      "target": "MSFT",
+      "similarity": 1.0
+    },
+    {
+      "source": "JNJ",
+      "target": "TSLA",
+      "similarity": 0.995
+    },
+    {
+      "source": "JNJ",
+      "target": "V",
+      "similarity": 0.999
+    },
+    {
+      "source": "JNJ",
+      "target": "AMZN",
+      "similarity": 1.0
+    },
+    {
+      "source": "V",
+      "target": "TSLA",
+      "similarity": 0.996
+    },
+    {
+      "source": "V",
+      "target": "JNJ",
+      "similarity": 0.999
+    },
+    {
+      "source": "V",
+      "target": "AMZN",
+      "similarity": 0.999
+    },
+    {
+      "source": "PG",
+      "target": "V",
+      "similarity": 0.985
+    },
+    {
+      "source": "PG",
+      "target": "AMZN",
+      "similarity": 0.988
+    },
+    {
+      "source": "PG",
+      "target": "JNJ",
+      "similarity": 0.989
+    },
+    {
+      "source": "KO",
+      "target": "UNH",
+      "similarity": 0.979
+    },
+    {
+      "source": "KO",
+      "target": "LLY",
+      "similarity": 0.982
+    },
+    {
+      "source": "KO",
+      "target": "AVGO",
+      "similarity": 0.993
+    },
+    {
+      "source": "PEP",
+      "target": "AVGO",
+      "similarity": 0.925
+    },
+    {
+      "source": "PEP",
+      "target": "KO",
+      "similarity": 0.936
+    },
+    {
+      "source": "PEP",
+      "target": "UNH",
+      "similarity": 0.984
+    },
+    {
+      "source": "COST",
+      "target": "LLY",
+      "similarity": 0.915
+    },
+    {
+      "source": "COST",
+      "target": "NVDA",
+      "similarity": 0.931
+    },
+    {
+      "source": "COST",
+      "target": "AAPL",
+      "similarity": 0.97
+    },
+    {
+      "source": "MCD",
+      "target": "PG",
+      "similarity": 0.942
+    },
+    {
+      "source": "MCD",
+      "target": "KO",
+      "similarity": 0.947
+    },
+    {
+      "source": "MCD",
+      "target": "AVGO",
+      "similarity": 0.978
+    },
+    {
+      "source": "NVDA",
+      "target": "MSFT",
+      "similarity": 0.89
+    },
+    {
+      "source": "NVDA",
+      "target": "GOOGL",
+      "similarity": 0.925
+    },
+    {
+      "source": "NVDA",
+      "target": "COST",
+      "similarity": 0.931
+    },
+    {
+      "source": "TSLA",
+      "target": "V",
+      "similarity": 0.996
+    },
+    {
+      "source": "TSLA",
+      "target": "MSFT",
+      "similarity": 0.998
+    },
+    {
+      "source": "TSLA",
+      "target": "BRK-B",
+      "similarity": 0.999
+    },
+    {
+      "source": "XOM",
+      "target": "MSFT",
+      "similarity": 0.997
+    },
+    {
+      "source": "XOM",
+      "target": "BRK-B",
+      "similarity": 0.998
+    },
+    {
+      "source": "XOM",
+      "target": "META",
+      "similarity": 1.0
+    },
+    {
+      "source": "META",
+      "target": "MSFT",
+      "similarity": 0.998
+    },
+    {
+      "source": "META",
+      "target": "BRK-B",
+      "similarity": 0.998
+    },
+    {
+      "source": "META",
+      "target": "XOM",
+      "similarity": 1.0
+    },
+    {
+      "source": "LLY",
+      "target": "UNH",
+      "similarity": 0.957
+    },
+    {
+      "source": "LLY",
+      "target": "PG",
+      "similarity": 0.959
+    },
+    {
+      "source": "LLY",
+      "target": "KO",
+      "similarity": 0.982
+    },
+    {
+      "source": "AVGO",
+      "target": "UNH",
+      "similarity": 0.963
+    },
+    {
+      "source": "AVGO",
+      "target": "MCD",
+      "similarity": 0.978
+    },
+    {
+      "source": "AVGO",
+      "target": "KO",
+      "similarity": 0.993
+    },
+    {
+      "source": "JPM",
+      "target": "UNH",
+      "similarity": 0.811
+    },
+    {
+      "source": "JPM",
+      "target": "PEP",
+      "similarity": 0.878
+    },
+    {
+      "source": "UNH",
+      "target": "AVGO",
+      "similarity": 0.963
+    },
+    {
+      "source": "UNH",
+      "target": "KO",
+      "similarity": 0.979
+    },
+    {
+      "source": "UNH",
+      "target": "PEP",
+      "similarity": 0.984
+    }
+  ]
+}
