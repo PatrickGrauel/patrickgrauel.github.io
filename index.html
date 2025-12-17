@@ -3,108 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buffett Moat Network</title>
+    <title>Buffett Indicator: Moat Network</title>
     <style>
-        :root { --bg: #0f111a; --panel: #1a1d29; --text: #e2e8f0; --accent: #3b82f6; }
-        body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; overflow: hidden; }
+        :root { 
+            --bg: #0f111a; 
+            --panel: #1a1d29; 
+            --text: #e2e8f0; 
+            --accent: #3b82f6; 
+            --border: #334155;
+            --success: #00cc66;
+            --warning: #ffd700;
+            --danger: #ff4d4d;
+        }
         
-        /* Layout */
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; overflow: hidden; }
+        
+        /* --- LAYOUT --- */
         #graph-container { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
         canvas, svg { position: absolute; width: 100%; height: 100%; }
 
-        /* Sidebar UI */
+        /* --- SIDEBAR --- */
         #sidebar {
-            position: absolute; top: 0; left: 0; width: 320px; height: 100vh;
-            background: var(--panel); border-right: 1px solid #334155;
+            position: absolute; top: 0; left: 0; width: 340px; height: 100vh;
+            background: var(--panel); border-right: 1px solid var(--border);
             z-index: 10; padding: 20px; box-sizing: border-box;
-            transform: translateX(0); transition: transform 0.3s ease;
+            transform: translateX(0); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex; flex-direction: column; gap: 15px;
-            box-shadow: 4px 0 15px rgba(0,0,0,0.3);
+            box-shadow: 4px 0 20px rgba(0,0,0,0.4);
+            overflow-y: auto;
         }
         
         #sidebar.collapsed { transform: translateX(-100%); }
         
         /* Typography */
-        h1 { margin: 0; font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
-        h2 { margin: 0 0 10px 0; font-size: 1.8rem; }
-        .subtitle { font-size: 0.9rem; color: #94a3b8; margin-bottom: 20px; }
+        h1 { margin: 0; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+        h2 { margin: 0; font-size: 28px; font-weight: 700; color: #fff; }
+        .subtitle { font-size: 13px; color: #94a3b8; margin-bottom: 10px; }
         
-        /* Metrics Grid */
-        .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-        .metric-card { background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px; }
-        .metric-label { font-size: 0.75rem; color: #94a3b8; display: block; }
-        .metric-val { font-size: 1.1rem; font-weight: 600; color: #fff; }
-        
-        /* Search */
+        /* Controls */
         #search-box {
-            width: 100%; padding: 12px; background: #0f111a; border: 1px solid #334155;
-            color: white; border-radius: 6px; outline: none;
+            width: 100%; padding: 12px; background: var(--bg); border: 1px solid var(--border);
+            color: white; border-radius: 6px; outline: none; font-size: 14px;
+            transition: border-color 0.2s;
         }
         #search-box:focus { border-color: var(--accent); }
 
-        /* Score Badge */
-        .score-badge {
-            display: inline-block; padding: 5px 12px; border-radius: 20px;
-            font-weight: bold; font-size: 0.9rem; margin-bottom: 15px;
+        select {
+            width: 100%; padding: 10px; background: var(--bg); border: 1px solid var(--border);
+            color: white; border-radius: 6px; outline: none; cursor: pointer; font-size: 13px;
         }
+
+        /* --- DETAILS PANEL --- */
+        #details-panel { display: none; animation: fadeIn 0.3s ease; }
+        
+        .score-badge {
+            display: inline-block; padding: 6px 12px; border-radius: 4px;
+            font-weight: 700; font-size: 16px; margin: 10px 0;
+            background: #333; color: white;
+        }
+
+        /* Moat Radar Container */
+        #radar-container {
+            width: 100%; height: 220px; position: relative;
+            background: rgba(0,0,0,0.2); border-radius: 8px; margin: 15px 0;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Metric Grid */
+        .metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .metric-card { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; border: 1px solid transparent; transition: border-color 0.2s; }
+        .metric-card:hover { border-color: var(--accent); }
+        .metric-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
+        .metric-val { font-size: 15px; font-weight: 600; color: #fff; }
         
         /* Toggle Button */
         #toggle-btn {
-            position: absolute; top: 20px; left: 340px; z-index: 10;
-            background: var(--panel); border: 1px solid #334155; color: white;
-            padding: 8px 12px; border-radius: 4px; cursor: pointer;
-            transition: left 0.3s ease;
+            position: absolute; top: 20px; left: 360px; z-index: 10;
+            background: var(--panel); border: 1px solid var(--border); color: white;
+            width: 40px; height: 40px; border-radius: 8px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s;
         }
+        #toggle-btn:hover { background: var(--accent); border-color: var(--accent); }
         #sidebar.collapsed + #toggle-btn { left: 20px; }
+
+        /* Tooltip */
+        #tooltip {
+            position: absolute; opacity: 0; pointer-events: none;
+            background: rgba(15, 17, 26, 0.95); backdrop-filter: blur(4px);
+            padding: 12px; border-radius: 6px; border: 1px solid var(--border);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 100;
+            transition: opacity 0.15s ease;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
     <div id="sidebar">
         <div>
-            <h1>Buffett Scan</h1>
-            <p class="subtitle">S&P 500 Similarity Graph</p>
+            <h1>Buffett Indicator</h1>
+            <p class="subtitle">Composite Moat Analysis</p>
             <input type="text" id="search-box" placeholder="Search Ticker (e.g., AAPL)...">
         </div>
 
-        <hr style="border: 0; border-top: 1px solid #334155; width: 100%;">
+        <div>
+            <p class="metric-label" style="margin-bottom: 8px;">View Perspective</p>
+            <select id="view-select" onchange="window.updateLayout(this.value)">
+                <option value="network">🕸️ Fundamental Cluster</option>
+                <option value="gross_margin">📊 Gross Margins (Moat)</option>
+                <option value="roic">💎 ROIC (Quality)</option>
+                <option value="fcf_yield">💰 FCF Yield (Value)</option>
+                <option value="debt_to_equity">⚖️ Debt Load (Risk)</option>
+            </select>
+        </div>
 
-        <div id="details-panel" style="display:none;">
+        <hr style="border: 0; border-top: 1px solid var(--border); width: 100%; margin: 10px 0;">
+
+        <div id="intro-msg" style="text-align: center; color: #64748b; margin-top: 40px;">
+            <p>Select a node to view<br>Deep Analysis Report</p>
+        </div>
+
+        <div id="details-panel">
             <h2 id="detail-ticker">--</h2>
-            <div id="detail-score" class="score-badge">Score: --</div>
+            <div id="detail-sector" style="color:#94a3b8; font-size:13px; margin-bottom:10px;">--</div>
+            
+            <div id="detail-score" class="score-badge">BCS: --</div>
+
+            <div id="radar-container">
+                <svg id="radar-viz" width="220" height="220"></svg>
+            </div>
+
             <div class="metric-grid">
                 <div class="metric-card">
                     <span class="metric-label">Avg Gross Margin</span>
-                    <span class="metric-val" id="detail-margin">--%</span>
+                    <span class="metric-val" id="detail-margin">--</span>
                 </div>
                 <div class="metric-card">
-                    <span class="metric-label">Debt/Equity</span>
+                    <span class="metric-label">Debt / Equity</span>
                     <span class="metric-val" id="detail-debt">--</span>
                 </div>
                 <div class="metric-card">
-                    <span class="metric-label">ROE</span>
-                    <span class="metric-val" id="detail-roe">--%</span>
+                    <span class="metric-label">ROIC</span>
+                    <span class="metric-val" id="detail-roic">--</span>
                 </div>
                 <div class="metric-card">
-                    <span class="metric-label">Owner Earnings</span>
-                    <span class="metric-val" id="detail-fcf">--</span>
+                    <span class="metric-label">FCF Yield</span>
+                    <span class="metric-val" id="detail-yield">--</span>
                 </div>
             </div>
-            <p style="font-size: 0.8rem; color: #64748b; margin-top: 15px;">
-                *Margins averaged over 4 years. Volatility penalty applied.
-            </p>
-        </div>
-        
-        <div id="intro-msg" style="margin-top: 20px; color: #64748b; font-size: 0.9rem;">
-            Hover over a node to preview.<br>Click to lock details.<br>Zoom to explore clusters.
         </div>
     </div>
 
-    <button id="toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('collapsed')">☰</button>
+    <button id="toggle-btn" onclick="document.getElementById('sidebar').classList.toggle('collapsed')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+    </button>
 
     <div id="graph-container">
         <canvas id="edges-canvas"></canvas>
         <svg id="nodes-svg"></svg>
+        <div id="tooltip"></div>
     </div>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
