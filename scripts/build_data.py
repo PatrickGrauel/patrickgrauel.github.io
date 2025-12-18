@@ -105,7 +105,7 @@ def build():
 
     # 4. Save Artifacts
     print("💾 Saving JSON Artifacts...")
-    os.makedirs("public/data/tickers", exist_ok=True)
+    os.makedirs("data/tickers", exist_ok=True)
     
     # Universe (Lightweight)
     universe = []
@@ -120,20 +120,20 @@ def build():
             "gy": d['groups']['Efficiency']
         })
     
-    with open("public/data/universe.json", "w") as f:
+    with open("data/universe.json", "w") as f:
         json.dump(sanitize(universe), f)
         
     # Network
-    with open("public/data/network.json", "w") as f:
+    with open("data/network.json", "w") as f:
         json.dump(sanitize({"nodes": universe, "links": links}), f)
         
     # Individual Files
     for t, d in scored_data.items():
-        with open(f"public/data/tickers/{t}.json", "w") as f:
+        with open(f"data/tickers/{t}.json", "w") as f:
             json.dump(sanitize(d), f)
             
     # Meta
-    with open("public/data/meta.json", "w") as f:
+    with open("data/meta.json", "w") as f:
         json.dump({"last_updated": datetime.now().isoformat(), "count": len(universe)}, f)
 
     print("✅ Build Complete.")
