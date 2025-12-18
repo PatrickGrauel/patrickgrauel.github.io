@@ -41,7 +41,7 @@ const App = {
             // 3. Node Click
             graph.onNodeClick((nodeId) => this.openTicker(nodeId, sidebar));
 
-            // 4. Sidebar Close
+            // 4. Sidebar Close 
             document.getElementById('close-sidebar').addEventListener('click', () => {
                 document.getElementById('sidebar').classList.remove('visible');
                 graph.reset();
