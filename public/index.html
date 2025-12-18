@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoatMap | Market Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div id="app-layout">
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h2>MoatMap</h2>
+                <div class="meta-status" id="meta-status">Loading...</div>
+            </div>
+            
+            <div class="controls-section">
+                <input type="text" id="search" placeholder="Search Ticker...">
+                <div class="filter-row">
+                    <label>Min Score</label>
+                    <input type="range" id="score-filter" min="0" max="100" value="0">
+                    <span id="score-val">0</span>
+                </div>
+            </div>
+
+            <div id="detail-view" class="hidden">
+                <div class="detail-header">
+                    <h1 id="d-ticker">AAPL</h1>
+                    <div class="score-badge" id="d-score">95</div>
+                </div>
+                <div class="subtitle" id="d-name">Apple Inc.</div>
+                
+                <div id="radar-chart"></div>
+                
+                <h3>Key Metrics</h3>
+                <div id="metrics-grid" class="metrics-grid"></div>
+            </div>
+            
+            <div id="empty-state">
+                <p>Select a node to analyze fundamentals.</p>
+            </div>
+        </aside>
+
+        <main id="viz">
+            <svg id="network-svg"></svg>
+        </main>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
