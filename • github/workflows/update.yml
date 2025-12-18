@@ -1,0 +1,42 @@
+name: Daily Data Update
+
+on:
+  schedule:
+    - cron: '0 8 * * *' # Daily at 8:00 UTC
+  workflow_dispatch:    # Manual button
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Libraries
+        run: |
+          pip install yfinance pandas numpy scikit-learn lxml
+
+      - name: Run Data Pipeline
+        run: python scripts/build_data.py
+
+      - name: Commit & Push
+        run: |
+          git config --global user.name 'MoatBot'
+          git config --global user.email 'bot@noreply.github.com'
+          
+          # Check if data changed
+          if [[ `git status --porcelain public/data` ]]; then
+            git add public/data/
+            git commit -m "data: daily market update $(date +'%Y-%m-%d')"
+            git push
+          else
+            echo "No changes to data."
+          fi
