@@ -1,0 +1,41 @@
+:root {
+    --bg: #0b0e11;
+    --sidebar: #15191e;
+    --text: #e6edf3;
+    --accent: #0079fd;
+    --border: #30363d;
+    --green: #00c853;
+    --yellow: #ffd600;
+    --red: #ff3d00;
+}
+
+body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, sans-serif; overflow: hidden; }
+
+#app-layout { display: flex; height: 100vh; }
+
+.sidebar { width: 350px; background: var(--sidebar); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 20px; overflow-y: auto; z-index: 10; }
+
+#viz { flex-grow: 1; position: relative; background: radial-gradient(circle at center, #1c2128 0%, #0b0e11 100%); }
+
+.sidebar-header { margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.meta-status { font-size: 10px; color: #888; margin-top: 5px; }
+
+input[type="text"] { width: 100%; padding: 8px; background: #0d1117; border: 1px solid var(--border); color: #fff; border-radius: 4px; margin-bottom: 15px; }
+
+.hidden { display: none; }
+
+/* Detail View */
+.detail-header { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.score-badge { font-size: 24px; font-weight: bold; }
+.score-badge.green { color: var(--green); }
+.score-badge.yellow { color: var(--yellow); }
+.score-badge.red { color: var(--red); }
+
+.metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+.metric-card { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 6px; }
+.m-label { font-size: 10px; color: #aaa; text-transform: uppercase; }
+.m-val { font-size: 14px; font-weight: bold; margin-top: 4px; }
+.m-bar { height: 4px; background: #333; margin-top: 6px; border-radius: 2px; }
+.m-fill { height: 100%; border-radius: 2px; }
+
+#radar-chart { height: 200px; margin: 10px -10px; }
